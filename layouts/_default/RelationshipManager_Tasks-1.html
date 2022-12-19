@@ -1,8 +1,0 @@
-{{ define "main" }}
-  {{ .Content }}
-
-  {{ partial "blocks/menu.html" (dict "title" "360" ) }}
-  {{ partial "blocks/numbers.html" (dict "bg" false "numbers" $.Site.Data.numbers.numbers ) }}
-  {{ partial "blocks/tabs.html" . }}
-  {{/* {{ partial "blocks/activities.html" . }} */}}
-{{ end }}

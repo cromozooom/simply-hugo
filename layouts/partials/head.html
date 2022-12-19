@@ -4,8 +4,6 @@
 {{ .Scratch.Set "bootstrap" false }}
 {{ .Scratch.Set "jquery" false }}
 {{ .Scratch.Set "alpine" false }}
-{{ .Scratch.Set "aceJSON" false }}
-{{ .Scratch.Set "jsPlumb" false }}
 
 {{ if .Params.tailwind }}
   {{ .Scratch.Set "tailwind" .Params.tailwind }}
@@ -19,26 +17,11 @@
 {{ if .Params.alpine }}
   {{ .Scratch.Set "alpine" .Params.alpine }}
 {{ end }}
-{{ if .Params.aceJSON }}
-  {{ .Scratch.Set "aceJSON" .Params.aceJSON }}
-{{ end }}
-{{ if .Params.jsPlumb }}
-  {{ .Scratch.Set "jsPlumb" .Params.jsPlumb }}
-{{ end }}
 
 {{ $tailwind := .Scratch.Get "tailwind" }}
 {{ $bootstrap := .Scratch.Get "bootstrap" }}
 {{ $jquery := .Scratch.Get "jquery" }}
 {{ $alpine := .Scratch.Get "alpine" }}
-{{ $aceJSON := .Scratch.Get "aceJSON" }}
-{{ $jsPlumb := .Scratch.Get "jsPlumb" }}
-
-{{ if $jsPlumb }}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/js/jsplumb.min.js" integrity="sha512-yGgPLFnBGQP4L4+2eTbGj0uLoq+CLXmP2+c/hXWdmLYB9jEBfVGjxIqtvFneLCKATOZhDf2YPYG4uSEksWXp+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/css/jsplumbtoolkit-defaults.css" integrity="sha512-jd/fOFC21187laNAUa3jXsPbm9L25MSscoZ/v/t6fznpllp0KOgEDwBabuvRr/gNT7VlRfZz9ItshGbmAXMy8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/css/jsplumbtoolkit-defaults.min.css" integrity="sha512-4buFEvwrnbqow5DmgXVCJIHskJMxbAemoim0xwT6XonnRAVB3zK6cmYO4eX6dMa0PnuTXK+UyfW+6RizMfBypg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/js/jsplumb.js" integrity="sha512-Apg1ZeuGs7Z8jiTHs9sonPBemcCMlYprJUOTbT8ytsTaFrAXnBmmmgFsvl2bBUONW26L/5eY9RPhrprozxEhXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-{{ end }}
 
 
 <!-- when using the mode "code", it's important to specify charset utf-8 -->
@@ -87,16 +70,4 @@
 {{ end }}
 {{ if $bootstrap }}
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-{{ end }}
-
-{{/* https://postsrc.com/posts/how-to-implement-light-and-dark-mode-with-alpinie-js-and-tailwind-css */}}<script>
-  {{/* On page load or when changing themes, best to add inline in `head` to avoid FOUC  */}}
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
-</script> {{ if $aceJSON }}
-  <link href="/css/jsoneditor.min.css" rel="stylesheet" type="text/css" />
-  <script src="/js/jsoneditor.min.js"></script>
 {{ end }}

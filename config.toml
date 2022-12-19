@@ -1,9 +1,7 @@
 baseURL = 'https://charming-chimera-14b53c.netlify.app/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
-theme = 'wdx1'
-#theme = 'cai'
-
+theme = 'simply_hugo'
 
 enableGitInfo = true
 disableKinds = ["taxonomy"]

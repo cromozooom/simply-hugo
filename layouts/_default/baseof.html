@@ -1,63 +1,9 @@
 <!DOCTYPE html>
 <html>
   {{- partial "head.html" . -}}
-
-
-  <!-- <body class="modal-open"></body> -->
-  <body
-    x-data="{
-      pulloutTab: {
-        pullout: false,
-        secondary: false,
-        size: 'medium'
-      },
-      pulloutWisard: {
-        pullout: false,
-        secondary: false,
-        size: 'medium'
-      },
-      pulloutAddress: {
-        pullout: false,
-        secondary: false,
-        size: 'medium'
-      },
-      pulloutAccordion: {
-        pullout: false,
-        secondary: false,
-        size: 'medium'
-      },
-      progressPills: true,
-      bodyScroll: true
-    }"
-    :class="!bodyScroll ? 'modal-open' : ''"
-    class="b wdx1 wdx2 rc1 rc2
-    {{ .Site.Params.theme }}
-  xdark:bg-info-890 xwdx-theme font-sans"
-  >
-    <!--hr />
-    tailwind:
-    {{ .Params.tailwind }}
-    <hr />
-    bootstrap:
-    {{ .Params.bootstrap }}
-    <hr />
-    jquery:
-    {{ .Params.jquery }}
-    <hr />
-    alpine:
-    {{ .Params.alpine }}
-    <hr />
-    tailwind:
-    {{ .Params.tailwind }}
-    <hr /-->
-    {{- partial "components/molecules/top-bar.html" . -}}
-    {{- partial "components/molecules/user-info.html" . -}}
-    {{- partial "components/molecules/menu.html" . -}}
-    <div id="content">{{- block "main" . }}{{- end }}</div>
-
-    {{/* mandatory for themes specific variables
-      <div class="theme-cai theme-wdx1"></div>
-    */}}
-    {{/* {{- partial "header.html" . -}} */}} {{/* {{- partial "footer.html" . -}} */}}
+  <body>
+    {{- partial "header.html" . -}}
+    {{- block "main" . }}{{- end }}
+    {{- partial "footer.html" . -}}
   </body>
 </html>
