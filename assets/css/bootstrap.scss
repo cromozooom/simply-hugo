@@ -2,6 +2,62 @@
 @use "sass:map";
 @use "sass:math";
 
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #4b8d8b;
+  --secondary: #8f8f8f;
+  --success: #30a46c;
+  --info: #68ddfd;
+  --warning: #f5d90a;
+  --danger: #e54d2e;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --neutral: #adb5bd;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
+    helvetica neue, Arial, noto sans, liberation sans, sans-serif,
+    apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
 [data-component="myComp"] {
+  font-family: var(--font-family-sans-serif);
   @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 }
