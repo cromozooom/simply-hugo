@@ -2,4 +2,6 @@
 @use "sass:map";
 @use "sass:math";
 
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+[data-component="myComp"] {
+  @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+}
