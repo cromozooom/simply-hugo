@@ -1,0 +1,12 @@
+{{ $label := .label }}
+{{ $icon := .icon }}
+{{ $accomplished := .accomplished }}
+{{ $iconClass := "d-flex h-100 icon justify-content-center icon--medium xalign-items-center" }}
+
+
+<div class="d-flex flex-md-fill flex-md-column xjustify-content-start xjustify-content-md-center timeline--item align-items-center align-items-md-stretch flex-row">
+  <div class="timeline--icon py-md-0 {{ $accomplished }} xbg-warning py-4">
+    {{ partial "components/atoms/icon.html" (dict "icon" $icon "class" $iconClass) }}
+  </div>
+  <small class="{{ $accomplished }} mt-md-3 text-md-center mt-0 px-2 text-left">{{ $label }}</small>
+</div>

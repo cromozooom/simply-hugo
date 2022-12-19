@@ -1,0 +1,16 @@
+.fad {
+  --fa-primary-color: #808080; // 500
+  --fa-secondary-color: #b3b3b3; // 400
+}
+.theme-cai {
+  .fad {
+    --fa-primary-color: hsl(25, 5.3%, 44.7%); // 500
+    --fa-secondary-color: hsl(25, 5.3%, 55.7%); // 400
+  }
+}
+.theme-wdx1 {
+  .fad {
+    --fa-primary-color: #3c8294; // 500
+    --fa-secondary-color: #62adb8; // 400
+  }
+}

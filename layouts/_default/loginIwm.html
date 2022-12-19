@@ -1,0 +1,58 @@
+{{ define "main" }}
+  {{ $v := 1 }}
+  <div class="vh-100">
+    <header class="header-login d-flex w-100 items-center justify-between ">
+      <div>
+        <img src="/ca-indo_logo.png" alt="" class="logo" />
+      </div>
+      <div class="d-block d-md-none">
+        <h1 class="h6 mr-3 mb-0 text-white">Self-Service Indosuez Portal</h1>
+      </div>
+    </header>
+    <div class="form d-flex flex-column w-100 items-center justify-center " x-data="{ open: false }">
+      <div class="d-none d-md-block mt-4 py-3">
+        <h1 class="h5 text-white">Self-Service Indosuez Portal</h1>
+      </div>
+      <div class="alert alert-danger text-center" role="alert" x-show="open">
+        <button type="button" class="close" aria-label="Close" x-on:click="open = false">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <small class="text-center">
+          The login request is denied/rejected from the
+          <strong> LuxTrust App. </strong>
+          <br />
+          Please try again.
+        </small>
+      </div>
+      <div class="iframe--container">
+        <iframe class="iframe--content" src="https://webiwmdev.wdx-dev.net/ClientPortalApi/SAMLAuth/Login" frameborder="0"></iframe>
+      </div>
+      <div class="form--info px-3 py-3 text-center" x-on:click="open = ! open">
+        <small>
+          Please call the Helpdesk on
+          <a href="">+352 24 67 4000.</a> for any Client Portail enquiry
+          <strong> (from Monday to Friday during working days, between 9am and 12.30pm and between 2pm and 5pm) </strong>
+          or send an e-mail to
+          <a href=""> support.eBanking@ca-indosuez.lu </a>
+        </small>
+
+        <!-- <small
+          >For assistance with logging in please call our portal helpdesk on <a href="">+352 26 00 82 85</a>
+          <br />
+          Our portal helpdesk is available
+          <strong> Monday - Friday 8am - 6pm. </strong>
+        </small> -->
+      </div>
+    </div>
+
+    {{ if eq $v 1 }}
+      <footer class="footer-login py-3 text-center">
+        <a href="" class="text-white">Terms & Conditions</a>
+      </footer>
+      <video playsinline autoplay muted loop poster="polina.jpg" id="bgvid">
+        <!--source src="polina.webm" type="video/webm"-->
+        <source src="/sea-24216.mp4" type="video/mp4" />
+      </video>
+    {{ end }}
+  </div>
+{{ end }}

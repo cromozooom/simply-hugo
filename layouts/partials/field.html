@@ -1,0 +1,42 @@
+{{ if ne .field.val "" }}
+  {{ if .inline }}
+    <li class="py-2">
+      <div class="d-flex justify-content-between">
+        <div class="w-50">
+          {{ .field.title }}
+        </div>
+        <div class="w-50">
+          <strong class="text-primary">
+            {{ .field.val }}
+          </strong>
+        </div>
+      </div>
+      {{ if .field.note }}
+        <div class="w-100 text-muted">
+          <small>
+            <i>
+              {{ .field.note }}
+            </i>
+          </small>
+        </div>
+      {{ end }}
+    </li>
+  {{ else }}
+    <li class="py-2">
+      <div>
+        {{ .field.title }}
+      </div>
+      <div>
+        <strong class="text-primary">
+          {{ .field.val }}
+        </strong>
+        <br />
+        <small>
+          <i>
+            {{ .field.note }}
+          </i>
+        </small>
+      </div>
+    </li>
+  {{ end }}
+{{ end }}

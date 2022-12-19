@@ -1,0 +1,22 @@
+{
+    "numbers": [
+        {
+            "icon": "users",
+            "title": "Client Managed",
+            "count": "150",
+            "unit": false
+        },
+        {
+            "icon": "chart-pie-alt",
+            "title": "ROA",
+            "count": "0.35",
+            "unit": "%"
+        },
+        {
+            "icon": "money-bill-wave",
+            "title": "Total AUM",
+            "count": "251.600.000",
+            "unit": "£"
+        }
+    ]
+}

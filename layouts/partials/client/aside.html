@@ -1,0 +1,101 @@
+<aside
+  x-data="aside()"
+  @menu-open="menu_open = $event.detail.menu_open"
+  class="relative z-[5] block h-screen h-[calc(var(--vh,1vh)*100)]"
+  :class="menu_open ? '' : ''">
+  <div
+    :class="!hideOnMobile ? 'fixed' : 'sm:static'"
+    class="pt-menuHeight sm:pt-menuHeightSm h-screen h-[calc(var(--vh,1vh)*100)]">
+    <div
+      :class="menu_open ? 'w-[85vw] sm:w-sideWidth sm:min-w-sideWidth' : 'w-0 sm:w-menuHeightSm'"
+      class="xshadow-lg flex h-full grow-0 flex-col justify-between bg-white transition-all">
+      <nav
+        :class="menu_open ? 'w-[85vw] sm:w-sideWidth sm:min-w-sideWidth' : 'w-0 sm:w-menuHeightSm'"
+        class="overflow-hidden">
+        <ul>
+          <li x-data="{ active: true }" class="">
+            <a
+              href=""
+              :class="active ? ' bg-client-brand-100 after:bg-client-700 after:absolute after:right-0 after:h-3/4 after:w-[5px] after:rounded-l-full' : ''"
+              class=" 
+               hover:text-client-200 hover:bg-client-700 group relative flex items-center
+              bg-opacity-20 py-4 pl-3">
+              <i
+                :class="active ? 'fas' : 'far'"
+                class=" text-client-800 fa-home group-hover:text-client-100 flex h-[30px] w-[30px] items-center justify-center text-xl"></i>
+              <span
+                x-show="menu_open, !hideOnMobile"
+                x-transition.duration.200ms
+                class="text-client-brand-500 group-hover:text-client-100 ml-2 text-sm">
+                Home
+              </span>
+            </a>
+          </li>
+          <li x-data="{ active: false }" class="">
+            <a
+              href=""
+              :class="active ? 'after:bg-client-700 after:absolute after:right-0 after:h-3/4 after:w-[5px] after:rounded-l-full' : ''"
+              class="
+               hover:text-client-200 hover:bg-client-700 group relative flex items-center
+              bg-opacity-20 py-4 pl-3">
+              <i
+                :class="active ? 'fas' : 'far'"
+                class="text-client-800 fa-file-user group-hover:text-client-100 flex h-[30px] w-[30px] items-center justify-center text-xl"></i>
+              <span
+                x-show="menu_open"
+                x-transition.duration.200ms
+                class="text-client-brand-500 group-hover:text-client-100 ml-2 text-sm">
+                Profile
+              </span>
+            </a>
+          </li>
+          <li x-data="{ active: false }" class="">
+            <a
+              href=""
+              :class="active ? 'after:bg-client-700 after:absolute after:right-0 after:h-3/4 after:w-[5px] after:rounded-l-full' : ''"
+              class="
+               hover:text-client-200 hover:bg-client-700 group relative flex items-center
+              bg-opacity-70 py-4 pl-3">
+              <i
+                :class="active ? 'fas' : 'far'"
+                class="text-client-800 fa-file-alt group-hover:text-client-100 flex h-[30px] w-[30px] items-center justify-center text-xl"></i>
+              <span
+                x-show="menu_open"
+                x-transition.duration.200ms
+                class="text-client-brand-500 group-hover:text-client-100 ml-2 text-sm">
+                Dccuments
+              </span>
+            </a>
+          </li>
+          <li x-data="{ active: false }" class="">
+            <a
+              href=""
+              :class="active ? 'after:bg-client-700 after:absolute after:right-0 after:h-3/4 after:w-[5px] after:rounded-l-full' : ''"
+              class="
+               hover:text-client-200 hover:bg-client-700 group relative flex items-center
+              bg-opacity-70 py-4 pl-3">
+              <i
+                :class="active ? 'fas' : 'far'"
+                class="text-client-800 fa-file-signature group-hover:text-client-100 flex h-[30px] w-[30px] items-center justify-center text-xl"></i>
+              <span
+                x-show="menu_open"
+                x-transition.duration.200ms
+                class="text-client-brand-500 group-hover:text-client-100 ml-2 text-sm">
+                Signatures
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="mt-auto">
+        <div
+          x-show="menu_open"
+          class="border-client-100 flex flex-col border-t px-2 py-3">
+          <span class="text-sm"> Viewing as: </span>
+          <span class="font-bold"> Mano Sebastiano Argenty </span>
+        </div>
+        {{ partial "client/switch-user.html" (dict "place" "side") }}
+      </div>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,413 @@
+{{ $first := 30 }}
+{{ $contactView := false }}
+{{ $contactView := true }}
+<div class="xxray" x-data="{ view: true, filtered: false }">
+  <div class="container-fluid advanced-search">
+    <div class="d-flex flex-column flex-lg-row pt-2">
+      <div class="pr-lg-4 pr-0">
+        <div class="d-flex flex-column justify-content-between">
+          <small class="advanced-search--label text-muted mb-1">
+            Search
+            <i class="text-secodnary" x-show="!filtered"> (3000 entries) </i>
+            <i class="text-success" x-show="filtered"> (3000 filtered entries) </i>
+          </small>
+          <div class="d-flex justify-content-between">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                {{ partial "components/atoms/btn.html" (dict "content" "Opportunities" "class" "btn btn-outline-secondary pl-1 d-flex" "dropdownToggle" true "iconStart" "angle-down-r" "iconClass" "mr-2 icon icon--medium icon--color-gray500") }}
+                <div class="dropdown-menu">
+                  {{ partial "components/atoms/btn.html" (dict "content" "Contact" "class" "dropdown-item") }}
+                  {{ partial "components/atoms/btn.html" (dict "content" "Opportunities" "class" "dropdown-item active") }}
+                  {{ partial "components/atoms/btn.html" (dict "content" "Portfolios" "class" "dropdown-item") }}
+                  {{ partial "components/atoms/btn.html" (dict "content" "Propsects" "class" "dropdown-item") }}
+                  {{ partial "components/atoms/btn.html" (dict "content" "Activity" "class" "dropdown-item") }}
+                  <!-- <div role="separator" class="dropdown-divider"></div> -->
+                  {{ partial "components/atoms/btn.html" (dict "content" "Documents" "class" "dropdown-item") }}
+                </div>
+              </div>
+              <input type="text" class="form-control" placeholder="Search..." aria-label="Text input with dropdown button" />
+              <div class="input-group-append" id="button-addon4" @click="filtered = !filtered">
+                {{ partial "components/atoms/btn.html" (dict "class" "d-flex btn btn-primary" "iconStart" "search-s" "iconClass" "d-flex h-100 icon icon--medium icon--color-white align-items-center" ) }}
+              </div>
+            </div>
+            <!-- {{ partial "components/atoms/btn.html" (dict "content" "Opportunity" "contentClass" "d-none d-sm-block d-md-none d-lg-none  d-xl-block" "class" "ml-3 pl-2 pr-2 pr-xl-3 btn btn-outline-primary d-flex" "iconStart" "plus-r" "iconClass" "mr-0 mr-md-2 icon icon--medium icon--color-currentColor d-flex align-items-center h-100" ) }} -->
+          </div>
+        </div>
+      </div>
+      <div class="flex-grow-1 pt-lg-0 pt-2">
+        <div class="d-flex justify-content-between justify-content-lg-end">
+          <div class="d-none d-sm-flex flex-column justify-content-between mr-auto">
+            <small class="advanced-search--label text-muted mb-1">Ouner</small>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              {{ partial "components/atoms/btn.html" (dict "content" "All" "class" "btn btn-secondary") }}
+              {{ partial "components/atoms/btn.html" (dict "content" "Me" "class" "btn btn-outline-secondary") }}
+              {{ partial "components/atoms/btn.html" (dict "content" "My teams" "class" "btn btn-outline-secondary") }}
+              <div class="btn-group" role="group">
+                <!-- <div class="dropdown"></div> -->
+                <button type="button" class="btn rounded-right btn-outline-secondary text-nowrap" data-toggle="dropdown" aria-expanded="false">more ...</button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="#">Option 1</a>
+                  <a class="dropdown-item" href="#">Option 2</a>
+                </div>
+              </div>
+              <!-- <button type="button" class="btn btn-secodnary">All</button>
+                <button type="button" class="btn btn-secondary">Me</button>
+                <button type="button" class="btn btn-secondary">My teams</button> -->
+            </div>
+          </div>
+          <div class="d-flex flex-column justify-content-between pl-sm-4 pl-0">
+            <small class="advanced-search--label text-muted mb-1">Filters & Sort</small>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              {{ partial "components/atoms/btn.html" (dict "content" "Add Filter" "class" "btn btn-outline-secondary btn--start-icon d-flex" "iconEnd" "filter-s" "iconClass" "d-flex icon icon--medium icon--color-gray400 align-items-center h-100 ml-2" "badge" 8 "badgeClass" "badge-primary") }}
+              {{ partial "components/atoms/btn.html" (dict "content" "Sort by" "class" "btn btn-outline-secondary dropdown-toggle" "dropdownToggle" true ) }}
+              <div class="dropdown-menu dropdown-menu-right">
+                {{ partial "components/atoms/btn.html" (dict "content" "A to Z" "class" "dropdown-item d-flex justify-content-between active" "iconEnd" "sort-alpha-down-r" "iconClass" "icon icon--medium icon--color-currentColor" ) }}
+                {{ partial "components/atoms/btn.html" (dict "content" "Z to A" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "sort-alpha-up-r" "iconClass" "icon icon--medium icon--color-gray500" ) }}
+                <div role="separator" class="dropdown-divider"></div>
+                {{ partial "components/atoms/btn.html" (dict "content" "Newest" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "sort-amount-down-r" "iconClass" "icon icon--medium icon--color-gray500" ) }}
+                {{ partial "components/atoms/btn.html" (dict "content" "Oldest" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "sort-amount-up-r" "iconClass" "icon icon--medium icon--color-gray500" ) }}
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex flex-column justify-content-between ml-4">
+            <small class="advanced-search--label text-muted mb-1 text-center">View</small>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button x-on:click="view = ! view" class="comp--btn h-100 btn btn-link icon--color-gray700 py-2">
+                <span x-show="!view">
+                  {{ partial "components/atoms/icon.html" (dict "icon" "grip-horisontal-s" "class" "d-flex icon icon--medium  align-items-center h-100") }}
+                </span>
+                <span x-show="view">
+                  {{ partial "components/atoms/icon.html" (dict "icon" "th-list-s" "class" "d-flex icon icon--medium align-items-center h-100") }}
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid filter-pils mt-2">
+    <div class="pills-wrapper d-none d-lg-flex flex-wrap">
+      <div class="d-flex flex-column mr-2 pt-2">
+        <small class="advanced-search--label text-muted mb-1 pb-1">Is organisation</small>
+        <div class="buttons d-flex">
+          {{ partial "components/atoms/btn.html" (dict "content" "Yes" "class" "mr-2 btn btn-sm btn-secondary d-flex align-items-center rounded-pill px-3" "iconEnd" "times-r" "iconClass" "d-flex h-100 icon icon--medium icon--color-gray100 align-items-center h-100 ml-1") }}
+          {{ partial "components/atoms/btn.html" (dict "content" "No" "class" "mr-2  btn btn-sm btn-secondary d-flex align-items-center rounded-pill px-3" "iconEnd" "times-r" "iconClass" "d-flex h-100 icon icon--medium icon--color-gray100 align-items-center h-100 ml-1") }}
+
+        </div>
+      </div>
+      <div class="d-flex flex-column mr-2 pt-2">
+        <small class="advanced-search--label text-muted mb-1 pb-1">Status</small>
+        <div class="buttons d-flex ">
+          {{ partial "components/atoms/btn.html" (dict "content" "Active" "class" "mr-2  btn btn-sm btn-secondary d-flex align-items-center rounded-pill px-3" "iconEnd" "times-r" "iconClass" "d-flex h-100 icon icon--medium icon--color-gray100 align-items-center h-100 ml-1") }}
+        </div>
+      </div>
+      <div class="d-flex flex-column mr-2 pt-2">
+        <small class="advanced-search--label text-muted mb-1 pb-1">Stage</small>
+        <div class="buttons d-flex">
+          {{ partial "components/atoms/btn.html" (dict "content" "Exploratory" "class" "mr-2  btn btn-sm btn-secondary d-flex align-items-center rounded-pill px-3" "iconEnd" "times-r" "iconClass" "d-flex h-100 icon icon--medium icon--color-gray100 align-items-center h-100 ml-1") }}
+          {{ partial "components/atoms/btn.html" (dict "content" "Discussion / Prposal" "class" "mr-2  btn btn-sm btn-secondary d-flex align-items-center rounded-pill px-3" "iconEnd" "times-r" "iconClass" "d-flex h-100 icon icon--medium icon--color-gray100 align-items-center h-100 ml-1") }}
+        </div>
+      </div>
+      <div class="d-flex flex-column mr-2 pt-2">
+        <small class="advanced-search--label text-muted mb-1 pb-1">Contact type</small>
+        <div class="buttons d-flex ">
+          {{ partial "components/atoms/btn.html" (dict "content" "Exploratory" "class" "mr-2  btn btn-sm btn-secondary d-flex align-items-center rounded-pill px-3" "iconEnd" "times-r" "iconClass" "d-flex h-100 icon icon--medium icon--color-gray100 align-items-center h-100 ml-1") }}
+          {{ partial "components/atoms/btn.html" (dict "content" "Actors" "class" "mr-2  btn btn-sm btn-secondary d-flex align-items-center rounded-pill px-3" "iconEnd" "times-r" "iconClass" "d-flex h-100 icon icon--medium icon--color-gray100 align-items-center h-100 ml-1") }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="xxray container-fluid searchResult py-2">
+    <div class="searchResult__card mt-2" x-show="view">
+      {{ range $index, $activitie := first $first .results.activities }}
+        <!-- <div class="card__active card__open card__canceled card__completed  card__overdue"></div> -->
+        <section
+          class="card card--searchResult card__{{ $activitie.stage }}
+          {{ if in "open overdue" $activitie.stage }}card__active{{ end }}
+        "
+        >
+          <div class="card-header ">
+            <div class="d-flex justify-content-between">
+              <strong class="title trim flex-grow-1 pr-2">
+                {{ $activitie.title }}
+              </strong>
+              <div class="d-flex">
+                {{ partial "components/atoms/btn.html" (dict "content" "" "class" "ml-1 btn p-0 btn-sm btn-link d-flex align-items-center " "iconEnd" "edit-r" "iconClass" "d-flex h-100 icon icon--medium text-secondary icon--color-currentColor align-items-center h-100") }}
+                {{ partial "components/atoms/btn.html" (dict "content" "" "class" "ml-1 btn p-0 btn-sm btn-link d-flex align-items-center " "iconEnd" "star-r" "iconClass" "d-flex h-100 icon icon--medium text-secondary icon--color-currentColor align-items-center h-100") }}
+              </div>
+            </div>
+          </div>
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <div>
+                <div class="text-nowrap lead py-2">
+                  <!-- <strong> Regarding: </strong> -->
+                  {{ $activitie.regarding }}
+                </div>
+              </div>
+              <div class="card--meta">
+                <div class="">
+                  <div class="text-nowrap py-2">
+                    <strong> Started: </strong>
+                    <span class="pr-2">
+                      {{ $activitie.started }}
+                    </span>
+                  </div>
+                </div>
+                <div class="">
+                  <div class="text-nowrap py-2">
+                    <strong> Due: </strong>
+                    <span class="pr-2">
+                      {{ $activitie.started }}
+                    </span>
+                  </div>
+                </div>
+
+                <div class="">
+                  <div class="py-1">
+                    <!-- <strong> Status: </strong> -->
+
+                    {{ if eq $activitie.stage "open" }}
+                      <span class="badge badge-pill badge-primary">Opened</span>
+                    {{ else if eq $activitie.stage "canceled" }}
+                      canceled
+                    {{ else if eq $activitie.stage "completed" }}
+                      <span class="badge badge-pill badge-success">Completed</span>
+                    {{ else if eq $activitie.stage "overdue" }}
+                      <span class="badge badge-pill badge-danger">Overdue</span>
+                    {{ end }}
+                    <!-- {{ if $activitie.isCompleted }}
+                      <span class="badge badge-pill badge-secondary">Closed on {{ $activitie.started }} </span>
+                    {{ else }}
+                      <span class="badge badge-pill badge-warning">Opened </span>
+                    {{ end }} -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div>
+              <div class="pt-2">
+                <i>
+                  {{ $activitie.description }}
+                </i>
+              </div>
+            </div> -->
+          </div>
+        </section>
+      {{ end }}
+    </div>
+    <div class="searchResult__table mt-2" x-show="!view">
+      <table class="table-hover table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title & Description</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Start</th>
+            <th scope="col">Due</th>
+            <th scope="col">Status</th>
+            <th scope="col" class=" text-right">Create</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range $index, $activitie :=  first $first .results.activities }}
+            <!-- <div class="line__active line__open line__canceled line__completed  line__overdue"></div> -->
+            <tr
+              class="line__{{ $activitie.stage }}
+            {{ if in "open overdue" $activitie.stage }}line__active{{ end }}"
+            >
+              <th>
+                {{ add 1 $index }}
+              </th>
+              <td>
+                <strong>
+                  {{ $activitie.title }}
+                </strong>
+                <br />
+                {{ $activitie.description }}
+              </td>
+              <td>
+                {{ $activitie.regarding }}
+              </td>
+              <td>
+                {{ $activitie.started }}
+              </td>
+              <td>
+                {{ $activitie.due }}
+              </td>
+              <td>
+                {{ if eq $activitie.stage "open" }}
+                  <span class="badge badge-pill badge-primary">Opened</span>
+                {{ else if eq $activitie.stage "canceled" }}
+                  canceled
+                {{ else if eq $activitie.stage "completed" }}
+                  <span class="badge badge-pill badge-success">Completed</span>
+                {{ else if eq $activitie.stage "overdue" }}
+                  <span class="badge badge-pill badge-danger">Overdue</span>
+                {{ end }}
+              </td>
+              <td class=" text-right">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  {{ partial "components/atoms/btn.html" (dict "type" "button" "content" false "iconClass" "comp--icon d-flex icon icon--medium text-primary align-items-center h-100" "iconStart" "external-link-r" "content" "" "class" "btn btn-link btn-sm") }}
+                  <div class="btn-group" role="group">
+                    {{ partial "components/atoms/btn.html" (dict "iconClass" "comp--icon d-flex icon icon--medium text-primary align-items-center h-100" "iconStart" "plus-r" "content" false "class" "d-flex btn btn-link btn-sm xdropdown-toggle" "dropdownToggle" true ) }}
+                    <div class="dropdown-menu dropdown-menu-right">
+                      {{ partial "components/atoms/btn.html" (dict "content" "Appiontment" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "calendar-alt-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                      {{ partial "components/atoms/btn.html" (dict "content" "Phone Call" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "phone-alt-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                      {{ partial "components/atoms/btn.html" (dict "content" "Task" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "tasks-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                      {{ partial "components/atoms/btn.html" (dict "content" "Letter" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "mailbox-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                      {{ partial "components/atoms/btn.html" (dict "content" "Connection" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "link-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                      {{ partial "components/atoms/btn.html" (dict "content" "Service request" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "concierge-bell-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                      {{ partial "components/atoms/btn.html" (dict "content" "Opportunity" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "magic-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+
+    {{ if $contactView }}
+      <div class="table-responsive mt-2">
+        <table class="table-hover table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Contact Type</th>
+              <th scope="col">Last Contacted</th>
+              <th scope="col">Last F2F</th>
+              <th scope="col">Stage</th>
+              <th scope="col">Assets (£)</th>
+              <th scope="col" class=" text-right">Create</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range $index, $contact :=  first $first .results.contacts }}
+              <tr>
+                <th scope="row">
+                  {{ add $index 1 }}
+                </th>
+                <td>
+                  <button class="btn btn-link p-0" type="button" data-toggle="collapse" data-target="#collapse{{ .id }}" aria-expanded="false" aria-controls="collapse{{ .id }}">
+                    <strong>
+                      {{ .name }}
+                    </strong>
+                  </button>
+                </td>
+                <td>
+                  {{ .contactType }}
+                </td>
+                <td>
+                  {{ .lastContacted }}
+                </td>
+                <td>
+                  {{ .lastFaceToFace }}
+                </td>
+                <td>
+                  {{ .stage }}
+                </td>
+                <td>
+                  <strong>
+                    <span class="text-black-50"> £ </span>
+                    {{ .assets }}
+                  </strong>
+                </td>
+                <td class=" text-right">
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <!-- 
+  
+                    {{ partial "components/atoms/btn.html" (dict "type" "button" "content" false "iconClass" "comp--icon d-flex icon icon--medium text-primary align-items-center h-100" "iconStart" "phone-alt-r" "content" "" "class" "btn btn-link btn-sm") }}
+                    {{ partial "components/atoms/btn.html" (dict "type" "button" "content" false "iconClass" "comp--icon d-flex icon icon--medium text-primary align-items-center h-100" "iconStart" "envelope-r" "content" "" "class" "btn btn-link btn-sm") }}
+                  -->
+                    {{ partial "components/atoms/btn.html" (dict "type" "button" "content" false "iconClass" "comp--icon d-flex icon icon--medium text-primary align-items-center h-100" "iconStart" "external-link-r" "content" "" "class" "btn btn-link btn-sm") }}
+
+
+                    <div class="btn-group" role="group">
+                      {{ partial "components/atoms/btn.html" (dict "iconClass" "comp--icon d-flex icon icon--medium text-primary align-items-center h-100" "iconStart" "plus-r" "content" false "class" "d-flex btn btn-link btn-sm xdropdown-toggle" "dropdownToggle" true ) }}
+                      <div class="dropdown-menu dropdown-menu-right">
+                        {{ partial "components/atoms/btn.html" (dict "content" "Appiontment" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "calendar-alt-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                        {{ partial "components/atoms/btn.html" (dict "content" "Phone Call" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "phone-alt-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                        {{ partial "components/atoms/btn.html" (dict "content" "Task" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "tasks-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                        {{ partial "components/atoms/btn.html" (dict "content" "Letter" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "mailbox-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                        {{ partial "components/atoms/btn.html" (dict "content" "Connection" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "link-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                        {{ partial "components/atoms/btn.html" (dict "content" "Service request" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "concierge-bell-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                        {{ partial "components/atoms/btn.html" (dict "content" "Opportunity" "class" "dropdown-item d-flex justify-content-between" "iconEnd" "magic-r" "iconClass" "icon ml-4 icon--medium icon--color-gray500" ) }}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="collapse" id="collapse{{ .id }}">
+                <!-- <td class="border-top-0"></td> -->
+                <td colspan="100" class="border-top-0">
+                  <div class="d-flex">
+                    <div class="card mr-4 p-2">
+                      <dl class="row mb-0">
+                        <dt class="col-2">Client ID:</dt>
+                        <dd class="col-10">CON1273477{{ .id }}</dd>
+                        <dt class="col-2">Address:</dt>
+                        <dd class="col-10">{{ .address }}, UK</dd>
+                        <dt class="col-2">Phone:</dt>
+                        <dd class="col-10">
+                          <a href="#">
+                            {{ .phone }}
+                          </a>
+                        </dd>
+                        <dt class="col-2">Email:</dt>
+                        <dd class="col-10">
+                          <a href="#">
+                            {{ .email }}
+                          </a>
+                        </dd>
+                      </dl>
+                    </div>
+                    <div class="card p-2">
+                      <dl class="row mb-0">
+                        <dt class="col-2">Client ID:</dt>
+                        <dd class="col-10">CON1273477{{ .id }}</dd>
+                        <dt class="col-2">Address:</dt>
+                        <dd class="col-10">{{ .address }}, UK</dd>
+                        <dt class="col-2">Phone:</dt>
+                        <dd class="col-10">
+                          <a href="#">
+                            {{ .phone }}
+                          </a>
+                        </dd>
+                        <dt class="col-2">Email:</dt>
+                        <dd class="col-10">
+                          <a href="#">
+                            {{ .email }}
+                          </a>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            {{ end }}
+
+          </tbody>
+        </table>
+      </div>
+    {{ end }}
+
+
+    <nav aria-label="Page navigation example" class=" mt-4">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="collapsing show fade btn-sm"></div>

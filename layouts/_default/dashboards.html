@@ -1,0 +1,21 @@
+{{ define "main" }}
+  <div class="card-pills bg-info-40 w-full py-8">
+    <div class="xxl:w-[70vw] xxl:px-0 mx-auto justify-between py-3 px-2 2xl:w-[95vw]">
+      <div class="prose wysiwyg dark:wysiwyg-slate dark:prose-invert py-3">
+        {{ .Content }}
+      </div>
+      <ul class="w-100 border-info-200 dark:border-info-800 mt-3 border-t ">
+        {{ range $.Site.Pages }}
+          {{ if and ( ne .Title "Home" ) ( ne .Title "Dasboards" ) }}
+            <li class="border-info-200 dark:border-info-710 w-100 hover:bg-info-800 flex justify-between border-b">
+              <a href="{{ .Permalink }}" class="w-100 text-info-700 dark:text-info-300 block bg-opacity-25 p-3 underline"> {{ .Title }} </a>
+              {{ if .Params.dashboard }}
+                <a href="{{ .Params.dashboard }}" target="_blank" class="text-info-700 dark:text-info-300 p-3 underline"> Dasboard </a>
+              {{ end }}
+            </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+{{ end }}

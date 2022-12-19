@@ -1,0 +1,15 @@
+{{ $class := .class }}
+{{ $cardClass := .cardClass }}
+{{ $title := .title }}
+{{ $cardMimMax := "card__min-max" }}
+
+{{ if $class }}<div class="{{ $class }}">{{ end }}
+<div class="card mt-3 {{ $cardClass }}">
+    <!-- <img src="https://picsum.photos/seed/picsum/400/300" class="card-img-top img-fluid" alt="..." /> -->
+    <div class="card-body {{ $cardMimMax }}">
+        <h5 class="card-title">{{ $title }}</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+{{ if $class }}</div>{{ end }}

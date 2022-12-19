@@ -1,0 +1,149 @@
+{{ define "main" }}
+  <div class="relative flex min-h-[50rem] w-full items-center justify-center overflow-hidden bg-blue-50">
+    <div class="z-[1]">
+      <div class="my-4 mx-0 grid min-w-[30rem] max-w-[30rem] grid-cols-1 overflow-hidden md:mx-4 md:rounded-md md:shadow-md">
+        <div class="mx-auto w-full bg-white px-7 pt-2 pb-8 md:mx-0">
+          <div class="w-full">
+            <div class="prose">
+              <div class="mb-2 text-center">
+                <h2 id="im-new-here">I’m new here</h2>
+              </div>
+            </div>
+          </div>
+
+          <form action="#" class="mx-auto mt-4">
+            <div>
+              <div class="mt-6 mb-1 flex items-center justify-between">
+                <label for="" class="text-sm font-semibold uppercase tracking-wide">
+                  First name
+                  <sup class="font-extrabold text-red-600"> * </sup>
+                </label>
+              </div>
+              <input type="text" name="" class="block w-[100%] rounded-md border-2 border-slate-200" />
+            </div>
+
+            <div>
+              <div class="mt-6 mb-1 flex items-center justify-between">
+                <label for="" class="text-sm font-semibold uppercase tracking-wide">
+                  Last name
+                  <sup class="font-extrabold text-red-600"> * </sup>
+                </label>
+              </div>
+              <input type="text" name="" class="block w-[100%] rounded-md border-2 border-slate-200" />
+            </div>
+
+            <div>
+              <div class="mt-6 mb-1 flex items-center justify-between">
+                <label for="" class="text-sm font-semibold uppercase tracking-wide">
+                  Email address
+                  <sup class="font-extrabold text-red-600"> * </sup>
+                </label>
+              </div>
+              <input type="email" name="" class="block w-[100%] rounded-md border-2 border-slate-200" />
+            </div>
+
+            <div>
+              <div class="mt-6 mb-1 flex items-center justify-between">
+                <label for="" class="text-sm font-semibold uppercase tracking-wide">
+                  Password
+                  <sup class="font-extrabold text-red-600"> * </sup>
+                </label>
+              </div>
+              <input type="password" name="" class="block w-[100%] rounded-md border-2 border-slate-200" />
+
+              <p class="mt-2 text-sm text-gray-400">Your password needs to be at least 6 characters.</p>
+            </div>
+
+            <div class="prose mt-2 py-4">
+              <strong>What are you mostly interested in?</strong>
+              <em>(Optional)</em>
+              <br />
+              We’ll use this information to make more personalised recommendations.
+            </div>
+
+            <div role="group" aria-label="What are you mostly interested in?">
+              <div class="flex gap-2 pt-3">
+                <input checked="" id="womens-fashion" tabindex="0" type="radio" name="interes" value="womens-fashion" class="h-6 w-6 rounded-full border-2" />
+                <label for="womens-fashion" class="">
+                  <span>Women’s fashion</span>
+                </label>
+              </div>
+
+              <div class="flex gap-2 pt-3">
+                <input id="mans-fashion" tabindex="0" type="radio" name="interes" value="mans-fashion" class="h-6 w-6 rounded-full border-2" />
+                <label for="mans-fashion" class="">
+                  <span>Man's fashion</span>
+                </label>
+              </div>
+
+              <div class="flex gap-2 pt-3">
+                <input id="no-prefernces" tabindex="0" type="radio" name="interes" value="no-prefernces" class="h-6 w-6 rounded-full border-2" />
+                <label for="no-prefernces" class="">
+                  <span>No Prefernces</span>
+                </label>
+              </div>
+            </div>
+
+            <hr class="mt-4" />
+
+            <div class="form-check form-switch mt-6 flex">
+              <input class="align-to form-check-input float-left mr-4 h-5 w-9 cursor-pointer appearance-none rounded-full bg-gray-300 bg-contain bg-no-repeat shadow-sm focus:outline-none" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+              <label class="form-check-label inline-block text-gray-800" for="flexSwitchCheckDefault">Yes, I wish to receive occasional emails about special offers, new products and exclusive promotions. I can cancel my subscription at any time. <em>(Optional)</em></label>
+            </div>
+
+            <div class="mt-6 flex flex-col gap-4">
+              <button class="btn btn-primary">Register true</button>
+            </div>
+
+            <small class="block pt-4 text-gray-500">
+              <sup class="font-extrabold text-red-600"> * </sup>
+              <i> mandatory field </i>
+            </small>
+          </form>
+        </div>
+      </div>
+
+      <p class="prose mx-auto mt-4 min-w-[25rem] min-w-[30rem] max-w-[30rem] text-center">
+        For assistance with logging in please
+        <a href="07783363309">call our portal helpdesk</a>. Our portal helpdesk is available Monday - Friday 8am - 6pm.
+      </p>
+    </div>
+
+    <svg class="absolute inset-0 top-[50%] left-[50%] w-full max-w-full translate-y-[-50%] translate-x-[-50%] xl:max-w-[100rem]" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1366 768" enable-background="new 0 0 1366 768" xml:space="preserve">
+      <radialGradient id="bottom_00000148634490203721858810000002085247065060235915_" cx="726.4538" cy="131.8328" r="681.3303" gradientTransform="matrix(1.1831 0 0 1 -120.5939 0)" gradientUnits="userSpaceOnUse">
+        <stop offset="3.133403e-02" style="stop-color: var(--tw-ring-color); stop-opacity: 1"></stop>
+        <stop offset="0.80" style="stop-color: var(--tw-ring-color); stop-opacity: 0"></stop>
+      </radialGradient>
+      <path id="bottom" fill="url(#bottom_00000148634490203721858810000002085247065060235915_)" d="M1366,768H0V284.8c211.9-358.1,1092.8,461.9,1366,0V768z"></path>
+    </svg>
+  </div>
+
+  <div class="card-pills bg-info-40 w-full py-8">
+    <div class="xxl:w-[70vw] xxl:px-0 mx-auto justify-between py-3 px-2 2xl:w-[95vw]">
+      <div class="prose wysiwyg dark:wysiwyg-slate dark:prose-invert py-3">
+        {{ .Content }}
+      </div>
+      {{ .Date.Format "Mon, Jan 2, 2006" }}
+      <ul class="w-100 border-info-200 dark:border-info-800 mt-3 border-t ">
+        {{ range (sort $.Site.Pages.ByLastmod ".Lastmod" "desc") }}
+          {{ if and ( ne .Title "Home" ) ( ne .Title "Dasboards" ) }}
+            <li class="border-info-200 dark:border-info-710 w-100 hover:bg-info-800 flex justify-between border-b py-2">
+              <div class="display-flex">
+                <span>
+                  {{ .Lastmod.Format "January 2, 2006" }}
+                </span>
+
+                <a href="{{ .Permalink }}" class="w-100 text-info-700 dark:text-info-300 bg-opacity-25 p-3 underline">
+                  {{ .Title }}
+                </a>
+              </div>
+              {{ if .Params.dashboard }}
+                <a href="{{ .Params.dashboard }}" target="_blank" class="text-info-700 dark:text-info-300 p-3 underline"> Dasboard </a>
+              {{ end }}
+            </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+{{ end }}

@@ -1,0 +1,66 @@
+{{ define "main" }}
+  <div class="card container my-3 py-3">
+    <h6>Client summary</h6>
+    {{ range $index, $form := $.Site.Data.client }}
+      <h4>
+        {{ .client.name }}
+      </h4>
+      <ul class="list-unstyled">
+        {{ partial "field.html" (dict "inline" true "field" .client.firstReview ) }}
+        {{ partial "field.html" (dict "inline" true "field" .client.reviewSubtype ) }}
+        {{ partial "field.html" (dict "inline" true "field" .client.investmentManager ) }}
+        {{ partial "field.html" (dict "inline" true "field" .client.faceToFace ) }}
+        {{ partial "field.html" (dict "inline" true "field" .client.clientGroup ) }}
+        {{ partial "field.html" (dict "inline" true "field" .client.clientGroupAum ) }}
+        {{ partial "field.html" (dict "inline" true "field" .client.definedSignatories ) }}
+        {{ partial "field.html" (dict "inline" true "field" .client.numberOfSignatories ) }}
+      </ul>
+    {{ end }}
+    <hr />
+    <h2>Portfolios</h2>
+    {{ range $index, $form := $.Site.Data.client }}
+      {{ range .portfolios }}
+        <strong>{{ .porfolioOverview.title }}</strong>
+        {{ partial "fieldGroup.html" (dict "inline" true "fieldGroup" .porfolioOverview.fields ) }}
+        <br />
+        <strong>{{ .portfolioInvestmentWithRothschild.title }}</strong>
+        {{ partial "fieldGroup.html" (dict "inline" true "fieldGroup" .portfolioInvestmentWithRothschild.fields ) }}
+      {{ end }}
+    {{ end }}
+    <hr />
+  </div>
+  <!--div class="card xxray container my-3 py-3">
+    <h5>Client Summary</h5>
+    <section class="mt-3">
+      <h2>Client SoloPX.com</h2>
+      <div class="list-group">
+        <li class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+          </div>
+          <p class="mb-1">Some placeholder content in a paragraph.</p>
+        </li>
+        <li class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+          </div>
+          <p class="mb-1">Some placeholder content in a paragraph.</p>
+        </li>
+        <li class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">List group item heading</h5>
+          </div>
+          <p class="mb-1">Some placeholder content in a paragraph.</p>
+        </li>
+      </div>
+      <div class="pt-3">
+        <div class="collapse pb-3" id="collapseExample">
+          <div class="card card-body">Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.</div>
+        </div>
+        <p class="m-0">
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> toogle more </a>
+        </p>
+      </div>
+    </section>
+  </div-->
+{{ end }}

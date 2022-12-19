@@ -1,0 +1,110 @@
+<div class="pullOut__wrapp pulloutAddress" x-bind:style="pulloutAddress.secondary && { '--z-pullOut': '5' }">
+  <div class="pullOut pullOut--small position-fixed flex-column" x-cloak x-show="pulloutAddress.pullout" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90">
+    <div class="pullOut__header bg-white">
+      <div class="d-flex justify-content-between align-items-center global-top-bar py-2 px-3">
+        <div>
+          <strong> Edit Address </strong>
+          <span x-text="pulloutAddress.secondary"> </span>
+        </div>
+        <div>
+          <button class="reset cta p-1 text-white">
+            <i class="fas fa-external-link-square"></i>
+          </button>
+
+          <button x-show="!pulloutAddress.secondary && pulloutAddress.pullout" @click="pulloutAddress.pullout = false, bodyScroll = true" class="reset cta p-1 text-white" x-show="pulloutAddress.pullout">
+            <i class="fas fa-times"></i>
+          </button>
+          <button x-show="pulloutAddress.secondary && pulloutAddress.pullout" @click="pulloutAddress.pullout = false, bodyScroll = false" class="reset cta p-1 text-white" x-show="pulloutAddress.pullout">
+            <i class="fas fa-times"></i>
+          </button>
+
+          <!-- <button class="reset cta p-1 text-white" @click="pulloutAddress.pullout = false ">
+            <i class="fas fa-times"></i>
+          </button> -->
+        </div>
+      </div>
+    </div>
+    {{ partial "components/organisms/progress-pills.html" . }}
+    <div id="scroll" x-ref="scroll" class="pullOut__scroll flex-grow-1 xpt-2">
+      <div class="p-2">
+        <button class="btn btn-outline-primary" @click="pulloutWisard.pullout = true, pulloutWisard.secondary = true">Wizard</button>
+        <form class="container py-4">
+          {{ range $index, $address := first 1 $.Site.Data.addresses.addresses }}
+            <div class="form-group row">
+              <label for="type" class="col-sm-6 col-form-label"> Type </label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="{{ $address.type }}" value="" placeholder="{{ $address.type }}" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="primary" class="col-sm-6 col-form-label"> Is primary </label>
+              <div class="col-sm-6">
+                <input primary="text" class="form-control" id="{{ $address.primary }}" value="" placeholder="{{ $address.primary }}" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="title" class="col-sm-6 col-form-label"> Title </label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="{{ $address.title }}" value="" placeholder="{{ $address.title }}" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="line1" class="col-sm-6 col-form-label"> Line 1 </label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="{{ $address.line1 }}" value="" placeholder="{{ $address.line1 }}" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="line2" class="col-sm-6 col-form-label"> Line 2 </label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="{{ $address.line2 }}" value="" placeholder="{{ $address.line2 }}" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="city" class="col-sm-6 col-form-label"> City </label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="{{ $address.city }}" value="" placeholder="{{ $address.city }}" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="county" class="col-sm-6 col-form-label"> County </label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="{{ $address.county }}" value="" placeholder="{{ $address.county }}" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="country" class="col-sm-6 col-form-label"> Country </label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="{{ $address.country }}" value="" placeholder="{{ $address.country }}" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="zip" class="col-sm-6 col-form-label"> Zip </label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="{{ $address.zip }}" value="" placeholder="{{ $address.zip }}" />
+              </div>
+            </div>
+          {{ end }}
+        </form>
+      </div>
+    </div>
+    {{ partial "components/organisms/pullOut-footer.html" (dict "type" "pulloutAddress") }}
+  </div>
+  <div x-cloak x-show="!pulloutAddress.secondary && pulloutAddress.pullout" @click="pulloutAddress.pullout = false, bodyScroll = true" class="backDrop"></div>
+  <div x-cloak x-show="pulloutAddress.secondary && pulloutAddress.pullout" @click="pulloutAddress.pullout = false, bodyScroll = false" class="backDrop" x-bind:style="pulloutAddress.secondary && { '--z-pullOut': '5' }"></div>
+
+  <!-- <script>
+    function closePullOut(pullout, secondary, bodyScroll) {
+      if (secondary) {
+        this.pullOut = false;
+        this.secondary = false;
+        console.log(pullOut, secondary, bodyScroll);
+      } else {
+        console.log(pullOut, secondary, bodyScroll);
+        this.pullOut == false;
+        this.secondary = false;
+        this.bodyScroll = true;
+      }
+    }
+  </script> -->
+</div>

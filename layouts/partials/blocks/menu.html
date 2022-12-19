@@ -1,0 +1,83 @@
+<div class="bg-info-410 dark:bg-info-700 flex items-center justify-between py-2 pl-3">
+  <a href="/dashboards/" class="text-info-50 flex text-lg font-bold">
+    <svg class="text-info-190 dark:text-info-490 h-auto w-[3rem]" viewBox="0 0 192 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M172.74 0L124.37 82.77L112.37 62.24L148.74 0H43L79.37 62.23L67.37 82.76L19 0H0L67.37 115.28L95.87 66.51L124.37 115.28L191.74 0H172.74ZM71.93 17H119.8L95.87 57.96L71.94 17H71.93Z" fill="currentColor" />
+      <path d="M83.9598 104H107.78L117.71 121H74.0298L83.9598 104Z" fill="currentColor" />
+    </svg>
+    <span class="dark:text-infoDark-500 text-info-210 ml-2 min-w-[8rem]"> RM 360 </span>
+  </a>
+  <div class="">
+    <ul class="flex py-1">
+      <li>
+        <button
+          class="text-info-290 dark:text-info-390 mr-1 flex h-full items-center px-2 text-xl hover:text-white"
+          x-data="{
+                    toggle: () => {
+                        if (localStorage.theme === 'dark') {
+                            localStorage.theme = 'light';
+                            document.documentElement.classList.remove('dark');
+                        } else {
+                            localStorage.theme = 'dark';
+                            document.documentElement.classList.add('dark');
+                        }
+                    },
+                }"
+          @click="toggle"
+        >
+          <i class="fal fa-moon block dark:hidden"></i>
+          <i class="fal fa-sun hidden dark:block"></i>
+        </button>
+      </li>
+      <li class="hidden sm:flex">
+        <a href="#" class="text-info-290 dark:text-info-390 px-2 text-xl hover:text-white">
+          <i class="fal fa-home "></i>
+        </a>
+      </li>
+      <li class="hidden sm:flex">
+        <a href="#" class="text-info-290 dark:text-info-390 mr-1 px-2 text-xl hover:text-white">
+          <i class="fal fa-bell"></i>
+        </a>
+      </li>
+      <li class="hidden sm:flex">
+        <a href="#" class="text-info-290 dark:text-info-390 mr-1 px-2 text-xl hover:text-white">
+          <i class="fal fa-folder-open"></i>
+        </a>
+      </li>
+      <li class="hidden sm:flex">
+        <a href="#" class="text-info-290 dark:text-info-390 mr-1 px-2 text-xl hover:text-white">
+          <i class="fal fa-phone-alt "></i>
+        </a>
+      </li>
+      <li class="hidden sm:flex">
+        <a href="#" class="text-info-290 dark:text-info-390 mr-1 px-2 text-xl hover:text-white">
+          <i class="fal fa-calendar "></i>
+        </a>
+      </li>
+      <li class="hidden sm:flex">
+        <a href="#" class="text-info-290 dark:text-info-390 mr-1 px-2 text-xl hover:text-white">
+          <i class="fal fa-list "></i>
+        </a>
+      </li>
+      <li class="hidden sm:flex">
+        <a href="#" class="text-info-290 dark:text-info-390 mr-1 px-2 text-xl hover:text-white">
+          <i class="fal fa-check "></i>
+        </a>
+      </li>
+      <li class="hidden sm:flex">
+        <a href="#" class="text-info-290 dark:text-info-390 mr-1 px-2 text-xl hover:text-white">
+          <i class="fal fa-history "></i>
+        </a>
+      </li>
+      <li class="hidden sm:flex">
+        <a href="#" class="text-info-290 dark:text-info-390 mr-1 px-2 text-xl hover:text-white">
+          <i class="fal fa-cog "></i>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="text-info-290 dark:text-info-390 mr-1 px-2 text-xl hover:text-white">
+          <i class="fal fa-bars "></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

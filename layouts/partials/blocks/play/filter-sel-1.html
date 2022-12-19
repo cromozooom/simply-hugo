@@ -1,0 +1,214 @@
+<div x-data="filters()">
+  <ul>
+    <li class="py-3">
+      filterCounter:
+      <span x-text="filterCounter"></span>
+    </li>
+    <li class="py-3">
+      reset:
+      <span x-text="reset"></span>
+    </li>
+  </ul>
+  <hr />
+  <div class="flex">
+    <div class="flex">
+      <div
+        x-ref="myFilter"
+        class="myFilters"
+        x-data="{
+                show: false,
+                counter: 0,
+                updateFilter: myFilters(reset)
+              }
+              ">
+        <div x-on:click="open" class="m-1 bg-white p-2 text-red-600">
+          Open A
+          <span x-text="reset"></span>
+          <span x-show="counter" x-text="counter"></span>
+        </div>
+        <ul x-show="isOpen()" x-on:click.away="close">
+          <li
+            x-data="{ 
+                  checked: false
+                }">
+            <button
+              @click="count"
+              :class="checked ? 'bg-green-500' : 'bg-red-500'"
+              class="m-1  p-2 text-white">
+              option A
+            </button>
+          </li>
+          <li
+            x-data="{ 
+                  checked: false
+                }">
+            <button
+              @click="count"
+              :class="checked ? 'bg-green-500' : 'bg-red-500'"
+              class="m-1  p-2 text-white">
+              option A
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div
+        x-ref="myFilter"
+        class="myFilters"
+        x-data="{
+                show: false,
+                counter: 0,
+                updateFilter: myFilters(reset)
+              }
+              ">
+        <div x-on:click="open" class="m-1 bg-white p-2 text-blue-600">
+          Open B
+          <span x-text="reset"></span>
+          <span x-show="counter" x-text="counter"></span>
+        </div>
+        <ul x-show="isOpen()" x-on:click.away="close">
+          <li
+            x-data="{ 
+                  checked: false
+                }">
+            <button
+              @click="count"
+              :class="checked ? 'bg-green-500' : 'bg-blue-500'"
+              class="m-1  p-2 text-white">
+              option B
+            </button>
+          </li>
+          <li
+            x-data="{ 
+                  checked: false
+                }">
+            <button
+              @click="count"
+              :class="checked ? 'bg-green-500' : 'bg-blue-500'"
+              class="m-1  p-2 text-white">
+              option B
+            </button>
+          </li>
+          <li
+            x-data="{ 
+                  checked: false
+                }">
+            <button
+              @click="count"
+              :class="checked ? 'bg-green-500' : 'bg-blue-500'"
+              class="m-1  p-2 text-white">
+              option B
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div
+        x-ref="myFilter"
+        class="myFilters"
+        x-data="{
+                show: false,
+                counter: 0,
+                updateFilter: myFilters(reset)
+              }
+              ">
+        <div x-on:click="open" class="m-1 bg-white p-2 text-pink-600">
+          Open C
+          <span x-text="reset"></span>
+          <span x-show="counter" x-text="counter"></span>
+        </div>
+        <ul x-show="isOpen()" x-on:click.away="close">
+          <li
+            x-data="{ 
+                  checked: false
+                }">
+            <button
+              @click="count"
+              :class="checked ? 'bg-green-500' : 'bg-pink-500'"
+              class="m-1  p-2 text-white">
+              option C
+            </button>
+          </li>
+          <li
+            x-data="{ 
+                  checked: false
+                }">
+            <button
+              @click="count"
+              :class="checked ? 'bg-green-500' : 'bg-pink-500'"
+              class="m-1  p-2 text-white">
+              option C
+            </button>
+          </li>
+          <li
+            x-data="{ 
+                  checked: false
+                }">
+            <button
+              @click="count"
+              :class="checked ? 'bg-green-500' : 'bg-pink-500'"
+              class="m-1  p-2 text-white">
+              option C
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <button
+        x-data="{
+                reset: false,
+              }"
+        @click="handleReset()"
+        class="m-1 bg-green-500 p-2 text-white">
+        Reset
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function filters() {
+    return {
+      filterCounter: 0,
+      reset: false,
+
+      //show: false,
+      open() {
+        this.show = true;
+      },
+      close() {
+        this.show = false;
+      },
+      isOpen() {
+        return this.show === true;
+      },
+
+      myFilters(reset) {
+        if (this.reset) {
+          this.counter = 0;
+          console.log("counter:" + this.counter + " reset:" + this.reset);
+        }
+      },
+
+      handleReset(reset) {
+        reset = true;
+        this.filterCounter = 0;
+        this.myFilters(this.reset);
+      },
+
+      count() {
+        this.show = false;
+        this.checked = !this.checked;
+        if (this.checked) {
+          this.counter = this.counter + 1;
+          this.filterCounter = this.filterCounter + 1;
+        } else if (!this.checked) {
+          this.counter = this.counter - 1;
+          this.filterCounter = this.filterCounter - 1;
+        }
+
+        //console.log("counter:" + this.counter);
+        //console.log("checked:" + this.checked);
+      },
+    };
+  }
+</script>

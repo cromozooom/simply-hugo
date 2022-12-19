@@ -1,0 +1,124 @@
+<div class="filters">
+  <div x-data="filters()" @reset="reset = $event.detail.reset, filterCounter = 0">
+    <div class="flex flex-wrap items-center justify-center">
+      <div class="flex flex-wrap items-center justify-center">
+        {{ range $index, $filter := $.Site.Data.filters.filters }}
+          <div
+            class="{{ if $index }}
+              ml-3
+            {{ end }} myFilters relative mb-3
+            "
+            x-ref="myFilter"
+            x-data="{
+              show: false,
+              counter: 0,
+              }
+            "
+            @reset.window="counter = 0"
+          >
+            <button id="dropdownDefault" data-dropdown-toggle="dropdown" x-on:click="open" type="button" class="dark:bg-darkNeutral-800 dark:text-darkNeutral-500 border-brand-500/20 flex items-center justify-between rounded-md border bg-white px-4 py-2 text-neutral-800">
+              {{ .title }}
+              <span x-show="counter" x-text="counter" class="card-pills--counter ml-2 rounded-md bg-green-100/20 px-2 py-1 text-sm text-green-500"></span>
+              <i class="fas fa-angle-down text-brand-400 dark:text-brand-300  pl-3"></i>
+            </button>
+            <div x-show="isOpen()" x-init="dropDownposition()" x-on:click.away="close" class="w-46 shadow-brand-55 dark:bg-darkNeutral-600 absolute z-10 divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg">
+              <ul class=" dark:text-darkNeutral-200 text-neutral-700" aria-labelledby="dropdownDefault">
+                {{ range .values }}
+                  <li
+                    x-data="{ 
+                                        checked: false
+                                    }"
+                    @reset.window="checked = false"
+                  >
+                    <button @click="count" :class="checked ? 'text-green-500 bg-green-50/50 dark:bg-green-50' : ''" class="hover:text-brand-900 dark:hover:bg-neutralDark-700/30 group flex w-full min-w-min items-center justify-between whitespace-nowrap px-4  py-2  hover:bg-neutral-100/50 dark:hover:text-white">
+                      {{ . }}
+                      <i
+                        :class="
+                              checked ? 'text-green-400' : 'text-neutral-600 dark:text-darkNeutral-600'
+                            "
+                        class="fas fa-check xgroup-hover:text-neutral pl-4"
+                      ></i>
+                    </button>
+                  </li>
+                {{ end }}
+
+              </ul>
+            </div>
+          </div>
+        {{ end }}
+
+
+        <div>
+          <button @click="$dispatch( 'reset', { reset : !reset } )" x-show="filterCounter" class="bg-brand-500 text-brand-50 mb-3 ml-4 flex min-h-[3rem] items-center justify-between rounded-md px-4 py-2 ">
+            <i class="fas fa-times pr-2 group-hover:text-white"></i>
+            Reset
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function filters() {
+      return {
+        // dev: false,
+        filterCounter: 0,
+        reset: false,
+        resetCounter: false,
+        // dropdown position
+        bottom: false,
+        top: false,
+        left: false,
+        right: false,
+
+        elTop: null,
+        elRight: null,
+        elBottom: null,
+        elLeft: null,
+        elWidth: null,
+        elHeight: null,
+        windowW: window.innerWidth,
+        windowH: window.innerHeight,
+        dropDownposition($el) {
+          this.elLeft = this.$el.parentElement.offsetLeft;
+          this.elTop = this.$el.parentElement.offsetTop;
+          this.elRight = this.windowW - this.elLeft;
+          this.elBottom = this.$el.getBoundingClientRect().bottom;
+          this.elWidth = this.$el.offsetWidth;
+          this.elHeight = this.$el.offsetHeight;
+
+          if (this.elLeft >= this.elRight) {
+            this.$el.classList.add("right-0");
+            console.log("right-0");
+          } else if (this.elLeft < this.elRight) {
+            this.$el.classList.add("left-0");
+            console.log("left-0");
+          }
+          //console.log( "size:" + this.elWidth + "x" + this.elHeight + ", window size: " + this.windowW + "x" + this.windowH);
+          console.log("size:" + this.elWidth + "x" + this.elHeight + ", positions t:" + this.elTop + " | b:" + this.elBottom + " | r:" + this.elRight + " | l:" + this.elLeft);
+        },
+        open() {
+          this.show = true;
+        },
+        close() {
+          this.show = false;
+        },
+
+        isOpen() {
+          return this.show === true;
+        },
+
+        count() {
+          this.show = false;
+          this.checked = !this.checked;
+          if (this.checked) {
+            this.counter = this.counter + 1;
+            this.filterCounter = this.filterCounter + 1;
+          } else if (!this.checked) {
+            this.counter = this.counter - 1;
+            this.filterCounter = this.filterCounter - 1;
+          }
+        },
+      };
+    }
+  </script>
+</div>

@@ -1,0 +1,347 @@
+<div class="vWidth">
+	vWidth-11-12
+</div>
+<div class="container" x-data="{open: 0, open1: 0}">
+	<div class="row">
+		<div class="col py-4">
+			<button x-on:click.prevent="open = 1" class="bnt btn-link">Create an Appointment</button>
+			<p>
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed temporibus inventore provident assumenda architecto, eaque a dolore sint nostrum dolor aspernatur exercitationem animi nam. Harum voluptatum tempora delectus accusamus, repellendus doloribus in aut dolores qui quis ab, ipsum numquam voluptatem iste ullam odio iusto porro suscipit inventore architecto deserunt quas! Officia architecto laudantium dolore minus tempore accusantium blanditiis dolorum? At nemo quos, ratione nostrum recusandae excepturi omnis, quia nihil, reiciendis dolore temporibus laborum iure similique voluptatem doloribus magnam est cum optio vitae quasi? Eveniet cupiditate voluptatem sit harum numquam possimus, quibusdam quo aut officiis pariatur quis autem, consectetur sint temporibus! Vel ullam eos tempore quas nulla quaerat quos, fugiat aliquid at assumenda dolore quidem? Reiciendis nesciunt voluptates suscipit fugit sed fuga molestiae expedita vitae, praesentium repellat modi nulla ullam error.
+			</p>
+			</dev>
+
+			<div x-show="open" x-transition:enter="transition-transform transition-opacity ease-out duration-600" x-transition:enter-start="opacity-0 transform -translate-x-24" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-600" x-transition:leave-end="opacity-0 transform translate-x-24" x-on:click.away="close" class="m-offscreen w-11/12 md:w-3/6">
+				<div class="m-offscreen__header p-2 d-flex align-items-center">
+					<div>
+						<span class="btn px-2 font-weight-bold">
+							New Appointment
+						</span>
+					</div>
+					<button x-on:click.prevent="open = 0" type="button" class="close" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="m-offscreen__header p-2">
+                    <ul class="list-group list-group-horizontal w-100">
+						<li class="list-group-item flex-fill bg-secondary text-white text-center">Basic details</li>
+						<li class="list-group-item flex-fill text-center">Meeting Notes</li>
+						<li class="list-group-item flex-fill text-center">Action Points</li>
+					</ul>
+				</div>
+				<div class="m-offscreen__body">
+					<div class="m-offscreen__content p-2">
+						<form>
+							<div class="form-row">
+								<div class="col">
+									<div class="d-flex align-items-center">
+										<label class="mr-2 w-25" for="inlineFormInputGroup">Subject</label>
+										<div class="input-group mb-2 ">
+											<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Subject">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="col">
+									<div class="d-flex align-items-center">
+
+										<label class="xsr-only mr-2 w-25" for="inlineFormInputGroup">Username</label>
+										<div class="input-group mb-2 ">
+											<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+											<div class="input-group-append">
+												<button class="input-group-text" x-on:click.prevent=" open1= 1 ">
+													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+														<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+													</svg>
+												</button>
+											</div>
+										</div>
+										<div x-show="open1" x-on:toggle.window="open1 = !open1" class="m-offscreen w-11/12 md:w-3/6" x-transition:enter="transition-transform transition-opacity ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-x-24" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-300" x-transition:leave-end="opacity-0 transform translate-x-24" x-on:click.away="close">
+											<div class="m-offscreen__header p-2 d-flex align-items-center">
+												<div>
+													<strong>
+														<button x-on:click.prevent=" open1 = 0 " class="btn btn-link">
+															New Appointemnt
+														</button>
+														/
+														<span class="px-2">
+															Add Contacts
+														</span>
+													</strong>
+												</div>
+												<div>
+													<button x-on:click.prevent="open1 = 0" type="button" class="close" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+											</div>
+
+											<div class="m-offscreen__header p-2">
+												<form>
+
+													<div class="form-row">
+														<div class="col">
+															<div class="d-flex align-items-center">
+
+																<label class="sr-only" for="inlineFormInputGroup">Search for Client</label>
+																<div class="input-group mb-2 ">
+																	<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search for client">
+																	<div class="input-group-append">
+																		<button class="input-group-text" x-on:click.prevent=" open1= 1 ">
+																			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+																				<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+																			</svg>
+																		</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="form-row">
+														<div class="col">
+															<div class="btn-group btn-group-toggle" data-toggle="buttons">
+																<label class="btn btn-secondary active">
+																	<input type="radio" name="options" id="option1" checked> All
+																</label>
+																<label class="btn btn-secondary">
+																	<input type="radio" name="options" id="option2"> Connected
+																</label>
+															</div>
+														</div>
+													</div>
+
+												</form>
+											</div>
+											<div class="m-offscreen__body">
+												<div class="m-offscreen__content py-2">
+													<ul class="list-unstyled ">
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck01">
+																<label class="custom-control-label" for="customCheck01">Kamaria Aliyu</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck02">
+																<label class="custom-control-label" for="customCheck02">Tionge Olalekan</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck03">
+																<label class="custom-control-label" for="customCheck03">Seydou Wafula</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck04">
+																<label class="custom-control-label" for="customCheck04">Nosizwe Ntombizodwa</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck05">
+																<label class="custom-control-label" for="customCheck05">Ifa Kossi</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck06">
+																<label class="custom-control-label" for="customCheck06">Dalitso Tau</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck07">
+																<label class="custom-control-label" for="customCheck07">Adekunle Karabo</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck08">
+																<label class="custom-control-label" for="customCheck08">Monifa Maxamed</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck09">
+																<label class="custom-control-label" for="customCheck09">Chifuniro Businge</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck10">
+																<label class="custom-control-label" for="customCheck10">Chibuzo Workneh</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck11">
+																<label class="custom-control-label" for="customCheck11">Kamaria Aliyu</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck12">
+																<label class="custom-control-label" for="customCheck12">Tionge Olalekan</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck13">
+																<label class="custom-control-label" for="customCheck13">Seydou Wafula</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck14">
+																<label class="custom-control-label" for="customCheck14">Nosizwe Ntombizodwa</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck15">
+																<label class="custom-control-label" for="customCheck15">Ifa Kossi</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck16">
+																<label class="custom-control-label" for="customCheck16">Dalitso Tau</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck17">
+																<label class="custom-control-label" for="customCheck17">Adekunle Karabo</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck18">
+																<label class="custom-control-label" for="customCheck18">Monifa Maxamed</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck19">
+																<label class="custom-control-label" for="customCheck19">Chifuniro Businge</label>
+															</div>
+														</li>
+														<li class="border-b border-gray-300 py-4 px-2">
+															<div class="custom-control custom-checkbox">
+																<input type="checkbox" class="custom-control-input" id="customCheck20">
+																<label class="custom-control-label" for="customCheck20">Chibuzo Workneh</label>
+															</div>
+														</li>
+
+													</ul>
+												</div>
+
+												<div class="m-offscreen__contentCta d-flex align-items-center justify-content-between p-2">
+													<div class="m-offscreen__footer--start">
+														<nav aria-label="Page navigation example">
+															<ul class="pagination">
+																<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+																<li class="page-item"><a class="page-link" href="#">1</a></li>
+																<li class="page-item"><a class="page-link" href="#">2</a></li>
+																<li class="page-item"><a class="page-link" href="#">3</a></li>
+																<li class="page-item"><a class="page-link" href="#">Next</a></li>
+															</ul>
+														</nav>
+													</div>
+													<div class="m-offscreen__footer--end">
+
+													</div>
+												</div>
+											</div>
+											<div class="m-offscreen__footer p-2">
+												<div class="m-offscreen__footer--start">
+													<button class="btn btn-outline-primary" x-on:click.prevent="open1 = 0">Close</button>
+												</div>
+												<div class="m-offscreen__footer--end">
+													<button class="btn btn-primary">Add selected user</button>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="col">
+									<div class="d-flex align-items-center">
+										<label class="xsr-only mr-2 w-25" for="inlineFormInputGroup">Primary regarding</label>
+										<div class="input-group mb-2 ">
+											<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Primary regarding">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="col">
+									<div class="d-flex align-items-center">
+										<label class="xsr-only mr-2 w-25" for="inlineFormInputGroup">Additional regarding</label>
+										<div class="input-group mb-2 ">
+											<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Additional regarding">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="col">
+									<div class="d-flex align-items-center">
+										<label class="xsr-only mr-2 w-25" for="inlineFormInputGroup">Required Attendees*</label>
+										<div class="input-group mb-2 ">
+											<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Required Attendees">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="col">
+									<div class="d-flex align-items-center">
+										<label class="xsr-only mr-2 w-25" for="inlineFormInputGroup">Subject</label>
+										<div class="input-group mb-2 ">
+											<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Subject">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="col">
+									<div class="d-flex align-items-center">
+										<label class="xsr-only mr-2 w-25" for="inlineFormInputGroup">Subject</label>
+										<div class="input-group mb-2 ">
+											<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Subject">
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</form>
+					</div>
+					<!--div class="m-offscreen__contentCta d-flex align-items-center justify-content-between p-2">cta's</div-->
+				</div>
+				<div class="m-offscreen__footer p-2">
+					<div class="m-offscreen__footer--start">
+						<button class="btn btn-outline-primary" x-on:click.prevent="open = 0">Cancel</button>
+						<button class="btn ml-2 btn-outline-primary">Next</button>
+					</div>
+					<div class="m-offscreen__footer--end">
+						<button class="btn btn-primary">Save & close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div x-data class="backDrop backDrop__1" x-show="open1" x-on:click="open1 = false"></div>
+		<div x-data class="backDrop" x-show="open" x-on:click="open = false"></div>
+	</div>
+</div>

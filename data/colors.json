@@ -1,0 +1,79 @@
+{
+    "colors": [
+        "primary",
+        "highlight",
+        "tertiary",
+        "secondary",
+        "info",
+        "success",
+        "warning",
+        "danger",
+        "neutral"
+    ],
+    "colorsNew": [
+        "brand-primary",
+        "brand-secondary",
+        "primary",
+        "secondary",
+        "info",
+        "success",
+        "warning",
+        "danger",
+        "neutral"
+    ],
+    "themes": [
+        "wdx",
+        "rc",
+        "cs",
+        "q",
+        "rmm",
+        "iwm",
+        "socgen"
+    ],
+    "themesNew": [
+        "wdx",
+        "rc",
+        "cs",
+        "q",
+        "rmm",
+        "iwm",
+        "socgen",
+        "bs",
+        "raiffeisen",
+        "netflix",
+        "monster"
+    ],
+    "shades": [
+        "100",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "800",
+        "900"
+    ],
+    "shadesNew": [
+        "50",
+        "100",
+        "150",
+        "200",
+        "250",
+        "300",
+        "350",
+        "400",
+        "450",
+        "500",
+        "550",
+        "600",
+        "650",
+        "700",
+        "750",
+        "800",
+        "850",
+        "900",
+        "950",
+        "1000"
+    ]
+}

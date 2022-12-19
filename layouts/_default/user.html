@@ -1,0 +1,9 @@
+{{ define "main" }}
+  {{ .Content }}
+  {{ partial "blocks/menu.html" (dict "title" "360" ) }}
+  {{ partial "blocks/user.html" (dict "bg" true "user" $.Site.Data.user.user ) }}
+  {{ partial "blocks/tabs.html" . }}
+  {{/* {{ partial "blocks/numbers.html" (dict "bg" true "numbers" $.Site.Data.numbers.numbers ) }}
+  {{ partial "blocks/users.html" . }}
+  {{ partial "blocks/search.html" . }} */}}
+{{ end }}

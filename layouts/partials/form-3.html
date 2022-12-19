@@ -1,0 +1,238 @@
+{{ $id := 0 }}
+{{ $gradient := 1}}
+{{ range $index, $form := $.Site.Data.forms.forms }}
+{{ $col := "grid-cols-1" }}
+{{ $width := "max-w-[30rem] min-w-[30rem]" }}
+{{ if .side }}
+{{ if gt (len .side.message) 0 }}
+  {{ $col = "grid-cols-1 md:grid-cols-2" }}
+  {{ $width = "max-w-[60rem] min-w-[30rem]" }}
+{{ end }}
+{{ end }}
+
+<div
+class="min-h-[50rem] bg-blue-50 overflow-hidden w-full relative flex items-center justify-center"
+>
+  <div class="z-[1]">
+
+    
+
+    <div class="grid {{ $col }} my-4 overflow-hidden md:rounded-md md:shadow-md mx-0 md:mx-4 {{ $width }}">
+      {{ if .side }}
+        <div class="flex items-center justify-center bg-blue-800 ">
+          <div class="px-6 py-4 prose prose-lg dark:prose-dark">
+            {{ .side.message | markdownify }}
+          </div>
+        </div>
+      {{ end }}
+      <div
+        class="w-full pt-2 pb-8 mx-auto bg-white md:mx-0 px-7"
+      >
+        <div class="w-full">
+          <div class="prose">
+            {{ if or .title }}
+            <div class="mb-2 text-center">
+              {{ if $id }}{{ .id }}{{ end }}
+              {{ .title | markdownify }}
+            </div>
+            {{ end }} {{ if .description }} {{ .description | markdownify }} {{
+            end }}
+          </div>
+          <!--h2 class="mb-3 text-2xl font-bold text-center">
+            {{ .title | markdownify }}
+          </h2-->
+        </div>
+  
+        <form action="#" class="mx-auto mt-4">
+          {{ range .fields }} 
+          
+          {{ if .hr }}<hr class="mt-4">{{ end }}
+          {{ if .content }}
+          <div class="py-4 mt-2 prose">
+            {{ .content.title | markdownify }}
+            <br>
+            {{ .content.content | markdownify }}
+          </div>
+          {{ end }}
+          {{ if or (eq .type "text") (eq .type "password") (eq .type "email") }}
+          <div>
+            <div class="flex items-center justify-between mt-6 mb-1">
+              <label
+                for="{{ .name }}"
+                class="text-sm font-semibold tracking-wide uppercase"
+              >
+                {{ .title }}
+                <sup class="font-extrabold text-red-600">
+                  {{ if not .optional }}*{{ end }}
+                </sup>
+              </label>
+              {{ if .alt }}
+              <a href="" class="text-blue-500 underline">
+                {{ .alt.title }}
+              </a>
+              {{ end }}
+            </div>
+            <input
+              type="{{ .type }}"
+              name="{{ .name }}"
+              class="block w-[100%] border-2 border-slate-200 rounded-md"
+            />
+            {{ if .help }}
+            <p class="mt-2 text-sm text-gray-400">
+              {{ .help | markdownify }}
+            </p>
+            {{ end }}
+          </div>
+          {{ else if eq .type "checkbox" }}
+          
+          {{ if .switch }}
+            
+            <div class="flex mt-6 form-check form-switch">
+              <input
+                class="float-left h-5 mr-4 bg-gray-300 bg-no-repeat bg-contain rounded-full shadow-sm appearance-none cursor-pointer align-to form-check-input w-9 focus:outline-none"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+              />
+              <label class="inline-block text-gray-800 form-check-label" for="flexSwitchCheckDefault"
+                >{{ .title  | markdownify }}</label
+              >
+            </div>
+          {{ else }}
+            <div>
+              <label class="flex items-start justify-start gap-2 mt-6">
+                <input
+                  type="checkbox"
+                  class="w-6 h-6 mt-0 mr-2 border-2 rounded border-slate-200 form-checkbox"
+                />
+                <span class="cursor-pointer w-100">
+                  {{ .title  | markdownify }}
+                </span>
+              </label>
+            </div>
+          {{ end }}
+
+  
+          {{ else if eq .type "radio" }}
+          {{ $for := .for }}
+          <div role="group" aria-label="{{ .title }}">
+            {{ range $index, $element := .options }}
+            <div class="flex gap-2 pt-3">
+              <input
+                  {{ if eq $index 0 }}checked{{ end }}
+                  id="{{ urlize .title }}"
+                  tabindex="0"
+                  type="radio"
+                  name="{{ $for }}"
+                  value="{{ urlize .title }}"
+                  class="w-6 h-6 border-2 rounded-full"
+                />
+              <label for="{{ urlize .title }}" class="">
+                <span>{{ .title }}</span>
+              </label>
+            </div>          
+            {{ end }}
+          </div>
+          {{ else if eq .type "content" }}
+            <div class="mt-3 prose-lg ">
+              {{ .title | markdownify }}
+              <br>
+              {{ .help | markdownify }}
+            </div>
+          {{ end }} {{ end }}
+  
+          {{ if eq .action.vertical true }}
+          <div class="flex flex-col gap-4 mt-6">
+          {{ else }}
+          <div class="flex flex-row-reverse gap-4 mt-6">
+          {{ end }}
+            {{ range .action.cta }} {{ if not .main }}
+            <button
+              class="btn btn-secondary"
+            >
+              {{ .text }} {{ .disable }}
+            </button>
+            {{ else }}
+            <button class="btn btn-primary">
+              {{ .text }} {{ .disable }}
+            </button>
+            
+            {{ end }} {{ end }}
+          </div>
+          {{ if .validationText }}
+            
+          <small class="block pt-4 text-gray-500">
+            <sup class="font-extrabold text-red-600">
+              {{ if not .optional }}*{{ end }}
+            </sup>
+            <i>
+              {{ .validationText | markdownify }}
+            </i>
+          </small>
+          {{ end }}
+        </form>
+      </div>
+    </div>
+    {{ if .footer }}
+    <p class="mt-4 mx-auto prose text-center min-w-[25rem] {{ $width }} ">
+      {{ .footer.message | markdownify }}
+    </p>
+    {{ end }}
+  </div>
+
+  {{ if $gradient }}
+  <svg
+    class="w-full max-w-full xl:max-w-[100rem]  absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] inset-0"
+    version="1.1"
+    id="Layer_1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="0px"
+    y="0px"
+    viewBox="0 0 1366 768"
+    enable-background="new 0 0 1366 768"
+    xml:space="preserve"
+  >
+    <radialGradient
+      id="bottom_00000148634490203721858810000002085247065060235915_"
+      cx="726.4538"
+      cy="131.8328"
+      r="681.3303"
+      gradientTransform="matrix(1.1831 0 0 1 -120.5939 0)"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop
+        offset="3.133403e-02"
+        style="stop-color: var(--tw-ring-color); stop-opacity: 1;"
+      />
+      <stop offset="0.80" style="stop-color: var(--tw-ring-color); stop-opacity: 0;" />
+    </radialGradient>
+    <path
+      id="bottom"
+      fill="url(#bottom_00000148634490203721858810000002085247065060235915_)"
+      d="M1366,768H0V284.8c211.9-358.1,1092.8,461.9,1366,0V768z"
+    />
+  </svg>
+  {{ else }}
+  <svg
+    class="w-full xl:w-[40rem] xsvg-bg absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] inset-0"
+    version="1.1"
+    id="Layer_1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="0px"
+    y="0px"
+    viewBox="0 0 1366 768"
+    enable-background="new 0 0 1366 768"
+    xml:space="preserve"
+  >
+    
+    <path
+      id="bottom"
+      fill="var(--tw-ring-color)"
+      d="M1366,768H0V284.8c211.9-358.1,1092.8,461.9,1366,0V768z"
+    />
+  </svg>
+  {{ end }}
+</div>
+{{ end }}

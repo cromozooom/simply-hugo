@@ -1,0 +1,98 @@
+{{ $dev := 0 }} {{/*
+<div class="activities">
+  {{ range $index, $form := $.Site.Data.activities.activities }}
+  <div class="py-2">
+    <div class="row border-bottom">
+      <div class="col py-2"><strong> {{ .title }} </strong></div>
+    </div>
+    <div class="row py-2">
+      <div class="col">{{ .productId }}</div>
+      <div class="col-8">{{ .description }}</div>
+      <div class="col d-flex justify-content-end align-items-start">
+        <img src="https://flagcdn.com/{{ .country }}.svg" class="m-0 p-0" width="40" height="40" alt="{{ .country }}" />
+      </div>
+    </div>
+    {{ if $dev }} title {{ .title }}<br />
+    description {{ .description }}<br />
+    country {{ .country }}<br />
+    productId {{ .productId }}<br />
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
+*/}}
+
+<div class="d-flex my-4 px-4 py-2">
+  <div class="w-75 px-2">
+    <div class="font-weight-bold">Activities</div>
+  </div>
+  <div class="w-25 d-flex justify-content-between">
+    <div class="font-weight-bold">Result Decision</div>
+    <div class="font-weight-bold">Country</div>
+  </div>
+</div>
+<div class="accordion" id="accordionExample">
+  {{ range $index, $form := $.Site.Data.activities.activities }}
+  <div class="card">
+    <div class="card-header" id="heading{{ $index }}">
+      <button class="btn btn-link xbtn-block w-100 text-decoration-none text-left" type="button" data-toggle="collapse" data-target="#collapse{{ $index }}" aria-expanded="{{ if eq $index 0 }} true {{ else }} false {{ end }}" aria-controls="collapse{{ $index }}">
+        <div class="d-flex justify-content-between">
+          <div class="w-75">
+            <div class="text-decoration-none font-weight-bold h5">{{ .title }}</div>
+            <div class="text-decoration-none text-secondary">{{ .description }}</div>
+          </div>
+          <div class="w-25 d-flex justify-content-between">
+            <div class="d-flex">
+              <div class="h4">
+                {{ range .resultDetails }} {{ if eq .resultDecision "yes" }}
+                <div class="badge badge-success">{{ upper .resultDecision }}</div>
+                {{ else if eq .resultDecision "no" }}
+                <div class="badge badge-danger">{{ upper .resultDecision }}</div>
+
+                {{ end }} {{ end }}
+              </div>
+            </div>
+            <div>
+              <img src="https://flagcdn.com/{{ .country }}.svg" class="m-0 p-0" width="40" height="25" alt="{{ .country }}" />
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <div id="collapse{{ $index }}" class="collapse {{ if eq $index 0 }} show {{ end }}" aria-labelledby="heading{{ $index }}" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="d-flex" style="gap: 1rem">
+          {{ range .resultDetails }} {{ if .remarks }} {{ range .remarks }}
+
+          <div style="width: 33.33%" class="xcol">
+            <div class="card h-100 p-2 py-3">
+              <div class="h6">{{ .title }}</div>
+              <div>{{ .description}}</div>
+            </div>
+          </div>
+
+          {{ end }} {{ end }} {{ if .restrictions }} {{ range .restrictions }}
+
+          <div style="width: 33.33%" class="xcol">
+            <div class="card h-100 p-2 py-3">
+              <div class="h6">{{ .title }}</div>
+              <div>{{ .description}}</div>
+            </div>
+          </div>
+
+          {{ end }} {{ if .reasons }} {{ range .reasons }}
+          <div style="width: 33.33%" class="xcol">
+            <div class="card h-100 p-2 py-3">
+              <div class="h6">{{ .title }}</div>
+              <div>{{ .description}}</div>
+            </div>
+          </div>
+          {{ end }} {{ end }} {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  {{ end }}
+</div>

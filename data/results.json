@@ -1,0 +1,147 @@
+{
+    "results": [
+        {
+            "name": "ABC Trust",
+            "contactType": "Trust",
+            "moodysIndustry": "Discretionary",
+            "lastContacted": "23.05.1976",
+            "lastFacemeetings": false,
+            "stage": "4. Pitch / Follow up / Closing",
+            "assets": "25.000",
+            "values": [
+                "value 1",
+                "value 2"
+            ]
+        },
+        {
+            "name": "Abdullah Corp",
+            "contactType": false,
+            "moodysIndustry": false,
+            "lastContacted": false,
+            "lastFacemeetings": "23.05.1976",
+            "stage": "false",
+            "assets": "25.000",
+            "values": [
+                "value 1",
+                "value 2"
+            ]
+        },
+        {
+            "name": "Abdullah Family Trust",
+            "contactType": "Trust",
+            "moodysIndustry": false,
+            "lastContacted": false,
+            "lastFacemeetings": false,
+            "stage": "false",
+            "assets": "25.000",
+            "values": [
+                "value 1",
+                "value 2"
+            ]
+        },
+        {
+            "name": "Adam Paulson Trust",
+            "contactType": "Trust",
+            "moodysIndustry": "Charitable",
+            "lastContacted": false,
+            "lastFacemeetings": false,
+            "stage": "false",
+            "assets": "25.000",
+            "values": [
+                "value 1",
+                "value 2"
+            ]
+        },
+        {
+            "name": "Albus Ltd (Client)",
+            "contactType": "Commercial Corporate",
+            "moodysIndustry": false,
+            "lastContacted": "23.05.1976",
+            "lastFacemeetings": false,
+            "stage": "1. Target",
+            "assets": "25.000",
+            "values": [
+                "value 1",
+                "value 2"
+            ]
+        },
+        {
+            "name": "Albus Ltd.",
+            "contactType": "Commercial Corporate",
+            "moodysIndustry": false,
+            "lastContacted": "23.05.1976",
+            "lastFacemeetings": "23.05.1976",
+            "stage": "1. Target",
+            "assets": "25.000",
+            "values": [
+                "value 1",
+                "value 2"
+            ]
+        },
+        {
+            "name": "Allabel Trust",
+            "contactType": "Trust",
+            "moodysIndustry": false,
+            "lastContacted": false,
+            "lastFacemeetings": false,
+            "stage": "5. Account Opening",
+            "assets": "25.000",
+            "values": [
+                "value 1",
+                "value 2"
+            ]
+        },
+        {
+            "name": "Barnes Trust",
+            "contactType": "Trust",
+            "moodysIndustry": "Charitable",
+            "lastContacted": false,
+            "lastFacemeetings": false,
+            "stage": "2. Prospect",
+            "assets": "25.000",
+            "values": [
+                "value 1",
+                "value 2"
+            ]
+        },
+        {
+            "name": "Blah Corp",
+            "contactType": "Commercial Corporate",
+            "moodysIndustry": false,
+            "lastContacted": false,
+            "lastFacemeetings": false,
+            "stage": "1. Target",
+            "assets": "25.000",
+            "values": [
+                "value 1",
+                "value 2"
+            ]
+        },
+        {
+            "name": "Company T Acer Ltd.",
+            "contactType": "Commercial Corporate",
+            "moodysIndustry": false,
+            "lastContacted": false,
+            "lastFacemeetings": false,
+            "stage": "1. Target",
+            "assets": "25.000",
+            "values": [
+                "value 1",
+                "value 2"
+            ]
+        },
+        {
+            "name": "Dupont - Aeby Trust",
+            "contactType": "Trust",
+            "moodysIndustry": false,
+            "lastContacted": false,
+            "lastFacemeetings": false,
+            "stage": "5. Account Opening",
+            "assets": "25.000.000",
+            "values": [
+                "value 1",
+                "value 2"
+            ]
+        }
+    ]
+}

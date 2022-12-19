@@ -1,0 +1,40 @@
+<div
+  class="{{ if .bg }}
+    bg-info-110 dark:bg-info-710
+  {{ end }}
+  ">
+  <div
+    class="
+    mx-auto flex w-full flex-col justify-center gap-4 py-8 px-3 sm:max-w-[640px] md:max-w-[768px]
+     md:gap-6 md:px-0 lg:max-w-[1024px] lg:flex-row xl:max-w-[1280px] 2xl:max-w-[1536px] ">
+    {{ range $indexForm, $numbers := .numbers }}
+      <div class="flex justify-center">
+        <div
+          class="flex items-center justify-start w-full p-3 rounded-md shadow dark:shadow-md card bg-info-100 dark:bg-info-900 shadow-info-200 dark:shadow-black">
+          <div
+            class="icon flex h-[5rem] w-[5rem] items-center justify-center rounded-full bg-white dark:bg-infoDark-45">
+            {{ if eq .icon  "users" }}
+              <i class="text-3xl fad fa-users"></i>
+            {{ else if eq .icon  "chart-pie-alt" }}
+              <i class="text-3xl fad fa-chart-pie-alt"></i>
+            {{ else if eq .icon  "money-bill-wave" }}
+              <i class="text-3xl fad fa-money-bill-wave"></i>
+            {{ end }}
+          </div>
+          <div
+            class="flex min-w-[initial] flex-col  pl-4 lg:min-w-[10rem] xl:min-w-[15rem]">
+            <div class="text-sm font-bold title text-info-400 dark:text-info-300 ">
+              {{ .title }}
+            </div>
+            <div class="text-xl font-bold text-gray-400 title dark:text-white">
+              {{ if .unit }}
+                {{ .unit }}
+              {{ end }}
+              {{ .count }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</div>

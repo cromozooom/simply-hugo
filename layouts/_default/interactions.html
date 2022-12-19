@@ -1,0 +1,7 @@
+{{ define "main" }}
+  <div class="bg"></div>
+  <div id="log"></div>
+  <div class="container-fluid mt-4">
+    {{ partial "components/organisms/advanced-search.html" (dict "space" false "results" $.Site.Data.searchResults ) }}
+  </div>
+{{ end }}

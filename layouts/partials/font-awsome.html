@@ -1,0 +1,20 @@
+{{/*  <span class="mt-8 text-xs text-white">
+  {{ .type }} -
+  {{ .icon }}
+</span>  */}}
+
+
+
+{{/* <div class="comments exclamation-circle trophy arrow-alt-circle-up paper-plane calendar map fa-house file-signature file head-side-brain tachometer edit"></div> */}}
+
+{{ if eq .type "fas" }}
+  <i class="fa-solid fas fa-{{ .icon }} {{ .class }}"></i>
+{{ else if eq .type "far" }}
+  <i class="fa-regular far fa-{{ .icon }} {{ .class }}"></i>
+{{ else if eq .type "fal" }}
+  <i class="fa-light fal fa-{{ .icon }} {{ .class }}"></i>
+{{ else if eq .type "fat" }}
+  <i class="fa-thin fa-{{ .icon }} {{ .class }}"></i>
+{{ else if eq .type "fad" }}
+  <i class="fa-duotone fad fa-{{ .icon }} {{ .class }}"></i>
+{{ end }}

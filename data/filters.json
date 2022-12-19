@@ -1,0 +1,50 @@
+{
+    "filters": [
+        {
+            "title": "Type",
+            "values": [
+                "Phone calls",
+                "Appointments",
+                "Email",
+                "Tasks",
+                "Letters",
+                "Campaign Response"
+            ]
+        },
+        {
+            "title": "Is Organisation",
+            "values": [
+                "Yes",
+                "No"
+            ]
+        },
+        {
+            "title": "Status",
+            "values": [
+                "Open",
+                "Scheduled",
+                "Completed",
+                "Cancelled"
+            ]
+        },
+        {
+            "title": "Stage",
+            "pill": "2",
+            "values": [
+                "1. Target",
+                "2. Pitch",
+                "3. Follow up",
+                "4. Prospect",
+                "5. Account Opening",
+                "6. Closing"
+            ]
+        },
+        {
+            "title": "Contact Type",
+            "values": [
+                "value 1",
+                "value 2"
+            ]
+        }
+    ]
+}

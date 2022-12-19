@@ -1,0 +1,67 @@
+<header
+  class="sm:h-menuHeightSm h-menuHeight drop-shadow-client-lg fixed top-0 z-10 flex w-full justify-between bg-white">
+  <div class="flex ">
+    <div
+      :class="menu_open ? 'sm:w-sideWidth sm:min-w-sideWidth' : ' sm:w-menuHeightSm w-menuHeight' "
+      class=" flex   grow-0 bg-slate-50">
+      <button
+        x-on:click="$dispatch( 'menu-open', { menu_open : !menu_open } )"
+        class=" h-menuHeight sm:h-menuHeightSm flex w-full items-center justify-start ">
+        <div class="w-menuHeight flex justify-center">
+          <span class="flex items-center">
+            <i
+              class="far fa-bars text-client-800 flex h-[1.5rem] w-[1.5rem] items-center px-1"></i>
+          </span>
+          <span class="flex items-center">
+            <i
+              :class="menu_open ? '' : 'rotate-180'"
+              class="fal text-client-800 fa-arrow-left flex h-[1.5rem] w-[1.3rem] items-center justify-start px-1 text-[70%] transition-all"></i>
+          </span>
+        </div>
+        <div x-show="menu_open" class="flex items-center">
+          <span class="text-client-brand-200 hidden px-2 text-sm sm:block">
+            MENU
+          </span>
+        </div>
+      </button>
+      <div>
+        <div
+          x-transition.duration.300ms
+          x-show="menu_open"
+          class="bg-client-800 h-menuHeight sm:h-menuHeightSm ml-auto hidden min-w-[8rem] items-center justify-center text-white sm:flex">
+          D1 logo
+        </div>
+      </div>
+    </div>
+    <div class="h-menuHeight sm:h-menuHeightSm flex grow items-center">
+      <div
+        x-transition.duration.300ms
+        class="bg-client-800 h-menuHeight sm:h-menuHeightSm flex min-w-[8rem] items-center justify-center text-white sm:hidden">
+        M logo
+      </div>
+      <div
+        x-transition.duration.300ms
+        x-show="!menu_open"
+        class="bg-client-800 h-menuHeight sm:h-menuHeightSm hidden min-w-[8rem] items-center justify-center text-white sm:flex">
+        D2 logo
+      </div>
+      <div>
+        {{ partial "client/language.html" . }}
+      </div>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="hidden h-full flex-col items-end justify-center sm:flex">
+      <div class="flex gap-1">
+        <span class="text-xs text-stone-600">Welcome to the WDX</span>
+        <span class="hidden text-xs text-stone-600 md:block"
+          >Self-Service Portal</span
+        >
+      </div>
+      <div class=" text-sm font-bold">Mano Sebastiano Argenti</div>
+    </div>
+    <div>
+      {{ partial "client/user-header.html" . }}
+    </div>
+  </div>
+</header>

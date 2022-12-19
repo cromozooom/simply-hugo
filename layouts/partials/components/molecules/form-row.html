@@ -1,0 +1,157 @@
+{{ $hideErrors := .hideErrors | default true }}
+{{ $limitWidth := .limitWidth | default true }}
+{{ $col := .col | default 1 }}
+{{ $title := .title | default "Sample title" }}
+
+{{ $classes := newScratch }}
+{{ if gt $limitWidth 0 }}
+  {{ $classes.Set "container" $limitWidth }}
+{{ end }}
+
+
+<!-- 2 col -->
+{{ if eq $col 2 }}
+  <hr />
+  <div class="mx-auto w-[{{ $classes.Get "container" }}px] px-3 py-8">
+    <h3 class="text-lg font-bold">{{ $title }}</h3>
+    <div class="flex w-full gap-4">
+      {{ partial "components/atoms/form-input.html" (dict
+        "full" false
+        "label"  "User name"
+        "error" "error"
+        "hideError" $hideErrors
+        "note" "note"
+        "grow" true
+        "placeholder" "Username"
+        )
+      }}
+      {{ partial "components/atoms/form-input.html" (dict
+        "full" false
+        "label"  "User name"
+        "error" "error"
+        "hideError" $hideErrors
+        "note" "note"
+        "grow" true
+        "placeholder" "Username"
+        )
+      }}
+    </div>
+    <div class="flex w-full gap-4">
+      {{ partial "components/atoms/form-input.html" (dict
+        "full" false
+        "label"  "User name"
+        "error" "error"
+        "hideError" $hideErrors
+        "note" "note"
+        "grow" true
+        "placeholder" "Username"
+        )
+      }}
+    </div>
+    <div class="flex w-full gap-4">
+      {{ partial "components/atoms/form-input.html" (dict
+        "full" false
+        "label"  "User name"
+        "error" "error"
+        "hideError" $hideErrors
+        "note" "note"
+        "grow" true
+        "placeholder" "Username"
+        )
+      }}
+      {{ partial "components/atoms/form-input.html" (dict
+        "full" false
+        "label"  "User name"
+        "error" "error"
+        "hideError" $hideErrors
+        "note" "note"
+        "grow" true
+        "placeholder" "Username"
+        )
+      }}
+    </div>
+  </div>
+{{ end }}
+<!-- 3 col -->
+{{ if eq $col 3 }}
+  <hr />
+  <div class="mx-auto w-[{{ $classes.Get "container" }}px] px-3 py-8">
+    <h3 class="text-lg font-bold">{{ $title }}</h3>
+    <div class="flex w-full gap-4">
+      {{ partial "components/atoms/form-input.html" (dict
+        "full" false
+        "label"  "User name"
+        "error" "error"
+        "hideError" $hideErrors
+        "note" "note"
+        "grow" true
+        "placeholder" "Username"
+        )
+      }}
+      {{ partial "components/atoms/form-input.html" (dict
+        "full" false
+        "label"  "User name"
+        "error" "error"
+        "hideError" $hideErrors
+        "note" "note"
+        "grow" true
+        "placeholder" "Username"
+        )
+      }}
+      {{ partial "components/atoms/form-input.html" (dict
+        "full" false
+        "label"  "User name"
+        "error" "error"
+        "hideError" $hideErrors
+        "note" "note"
+        "grow" true
+        "placeholder" "Username"
+        )
+      }}
+    </div>
+    <div class="flex w-full gap-4">
+      {{ partial "components/atoms/form-input.html" (dict
+        "full" false
+        "label"  "User name"
+        "error" "error"
+        "hideError" $hideErrors
+        "note" "note"
+        "grow" true
+        "placeholder" "Username"
+        )
+      }}
+    </div>
+    <div class="flex w-full gap-4">
+      {{ partial "components/atoms/form-input.html" (dict
+        "full" false
+        "label"  "User name"
+        "error" "error"
+        "hideError" $hideErrors
+        "note" "note"
+        "grow" true
+        "placeholder" "Username"
+        )
+      }}
+      {{ partial "components/atoms/form-input.html" (dict
+        "full" false
+        "label"  "User name"
+        "error" "error"
+        "hideError" $hideErrors
+        "note" "note"
+        "grow" true
+        "placeholder" "Username"
+        )
+      }}
+      {{ partial "components/atoms/form-input.html" (dict
+        "full" false
+        "label"  "User name"
+        "error" "error"
+        "hideError" $hideErrors
+        "note" "note"
+        "grow" true
+        "placeholder" "Username"
+        )
+      }}
+    </div>
+  </div>
+{{ end }}

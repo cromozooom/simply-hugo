@@ -1,0 +1,86 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+<!-- 
+  input[type='text']
+  input[type='password']
+  input[type='tel']
+  input[type='email']
+  input[type='number']
+  input[type='url']
+  
+  input[type='date']
+  input[type='datetime-local']
+  input[type='month']
+  input[type='week']
+  input[type='time']
+  
+  input[type='search']
+
+  input[type='checkbox']
+  input[type='radio']
+  input[type='file']
+  select
+  select[multiple]
+  textarea
+ -->
+{{ $inputGeneral := slice "text" "password" "tel" "email" "number" "url" }}
+{{ $inputDate := slice "date" "datetime-local" "month" "week" "time" }}
+
+
+<!-- <div class="type-text type-password type-tel type-email type-number type-url type-date type-datetime-local type-month type-week type-time"></div> -->
+
+<div class="xxray">
+  {{ if in $inputGeneral .type }}
+    {{ partial "components/fields/input-general.html" . }}
+  {{ else if in $inputDate .type }}
+    {{ partial "components/fields/date.html" . }}
+  {{ else if eq .type "select" }}
+    {{ partial "components/fields/select.html" . }}
+  {{ else if eq .type "textarea" }}
+    {{ partial "components/fields/textarea.html" . }}
+  {{ else if eq .type "checkbox" }}
+    {{ partial "components/fields/checkbox.html" . }}
+  {{ else if eq .type "file" }}
+    {{ partial "components/fields/file.html" . }}
+  {{ end }}
+</div>
+<!-- <div class="py-2">
+  <div class="flex flex-col xl:flex-row">
+    <div class="{{ if .max }}
+  min-h-14 pt-8
+{{ else }}
+  min-h-10 pt-2
+{{ end }} flex w-1/2 items-start justify-start">
+      {{ if ne .type "checkbox" }}
+  <label for="{{ .label | urlize }}" class="form-label mb-0 pr-2">{{ .label }}</label>
+{{ end }}
+    </div>
+    <div class="w-1/2">
+      {{ if .options }}
+  <select id="disabledSelect" class="form-select min-w-[15rem]" name="{{ .label | urlize }}">
+    <option value="none" selected>
+      {{ .placeholder }}
+    </option>
+    {{ range .options }}
+      <option>
+        {{ . }}
+      </option>
+    {{ end }}
+  </select>
+{{ else if (eq .type "textarea" ) }}
+  <textarea class="mt-1 block w-full" rows="3"></textarea>
+{{ else if (eq .type "checkbox" ) }}
+  <label class="inline-flex items-center">
+    <input type="checkbox" checked="" />
+    <span class="ml-2">Email me news and special offers</span>
+  </label>
+{{ else }}
+  focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none
+  <input type="{{ .type }}" class="form-input w-full" id="{{ .label | urlize }}" placeholder="{{ .placeholder }}" aria-describedby="emailHelp" />
+{{ end }}
+      {{ if isset . "help" }}
+  <div id="emailHelp" class="mt-1 text-sm">We'll never share your email with anyone else.</div>
+{{ end }}
+    </div>
+  </div>
+</div> -->

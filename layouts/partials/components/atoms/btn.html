@@ -1,0 +1,48 @@
+{{ $class := .class  | default "btn btn-primary" }}
+{{ $content := .content | default "" }}
+{{ $contentClass := .contentClass | default "" }}
+{{ $iconClass := .iconClass | default false }}
+{{ $iconStart := .iconStart  | default false }}
+{{ $iconEnd := .iconEnd  | default false }}
+{{ $type := .type  | default "button" }}
+{{ $href := .href  | default false }}
+{{ $action := .action  | default false }}
+{{ $dropdownToggle := .dropdownToggle | default false }}
+{{ $badge := .badge | default false }}
+{{ $badgeClass := .badgeClass | default "badge-primary" }}
+
+
+<!-- <div class="btn-secondary btn-primary btn-secondary-outline"></div> -->
+
+{{ if $type }}
+   {{ if $dropdownToggle }}
+        <button type="button" aria-expanded="false" data-toggle="dropdown" class="comp--btn btn text-nowrap {{ $class }}">
+    {{ else }}
+        <button type="button" class="comp--btn  text-nowrap {{ $class }}">
+    {{ end }}
+    {{ if $iconStart }}
+      {{ partial "components/atoms/icon.html" (dict "icon" $iconStart "class" $iconClass) }}
+    {{ end }}
+    {{ if $content }}
+      {{ if $contentClass }}
+      <span class="{{ $contentClass }}">
+        {{ $content }}
+      </span>
+      {{ else }}
+          {{ $content }}
+      {{ end  }}
+    {{ end  }}
+    {{ if $badge }}
+    <div class="ml-2">
+        <span class="badge {{ $badgeClass }}">{{ $badge }}</span>
+    </div>
+    {{ end }}
+    {{ if $iconEnd }}
+      {{ partial "components/atoms/icon.html" (dict "icon" $iconEnd "class" $iconClass) }}
+    {{ end }}
+  </button>
+{{ end }}
+
+{{ if $href }}
+  <a type="button" class="btn {{ $class }}">{{ $content }}</a>
+{{ end }}

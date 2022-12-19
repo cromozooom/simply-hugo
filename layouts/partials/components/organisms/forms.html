@@ -1,0 +1,383 @@
+<!-- {{ partial "components/molecules/drag-and-dropp.html" }} -->
+
+{{/* <div class="xray dev"></div> */}}
+<div
+  class="xxray"
+  x-data="{ 
+    sections: 1,
+    hideControls: false,
+    hideAll: true,
+    
+    hideLabel: false,
+    hideSpan: true,
+    hideInline: true,
+    hideType: true,
+  }"
+>
+  <div class="flex w-full items-center justify-between bg-slate-300 px-2">
+    <span> Form builder </span>
+
+    <div class="flex h-full items-center">
+      <button
+        title="field type"
+        class="h-full rounded p-2 hover:bg-slate-100"
+        x-on:click="
+            hideType ? hideType = false : hideType = true,
+            hideInline ? '' : hideInline = true,
+            hideSpan ? '' : hideSpan = true,
+            hideLabel ? '' : hideLabel = true "
+      >
+        <svg :class="!hideType ? 'fill-slate-900' : 'fill-slate-400' " class="h-[12px] w-[12px] " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path d="M411.8 207.8C406.2 217.8 395.5 223.1 384 223.1H192C180.5 223.1 169.8 217.8 164.2 207.8C158.5 197.7 158.6 185.4 164.6 175.5L260.6 15.54C266.3 5.897 276.8 0 288 0C299.2 0 309.7 5.898 315.4 15.54L411.4 175.5C417.4 185.4 417.5 197.7 411.8 207.8V207.8zM288 63.1L220.3 175.1H355.7L288 63.1zM472 271.1C494.1 271.1 512 289.9 512 311.1V456C512 478.1 494.1 496 472 496H328C305.9 496 288 478.1 288 456V311.1C288 289.9 305.9 271.1 328 271.1H472zM464 319.1H336V448H464V319.1zM256 384C256 454.7 198.7 512 128 512C57.31 512 0 454.7 0 384C0 313.3 57.31 255.1 128 255.1C198.7 255.1 256 313.3 256 384zM128 303.1C83.82 303.1 48 339.8 48 384C48 428.2 83.82 464 128 464C172.2 464 208 428.2 208 384C208 339.8 172.2 303.1 128 303.1z" />
+        </svg>
+      </button>
+
+      <button
+        title="spans"
+        class="h-full rounded p-2 hover:bg-slate-100"
+        x-on:click="
+            hideSpan ? hideSpan = false : hideSpan = true,
+            hideInline ? '' : hideInline = true,
+            hideType ? '' : hideType = true,
+            hideLabel ? '' : hideLabel = true"
+      >
+        <svg :class="!hideSpan ? 'fill-slate-900' : 'fill-slate-400'" class="h-[12px] w-[12px] " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path d="M406.6 374.6l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224l-293.5 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288l293.5 0-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
+        </svg>
+      </button>
+      <button
+        title="vertical / horisontal"
+        class="h-full rounded p-2 hover:bg-slate-100"
+        x-on:click="
+            hideInline ? hideInline = false : hideInline = true,
+            hideLabel ? hideLabel = false : '',
+            hideType ? '' : hideType = true,
+            hideSpan ? '' : hideSpan = true"
+      >
+        <svg :class="hideInline ? 'fill-slate-400' : 'fill-slate-900'" class="h-[12px] w-[12px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H463.5c0 0 0 0 0 0h.4c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V448c0 17.7 14.3 32 32 32s32-14.3 32-32V396.9l17.6 17.5 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352H176c17.7 0 32-14.3 32-32s-14.3-32-32-32H48.4c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z" />
+        </svg>
+      </button>
+      <button class="h-full rounded p-2 hover:bg-slate-100" x-on:click="hideAll = true, hideControls = true,  hideType = true, hideSpan = true, hideInline = true , hideLabel = true" x-show="!hideAll">
+        <svg class="h-[12px] w-[12px] fill-slate-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+          <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z" />
+        </svg>
+      </button>
+      <button title="hide Label" class="h-full rounded p-2 hover:bg-slate-100" x-on:click="hideLabel = !hideLabel">
+        <svg :class="!hideLabel ? 'fill-slate-900' : 'fill-slate-400' " class="h-[12px] w-[12px] " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path d="M80 144C80 126.3 94.33 112 112 112C129.7 112 144 126.3 144 144C144 161.7 129.7 176 112 176C94.33 176 80 161.7 80 144zM197.5 32C214.5 32 230.7 38.74 242.7 50.75L418.7 226.7C443.7 251.7 443.7 292.3 418.7 317.3L285.3 450.7C260.3 475.7 219.7 475.7 194.7 450.7L18.75 274.7C6.743 262.7 0 246.5 0 229.5V80C0 53.49 21.49 32 48 32L197.5 32zM52.69 240.8L228.7 416.8C234.9 423.1 245.1 423.1 251.3 416.8L384.8 283.3C391.1 277.1 391.1 266.9 384.8 260.7L208.8 84.69C205.8 81.69 201.7 80 197.5 80H48V229.5C48 233.7 49.69 237.8 52.69 240.8L52.69 240.8z" />
+        </svg>
+      </button>
+    </div>
+    <div class="flex items-center gap-2">
+      <div>
+        <button title="controls" class="h-full rounded p-2 hover:bg-slate-100" x-on:click="hideControls = !hideControls">
+          <!-- <span x-text="hideControls"></span> -->
+          <svg :class=" hideControls ? 'fill-slate-400': 'fill-slate-900'" class="h-[16px] w-[16px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path
+              d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336c44.2 0 80-35.8 80-80s-35.8-80-80-80s-80 35.8-80 80s35.8 80 80 80z"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="my-2 rounded-md border-2 border-slate-200 px-1 hover:bg-slate-50">
+        <span class="px-2"> Add sections </span>
+        <button class="p-1 px-2" x-on:click="sections--">-</button>
+        <span x-text="sections" class="min-w-[3rem]"> </span>
+        <button class="p-1 px-2" x-on:click="sections++">+</button>
+      </div>
+    </div>
+  </div>
+
+  <template title="section" x-for="i in sections">
+    <div
+      :class="{
+        'max-w-[900px]' : limit, 
+      }"
+      class="mx-auto "
+      x-data="{ 
+        fields: 4,
+        hideSectionTitle: true,
+        col: 2,
+        limit: true,
+        maxCol: 20,
+        types: [
+          {
+            id: 1,
+            type: 'input'
+          },
+          {
+            id: 2,
+            type: 'text'
+          },
+          {
+            id: 3,
+            type: 'select'
+          },
+          {
+            id: 4,
+            type: 'checkbox'
+          },
+          {
+            id: 5,
+            type: 'radio'
+          },
+          {
+            id: 6,
+            type: 'toggle'
+          },
+          {
+            id: 7,
+            type: 'fileInput'
+          }
+        ]
+        }"
+    >
+      <div x-show="!hideControls" x-transition>
+        <div class="xxray mx-auto mt-3 max-w-[900px] rounded bg-slate-100">
+          <div class="flex justify-between px-2">
+            <div class="flex items-center gap-2">
+              <div class="my-2 flex items-center rounded border-2 border-slate-200 px-1">
+                <span class="ml-1 hidden md:inline-flex"> Fields </span>
+                <svg class="mx-2 h-[16px] w-[16px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                  <path d="M72 48C85.25 48 96 58.75 96 72V120C96 133.3 85.25 144 72 144V232H128C128 218.7 138.7 208 152 208H200C213.3 208 224 218.7 224 232V280C224 293.3 213.3 304 200 304H152C138.7 304 128 293.3 128 280H72V384C72 388.4 75.58 392 80 392H128C128 378.7 138.7 368 152 368H200C213.3 368 224 378.7 224 392V440C224 453.3 213.3 464 200 464H152C138.7 464 128 453.3 128 440H80C49.07 440 24 414.9 24 384V144C10.75 144 0 133.3 0 120V72C0 58.75 10.75 48 24 48H72zM160 96C160 82.75 170.7 72 184 72H488C501.3 72 512 82.75 512 96C512 109.3 501.3 120 488 120H184C170.7 120 160 109.3 160 96zM288 256C288 242.7 298.7 232 312 232H488C501.3 232 512 242.7 512 256C512 269.3 501.3 280 488 280H312C298.7 280 288 269.3 288 256zM288 416C288 402.7 298.7 392 312 392H488C501.3 392 512 402.7 512 416C512 429.3 501.3 440 488 440H312C298.7 440 288 429.3 288 416z" />
+                </svg>
+                <button class="min-w-[1rem] p-1 px-2" disable x-show="!fields">-</button>
+                <button class="min-w-[1rem] p-1 px-2" x-show="fields" x-on:click="fields--">-</button>
+                <span x-text="fields" class="flex min-w-[3rem] justify-center"> </span>
+                <button class="min-w-[1rem] p-1 px-2" x-on:click="fields++">+</button>
+              </div>
+              <div class="my-2 flex items-center rounded border-2 border-slate-200 px-1">
+                <span class="ml-1 hidden md:inline-flex"> Columns </span>
+                <svg class="mx-2 h-[16px] w-[16px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                  <path d="M0 96C0 60.65 28.65 32 64 32H576C611.3 32 640 60.65 640 96V416C640 451.3 611.3 480 576 480H64C28.65 480 0 451.3 0 416V96zM448 432H576C584.8 432 592 424.8 592 416V96C592 87.16 584.8 80 576 80H448V432zM400 80H240V432H400V80zM192 432V80H64C55.16 80 48 87.16 48 96V416C48 424.8 55.16 432 64 432H192z" />
+                </svg>
+
+                <button class="p-1 px-2" disable x-show="col === 1">-</button>
+                <button class="p-1 px-2" x-show="col > 1" x-on:click="col--">-</button>
+                <span x-text="col" class="flex min-w-[3rem] justify-center"> </span>
+                <button class="p-1 px-2" x-show="col < maxCol" x-on:click="col++">+</button>
+                <button class="p-1 px-2" x-show="col > maxCol - 1">+</button>
+              </div>
+              <button x-on:click="hideSectionTitle = !hideSectionTitle">
+                <span x-show="!hideSectionTitle">Show</span>
+                <span x-show="hideSectionTitle">Hide</span>
+                title
+              </button>
+            </div>
+            <div class="flex gap-1">
+              {{ $showMax := false }}
+              {{ if $showMax }}
+                <div class="my-2 flex items-center rounded border-2 border-slate-200 px-2">
+                  <span class="flex h-full items-center border-r-2 border-slate-200 pr-2"> MaxCol </span>
+                  <button class="p-1 px-2" x-on:click="maxCol--">-</button>
+                  <span x-text="maxCol" class="flex h-full min-w-[3rem] items-center justify-center"> </span>
+                  <button class="p-1 px-2" x-on:click="maxCol++">+</button>
+                </div>
+              {{ end }}
+              <button
+                :class="{
+                      'fill-green-400': limit,
+                      'fill-red-400': !limit,
+                    }"
+                class="my-2 rounded  p-1 px-3"
+                x-on:click="limit = ! limit"
+              >
+                <svg x-show="limit" class="h-[16px] w-[16px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                  <path d="M400 200V113.9L257.9 256L400 398.1V312C400 298.8 410.8 288 424 288S448 298.8 448 312v144c0 3.125-.6387 6.238-1.854 9.172c-2.432 5.863-7.104 10.54-12.96 12.97C430.2 479.4 427.1 480 424 480h-144C266.8 480 256 469.3 256 456s10.75-24 24-24h86.06L224 289.9L81.94 432H168C181.3 432 192 442.8 192 456S181.3 480 168 480h-144c-3.125 0-6.238-.6406-9.172-1.852c-5.863-2.434-10.54-7.105-12.97-12.97C.6406 462.3 0 459.1 0 456v-144C0 298.8 10.75 288 24 288S48 298.8 48 312v86.06L190.1 256L48 113.9V200C48 213.3 37.25 224 24 224S0 213.3 0 200v-144c0-3.125 .6387-6.238 1.854-9.172c2.432-5.863 7.104-10.54 12.96-12.97C17.75 32.64 20.87 32 24 32h144C181.3 32 192 42.75 192 56S181.3 80 168 80H81.94L224 222.1L366.1 80H280C266.8 80 256 69.25 256 56S266.8 32 280 32h144c3.125 0 6.238 .6406 9.172 1.852c5.863 2.434 10.54 7.105 12.97 12.97C447.4 49.75 448 52.87 448 56v144C448 213.3 437.3 224 424 224S400 213.3 400 200z" />
+                </svg>
+                <svg x-show="!limit" class="h-[16px] w-[16px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                  <path
+                    d="M200 32C186.8 32 176 42.75 176 56v86.06L56.97 23.03c-9.375-9.375-24.56-9.375-33.94 0s-9.375 24.56 0 33.94L142.1 176H56C42.75 176 32 186.8 32 200s10.8 24.06 24.05 24.06L200 224c3.135 0 6.248-.6406 9.182-1.855c5.861-2.434 10.53-7.109 12.96-12.97C223.4 206.2 224 203.1 224 200l.0549-143.9C224.1 42.81 213.3 32 200 32zM302.8 222.1C305.8 223.4 308.9 224 312 224l143.9 .0576C469.2 224.1 480 213.3 480 200S469.3 176 456 176h-86.06l119-119c9.375-9.375 9.375-24.56 0-33.94s-24.56-9.375-33.94 0L336 142.1V56C336 42.75 325.3 32 312 32s-24.05 10.81-24.05 24.06L288 200c0 3.133 .6406 6.25 1.855 9.18C292.3 215 296.1 219.7 302.8 222.1zM369.9 336H456c13.25 0 24-10.75 24-24s-10.81-24.06-24.06-24.06L312 288c-3.135 0-6.248 .6406-9.182 1.855c-5.861 2.434-10.53 7.109-12.96 12.97C288.6 305.8 288 308.9 288 312l-.0567 143.9C287.9 469.2 298.8 480 312 480s24-10.75 24-24v-86.06l119 119c9.375 9.375 24.56 9.375 33.94 0s9.375-24.56 0-33.94L369.9 336zM209.2 289.9C206.2 288.6 203.1 288 200 288L56.06 287.9C42.81 287.9 32 298.8 32 312s10.75 24 24 24h86.06l-119 119c-9.375 9.375-9.375 24.56 0 33.94s24.56 9.375 33.94 0L176 369.9V456C176 469.3 186.8 480 200 480s24.06-10.81 24.06-24.06L224 312c0-3.133-.6406-6.25-1.855-9.18C219.7 296.1 215 292.3 209.2 289.9z"
+                  />
+                </svg>
+              </button>
+
+              <button title="RESET" class="my-2 rounded border-2 border-yellow-100 p-1 px-3" x-on:click=" col = 1, maxCol = 8, fields = 1, limit = true">
+                <svg class="h-[12px] w-[12px] fill-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                  <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div x-show="col > fields" class="my-2 rounded bg-yellow-50 p-2 px-3">
+        <div>
+          Hey!!! Add <span x-text="col - fields"></span> more
+          <span x-show="col - fields > 1">fileds</span>
+          <span x-show="col - fields === 1">filed</span>, pleasee 😃
+        </div>
+      </div>
+
+      <div
+        x-show="hideSectionTitle"
+        x-transition
+        :class="{
+          '' : limit, 
+        }"
+        class="mx-auto mt-4 flex max-w-[900px] items-center px-3"
+      >
+        <span class="text-lg font-bold"> Section title <span x-text="i"></span></span>
+
+        <div x-show="col" class="m-2 rounded ">
+          <button
+            :class="{
+              'fill-green-400': limit,
+              'fill-red-400': !limit,
+            }"
+            class="flex items-center p-1"
+            x-on:click="limit = ! limit"
+          >
+            <svg x-show="limit" class="h-[12px] w-[12px] " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+              <path d="M400 200V113.9L257.9 256L400 398.1V312C400 298.8 410.8 288 424 288S448 298.8 448 312v144c0 3.125-.6387 6.238-1.854 9.172c-2.432 5.863-7.104 10.54-12.96 12.97C430.2 479.4 427.1 480 424 480h-144C266.8 480 256 469.3 256 456s10.75-24 24-24h86.06L224 289.9L81.94 432H168C181.3 432 192 442.8 192 456S181.3 480 168 480h-144c-3.125 0-6.238-.6406-9.172-1.852c-5.863-2.434-10.54-7.105-12.97-12.97C.6406 462.3 0 459.1 0 456v-144C0 298.8 10.75 288 24 288S48 298.8 48 312v86.06L190.1 256L48 113.9V200C48 213.3 37.25 224 24 224S0 213.3 0 200v-144c0-3.125 .6387-6.238 1.854-9.172c2.432-5.863 7.104-10.54 12.96-12.97C17.75 32.64 20.87 32 24 32h144C181.3 32 192 42.75 192 56S181.3 80 168 80H81.94L224 222.1L366.1 80H280C266.8 80 256 69.25 256 56S266.8 32 280 32h144c3.125 0 6.238 .6406 9.172 1.852c5.863 2.434 10.54 7.105 12.97 12.97C447.4 49.75 448 52.87 448 56v144C448 213.3 437.3 224 424 224S400 213.3 400 200z" />
+            </svg>
+            <svg x-show="!limit" class="h-[12px] w-[12px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+              <path
+                d="M200 32C186.8 32 176 42.75 176 56v86.06L56.97 23.03c-9.375-9.375-24.56-9.375-33.94 0s-9.375 24.56 0 33.94L142.1 176H56C42.75 176 32 186.8 32 200s10.8 24.06 24.05 24.06L200 224c3.135 0 6.248-.6406 9.182-1.855c5.861-2.434 10.53-7.109 12.96-12.97C223.4 206.2 224 203.1 224 200l.0549-143.9C224.1 42.81 213.3 32 200 32zM302.8 222.1C305.8 223.4 308.9 224 312 224l143.9 .0576C469.2 224.1 480 213.3 480 200S469.3 176 456 176h-86.06l119-119c9.375-9.375 9.375-24.56 0-33.94s-24.56-9.375-33.94 0L336 142.1V56C336 42.75 325.3 32 312 32s-24.05 10.81-24.05 24.06L288 200c0 3.133 .6406 6.25 1.855 9.18C292.3 215 296.1 219.7 302.8 222.1zM369.9 336H456c13.25 0 24-10.75 24-24s-10.81-24.06-24.06-24.06L312 288c-3.135 0-6.248 .6406-9.182 1.855c-5.861 2.434-10.53 7.109-12.96 12.97C288.6 305.8 288 308.9 288 312l-.0567 143.9C287.9 469.2 298.8 480 312 480s24-10.75 24-24v-86.06l119 119c9.375 9.375 24.56 9.375 33.94 0s9.375-24.56 0-33.94L369.9 336zM209.2 289.9C206.2 288.6 203.1 288 200 288L56.06 287.9C42.81 287.9 32 298.8 32 312s10.75 24 24 24h86.06l-119 119c-9.375 9.375-9.375 24.56 0 33.94s24.56 9.375 33.94 0L176 369.9V456C176 469.3 186.8 480 200 480s24.06-10.81 24.06-24.06L224 312c0-3.133-.6406-6.25-1.855-9.18C219.7 296.1 215 292.3 209.2 289.9z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        :class="{
+          'max-w-[900px]' : limit, 
+        }"
+        class="mx-auto  px-3"
+      >
+        <div
+          x-data="{ defaultFieldType: 'input'}"
+          :class="{
+            'grid-cols-1' : col === 1, 
+            'grid-cols-1 lg:grid-cols-2' : col === 2,
+            'grid-cols-1 lg:grid-cols-3' : col === 3,
+            'grid-cols-1 md:grid-cols-2 lg:grid-cols-4' : col === 4,
+            'grid-cols-1 lg:grid-cols-5' : col === 5,
+            'grid-cols-1 md:grid-cols-2 lg:grid-cols-6' : col === 6,
+            'grid-cols-1 lg:grid-cols-7' : col === 7,
+            'grid-cols-1 md:grid-cols-4 lg:grid-cols-8' : col === 8,
+            'grid-cols-1 md:grid-cols-3 lg:grid-cols-9' : col === 9,
+            'grid-cols-1 md:grid-cols-2 lg:grid-cols-10' : col === 10,
+            'grid-cols-1 lg:grid-cols-11' : col === 11,
+            'grid-cols-1 md:grid-cols-4 lg:grid-cols-12' : col === 12,
+            'grid-cols-1 lg:grid-cols-[repeat(13, minmax(0, 1fr))]' : col === 13,
+            'grid-cols-1 lg:grid-cols-[repeat(14, minmax(0, 1fr))]' : col === 14,
+            'grid-cols-1 lg:grid-cols-[repeat(15, minmax(0, 1fr))]' : col === 15,
+            'grid-cols-1 lg:grid-cols-[repeat(16, minmax(0, 1fr))]' : col === 16,
+            'grid-cols-1 lg:grid-cols-[repeat(17, minmax(0, 1fr))]' : col === 17,
+            'grid-cols-1 lg:grid-cols-[repeat(18, minmax(0, 1fr))]' : col === 18,
+            'grid-cols-1 lg:grid-cols-[repeat(19, minmax(0, 1fr))]' : col === 19,
+            'grid-cols-1 lg:grid-cols-[repeat(20, minmax(0, 1fr))]' : col === 20,
+            'grid-cols-1 lg:grid-cols-[repeat(21, minmax(0, 1fr))]' : col === 21,
+            'grid-cols-1 lg:grid-cols-[repeat(22, minmax(0, 1fr))]' : col === 22
+        }"
+          class="xdev grid gap-4"
+        >
+          <template title="fields" x-for="i in fields">
+            <div
+              x-data="{span: 1, inline: false, fieldType: defaultFieldType }"
+              x-show="maxCol <= 22"
+              :class="{
+                'col-span-1' : span === 1,
+                'col-span-2' : span === 2,
+                'col-span-3' : span === 3,
+                'col-span-4' : span === 4,
+                'col-span-5' : span === 5,
+                'col-span-6' : span === 6,
+                'col-span-7' : span === 7,
+                'col-span-8' : span === 8,
+                'col-span-9' : span === 9,
+                'col-span-10' : span === 10,
+                'col-span-12' : span === 12,
+                'col-span-13' : span === 13,
+                'col-span-14' : span === 14,
+                'col-span-15' : span === 15,
+                'col-span-16' : span === 16,
+                'col-span-17' : span === 17,
+                'col-span-18' : span === 18,
+                'col-span-19' : span === 19,
+                'col-span-20' : span === 20,
+                'col-span-11' : span === 21,
+                'col-span-12' : span === 22,
+                'grid grid-cols-2' : inline,
+                'gap-4': inline === true
+              }"
+              class="mb-2 rounded pt-2 hover:ring hover:ring-blue-100 hover:ring-offset-2"
+              x-id="['field']"
+            >
+              {{ partial "components/molecules/form-label.html" }}
+              <div x-show="fieldType === 'input'">
+                <input :placeholder="fieldType" type="text" :id="$id('field')" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 " placeholder="John" required />
+              </div>
+              <div x-show="fieldType === 'text'">
+                <textarea :placeholder="fieldType" id="message" rows="4" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "></textarea>
+              </div>
+              <div x-show="fieldType === 'select'">
+                <select :id="$id('field')" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 ">
+                  <option selected>Choose a country</option>
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="FR">France</option>
+                  <option value="DE">Germany</option>
+                </select>
+              </div>
+              <div x-show="fieldType === 'radio'">
+                <div class="flex gap-3 pt-3 pb-2">
+                  <div class="flex items-center">
+                    <input id="default-radio-1" type="radio" value="" name="default-radio" class="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 " />
+                    <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 ">Default radio</label>
+                  </div>
+                  <div class="flex items-center">
+                    <input checked id="default-radio-2" type="radio" value="" name="default-radio" class="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 " />
+                    <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 ">Checked state</label>
+                  </div>
+                </div>
+              </div>
+              <div x-show="fieldType === 'fileInput'">
+                <label class="mb-2 block text-sm font-medium text-gray-900 " :for="$id('field')">Upload file</label>
+                <input :id="$id('field')" class="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none " aria-describedby="file_input_help" id="file_input" type="file" />
+                <p class="mt-1 text-sm text-gray-500 " id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+              </div>
+              <div x-show="fieldType === 'toggle'">
+                <label :for="$id('field') + 1" xfor="default-toggle" class="relative inline-flex cursor-pointer items-center">
+                  <input type="checkbox" value="" :id="$id('field') + 1" xid="default-toggle" class="peer sr-only" />
+                  <div class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:top-[2px] after:left-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 "></div>
+                  <span class="ml-3 text-sm font-medium text-gray-900 ">Toggle me</span>
+                </label>
+              </div>
+              <div x-show="fieldType === 'checkbox'">
+                <div class="flex gap-3 pt-3 pb-2">
+                  <div class="flex items-center">
+                    <input :id="$id('field') + 1" type="checkbox" value="" class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 " />
+                    <label :for="$id('field') + 1" class="ml-2 text-sm font-medium text-gray-900 ">Default checkbox</label>
+                  </div>
+                  <div class="flex items-center">
+                    <input :id="$id('field') + 2" type="checkbox" value="" class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 " />
+                    <label :for="$id('field') + 2" class="ml-2 text-sm font-medium text-gray-900 ">Checked state</label>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-2 rounded bg-red-50 p-2 text-xs italic text-red-500" x-show="col < span && !inline">span is bigger than columns</p>
+            </div>
+            <template> input </template>
+          </template>
+        </div>
+      </div>
+    </div>
+  </template>
+</div>

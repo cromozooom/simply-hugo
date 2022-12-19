@@ -1,0 +1,263 @@
+<div
+  class="wdx-card-pills {{ if .bg }}
+    bg-info-110 dark:bg-info-710
+  {{ end }} min-h-[30rem] w-full py-8"
+>
+  <div
+    class="
+    xxl:px-0 mx-auto flex w-full items-center justify-between py-3
+      px-2  sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1536px]"
+  >
+    <div class="text-lg font-bold text-gray-500 dark:text-gray-500">Activities & Action Overview</div>
+    <a href="#" class="text-info-800 dark:text-info-300">
+      <span class="underline">Refresh</span>
+      <i class="fas fa-sync-alt text-info-400 ml-2"></i>
+    </a>
+  </div>
+
+  <div
+    class="
+    xxl:px-0 mx-auto grid w-full gap-6 px-2 sm:max-w-[640px]
+     sm:grid-cols-1 md:max-w-[768px] md:grid-cols-2 lg:max-w-[1024px] lg:grid-cols-4 xl:max-w-[1280px] 2xl:max-w-[1536px]"
+    x-data="{ tiles:
+      [
+        { 
+          id: 1,
+          title: 'Meetings and phone calls',
+          color: 'gray',
+          icon: 'phone',
+          items: [
+            {
+              'title': 'KYC Preparation',
+              'count': 6,
+              'class': 'text-red-500' 
+            },
+            {
+              'title': 'KYC In Progress',
+              'count': 57
+            },
+            {
+              'title': 'Submitted for Approval',
+              'count': 9999
+            },
+            {
+              'title': 'KYC Portal Updates Pending Review',
+              'count': 1
+            },
+            {
+              'title': 'Risk Assessment Pending',
+              'count': 53
+            },
+            {
+              'title': 'Pre-booked Onboarding cases (> 6 Month)',
+              'count': 3
+            },
+            {
+              'title': 'Submitted for Approval',
+              'count': 233
+            },
+            {
+              'title': 'With Decision Committee',
+              'count': 0
+            }
+          ]
+        },
+        
+        { 
+          id: 1,
+          title: 'Task manager',
+          color: 'success',
+          icon: 'calendar',
+          items: [
+            {
+              'title': 'KYC Preparation',
+              'count': 6,
+              'class': 'text-red-500' 
+            },
+            {
+              'title': 'KYC In Progress',
+              'count': 57
+            },
+            {
+              'title': 'Submitted for Approval',
+              'count': 9999
+            },
+            {
+              'title': 'KYC Portal Updates Pending Review',
+              'count': 1
+            },
+            {
+              'title': 'Risk Assessment Pending',
+              'count': 53
+            },
+            {
+              'title': 'Pre-booked Onboarding cases (> 6 Month)',
+              'count': 3
+            },
+            {
+              'title': 'Submitted for Approval',
+              'count': 233
+            },
+            {
+              'title': 'With Decision Committee',
+              'count': 0
+            }
+          ]
+        },
+        { 
+          id: 1,
+          title: 'Meetings and phone calls',
+          color: 'danger',
+          icon: 'phone',
+          items: [
+            {
+              'title': 'KYC Preparation',
+              'count': 6,
+              'class': 'text-red-500' 
+            },
+            {
+              'title': 'KYC In Progress',
+              'count': 57
+            },
+            {
+              'title': 'Submitted for Approval',
+              'count': 9999
+            },
+            {
+              'title': 'KYC Portal Updates Pending Review',
+              'count': 1
+            },
+            {
+              'title': 'Risk Assessment Pending',
+              'count': 53
+            },
+            {
+              'title': 'Pre-booked Onboarding cases (> 6 Month)',
+              'count': 3
+            },
+            {
+              'title': 'Submitted for Approval',
+              'count': 233
+            },
+            {
+              'title': 'With Decision Committee',
+              'count': 0
+            }
+          ]
+        },
+        { 
+          id: 1,
+          title: 'yellow and phone calls',
+          color: 'warning',
+          icon: 'calendar',
+          items: [
+            {
+              'title': 'KYC Preparation',
+              'count': 6,
+              'class': 'text-red-500' 
+            },
+            {
+              'title': 'KYC In Progress',
+              'count': 57
+            },
+            {
+              'title': 'Submitted for Approval',
+              'count': 9999
+            },
+            {
+              'title': 'KYC Portal Updates Pending Review',
+              'count': 1
+            },
+            {
+              'title': 'Risk Assessment Pending',
+              'count': 53
+            },
+            {
+              'title': 'Pre-booked Onboarding cases (> 6 Month)',
+              'count': 3
+            },
+            {
+              'title': 'Submitted for Approval',
+              'count': 233
+            },
+            {
+              'title': 'With Decision Committee',
+              'count': 0
+            }
+          ]
+        },
+      ]
+    }"
+  >
+    <template x-for="tile in tiles">
+      <div class="card-pills shadow-info-55 dark:bg-info-790 rounded-[6px] border border-t-0 border-slate-100 bg-white shadow-md dark:border-0">
+        <div
+          class="card-pills--header bg-info-40 dark:border-info-700 flex h-[4.2rem] border-b border-b-slate-50"
+          :class="{
+            'text-slate-800 dark:text-gray-500': tile.color === 'gray',
+            'text-success-800 dark:text-success-500': tile.color === 'success',
+            'text-warning-700 dark:text-warning-500': tile.color === 'warning',
+            'text-danger-800 dark:text-danger-500': tile.color === 'danger',
+        }"
+        >
+          <div class="card-pills--title-icon-container flex min-w-[3.2rem] items-center justify-center">
+            <i
+              class="fas fa-phone-alt card-pills--title-icon text-xl"
+              x-show="tile.icon === 'phone'"
+              :class="{
+                'text-slate-400': tile.color === 'gray',
+                'text-success-400': tile.color === 'success',
+                'text-warning-400': tile.color === 'warning',
+                'text-danger-400': tile.color === 'danger',}
+              "
+            ></i>
+
+            <i
+              class="fas fa-calendar-day card-pills--title-icon text-xl"
+              x-show="tile.icon === 'calendar'"
+              :class="{
+                'text-slate-400': tile.color === 'gray',
+                'text-success-400': tile.color === 'success',
+                'text-warning-400': tile.color === 'warning',
+                'text-danger-400': tile.color === 'danger',}
+              "
+            ></i>
+          </div>
+          <div class="card-pills--title flex grow items-center pl-2 font-bold" x-text="tile.title"></div>
+          <div class="card-pills--weight mr-3 flex items-center justify-center">
+            <i
+              class="far fa-arrow-alt-circle-up card-pills--title-icon dark:bg-info-800 flex h-[1.8rem] w-[1.8rem] items-center justify-center rounded-full bg-white text-xl"
+              :class="{
+                'text-slate-400': tile.color === 'gray',
+                'text-success-400': tile.color === 'success',
+                'text-warning-400': tile.color === 'warning',
+                'text-danger-400': tile.color === 'danger',}
+              "
+            ></i>
+          </div>
+        </div>
+
+        <ul class="card-pills--list list-none p-0">
+          <template x-for="item in tile.items">
+            <li class="m-0 p-0">
+              <a href="#" class="hover:bg-info-40 flex justify-between px-3 py-3 no-underline">
+                <span class="card-pills--text text-sm dark:text-gray-400" x-text="item.title"></span>
+                <div>
+                  <span
+                    :class="{ 
+                      'bg-white dark:bg-info-700 text-slate-400': item.count === 0,
+                      ' bg-success-500 bg-opacity-30 text-success-500': item.count >= 1,
+                      'bg-warning-500  bg-opacity-30 text-warning-500': item.count >= 100,
+                    }"
+                    class="card-pills--counter rounded-md px-2 py-1 text-sm"
+                    x-text="item.count"
+                  ></span>
+                </div>
+              </a>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </template>
+  </div>
+</div>

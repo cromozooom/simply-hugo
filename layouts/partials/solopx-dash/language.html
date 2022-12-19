@@ -1,0 +1,43 @@
+<div class="ml-0 sm:ml-3" x-data="lang()" class="relative">
+  <button x-on:click="open = !open" @click.away="open = false" class="dark:bg-darkNeutral-900 flex items-center rounded-md bg-neutral-100/50 px-3 py-2">
+    <i class="fas fa-globe dark:text-darkNeutral-500 text-neutral-400"></i>
+    <span class="dark:text-darkNeutral-200 px-2 text-sm text-neutral-800">EN</span>
+    <i class="fas fa-angle-down text-brand-400"></i>
+  </button>
+  <div x-show="open" x-on:click.away="close" data-popper-placement="bottom" class="w-46 dark:bg-darkNeutral-600 absolute z-10 overflow-hidden rounded-md bg-white shadow-md shadow-neutral-200/50 dark:shadow-none">
+    <ul class="text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+      <li>
+        <button class="hover:text-brand-900 dark:hover:bg-neutralDark-700/30 group flex w-full items-center justify-start px-4 py-2  hover:bg-neutral-100/50 dark:hover:text-white">
+          <img src="https://flagcdn.com/fr.svg" width="30" class="mr-3" alt="fr" />
+          Franch
+        </button>
+      </li>
+      <li>
+        <button class="hover:text-brand-900 dark:hover:bg-neutralDark-700 group flex w-full items-center justify-start px-4 py-2 hover:bg-neutral-100/50 hover:bg-opacity-30 dark:hover:text-white">
+          <img src="https://flagcdn.com/de.svg" width="30" class="mr-3" alt="de" />
+          Dutch
+        </button>
+      </li>
+      <li>
+        <button class="hover:text-brand-900 dark:hover:bg-neutralDark-700 group flex w-full items-center justify-start px-4 py-2 hover:bg-neutral-100/50 hover:bg-opacity-30 dark:hover:text-white">
+          <img src="https://flagcdn.com/es.svg" width="30" class="mr-3" alt="es" />
+          Spanish
+        </button>
+      </li>
+      <li>
+        <button class="hover:text-brand-900 dark:hover:bg-neutralDark-700 group flex w-full items-center justify-start px-4 py-2 hover:bg-neutral-100/50 hover:bg-opacity-30 dark:hover:text-white"><img src="https://flagcdn.com/it.svg" width="30" class="mr-3" alt="it" />Italian</button>
+      </li>
+      <li>
+        <button class="hover:text-brand-900 dark:hover:bg-neutralDark-700 group flex w-full items-center justify-start px-4 py-2 hover:bg-neutral-100/50 hover:bg-opacity-30 dark:hover:text-white"><img src="https://flagcdn.com/ro.svg" width="30" class="mr-3" alt="ro" />Romanian</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function lang() {
+    return {
+      open: false,
+    };
+  }
+</script>

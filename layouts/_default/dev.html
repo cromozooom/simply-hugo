@@ -1,0 +1,17 @@
+{{ define "main" }}
+  {{ partial "blocks/dev.html" ( dict "zIndex" "360" ) }}
+  <div class="">
+    {{ partial "blocks/search.html" . }}
+    {{ partial "blocks/filters.html" . }}
+    {{ partial "blocks/table.html" . }}
+    {{ partial "blocks/play/filter-sel-2.html" . }}
+  </div>
+
+  {{/* {{ partial "blocks/tabs.html" . }}
+  {{ partial "blocks/user.html" (dict "bg" true "user" $.Site.Data.user.user ) }}
+  {{ partial "blocks/numbers.html" (dict "bg" true "numbers" $.Site.Data.numbers.numbers ) }}
+  {{ partial "blocks/users.html" . }}
+  {{ partial "blocks/card-pills.html" (dict "bg" true ) }}
+  {{ partial "blocks/card-pills.html" (dict "bg" false ) }}
+  {{ partial "blocks/card-pills.html" (dict "bg" true ) }} */}}
+{{ end }}

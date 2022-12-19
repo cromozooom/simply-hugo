@@ -1,0 +1,51 @@
+<div>
+  <label class="mb-2 block text-slate-700" :for="$id('field')">
+    <div
+      class="flex "
+      :class="{
+          'flex-row justify-between items-center': !inline,
+          'flex-col': inline,
+        }"
+    >
+      <div class="flex items-center justify-items-center text-xs">
+        <div x-show="!hideInline" x-transition>
+          <div class="mr-2">
+            <button class="flex min-w-[1rem] items-center" x-on:click="inline = !inline">
+              <svg x-show="inline" class="h-[12px] w-[12px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                <path d="M399.1 88v336c0 13.25 10.76 24 24.02 24C437.2 448 448 437.3 448 424V88C448 74.75 437.2 64 423.1 64C410.7 64 399.1 74.75 399.1 88zM175.7 145.5l91.98 86.53h-243.6C10.76 232 0 242.8 0 256s10.76 24 24.02 24h243.6l-91.98 86.53C170.6 371.3 168.1 377.6 168.1 384c0 5.906 2.158 11.81 6.536 16.44c9.069 9.656 24.27 10.12 33.93 1.031l136.1-128c9.694-9.062 9.694-25.87 0-34.94l-136.1-128C198.9 101.4 183.7 101.9 174.6 111.6C165.5 121.2 165.1 136.4 175.7 145.5z" />
+              </svg>
+
+              <svg x-show="!inline" class="h-[12px] w-[12px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                <path d="M24 80.03h336c13.25 0 24-10.76 24-24.02S373.3 32 360 32H24C10.75 32 0 42.76 0 56.02S10.75 80.03 24 80.03zM81.47 304.2L168 212.1v243.8C168 469.2 178.8 480 192 480s24-10.77 24-24.04V212.1l86.53 92.05C307.3 309.2 313.6 311.7 320 311.7c5.906 0 11.81-2.16 16.44-6.541c9.656-9.076 10.12-24.29 1.031-33.96l-128-136.2c-9.062-9.702-25.88-9.702-34.94 0L46.53 271.2C37.44 280.9 37.91 296.1 47.56 305.2C57.19 314.3 72.38 313.9 81.47 304.2z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <span x-show="!hideLabel" x-transition class="text-xs font-bold text-slate-500">
+          Label for <span x-text="i"></span>
+          <span x-text="fieldType"></span>
+          <!-- <span x-text="col"></span>
+              <span x-text="span"></span> -->
+        </span>
+      </div>
+      <div class="flex items-center">
+        <template x-for="type in types" :key="type.id">
+          <button x-transition x-show="!hideType" :class="fieldType !== type.type ? '' : 'bg-slate-400 text-white'" class="h-full min-w-[1rem] rounded px-1 py-0 text-xs " x-on:click="fieldType = type.type" x-text="type.type"></button>
+        </template>
+
+        <div x-show="!hideSpan" x-transition class="flex items-center text-xs">
+          <div :class="col < span ? 'ring ring-red-400' : ''" class="rounded-xs ml-2 rounded bg-slate-100">
+            <button class="min-w-[1rem]" x-show="span === 1">-</button>
+            <button class="min-w-[1rem]" x-show="span > 1" x-on:click="span--">-</button>
+            <span x-text="span" class="min-w-[3rem]"> </span>
+            <button class="min-w-[1rem]" x-show="span > col">+</button>
+            <button class="min-w-[1rem]" x-show="span <= col" x-on:click="span++">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </label>
+  <p class="mt-2 rounded bg-red-50 p-2 text-xs italic text-red-500" x-show="col < span && inline">span is bigger than columns</p>
+</div>

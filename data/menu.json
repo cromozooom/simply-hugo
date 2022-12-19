@@ -1,0 +1,139 @@
+{
+    "cai": [
+        {
+            "title": false,
+            "items": [
+                {
+                    "title": "Home",
+                    "icon": "house",
+                    "notification": 0,
+                    "active": true
+                },
+                {
+                    "title": "Investor's profile",
+                    "icon": "head-side-brain",
+                    "notification": 0,
+                    "active": false
+                },
+                {
+                    "title": "Documents",
+                    "icon": "file",
+                    "notification": 0,
+                    "active": false
+                },
+                {
+                    "title": "Signatures",
+                    "icon": "file-signature",
+                    "notification": 0,
+                    "active": false
+                }
+            ]
+        }
+    ],
+    "menu": [
+        {
+            "title": "Main",
+            "items": [
+                {
+                    "title": "Dasboard",
+                    "icon": "tachometer",
+                    "notification": 1,
+                    "active": true
+                },
+                {
+                    "title": "Pages",
+                    "icon": "edit",
+                    "notification": 1,
+                    "active": false,
+                    "submenu": [
+                        {
+                            "title": "About us",
+                            "icon": false,
+                            "notification": 1
+                        },
+                        {
+                            "title": "Blog",
+                            "icon": false,
+                            "notification": 1
+                        },
+                        {
+                            "title": "Services",
+                            "icon": false,
+                            "notification": 1
+                        }
+                    ]
+                },
+                {
+                    "title": "Calendar",
+                    "icon": "calendar",
+                    "notification": 5,
+                    "active": false
+                },
+                {
+                    "title": "Map",
+                    "icon": "map",
+                    "notification": 0,
+                    "active": false
+                },
+                {
+                    "title": "Item",
+                    "icon": "paper-plane",
+                    "notification": 0,
+                    "active": false
+                }
+            ]
+        },
+        {
+            "title": "Secondary",
+            "items": [
+                {
+                    "title": "Dasboard",
+                    "icon": "tachometer",
+                    "notification": 90,
+                    "active": false
+                },
+                {
+                    "title": "Pages",
+                    "icon": "edit",
+                    "notification": 1,
+                    "active": false,
+                    "submenu": [
+                        {
+                            "title": "About us",
+                            "icon": false,
+                            "notification": 1
+                        },
+                        {
+                            "title": "Blog",
+                            "icon": false,
+                            "notification": 1
+                        },
+                        {
+                            "title": "Services",
+                            "icon": false,
+                            "notification": 1
+                        }
+                    ]
+                },
+                {
+                    "title": "Calendar",
+                    "icon": "calendar",
+                    "notification": 5,
+                    "active": false
+                },
+                {
+                    "title": "Map",
+                    "icon": "map",
+                    "notification": 2,
+                    "active": false
+                },
+                {
+                    "title": "Item",
+                    "icon": "paper-plane",
+                    "notification": 1,
+                    "active": false
+                }
+            ]
+        }
+    ]
+}
