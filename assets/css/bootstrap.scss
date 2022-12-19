@@ -2,5 +2,4 @@
 @use "sass:map";
 @use "sass:math";
 
-@import "bootrstrap/bootstrap.scss"; // BOOTSTRAP
-@import "bootrstrap/variables-theme"; // BOOTSTRAP
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
