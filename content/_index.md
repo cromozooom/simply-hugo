@@ -1,8 +1,8 @@
 ---
-tailwind: true
+#tailwind: true
+#alpine: true
 bootstrap: true
 jquery: true
-alpine: true
 
 title: Home
 header: Home
