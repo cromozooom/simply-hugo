@@ -7,8 +7,3 @@
 @import "../../node_modules/tailwindcss/utilities";
 
 @import "bootrstrap/variables-theme"; // BOOTSTRAP
-@import "variables";
-
-@layer components {
-  @import "mixins";
-}

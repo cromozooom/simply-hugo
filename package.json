@@ -5,11 +5,12 @@
   "author": "Razvan Nicu",
   "license": "ISC",
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.1",
     "@tailwindcss/typography": "^0.5.2",
     "autoprefixer": "^10.4.4",
-    "postcss": "^8.4.12",
+    "postcss": "^8.4.20",
     "postcss-cli": "^9.1.0",
     "postcss-import": "^14.1.0",
     "prettier": "^2.6.2",
@@ -18,9 +19,6 @@
     "tailwindcss": "^3.0.24"
   },
   "dependencies": {
-    "@jsplumb/browser-ui": "^5.12.3",
-    "choices.js": "^10.2.0",
-    "dart-sass": "^1.25.0",
-    "jsoneditor": "^9.9.2"
+    "dart-sass": "^1.25.0"
   }
 }

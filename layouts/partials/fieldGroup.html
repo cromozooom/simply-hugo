@@ -1,6 +1,0 @@
-{{ $inline := .inline }}
-<ul class="list-unstyled">
-  {{ range .fieldGroup }}
-    {{ partial "field.html" (dict "inline" $inline "field" . ) }}
-  {{ end }}
-</ul>
