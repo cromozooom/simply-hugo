@@ -1,0 +1,20 @@
+{
+  "cards": [
+    {
+      "name": "sample 1",
+      "asset": "assets-1.jpg"
+    },
+    {
+      "name": "sample 2",
+      "asset": "assets-2.jpg"
+    },
+    {
+      "name": "sample 3",
+      "asset": "assets-3.jpg"
+    },
+    {
+      "name": "sample 4",
+      "asset": "assets-4.jpg"
+    }
+  ]
+}
