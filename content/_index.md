@@ -1,6 +1,7 @@
 ---
 #tailwind: true
 #alpine: true
+fontAwsome: true
 bootstrap: true
 jquery: true
 
