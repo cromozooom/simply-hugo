@@ -1,12 +1,17 @@
 <title>{{ .Params.title | default "❌" }}</title>
 
-{{ .Scratch.Set "tailwind" false }}
+{{ .Scratch.Set "switchCss" false }}
+{{ .Scratch.Set "customB4" false }}
+{{ .Scratch.Set "b4" false }}
 {{ .Scratch.Set "b5" false }}
-{{ .Scratch.Set "bootstrapOrig" false }}
-{{ .Scratch.Set "bootstrap" false }}
+{{ .Scratch.Set "tailwind" false }}
+
 {{ .Scratch.Set "jquery" false }}
 {{ .Scratch.Set "alpine" false }}
 
+{{ if .Params.switchCss }}
+  {{ .Scratch.Set "switchCss" .Params.switchCss }}
+{{ end }}
 {{ if .Params.tailwind }}
   {{ .Scratch.Set "tailwind" .Params.tailwind }}
 {{ end }}
@@ -16,11 +21,11 @@
 {{ if .Params.b5 }}
   {{ .Scratch.Set "b5" .Params.b5 }}
 {{ end }}
-{{ if .Params.bootstrapOrig }}
-  {{ .Scratch.Set "bootstrapOrig" .Params.bootstrapOrig }}
+{{ if .Params.b4 }}
+  {{ .Scratch.Set "b4" .Params.b4 }}
 {{ end }}
-{{ if .Params.bootstrap }}
-  {{ .Scratch.Set "bootstrap" .Params.bootstrap }}
+{{ if .Params.customB4 }}
+  {{ .Scratch.Set "customB4" .Params.customB4 }}
 {{ end }}
 {{ if .Params.jquery }}
   {{ .Scratch.Set "jquery" .Params.jquery }}
@@ -29,11 +34,12 @@
   {{ .Scratch.Set "alpine" .Params.alpine }}
 {{ end }}
 
+{{ $switchCss := .Scratch.Get "switchCss" }}
 {{ $fontAwsome := .Scratch.Get "fontAwsome" }}
 {{ $tailwind := .Scratch.Get "tailwind" }}
 {{ $b5 := .Scratch.Get "b5" }}
-{{ $bootstrapOrig := .Scratch.Get "bootstrapOrig" }}
-{{ $bootstrap := .Scratch.Get "bootstrap" }}
+{{ $b4 := .Scratch.Get "b4" }}
+{{ $customB4 := .Scratch.Get "customB4" }}
 {{ $jquery := .Scratch.Get "jquery" }}
 {{ $alpine := .Scratch.Get "alpine" }}
 
@@ -49,37 +55,41 @@
   <link rel="stylesheet" href="{{ $fa.Permalink }}" integrity="{{ $fa.Data.Integrity }}" />
 {{- end -}}
 
-{{ if $b5 }}
-  {{ $b5Css := resources.Get "css/b5.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
-  <link rel="stylesheet" href="{{ $b5Css.RelPermalink }}" />
-  {{ $b5MinCSS := $b5Css | minify | fingerprint | resources.PostProcess }}
-  <link rel="stylesheet" href="{{ $b5MinCSS.Permalink }}" integrity="{{ $b5MinCSS.Data.Integrity }}" />
-{{- end -}}
-{{ if $bootstrapOrig }}
-  {{ $btOrigCss := resources.Get "css/bootstrapOrig.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
-  <link rel="stylesheet" href="{{ $btOrigCss.RelPermalink }}" />
-  {{ $btOrigMinCSS := $btOrigCss | minify | fingerprint | resources.PostProcess }}
-  <link rel="stylesheet" href="{{ $btOrigMinCSS.Permalink }}" integrity="{{ $btOrigMinCSS.Data.Integrity }}" />
-{{- end -}}
-{{ if $bootstrap }}
-  {{ $btCSS := resources.Get "css/bootstrap.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
-  <link rel="stylesheet" href="{{ $btCSS.RelPermalink }}" />
-  {{ $btMinCSS := $btCSS | minify | fingerprint | resources.PostProcess }}
-  <link rel="stylesheet" href="{{ $btMinCSS.Permalink }}" integrity="{{ $btMinCSS.Data.Integrity }}" />
+{{- if not $switchCss -}}
+  {{- if $b5 -}}
+    {{ $b5Css := resources.Get "css/b5.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+    <link rel="stylesheet" href="{{ $b5Css.RelPermalink }}" />
+    {{ $b5MinCSS := $b5Css | minify | fingerprint | resources.PostProcess }}
+    <link rel="stylesheet" href="{{ $b5MinCSS.Permalink }}" integrity="{{ $b5MinCSS.Data.Integrity }}" />
+  {{- end -}}
+  {{- if $b4 -}}
+    {{ $b4Css := resources.Get "css/b4.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+    <link rel="stylesheet" href="{{ $b4Css.RelPermalink }}" />
+    {{ $b4MinCSS := $b4Css | minify | fingerprint | resources.PostProcess }}
+    <link rel="stylesheet" href="{{ $b4MinCSS.Permalink }}" integrity="{{ $b4MinCSS.Data.Integrity }}" />
+  {{- end -}}
+  {{- if $customB4 -}}
+    {{ $customB4CSS := resources.Get "css/customB4.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+    <link rel="stylesheet" href="{{ $customB4CSS.RelPermalink }}" />
+    {{ $customB4MinCSS := $customB4CSS | minify | fingerprint | resources.PostProcess }}
+    <link rel="stylesheet" href="{{ $customB4MinCSS.Permalink }}" integrity="{{ $customB4MinCSS.Data.Integrity }}" />
+  {{- end -}}
+
+  {{- if $tailwind -}}
+    {{ $tailwindCss := resources.Get "css/tailwind.scss" | toCSS  (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+    <link rel="stylesheet" href="{{ $tailwindCss.RelPermalink }}" />
+    {{ $tailwindMinCSS := $tailwindCss | minify | fingerprint | resources.PostProcess }}
+    <link rel="stylesheet" href="{{ $tailwindMinCSS.Permalink }}" integrity="{{ $tailwindMinCSS.Data.Integrity }}" />
+  {{- end -}}
+{{- else -}}
+  <link id="cssLink" rel="stylesheet" href="/css/customB4.min.css" />
 {{- end -}}
 
-{{ if $tailwind }}
-  {{ $twCSS := resources.Get "css/styles.scss" | toCSS  (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
-  <link rel="stylesheet" href="{{ $twCSS.RelPermalink }}" />
-  {{ $twMinCSS := $twCSS | minify | fingerprint | resources.PostProcess }}
-  <link rel="stylesheet" href="{{ $twMinCSS.Permalink }}" integrity="{{ $twMinCSS.Data.Integrity }}" />
-{{- end -}}
-
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js" defer></script>
 {{ if $alpine }}
-  <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-  <script src="https://unpkg.com/alpinejs" defer></script>
+  <!-- <script defer src="/js/alpine.3.12.0.js"></script> -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="/js/clipboard.js"></script>
+  <script defer src="/js/collapse.js"></script>
 {{ end }}
 
 
@@ -91,6 +101,6 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 {{ end }}
 
-{{ if $bootstrap }}
+{{ if $b4 }}
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 {{ end }}

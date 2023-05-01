@@ -1,0 +1,45 @@
+{{ .Scratch.Set "switchCss" false }}
+{{ if .Params.switchCss }}
+  {{ .Scratch.Set "switchCss" .Params.switchCss }}
+{{ end }}
+{{ $switchCss := .Scratch.Get "switchCss" }}
+{{ if $switchCss }}
+  {{ $customB4CSS := resources.Get "css/customB4.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") | minify }}
+  {{ $b4Css := resources.Get "css/b4.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") | minify }}
+  {{ $b5Css := resources.Get "css/b5.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") | minify }}
+  {{ $tailwindCss := resources.Get "css/tailwind.scss" | toCSS  (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") | minify }}
+  <div class="container-fluid py-2">
+    <span style="display: none;">
+      {{ $customB4CSS.RelPermalink }}
+      {{ $b4Css.RelPermalink }}
+      {{ $b5Css.RelPermalink }}
+      {{ $tailwindCss.RelPermalink }}
+    </span>
+
+    <link id="cssLink" rel="stylesheet" x-bind:href="selectedCSS" />
+    <select
+      x-model="selectedCSS"
+      :class="{
+      'form-control': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
+      'form-select': selectedCSS === '/css/b5.min.css',
+    }"
+    >
+      <template x-for="option in cssOptions" :key="option.value">
+        <option :value="option.value" x-text="option.label"></option>
+      </template>
+    </select>
+  </div>
+  <script>
+    const app = Alpine.createApp({
+      watch: {
+        selectedCSS(newValue, oldValue) {
+          if (oldValue) {
+            const link = document.getElementById("cssLink");
+            link.href = newValue;
+          }
+        },
+      },
+    });
+    app.mount();
+  </script>
+{{ end }}

@@ -1,20 +1,6 @@
 {{ define "main" }}
   {{ $typo := 0 }}
 
-
-  <div class="container-fluid py-2">
-    <input type="checkbox" id="bootstrap-switcher" />
-    <label for="bootstrap-switcher">Switch Bootstrap CSS</label>
-    <script>
-      document.getElementById("bootstrap-switcher").addEventListener("change", function () {
-        const bootstrapLinks = document.querySelectorAll('link[href*="bootstrap"]');
-        bootstrapLinks.forEach((link) => {
-          link.disabled = !this.checked;
-        });
-      });
-    </script>
-  </div>
-
   {{ if $typo }}
     <div class="container">
       <h1>Heading 1</h1>
@@ -29,7 +15,13 @@
     <div class="row">
       <div class="col-4">
         <div class="d-flex flex-column rounded-lg bg-white pb-3 pt-2">
-          <div class="d-flex w-100 justify-content-between align-items-center pl-3  ps-3">
+          <div
+            class="d-flex w-100 justify-content-between align-items-center"
+            :class="{
+              'pl-3': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
+              'ps-3': selectedCSS === '/css/b5.min.css',
+            }"
+          >
             <h2 class="my-0 p-0">Contact forms</h2>
             <div class="btn-group" role="group" aria-label="Basic example">
               <button type="button" class="btn rounded-0 btn-link">
@@ -42,7 +34,12 @@
           </div>
           <div class="card mx-3 mt-3 pb-2">
             <div class="head bg-light xbg-secondary font-weight-bold d-flex justify-content-start align-items-center text-dark p-2">
-              <div class="me-3 mr-3">
+              <div
+                :class="{
+                  'mr-3': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
+                  'me-3': selectedCSS === '/css/b5.min.css',
+                }"
+              >
                 <i class="fa-regular fa-user"></i>
               </div>
               <span> Owner </span>
@@ -59,7 +56,13 @@
               <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center">KYC Incomplete</button>
               <button type="button" class="btn btn-outline-success d-flex justify-content-center align-items-center">
                 <span> AML Completed </span>
-                <div class="ml-3 ms-3">
+                <div
+                  class="ml-3 ms-3"
+                  :class="{
+                    'ml-3': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
+                    'ms-3': selectedCSS === '/css/b5.min.css',
+                  }"
+                >
                   <i class="fa-regular fa-check"></i>
                 </div>
               </button>
@@ -67,7 +70,12 @@
           </div>
           <div class="card mx-3 mt-3 pb-2">
             <div class="head bg-light xbg-secondary font-weight-bold d-flex justify-content-start align-items-center text-dark p-2">
-              <div class="me-3 mr-3">
+              <div
+                :class="{
+                  'mr-3': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
+                  'me-3': selectedCSS === '/css/b5.min.css',
+                }"
+              >
                 <i class="fa-regular fa-building"></i>
               </div>
               <span> Company Juridics </span>
@@ -84,7 +92,12 @@
               <button type="button" class="btn btn-outline-primary d-flex justify-content-center align-items-center">KYC Incomplete</button>
               <button type="button" class="btn btn-outline-success d-flex justify-content-center align-items-center">
                 <span> AML Completed </span>
-                <div class="ml-3 ms-3">
+                <div
+                  :class="{
+                    'ml-3': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
+                    'ms-3': selectedCSS === '/css/b5.min.css',
+                  }"
+                >
                   <i class="fa-regular fa-check"></i>
                 </div>
               </button>
@@ -92,7 +105,13 @@
           </div>
           <div class="d-grid mt-3 px-3">
             <button class="btn btn-primary btn-block">
-              <i class="fa-regular fa-plus mr-2"></i>
+              <i
+                class="fa-regular fa-plus"
+                :class="{
+                  'mr-2': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
+                  'me-2': selectedCSS === '/css/b5.min.css',
+                }"
+              ></i>
               Add new
             </button>
           </div>
@@ -116,7 +135,7 @@
               <i class="fa-regular fa-circle-user display-4 mb-3"></i>
               <h3>Your details</h3>
               <div>
-                <button class="btn btn-link rounded-0   ">Open form</button>
+                <button class="btn btn-link rounded-0">Open form</button>
               </div>
             </div>
 
@@ -124,21 +143,21 @@
               <i class="fa-regular fa-circle-user display-4 mb-3"></i>
               <h3>Communication details</h3>
               <div>
-                <button class="btn btn-link rounded-0   ">Open form</button>
+                <button class="btn btn-link rounded-0">Open form</button>
               </div>
             </div>
             <div class="card flex-fill xflex-grow-1 px-2 py-4 text-center">
               <i class="fa-regular fa-circle-user display-4 mb-3"></i>
               <h3>Communication details</h3>
               <div>
-                <button class="btn btn-link rounded-0   ">Open form</button>
+                <button class="btn btn-link rounded-0">Open form</button>
               </div>
             </div>
             <div class="card flex-fill xflex-grow-1 px-2 py-4 text-center">
               <i class="fa-regular fa-circle-user display-4 mb-3"></i>
               <h3>Communication details</h3>
               <div>
-                <button class="btn btn-link rounded-0   ">Open form</button>
+                <button class="btn btn-link rounded-0">Open form</button>
               </div>
             </div>
           </div>

@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
-  {{- partial "head.html" . -}}
-  <body>
+  <head>
+    {{- partial "head.html" . -}}
+  </head>
+  <body
+    x-data="{
+    cssOptions: [
+      { label: 'custom 4.6', value: '/css/customB4.min.css' },
+      { label: 'only 4.6', value: '/css/b4.min.css' },
+      { label: 'only 5', value: '/css/b5.min.css' },
+      { label: 'tailwind', value: '/css/tailwind.min.css' }
+    ],
+    selectedCSS: '/css/customB4.min.css'
+  }"
+  >
     {{- partial "header.html" . -}}
     {{- block "main" . }}{{- end }}
     {{- partial "footer.html" . -}}
