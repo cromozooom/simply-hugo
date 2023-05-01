@@ -43,7 +43,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
 {{ if $fontAwsome }}
-  <!-- {{ $opts := dict "transpiler" "dartsass" }} -->
   {{ $faCss := resources.Get "css/font-awsome.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
   <link rel="stylesheet" href="{{ $faCss.RelPermalink }}" />
   {{ $fa := $faCss | minify | fingerprint | resources.PostProcess }}
@@ -51,21 +50,18 @@
 {{- end -}}
 
 {{ if $b5 }}
-  <!-- {{ $opts := dict "transpiler" "dartsass" }} -->
   {{ $b5Css := resources.Get "css/b5.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
   <link rel="stylesheet" href="{{ $b5Css.RelPermalink }}" />
   {{ $b5MinCSS := $b5Css | minify | fingerprint | resources.PostProcess }}
   <link rel="stylesheet" href="{{ $b5MinCSS.Permalink }}" integrity="{{ $b5MinCSS.Data.Integrity }}" />
 {{- end -}}
 {{ if $bootstrapOrig }}
-  <!-- {{ $opts := dict "transpiler" "dartsass" }} -->
   {{ $btOrigCss := resources.Get "css/bootstrapOrig.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
   <link rel="stylesheet" href="{{ $btOrigCss.RelPermalink }}" />
   {{ $btOrigMinCSS := $btOrigCss | minify | fingerprint | resources.PostProcess }}
   <link rel="stylesheet" href="{{ $btOrigMinCSS.Permalink }}" integrity="{{ $btOrigMinCSS.Data.Integrity }}" />
 {{- end -}}
 {{ if $bootstrap }}
-  <!-- {{ $opts := dict "transpiler" "dartsass" }} -->
   {{ $btCSS := resources.Get "css/bootstrap.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
   <link rel="stylesheet" href="{{ $btCSS.RelPermalink }}" />
   {{ $btMinCSS := $btCSS | minify | fingerprint | resources.PostProcess }}

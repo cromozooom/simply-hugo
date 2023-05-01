@@ -2,9 +2,9 @@
 #tailwind: true
 alpine: true
 fontAwsome: true
-#bootstrapOrig: true
+bootstrapOrig: true
 b5: true
-#bootstrap: true
+bootstrap: true
 jquery: true
 
 title: Home
