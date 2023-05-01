@@ -1,6 +1,8 @@
 <title>{{ .Params.title | default "❌" }}</title>
 
 {{ .Scratch.Set "tailwind" false }}
+{{ .Scratch.Set "b5" false }}
+{{ .Scratch.Set "bootstrapOrig" false }}
 {{ .Scratch.Set "bootstrap" false }}
 {{ .Scratch.Set "jquery" false }}
 {{ .Scratch.Set "alpine" false }}
@@ -10,6 +12,12 @@
 {{ end }}
 {{ if .Params.fontAwsome }}
   {{ .Scratch.Set "fontAwsome" .Params.fontAwsome }}
+{{ end }}
+{{ if .Params.b5 }}
+  {{ .Scratch.Set "b5" .Params.b5 }}
+{{ end }}
+{{ if .Params.bootstrapOrig }}
+  {{ .Scratch.Set "bootstrapOrig" .Params.bootstrapOrig }}
 {{ end }}
 {{ if .Params.bootstrap }}
   {{ .Scratch.Set "bootstrap" .Params.bootstrap }}
@@ -23,6 +31,8 @@
 
 {{ $fontAwsome := .Scratch.Get "fontAwsome" }}
 {{ $tailwind := .Scratch.Get "tailwind" }}
+{{ $b5 := .Scratch.Get "b5" }}
+{{ $bootstrapOrig := .Scratch.Get "bootstrapOrig" }}
 {{ $bootstrap := .Scratch.Get "bootstrap" }}
 {{ $jquery := .Scratch.Get "jquery" }}
 {{ $alpine := .Scratch.Get "alpine" }}
@@ -32,16 +42,28 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
-
 {{ if $fontAwsome }}
   <!-- {{ $opts := dict "transpiler" "dartsass" }} -->
-  {{ $btCSS := resources.Get "css/font-awsome.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
-  <link rel="stylesheet" href="{{ $btCSS.RelPermalink }}" />
-  {{ $btMinCSS := $btCSS | minify | fingerprint | resources.PostProcess }}
-  <link rel="stylesheet" href="{{ $btMinCSS.Permalink }}" integrity="{{ $btMinCSS.Data.Integrity }}" />
+  {{ $faCss := resources.Get "css/font-awsome.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+  <link rel="stylesheet" href="{{ $faCss.RelPermalink }}" />
+  {{ $fa := $faCss | minify | fingerprint | resources.PostProcess }}
+  <link rel="stylesheet" href="{{ $fa.Permalink }}" integrity="{{ $fa.Data.Integrity }}" />
 {{- end -}}
 
+{{ if $b5 }}
+  <!-- {{ $opts := dict "transpiler" "dartsass" }} -->
+  {{ $b5Css := resources.Get "css/b5.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+  <link rel="stylesheet" href="{{ $b5Css.RelPermalink }}" />
+  {{ $b5MinCSS := $b5Css | minify | fingerprint | resources.PostProcess }}
+  <link rel="stylesheet" href="{{ $b5MinCSS.Permalink }}" integrity="{{ $b5MinCSS.Data.Integrity }}" />
+{{- end -}}
+{{ if $bootstrapOrig }}
+  <!-- {{ $opts := dict "transpiler" "dartsass" }} -->
+  {{ $btOrigCss := resources.Get "css/bootstrapOrig.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+  <link rel="stylesheet" href="{{ $btOrigCss.RelPermalink }}" />
+  {{ $btOrigMinCSS := $btOrigCss | minify | fingerprint | resources.PostProcess }}
+  <link rel="stylesheet" href="{{ $btOrigMinCSS.Permalink }}" integrity="{{ $btOrigMinCSS.Data.Integrity }}" />
+{{- end -}}
 {{ if $bootstrap }}
   <!-- {{ $opts := dict "transpiler" "dartsass" }} -->
   {{ $btCSS := resources.Get "css/bootstrap.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}

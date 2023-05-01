@@ -1,8 +1,10 @@
 ---
 #tailwind: true
-#alpine: true
+alpine: true
 fontAwsome: true
-bootstrap: true
+#bootstrapOrig: true
+b5: true
+#bootstrap: true
 jquery: true
 
 title: Home
