@@ -1,6 +1,17 @@
 {{ define "main" }}
   {{ $typo := 0 }}
+  {{ $pr := 0 }}
+  {{ if $pr }}
 
+    <ul>
+      {{ $data := getJSON "data/pr.json" }}
+      {{ range $index, $item := $data.pr }}
+        <li>
+          <p>{{ $item.createdBy.displayName }}</p>
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
   {{ if $typo }}
     <div class="container">
       <h1>Heading 1</h1>
