@@ -1,4 +1,8 @@
 @import "gap";
+@import "sizes";
 body {
-  background: $gray-200;
+  background: $gray-100;
+  .t * {
+    outline: 1px solid red;
+  }
 }
