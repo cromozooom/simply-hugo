@@ -5,3 +5,15 @@
 @import "../../node_modules/tailwindcss/base";
 @import "../../node_modules/tailwindcss/components";
 @import "../../node_modules/tailwindcss/utilities";
+
+body {
+  --navHeight: 40px;
+}
+
+.nav-height {
+  height: var(--navHeight);
+}
+.app-height {
+  height: calc(100vh - var(--navHeight));
+  outline: 1px solid red;
+}

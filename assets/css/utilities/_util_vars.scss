@@ -1,0 +1,78 @@
+$ink: #191142;
+$base: #fff;
+$primary-ink: #fff;
+
+$alpha-ink-5: rgba($ink, 0.05);
+$alpha-ink-10: rgba($ink, 0.1);
+$alpha-ink-20: rgba($ink, 0.2);
+$alpha-ink-30: rgba($ink, 0.3);
+$alpha-ink-40: rgba($ink, 0.4);
+$alpha-ink-50: rgba($ink, 0.5);
+$alpha-ink-60: rgba($ink, 0.6);
+$alpha-ink-70: rgba($ink, 0.7);
+$alpha-ink-80: rgba($ink, 0.8);
+$alpha-ink-90: rgba($ink, 0.9);
+$alpha-ink-95: rgba($ink, 0.95);
+$alpha-base-5: rgba($base, 0.05);
+$alpha-base-10: rgba($base, 0.1);
+$alpha-base-20: rgba($base, 0.2);
+$alpha-base-30: rgba($base, 0.3);
+$alpha-base-40: rgba($base, 0.4);
+$alpha-base-50: rgba($base, 0.5);
+$alpha-base-60: rgba($base, 0.6);
+$alpha-base-70: rgba($base, 0.7);
+$alpha-base-80: rgba($base, 0.8);
+$alpha-base-90: rgba($base, 0.9);
+$alpha-base-95: rgba($base, 0.95);
+
+$alpha: (
+  "alpha-ink-5": $alpha-ink-5,
+  "alpha-ink-10": $alpha-ink-10,
+  "alpha-ink-20": $alpha-ink-20,
+  "alpha-ink-30": $alpha-ink-30,
+  "alpha-ink-40": $alpha-ink-40,
+  "alpha-ink-50": $alpha-ink-50,
+  "alpha-ink-60": $alpha-ink-60,
+  "alpha-ink-70": $alpha-ink-70,
+  "alpha-ink-80": $alpha-ink-80,
+  "alpha-ink-90": $alpha-ink-90,
+  "alpha-ink-95": $alpha-ink-95,
+  "alpha-base-5": $alpha-base-5,
+  "alpha-base-10": $alpha-base-10,
+  "alpha-base-20": $alpha-base-20,
+  "alpha-base-30": $alpha-base-30,
+  "alpha-base-40": $alpha-base-40,
+  "alpha-base-50": $alpha-base-50,
+  "alpha-base-60": $alpha-base-60,
+  "alpha-base-70": $alpha-base-70,
+  "alpha-base-80": $alpha-base-80,
+  "alpha-base-90": $alpha-base-90,
+  "alpha-base-95": $alpha-base-95,
+);
+
+$gapXSmall: 0.5rem;
+$gapSmall: 1rem;
+$gapMedium: 2rem;
+$gapLarge: 3rem;
+
+$gaps: (
+  "xs": $gapXSmall,
+  "sm": $gapSmall,
+  "md": $gapMedium,
+  "lg": $gapLarge,
+);
+
+$bases: (
+  "ink": $base,
+  "base": $ink,
+  "primary": $primary,
+);
+$inks: (
+  "ink": $ink,
+  "base": $base,
+);
+
+$threshold: 55%;
+@function contrast-color($color, $dark, $light) {
+  @return if(lightness($color) < $threshold, $dark, $light);
+}

@@ -1,0 +1,29 @@
+.scroll {
+  --scroll-width: 8px;
+  --scroll-radius: 4px;
+  //--scroll-track-bg: #f1f1f1;
+  --scroll--track-bg: #{$alpha-base-5};
+  --scroll--thumb-bg: #{$alpha-base-30};
+  --scroll--thumb-hover-bg: #{$alpha-base-50};
+  /* width */
+  &::-webkit-scrollbar {
+    width: var(--scroll-width);
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: var(--scroll-track-bg);
+    //box-shadow: inset 0 0 5px rgb(202, 202, 202);
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: var(--scroll--thumb-bg);
+    border-radius: var(--scroll-radius);
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll--thumb-hover-bg);
+  }
+}

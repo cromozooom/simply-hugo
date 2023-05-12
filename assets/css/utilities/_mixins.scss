@@ -1,0 +1,21 @@
+@each $gap, $gapValue in $spacers {
+  .gap-#{$gap} {
+    gap: #{$gapValue};
+  }
+}
+
+@each $color, $colorValue in $alpha {
+  .bg-#{$color} {
+    background: #{$colorValue};
+  }
+}
+@each $color, $colorValue in $inks {
+  .ink-#{$color} {
+    color: #{$colorValue};
+  }
+}
+@each $color, $colorValue in $bases {
+  .base-#{$color} {
+    background: #{$colorValue};
+  }
+}

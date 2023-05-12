@@ -2,7 +2,7 @@ baseURL = 'https://charming-chimera-14b53c.netlify.app/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = 'simply_hugo'
-
+timeout = 60000
 enableGitInfo = true
 disableKinds = ["taxonomy"]
 ignoreErrors = ["error-disable-taxonomy"] # you will get a console error message without this

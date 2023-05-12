@@ -1,0 +1,45 @@
+.pie {
+  height: 45px;
+  position: relative;
+  margin: 4px;
+  text-align: center;
+  background: white;
+  &-overflow {
+    /* Wraps the rotating .bar */
+    --secondary: #{$alpha-ink-50};
+    --width: 130px;
+    --height: calc(var(--width) / 2);
+    --pie: 25px;
+    --success: #{$success};
+    --info: #{$info};
+    --warning: #{$warning};
+    --danger: #{$danger};
+    position: relative;
+    overflow: hidden; /* Comment this line to understand the trick */
+    margin-bottom: -14px; /* bring the numbers up */
+    width: var(--width);
+    height: var(--height);
+  }
+  &-count {
+    position: absolute;
+    bottom: 0;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    color: var(--status, #000);
+  }
+  &-bar {
+    --rotate: rotate(calc(45deg + var(--val) * 1.8));
+    position: absolute;
+    transform: var(--rotate);
+    top: 0;
+    left: 0;
+    width: var(--width);
+    height: var(--width); /* full circle! */
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: var(--pie) solid $alpha-ink-10; /* half gray, */
+    border-bottom-color: var(--status); /* half azure */
+    border-right-color: var(--status);
+  }
+}

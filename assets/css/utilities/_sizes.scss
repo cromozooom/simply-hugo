@@ -8,3 +8,7 @@ $h-nav: 3.5rem;
 .h-content {
   height: calc(100vh - #{$h-nav});
 }
+
+.min-side {
+  min-width: 340px;
+}

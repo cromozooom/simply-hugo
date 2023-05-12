@@ -2,8 +2,9 @@
 @use "sass:map";
 @use "sass:math";
 @import "../../node_modules/bootstrap/scss/functions";
-@import "variables";
 @import "../../node_modules/bootstrap/scss/variables";
+@import "vars";
+@import "variables_b4";
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "../../node_modules/bootstrap/scss/root";
 @import "../../node_modules/bootstrap/scss/reboot";

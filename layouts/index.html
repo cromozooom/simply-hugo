@@ -1,8 +1,21 @@
 {{ define "main" }}
+  {{ $colors := 0 }}
   {{ $typo := 0 }}
   {{ $pr := 0 }}
   {{ $pageStructure := 1 }}
   {{ $dash := 0 }}
+
+  {{ if $colors }}
+    <div class="bg-brand p-4 text-white">brand</div>
+    <div class="bg-primary p-4 text-white">primary</div>
+    <div class="bg-secondary text-dark p-4">secondary</div>
+    <div class="bg-success p-4 text-white">success</div>
+    <div class="bg-info p-4 text-white">info</div>
+    <div class="bg-warning text-DARK p-4">warning</div>
+    <div class="bg-danger p-4 text-white">danger</div>
+    <div class="bg-light text-dark p-4">light</div>
+    <div class="bg-dark p-4 text-white">dark</div>
+  {{ end }}
   {{ if $pr }}
     <ul>
       {{ $data := getJSON "data/pr.json" }}
@@ -181,17 +194,54 @@
   {{ end }}
 
   {{ if $pageStructure }}
-    <div class="d-flex flex-column h-screen">
-      <div class="h-nav bg-primary d-flex justify-content-between align-items-center px-3 text-white">
-        <div>
-          <strong>Brand</strong>
+    <div class="d-flex flex-column bg-brand h-screen" x-data="{ showConfig: false, showSetting: false, showInfo: false, showBoth: true }">
+      <div class="h-nav bg-brand d-flex justify-content-between align-items-center px-3 text-white">
+        <div class="d-flex align-items-center">
+          <span class="ink-brand mr-3">
+            <svg width="52" height="36" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.15281 0L18.2708 22.5259L21.5252 16.9386L11.6616 0H40.3384L30.4748 16.9359L33.7292 22.5232L46.8472 0H52L33.7292 31.3735L26 18.1007L18.2708 31.3735L1.70089e-06 0H5.15281ZM32.4925 4.62656H19.5102L26 15.7738L32.4898 4.62656H32.4925Z" fill="currentcolor" />
+              <path d="M29.2289 31.3735H22.7689L20.0758 36.0001H31.9219L29.2289 31.3735Z" fill="currentcolor" />
+            </svg>
+          </span>
+          <div class="ml-3">
+            <button class="btn btn-sm" @click="showBoth = !showBoth; showSetting = false; ; showInfo = false;" :class="showBoth ? 'btn-success' : 'btn-alpha-10'">All <i class="fa-regular fa-gear"></i></button>
+            <button class="btn btn-sm " @click="showInfo = !showInfo; showSetting = false; showBoth = false;" :class="showInfo ? 'btn-success' : 'btn-alpha-10'">
+              <i class="fa-regular fa-user"></i>
+            </button>
+            <button class="btn btn-sm" @click="showSetting = !showSetting; showInfo = false; showBoth = false;" :class="showSetting ? 'btn-success' : 'btn-alpha-10'">
+              <i class="fa-regular fa-sliders"></i>
+            </button>
+            <button class="btn btn-sm" @click="showConfig = !showConfig" :class="showConfig ? 'btn-success' : 'btn-alpha-10'">
+              <i class="fa-regular fa-hammer"></i>
+            </button>
+          </div>
         </div>
-        <strong>Main nav</strong>
+        <div>
+          <button class="btn btn-link ink-brand xbtn-alpha-10">
+            <!-- <span x-show="!showInfo">Show </span>
+              <span x-show="showInfo">Hide </span> -->
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <button class="btn btn-link ink-brand xbtn-alpha-10">
+            <!-- <span x-show="!showInfo">Show </span>
+              <span x-show="showInfo">Hide </span> -->
+            <i class="fa-regular fa-bars"></i>
+          </button>
+        </div>
       </div>
       <div class="d-flex h-content">
-        <side class="h-content  border-right  flex-grow-0 overflow-auto bg-white" style="width: 300px;">
-          <div class="h-100 d-flex flex-column">
-            <div class="border-bottom flex-grow-0">
+        <side x-show="showBoth" x-transition x-transition.origin.left class="h-content  ink-primary min-side flex-grow-0 overflow-auto px-3" style="width: 340px;">
+          <div class="h-100 d-flex flex-column bg-alpha-ink-10 overflow-hidden rounded-lg">
+            <div class="flex-grow-0">
+              <div class="d-flex justify-content-between align-items-center bg-alpha-ink-20 p-2">
+                <div class="d-flex align-items-center ">
+                  <i class="fa-regular fa-circle-info mx-2"></i>
+                  <h2 class="h6 mb-0">User Info</h2>
+                </div>
+                <button class="btn btn-link ink-primary" @click="showBoth = !showBoth; showSetting = false; ; showInfo = false;">
+                  <i class="fa-regular fa-xmark"></i>
+                </button>
+              </div>
               <div class="text-center">
                 <i class="fa-regular fa-circle-user display-3 mb-3 mt-4"></i>
               </div>
@@ -202,15 +252,17 @@
                 <li>details</li>
               </ul>
             </div>
-            <div class="flex-grow-1 border-bottom overflow-auto">
-              <ul class="d-flex bg-light sticky-top list-inline mb-3" id="pills-tab" role="tablist">
-                <li class="xnav-item flex-grow-1" role="presentation">
-                  <button class="btn btn-sm btn-link w-100 nav-link active" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Personal Info</button>
-                </li>
-                <li class="xnav-item flex-grow-1" role="presentation">
-                  <button class="btn btn-sm btn-link w-100 nav-link" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Tax residency</button>
-                </li>
-              </ul>
+            <div class="flex-grow-1 scroll overflow-auto">
+              <div class="sticky-top">
+                <ul class="d-flex bg-alpha-ink-20 list-inline hidden-bg mb-3" id="pills-tab" role="tablist">
+                  <li class="xnav-item flex-grow-1" role="presentation">
+                    <button class="btn btn-sm btn-link w-100 nav-link active text-white" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Personal Info</button>
+                  </li>
+                  <li class="xnav-item flex-grow-1" role="presentation">
+                    <button class="btn btn-sm btn-link w-100 nav-link text-white" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Tax residency</button>
+                  </li>
+                </ul>
+              </div>
               <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                   <div class="p-2">
@@ -232,10 +284,39 @@
                 </div>
               </div>
             </div>
-            <div class="flex-grow-0">
-              <div class="p-3">
-                <h2>settings</h2>
-                <ul>
+            <div class="flex-grow-1 scroll overflow-auto">
+              <div>
+                <div class="sticky-top">
+                  <div class="d-flex hidden-bg justify-content-between align-items-center bg-alpha-ink-20 p-2">
+                    <h2 class="h6 mb-0">Settings</h2>
+                    <i class="fa-regular fa-sliders"></i>
+                  </div>
+                </div>
+                <ul class="mx-3 p-3">
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
                   <li>details</li>
                   <li>details</li>
                   <li>details</li>
@@ -245,77 +326,582 @@
             </div>
           </div>
         </side>
-        <main class="h-content flex-grow-1 overflow-auto">
-          <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light bg-white">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="navbar-collapse collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Overview<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
+        <side x-show="showInfo" x-transition x-transition.origin.left class="h-content  ink-primary min-side flex-grow-0 overflow-auto px-3" style="width: 340px;">
+          <div class="h-100 d-flex flex-column bg-alpha-ink-10 overflow-hidden rounded-lg">
+            <div class="flex-grow-0">
+              <div class="d-flex justify-content-between align-items-center bg-alpha-ink-20 p-2">
+                <div class="d-flex align-items-center ">
+                  <i class="fa-regular fa-user mx-2"></i>
+                  <h2 class="h6 mb-0">User Info</h2>
+                </div>
+                <button class="btn btn-link ink-primary" @click="showInfo = !showInfo; showSetting = false; showBoth = false;">
+                  <i class="fa-regular fa-xmark"></i>
+                </button>
+              </div>
+              <div class="text-center">
+                <i class="fa-regular fa-circle-user display-3 mb-3 mt-4"></i>
+              </div>
+              <ul>
+                <li>details</li>
+                <li>details</li>
+                <li>details</li>
+                <li>details</li>
               </ul>
             </div>
-          </nav>
-          <div class="p-3">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+            <div class="flex-grow-1 scroll overflow-auto">
+              <div class="sticky-top">
+                <ul class="d-flex bg-alpha-ink-20 list-inline hidden-bg mb-3" id="pills-tab" role="tablist">
+                  <li class="xnav-item flex-grow-1" role="presentation">
+                    <button class="btn btn-sm btn-link w-100 nav-link active text-white" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Personal Info</button>
+                  </li>
+                  <li class="xnav-item flex-grow-1" role="presentation">
+                    <button class="btn btn-sm btn-link w-100 nav-link text-white" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Tax residency</button>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                  <div class="p-2">
+                    <h2>Personal</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                  <div class="p-2">
+                    <h2>Tax Info</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </side>
+        <side x-show="showSetting" x-transition x-transition.origin.left class="h-content  ink-primary min-side flex-grow-0 overflow-auto px-3" style="width: 340px;">
+          <div class="h-100 d-flex flex-column bg-alpha-ink-10 overflow-hidden rounded-lg">
+            <div class="flex-grow-1 scroll overflow-auto">
+              <div>
+                <div class="sticky-top">
+                  <div class="d-flex hidden-bg  justify-content-between align-items-center bg-alpha-ink-30 p-2">
+                    <div class="d-flex align-items-center ">
+                      <i class="fa-regular fa-sliders mx-2"></i>
+                      <h2 class="h6 mb-0">Settings</h2>
+                    </div>
+                    <button class="btn btn-link ink-primary" @click="showSetting = !showSetting; showInfo = false; showBoth = false;">
+                      <i class="fa-regular fa-xmark"></i>
+                    </button>
+                  </div>
+                </div>
+                <ul class="mx-3 p-3">
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </side>
+
+        {{ $page := 1 }}
+        {{ $filters := 0 }}
+        <main
+          class="h-content flex-grow-1 overflow-auto"
+          x-data="{
+              selectedId: null,
+              init() {
+                  // Set the first available tab on the page on page load.
+                  this.$nextTick(() => this.select(this.$id('tab', 1)))
+              },
+              select(id) {
+                  this.selectedId = id
+              },
+              isSelected(id) {
+                  return this.selectedId === id
+              },
+              whichChild(el, parent) {
+                  return Array.from(parent.children).indexOf(el) + 1
+              }
+          }"
+          x-id="['tab']"
+        >
+          <div class="sticky-top">
+            <nav :class="!showInfo ? 'rounded-top-left' : ''" class="navbar main-navbar hidden-bg navbar-expand-lg m-0 p-0">
+              <ul x-ref="tablist" @keydown.right.prevent.stop="$focus.wrap().next()" @keydown.home.prevent.stop="$focus.first()" @keydown.page-up.prevent.stop="$focus.first()" @keydown.left.prevent.stop="$focus.wrap().prev()" @keydown.end.prevent.stop="$focus.last()" @keydown.page-down.prevent.stop="$focus.last()" role="tablist" class="navbar-nav">
+                <!-- Tab -->
+                <li class="nav-item">
+                  <button :id="$id('tab', whichChild($el.parentElement, $refs.tablist))" @click="select($el.id)" @mousedown.prevent @focus="select($el.id)" type="button" :tabindex="isSelected($el.id) ? 0 : -1" :aria-selected="isSelected($el.id)" :class="isSelected($el.id) ? 'active' : 'bg-transparent'" class="nav-link bp-3 border-0 px-4 pt-3" role="tab">Overview</button>
+                </li>
+
+                <li class="nav-item">
+                  <button :id="$id('tab', whichChild($el.parentElement, $refs.tablist))" @click="select($el.id)" @mousedown.prevent @focus="select($el.id)" type="button" :tabindex="isSelected($el.id) ? 0 : -1" :aria-selected="isSelected($el.id)" :class="isSelected($el.id) ? 'active' : 'bg-transparent'" class="nav-link bp-3 border-0 px-4 pt-3" role="tab">Contacts</button>
+                </li>
+                <li class="nav-item">
+                  <button :id="$id('tab', whichChild($el.parentElement, $refs.tablist))" @click="select($el.id)" @mousedown.prevent @focus="select($el.id)" type="button" :tabindex="isSelected($el.id) ? 0 : -1" :aria-selected="isSelected($el.id)" :class="isSelected($el.id) ? 'active' : 'bg-transparent'" class="nav-link bp-3 border-0 px-4 pt-3" role="tab">Prospect</button>
+                </li>
+                <li class="nav-item">
+                  <button :id="$id('tab', whichChild($el.parentElement, $refs.tablist))" @click="select($el.id)" @mousedown.prevent @focus="select($el.id)" type="button" :tabindex="isSelected($el.id) ? 0 : -1" :aria-selected="isSelected($el.id)" :class="isSelected($el.id) ? 'active' : 'bg-transparent'" class="nav-link bp-3 border-0 px-4 pt-3" role="tab">Something else</button>
+                </li>
+              </ul>
+            </nav>
+            <div id="filter-container"></div>
+          </div>
+          <div role="tabpanels">
+            <section x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
+              <template x-if="isSelected($id('tab', whichChild($el, $el.parentElement)))">
+                <template x-teleport="#filter-container">
+                  <div class="border-bottom bg-white p-2">Filters</div>
+                </template>
+              </template>
+              <div class="border-bottom bg-white">
+                <div class="d-flex">
+                  <side class="menu d-flex flex-column border-right gap-2 px-3 py-3" style="min-width: 380px;">
+                    <div class="sticky-top">
+                      <div>
+                        <div class="d-flex justify-content-between">
+                          <a class="h6" href="#">Mr JM FName JM LName</a>
+                          <strong>Owner</strong>
+                        </div>
+                        <div class="d-flex flex-column gap-1 pt-2">
+                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                            <div>
+                              <i class="fa-regular fa-fingerprint mr-2"></i>
+                              <strong> KYC </strong>
+                            </div>
+                            <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
+                          </button>
+                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                            <div>
+                              <i class="fa-regular fa-user-police mr-2"></i>
+                              <strong> AML </strong>
+                            </div>
+                            <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="d-flex justify-content-between">
+                          <a class="h6" href="#">Mr Mano sebastiano Argenti</a>
+                          <strong>Owner</strong>
+                        </div>
+                        <div class="d-flex flex-column gap-1 pt-2">
+                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                            <div>
+                              <i class="fa-regular fa-fingerprint mr-2"></i>
+                              <strong> KKYC </strong>
+                            </div>
+                            <span class="badge border-ink-primary badge-pill badge-soft-secondary">Not started</span>
+                          </button>
+                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between active cursor-default">
+                            <div>
+                              <i class="fa-regular fa-user-police mr-2"></i>
+                              <strong> AML </strong>
+                            </div>
+                            <span class="badge border-ink-primary badge-pill badge-danger">Incomplete</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </side>
+                  <div class="menu px-3 py-3">
+                    <h6>Mr Mano sebastiano Argenti / AML</h6>
+                    <div class="d-flex mb-3 gap-2">
+                      <div>
+                        <div class="card">
+                          <div class="card-body  text-center">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <div>
+                              <div class="pie position-relative d-flex justify-content-center align-items-baseline my-3" style="--val: 5deg; --status: var(--danger);">
+                                <div class="pie-overflow">
+                                  <div class="pie-bar"></div>
+                                </div>
+                                <strong class="pie-count h5"><span>5</span>%</strong>
+                              </div>
+                            </div>
+                            <a href="#" class="btn btn-secondary mt-3">Go somewhere</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="card">
+                          <div class="card-body  text-center">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <div>
+                              <div class="pie position-relative d-flex justify-content-center align-items-baseline my-3" style="--val: 25deg; --status: var(--info);">
+                                <div class="pie-overflow">
+                                  <div class="pie-bar"></div>
+                                </div>
+                                <strong class="pie-count h5"><span>25</span>%</strong>
+                              </div>
+                            </div>
+                            <a href="#" class="btn btn-secondary mt-3">Go somewhere</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="card">
+                          <div class="card-body  text-center">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <div>
+                              <div class="pie position-relative d-flex justify-content-center align-items-baseline my-3" style="--val: 25deg; --status: var(--info);">
+                                <div class="pie-overflow">
+                                  <div class="pie-bar"></div>
+                                </div>
+                                <strong class="pie-count h5"><span>25</span>%</strong>
+                              </div>
+                            </div>
+                            <a href="#" class="btn btn-secondary mt-3">Go somewhere</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="card">
+                          <div class="card-body  text-center">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <div>
+                              <div class="pie position-relative d-flex justify-content-center align-items-baseline my-3" style="--val: 100deg; --status: var(--success);">
+                                <div class="pie-overflow">
+                                  <div class="pie-bar"></div>
+                                </div>
+                                <strong class="pie-count h5"><span>100</span>%</strong>
+                              </div>
+                            </div>
+                            <a href="#" class="btn btn-secondary mt-3">Go somewhere</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+
+                    <div x-data="{ showType: true }">
+                      <button class="btn btn-sm btn-secondary mb-3" @click="showType = !showType" :class="showType ? 'btn-success' : 'btn-alpha-10'">
+                        <i class="fa-regular fa-user"></i>
+                      </button>
+                      <div x-show="showType" class="pb-3">
+                        <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Library</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Data</li>
+                          </ol>
+                        </nav>
+                        <hr />
+                        <h3>Pills / baddges</h3>
+                        <div class="d-flex">
+                          <div class="flex-grow-1 py-3">
+                            <a href="#" class="badge badge-primary">Primary</a>
+                            <a href="#" class="badge badge-secondary">Secondary</a>
+                            <a href="#" class="badge badge-success">Success</a>
+                            <a href="#" class="badge badge-danger">Danger</a>
+                            <a href="#" class="badge badge-warning">Warning</a>
+                            <a href="#" class="badge badge-info">Info</a>
+                            <a href="#" class="badge badge-light">Light</a>
+                            <a href="#" class="badge badge-dark">Dark</a>
+                          </div>
+                          <div class="flex-grow-1 py-3">
+                            <span class="badge badge-pill badge-primary">Primary</span>
+                            <span class="badge badge-pill badge-secondary">Secondary</span>
+                            <span class="badge badge-pill badge-success">Success</span>
+                            <span class="badge badge-pill badge-danger">Danger</span>
+                            <span class="badge badge-pill badge-warning">Warning</span>
+                            <span class="badge badge-pill badge-info">Info</span>
+                            <span class="badge badge-pill badge-light">Light</span>
+                            <span class="badge badge-pill badge-dark">Dark</span>
+                          </div>
+                        </div>
+                        <div class="d-flex">
+                          <div class="flex-grow-1 py-3">
+                            <a href="#" class="badge badge-soft-primary">Primary</a>
+                            <a href="#" class="badge badge-soft-secondary">Secondary</a>
+                            <a href="#" class="badge badge-soft-success">Success</a>
+                            <a href="#" class="badge badge-soft-danger">Danger</a>
+                            <a href="#" class="badge badge-soft-warning">Warning</a>
+                            <a href="#" class="badge badge-soft-info">Info</a>
+                            <a href="#" class="badge badge-soft-light">Light</a>
+                            <a href="#" class="badge badge-soft-dark">Dark</a>
+                          </div>
+                          <div class="flex-grow-1 py-3">
+                            <span class="badge badge-pill badge-soft-primary">Primary</span>
+                            <span class="badge badge-pill badge-soft-secondary">Secondary</span>
+                            <span class="badge badge-pill badge-soft-success">Success</span>
+                            <span class="badge badge-pill badge-soft-danger">Danger</span>
+                            <span class="badge badge-pill badge-soft-warning">Warning</span>
+                            <span class="badge badge-pill badge-soft-info">Info</span>
+                            <span class="badge badge-pill badge-soft-light">Light</span>
+                            <span class="badge badge-pill badge-soft-dark">Dark</span>
+                          </div>
+                        </div>
+                        <hr />
+                        <h3>Buttons</h3>
+                        <div class="d-flex gap-2 pb-2">
+                          <button class="btn btn-brand">Brand</button>
+                          <button class="btn btn-primary">Primary</button>
+                          <button class="btn btn-secondary">Secondary</button>
+                          <button class="btn btn-success">Success</button>
+                          <button class="btn btn-danger">Danger</button>
+                          <button class="btn btn-secondary">Secondary</button>
+                          <button class="btn btn-warning">Warning</button>
+                          <button class="btn btn-info">Info</button>
+                          <button class="btn btn-light">Light</button>
+                          <button class="btn btn-dark">Dark</button>
+                        </div>
+                        <div class="d-flex gap-2 pb-2">
+                          <button class="btn btn-outline-brand">Brand</button>
+                          <button class="btn btn-outline-primary">Primary</button>
+                          <button class="btn btn-outline-secondary">Secondary</button>
+                          <button class="btn btn-outline-success">Success</button>
+                          <button class="btn btn-outline-danger">Danger</button>
+                          <button class="btn btn-outline-secondary">Secondary</button>
+                          <button class="btn btn-outline-warning">Warning</button>
+                          <button class="btn btn-outline-info">Info</button>
+                          <button class="btn btn-outline-light">Light</button>
+                          <button class="btn btn-outline-dark">Dark</button>
+                        </div>
+                        <div class="d-flex gap-2 pb-2">
+                          <button class="btn btn-soft-brand">Brand</button>
+                          <button class="btn btn-soft-primary">Primary</button>
+                          <button class="btn btn-soft-secondary">Secondary</button>
+                          <button class="btn btn-soft-success">Success</button>
+                          <button class="btn btn-soft-danger">Danger</button>
+                          <button class="btn btn-soft-secondary">Secondary</button>
+                          <button class="btn btn-soft-warning">Warning</button>
+                          <button class="btn btn-soft-info">Info</button>
+                          <button class="btn btn-soft-light">Light</button>
+                          <button class="btn btn-soft-dark">Dark</button>
+                        </div>
+                        <div class="d-flex bp-2 gap-2">
+                          <button class="btn btn-outline-soft-brand">Brand</button>
+                          <button class="btn btn-outline-soft-primary">Primary</button>
+                          <button class="btn btn-outline-soft-secondary">Secondary</button>
+                          <button class="btn btn-outline-soft-success">Success</button>
+                          <button class="btn btn-outline-soft-danger">Danger</button>
+                          <button class="btn btn-outline-soft-secondary">Secondary</button>
+                          <button class="btn btn-outline-soft-warning">Warning</button>
+                          <button class="btn btn-outline-soft-info">Info</button>
+                          <button class="btn btn-outline-soft-light">Light</button>
+                          <button class="btn btn-outline-soft-dark">Dark</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Panel -->
+            <section x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel" class="xposition-relative">
+              <div class="border-bottom bg-white p-3">
+                <div class="d-flex gap-sm mb-3">
+                  <div class="card">
+                    <div class="card-body  text-center">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <div>
+                        <div class="pie position-relative d-flex justify-content-center align-items-baseline my-3" style="--val: 0deg; --status: var(--danger);">
+                          <div class="pie-overflow">
+                            <div class="pie-bar"></div>
+                          </div>
+                          <strong class="pie-count h5"><span>0</span>%</strong>
+                        </div>
+                      </div>
+                      <a href="#" class="btn btn-link mt-3">Go somewhere</a>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body  text-center">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <div>
+                        <div class="pie position-relative d-flex justify-content-center align-items-baseline my-3" style="--val: 25deg; --status: var(--secondary);">
+                          <div class="pie-overflow">
+                            <div class="pie-bar"></div>
+                          </div>
+                          <strong class="pie-count h5"><span>25</span>%</strong>
+                        </div>
+                      </div>
+                      <a href="#" class="btn btn-link mt-3">Go somewhere</a>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body  text-center">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <div>
+                        <div class="pie position-relative d-flex justify-content-center align-items-baseline my-3" style="--val: 25deg; --status: var(--secondary);">
+                          <div class="pie-overflow">
+                            <div class="pie-bar"></div>
+                          </div>
+                          <strong class="pie-count h5"><span>25</span>%</strong>
+                        </div>
+                      </div>
+                      <a href="#" class="btn btn-link mt-3">Go somewhere</a>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body  text-center">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <div>
+                        <div class="pie position-relative d-flex justify-content-center align-items-baseline my-3" style="--val: 100deg; --status: var(--success);">
+                          <div class="pie-overflow">
+                            <div class="pie-bar"></div>
+                          </div>
+                          <strong class="pie-count h5"><span>100</span>%</strong>
+                        </div>
+                      </div>
+                      <a href="#" class="btn btn-link mt-3">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
+              </div>
+            </section>
+
+            <section x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
+              <div class="border-bottom bg-white p-3">
+                <div class="d-flex">
+                  <side class="menu p-2">side Prospect</side>
+                  <div class="menu p-2">content</div>
+                </div>
+              </div>
+            </section>
           </div>
         </main>
+
+        <side x-show="showConfig" x-transition x-transition.origin.left class="h-content  ink-primary flex-grow-0 overflow-auto px-3" style="min-width: 25vw;">
+          <div class="h-100 d-flex flex-column bg-alpha-ink-10 overflow-hidden rounded-lg">
+            <div class="flex-grow-1 scroll overflow-auto">
+              <div>
+                <div class="sticky-top">
+                  <div class="d-flex hidden-bg  justify-content-between align-items-center bg-alpha-ink-10 p-2">
+                    <div class="d-flex align-items-center ">
+                      <i class="fa-regular fa-hammer mx-2"></i>
+                      <h2 class="h6 mb-0">Config</h2>
+                    </div>
+                    <button class="btn btn-link ink-primary" @click="showConfig = !showConfig">
+                      <i class="fa-regular fa-xmark"></i>
+                    </button>
+                  </div>
+                </div>
+                <ul class="mx-3 p-3">
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                  <li>details</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </side>
       </div>
     </div>
   {{ end }}

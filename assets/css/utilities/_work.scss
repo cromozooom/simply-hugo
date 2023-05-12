@@ -1,0 +1,100 @@
+xbody {
+  //background: $gray-100;
+  * {
+    outline: 1px solid red;
+  }
+}
+
+.hidden-bg {
+  position: relative;
+  &::after {
+    position: absolute;
+    content: "";
+    display: block;
+    background: $brand;
+    inset: 0;
+    z-index: -1;
+  }
+}
+
+.rounded-top-left {
+  border-radius: 5px 0 0 0;
+}
+
+.btn-alpha-10 {
+  background: $alpha-ink-10;
+  color: $primary-ink;
+  &:hover {
+    color: $primary-ink;
+    background: $alpha-ink-20;
+  }
+}
+.btn-alpha-20 {
+  background: $alpha-ink-20;
+  color: $primary-ink;
+  &:hover {
+    color: $primary-ink;
+    background: $alpha-ink-30;
+  }
+}
+.z-index-2 {
+  z-index: 2;
+}
+
+.main-navbar {
+  background: $alpha-ink-10;
+  .nav-item {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 33.333%;
+      display: block;
+      left: -1px;
+      right: auto;
+      background: $alpha-base-30;
+      top: 60%;
+      transform: translateY(-50%);
+    }
+    &:first-child {
+      &::after {
+        display: none;
+      }
+    }
+    &:hover {
+      background: $alpha-ink-5;
+      background: linear-gradient(0deg, $alpha-ink-10 0%, transparent 80%);
+    }
+  }
+  .nav-link {
+    color: $primary-ink;
+    &.active {
+      color: $primary;
+      background: $base;
+      border-radius: 5px 5px 0 0;
+    }
+  }
+}
+
+.ink-primary {
+  color: contrast-color($primary, white, black);
+}
+.ink-brand {
+  color: contrast-color($brand, white, black);
+}
+.border-ink-primary {
+  border: 1px solid contrast-color($p2305 rimary, white, black);
+}
+.border-ink-brand {
+  border: 1px solid contrast-color($brand, white, black);
+}
+
+.btn-outline-primary.btn-tabs {
+  padding: #{map-get($spacers, "08")} #{map-get($spacers, "08")};
+  border-color: $gray-300;
+  color: contrast-color($primary, black, white);
+  &:hover {
+    color: contrast-color($primary, white, black);
+  }
+}

@@ -1,9 +1,10 @@
 ---
+draft: true
 fontAwsome: true
-
+layout: contacts
 #switchCss: true
-customB4: true
-#b4: true
+#customB4: true
+b4: true
 #b5: true
 #tailwind: true
 
