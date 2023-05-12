@@ -4,8 +4,8 @@ $brand: pink !default;
 $appTheme: "Flower1";
 $appTheme: "Light";
 $appTheme: "b4";
-$appTheme: "Flower";
 $appTheme: "Caos";
+$appTheme: "Flower";
 
 @if $appTheme == "Caos" {
   $primary: hsl(261, 51%, 51%);
@@ -26,13 +26,6 @@ $appTheme: "Caos";
 
 $theme-colors: (
   "brand": $brand,
-  // "soft-secondary": lighten($secondary, 45%),
-  // "soft-success": lighten($success, 45%),
-  // "soft-info": lighten($info, 45%),
-  // "soft-warning": lighten($warning, 45%),
-  // "soft-danger": lighten($danger, 45%),
-  // "soft-light": lighten($light, 45%),
-  // "soft-dark": lighten($dark, 45%),
   "soft-brand": color.adjust($brand, $lightness: 35%),
   "soft-primary": color.adjust($primary, $lightness: 35%),
   "soft-secondary": color.adjust($secondary, $lightness: 35%),
