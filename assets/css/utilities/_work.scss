@@ -62,6 +62,18 @@
 .overflow-x-scroll {
   overflow-x: scroll;
 }
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.overflow-auto {
+  overflow: auto;
+}
 
 xbody {
   * {

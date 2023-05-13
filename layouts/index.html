@@ -6,10 +6,7 @@
   {{ $dash := 0 }}
 
   {{ if $colors }}
-    <div
-      class="overflow-x-scroll
-    overflow-y-scroll"
-    ></div>
+    <div class="overflow-x-scroll overflow-y-scroll"></div>
     <div class="bg-brand p-4 text-white">brand</div>
     <div class="bg-primary p-4 text-white">primary</div>
     <div class="bg-secondary text-dark p-4">secondary</div>
@@ -244,7 +241,7 @@
         </div>
       </div>
       <div class="d-flex h-content">
-        <side x-show="showBoth" x-transition x-transition.origin.left class="h-content  ink-primary min-side flex-grow-0 overflow-auto px-3" style="width: 340px;">
+        <side x-show="showBoth" x-transition x-transition.origin.left class="h-content ink-primary min-side flex-grow-0 overflow-auto px-3" style="width: 340px;">
           <div class="h-100 d-flex flex-column bg-alpha-ink-10 overflow-hidden rounded-lg">
             <div class="flex-grow-0">
               <div class="d-flex justify-content-between align-items-center bg-alpha-ink-20 p-2">
@@ -340,7 +337,7 @@
             </div>
           </div>
         </side>
-        <side x-show="showInfo" x-transition x-transition.origin.left class="h-content  ink-primary min-side flex-grow-0 overflow-auto px-3" style="width: 340px;">
+        <side x-show="showInfo" x-transition x-transition.origin.left class="h-content ink-primary min-side flex-grow-0 overflow-auto px-3" style="width: 340px;">
           <div class="h-100 d-flex flex-column bg-alpha-ink-10 overflow-hidden rounded-lg">
             <div class="flex-grow-0">
               <div class="d-flex justify-content-between align-items-center bg-alpha-ink-20 p-2">
@@ -396,12 +393,12 @@
             </div>
           </div>
         </side>
-        <side x-show="showSetting" x-transition x-transition.origin.left class="h-content  ink-primary min-side flex-grow-0 overflow-auto px-3" style="width: 340px;">
+        <side x-show="showSetting" x-transition x-transition.origin.left class="h-content ink-primary min-side flex-grow-0 overflow-auto px-3" style="width: 340px;">
           <div class="h-100 d-flex flex-column bg-alpha-ink-10 overflow-hidden rounded-lg">
             <div class="flex-grow-1 scroll overflow-auto">
               <div>
                 <div class="sticky-top">
-                  <div class="d-flex hidden-bg  justify-content-between align-items-center bg-alpha-ink-30 p-2">
+                  <div class="d-flex hidden-bg justify-content-between align-items-center bg-alpha-ink-30 p-2">
                     <div class="d-flex align-items-center ">
                       <i class="fa-regular fa-sliders mx-2"></i>
                       <h2 class="h6 mb-0">Settings</h2>
@@ -493,16 +490,16 @@
             <!-- <div id="filter-container"></div> -->
           </div>
           <div role="tabpanels" class="pannels h-content-tabs d-flex ">
-            <section class=" overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
+            <section class="overflow-y-scroll " x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
               <!-- <template x-if="isSelected($id('tab', whichChild($el, $el.parentElement)))">
                 <template x-teleport="#filter-container">
-                  <div class="border-bottom bg-white p-2">Filters</div>
+                  <div class="p-2 bg-white border-bottom">Filters</div>
                 </template>
               </template> -->
               <div x-ref="filter" class="sticky-top border-bottom bg-white">
                 {{ $filter:= 1 }}
                 {{ if $filter }}
-                  <div class="d-flex justify-content-between w-100  p-2">
+                  <div class="d-flex justify-content-between w-100 p-2">
                     <div class="d-flex justify-content-start gap-2">
                       <div>
                         <div class="input-group has-validation">
@@ -559,148 +556,156 @@
               </div>
               <div class="border-bottom bg-white">
                 <div class="d-flex">
-                  <side class="d-flex flex-column border-right gap-2 px-3" style="min-width: 380px;">
-                    <div class="sticky-top" style="top: var(--filter, 0px)">
-                      <div>
-                        <div class="d-flex justify-content-between">
-                          <a class="h6" href="#">Mr JM FName JM LName</a>
-                          <strong>Owner</strong>
+                  <side class="d-flex flex-column border-right z-0 gap-2" style="min-width: 380px;">
+                    <div class="xsticky-top" style="top: var(--filter, 0px)">
+                      {{ $data := getJSON "data/kyc.json" }}
+                      {{ range $index, $item := $data.kyc.menu }}
+                        <div class="h-100 z-10 mt-3 px-3">
+                          <div class="d-flex justify-content-between {{ if $index }}pt-3{{ end }}">
+                            <a class="h6" href="#">{{ .name }}</a>
+                            <strong>{{ .type }}</strong>
+                          </div>
+                          <div class="d-flex flex-column gap-1 pt-2">
+                            {{ range $index, $item := .links }}
+                              <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                                <div>
+                                  <i class="fa-regular fa-{{ .icon }} mr-2"></i>
+                                  <strong> {{ .name }} </strong>
+                                </div>
+                                <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
+                              </button>
+                            {{ end }}
+                            <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                              <div>
+                                <i class="fa-regular fa-{{ .icon }} mr-2"></i>
+                                <strong> AML </strong>
+                              </div>
+                              <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
+                            </button>
+                          </div>
                         </div>
-                        <div class="d-flex flex-column gap-1 pt-2">
-                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
-                            <div>
-                              <i class="fa-regular fa-fingerprint mr-2"></i>
-                              <strong> KYC </strong>
-                            </div>
-                            <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
-                          </button>
-                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
-                            <div>
-                              <i class="fa-regular fa-user-police mr-2"></i>
-                              <strong> AML </strong>
-                            </div>
-                            <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
-                          </button>
+                      {{ end }}
+                      {{/* <div class="fa-fingerprint fa-user-police "></div> */}}
+
+                      {{/* <div>
+                        <div class="pt-3 d-flex justify-content-between">
+                        <a class="h6" href="#">Mr JM FName JM LName</a>
+                        <strong>Owner</strong>
                         </div>
-                      </div>
-                      <div>
-                        <div class="d-flex justify-content-between pt-3">
-                          <a class="h6" href="#">Mr JM FName JM LName</a>
-                          <strong>Owner</strong>
+                        <div class="gap-1 pt-2 d-flex flex-column">
+                        <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                        <div>
+                        <i class="mr-2 fa-regular fa-fingerprint"></i>
+                        <strong> KYC </strong>
                         </div>
-                        <div class="d-flex flex-column gap-1 pt-2">
-                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
-                            <div>
-                              <i class="fa-regular fa-fingerprint mr-2"></i>
-                              <strong> KYC </strong>
-                            </div>
-                            <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
-                          </button>
-                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
-                            <div>
-                              <i class="fa-regular fa-user-police mr-2"></i>
-                              <strong> AML </strong>
-                            </div>
-                            <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
-                          </button>
+                        <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
+                        </button>
+                        <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                        <div>
+                        <i class="mr-2 fa-regular fa-user-police"></i>
+                        <strong> AML </strong>
                         </div>
-                      </div>
-                      <div>
-                        <div class="d-flex justify-content-between pt-3">
-                          <a class="h6" href="#">Mr JM FName JM LName</a>
-                          <strong>Owner</strong>
+                        <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
+                        </button>
                         </div>
-                        <div class="d-flex flex-column gap-1 pt-2">
-                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
-                            <div>
-                              <i class="fa-regular fa-fingerprint mr-2"></i>
-                              <strong> KYC </strong>
-                            </div>
-                            <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
-                          </button>
-                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
-                            <div>
-                              <i class="fa-regular fa-user-police mr-2"></i>
-                              <strong> AML </strong>
-                            </div>
-                            <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
-                          </button>
                         </div>
-                      </div>
-                      <div>
-                        <div class="d-flex justify-content-between pt-3">
-                          <a class="h6" href="#">Mr JM FName JM LName</a>
-                          <strong>Owner</strong>
+                        <div>
+                        <div class="pt-3 d-flex justify-content-between">
+                        <a class="h6" href="#">Mr JM FName JM LName</a>
+                        <strong>Owner</strong>
                         </div>
-                        <div class="d-flex flex-column gap-1 pt-2">
-                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
-                            <div>
-                              <i class="fa-regular fa-fingerprint mr-2"></i>
-                              <strong> KYC </strong>
-                            </div>
-                            <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
-                          </button>
-                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
-                            <div>
-                              <i class="fa-regular fa-user-police mr-2"></i>
-                              <strong> AML </strong>
-                            </div>
-                            <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
-                          </button>
+                        <div class="gap-1 pt-2 d-flex flex-column">
+                        <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                        <div>
+                        <i class="mr-2 fa-regular fa-fingerprint"></i>
+                        <strong> KYC </strong>
                         </div>
-                      </div>
-                      <div>
-                        <div class="d-flex justify-content-between pt-3">
-                          <a class="h6" href="#">Mr JM FName JM LName</a>
-                          <strong>Owner</strong>
+                        <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
+                        </button>
+                        <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                        <div>
+                        <i class="mr-2 fa-regular fa-user-police"></i>
+                        <strong> AML </strong>
                         </div>
-                        <div class="d-flex flex-column gap-1 pt-2">
-                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
-                            <div>
-                              <i class="fa-regular fa-fingerprint mr-2"></i>
-                              <strong> KYC </strong>
-                            </div>
-                            <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
-                          </button>
-                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
-                            <div>
-                              <i class="fa-regular fa-user-police mr-2"></i>
-                              <strong> AML </strong>
-                            </div>
-                            <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
-                          </button>
+                        <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
+                        </button>
                         </div>
-                      </div>
-                      <div>
-                        <div class="d-flex justify-content-between pt-3">
-                          <a class="h6" href="#">Mr Mano sebastiano Argenti</a>
-                          <strong>Owner</strong>
                         </div>
-                        <div class="d-flex flex-column gap-1 pt-2">
-                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
-                            <div>
-                              <i class="fa-regular fa-fingerprint mr-2"></i>
-                              <strong> KKYC </strong>
-                            </div>
-                            <span class="badge border-ink-primary badge-pill badge-soft-secondary">Not started</span>
-                          </button>
-                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between active cursor-default">
-                            <div>
-                              <i class="fa-regular fa-user-police mr-2"></i>
-                              <strong> AML </strong>
-                            </div>
-                            <span class="badge border-ink-primary badge-pill badge-danger">Incomplete</span>
-                          </button>
+                        <div>
+                        <div class="pt-3 d-flex justify-content-between">
+                        <a class="h6" href="#">Mr JM FName JM LName</a>
+                        <strong>Owner</strong>
                         </div>
-                      </div>
+                        <div class="gap-1 pt-2 d-flex flex-column">
+                        <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                        <div>
+                        <i class="mr-2 fa-regular fa-fingerprint"></i>
+                        <strong> KYC </strong>
+                        </div>
+                        <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
+                        </button>
+                        <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                        <div>
+                        <i class="mr-2 fa-regular fa-user-police"></i>
+                        <strong> AML </strong>
+                        </div>
+                        <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
+                        </button>
+                        </div>
+                        </div>
+                        <div>
+                        <div class="pt-3 d-flex justify-content-between">
+                        <a class="h6" href="#">Mr JM FName JM LName</a>
+                        <strong>Owner</strong>
+                        </div>
+                        <div class="gap-1 pt-2 d-flex flex-column">
+                        <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                        <div>
+                        <i class="mr-2 fa-regular fa-fingerprint"></i>
+                        <strong> KYC </strong>
+                        </div>
+                        <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
+                        </button>
+                        <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                        <div>
+                        <i class="mr-2 fa-regular fa-user-police"></i>
+                        <strong> AML </strong>
+                        </div>
+                        <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
+                        </button>
+                        </div>
+                        </div>
+                        <div>
+                        <div class="pt-3 d-flex justify-content-between">
+                        <a class="h6" href="#">Mr Mano sebastiano Argenti</a>
+                        <strong>Owner</strong>
+                        </div>
+                        <div class="gap-1 pt-2 d-flex flex-column">
+                        <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                        <div>
+                        <i class="mr-2 fa-regular fa-fingerprint"></i>
+                        <strong> KKYC </strong>
+                        </div>
+                        <span class="badge border-ink-primary badge-pill badge-soft-secondary">Not started</span>
+                        </button>
+                        <button class="cursor-default d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between active">
+                        <div>
+                        <i class="mr-2 fa-regular fa-user-police"></i>
+                        <strong> AML </strong>
+                        </div>
+                        <span class="badge border-ink-primary badge-pill badge-danger">Incomplete</span>
+                        </button>
+                        </div>
+                        </div>
+                        */}}
                     </div>
                   </side>
-                  <div class=" px-3 py-3">
+                  <div class="content px-3 py-3 ">
                     <h6>Mr Mano sebastiano Argenti / AML</h6>
                     <div class="d-flex mb-3 gap-2">
                       <div>
                         <div class="card">
-                          <div class="card-body  text-center">
+                          <div class="card-body text-center">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <div>
@@ -717,7 +722,7 @@
                       </div>
                       <div>
                         <div class="card">
-                          <div class="card-body  text-center">
+                          <div class="card-body text-center">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <div>
@@ -734,7 +739,7 @@
                       </div>
                       <div>
                         <div class="card">
-                          <div class="card-body  text-center">
+                          <div class="card-body text-center">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <div>
@@ -751,7 +756,7 @@
                       </div>
                       <div>
                         <div class="card">
-                          <div class="card-body  text-center">
+                          <div class="card-body text-center">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <div>
@@ -907,7 +912,7 @@
               <div class="border-bottom bg-white p-3">
                 <div class="d-flex gap-sm mb-3">
                   <div class="card">
-                    <div class="card-body  text-center">
+                    <div class="card-body text-center">
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                       <div>
@@ -922,7 +927,7 @@
                     </div>
                   </div>
                   <div class="card">
-                    <div class="card-body  text-center">
+                    <div class="card-body text-center">
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                       <div>
@@ -937,7 +942,7 @@
                     </div>
                   </div>
                   <div class="card">
-                    <div class="card-body  text-center">
+                    <div class="card-body text-center">
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                       <div>
@@ -952,7 +957,7 @@
                     </div>
                   </div>
                   <div class="card">
-                    <div class="card-body  text-center">
+                    <div class="card-body text-center">
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                       <div>
@@ -1019,12 +1024,12 @@
           </div>
         </main>
 
-        <side x-show="showConfig" x-transition x-transition.origin.left class="h-content  ink-primary flex-grow-0 overflow-auto px-3" style="min-width: 25vw;">
+        <side x-show="showConfig" x-transition x-transition.origin.left class="h-content ink-primary flex-grow-0 overflow-auto px-3" style="min-width: 25vw;">
           <div class="h-100 d-flex flex-column bg-alpha-ink-10 overflow-hidden rounded-lg">
             <div class="flex-grow-1 scroll overflow-auto">
               <div>
                 <div class="sticky-top">
-                  <div class="d-flex hidden-bg  justify-content-between align-items-center bg-alpha-ink-10 p-2">
+                  <div class="d-flex hidden-bg justify-content-between align-items-center bg-alpha-ink-10 p-2">
                     <div class="d-flex align-items-center ">
                       <i class="fa-regular fa-hammer mx-2"></i>
                       <h2 class="h6 mb-0">Config</h2>

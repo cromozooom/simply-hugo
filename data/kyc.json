@@ -1,0 +1,86 @@
+{
+  "kyc": {
+    "menu": [
+      {
+        "name": "Mr JM FName JM LName",
+        "type": "Owner",
+        "links": [
+          {
+            "name": "KYC",
+            "status": "Validated",
+            "icon": "fingerprint",
+            "state": "active"
+          },
+          {
+            "name": "AML",
+            "status": "Submited",
+            "icon": "user-police",
+            "state": false
+          }
+        ]
+      },
+      {
+        "name": "Mr JM FName JM LName",
+        "type": "Owner",
+        "links": [
+          {
+            "name": "KYC",
+            "status": "Validated",
+            "icon": "fingerprint",
+            "state": "active"
+          },
+          {
+            "name": "AML",
+            "status": "Submited",
+            "icon": "user-police",
+            "state": false
+          }
+        ]
+      },
+      {
+        "name": "Mr JM FName JM LName",
+        "type": "Owner",
+        "links": [
+          {
+            "name": "KYC",
+            "status": "Validated",
+            "icon": "fingerprint",
+            "state": "active"
+          },
+          {
+            "name": "AML",
+            "status": "Submited",
+            "icon": "user-police",
+            "state": false
+          }
+        ]
+      }
+    ],
+    "forms": [
+      {
+        "title": "Title form 1",
+        "short": "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        "percentage": 5,
+        "cta": "cta copy"
+      },
+      {
+        "title": "Title form 2",
+        "short": "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        "percentage": 15,
+        "cta": "cta copy"
+      },
+      {
+        "title": "Title form 3",
+        "short": "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        "percentage": 25,
+        "cta": "cta copy"
+      },
+      {
+        "title": "Title form 4",
+        "short": "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        "percentage": 100,
+        "cta": "cta copy"
+      }
+    ]
+  }
+}
