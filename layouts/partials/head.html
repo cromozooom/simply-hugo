@@ -69,10 +69,13 @@
     <link rel="stylesheet" href="{{ $b4MinCSS.Permalink }}" integrity="{{ $b4MinCSS.Data.Integrity }}" />
   {{- end -}}
   {{- if $customB4 -}}
-    {{ $customB4CSS := resources.Get "css/customB4.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
-    <link rel="stylesheet" href="{{ $customB4CSS.RelPermalink }}" />
-    {{ $customB4MinCSS := $customB4CSS | minify | fingerprint | resources.PostProcess }}
-    <link rel="stylesheet" href="{{ $customB4MinCSS.Permalink }}" integrity="{{ $customB4MinCSS.Data.Integrity }}" />
+    {{ if .Site.IsServer }}
+      {{ $customB4CSS := resources.Get "css/customB4.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+      <link rel="stylesheet" href="{{ $customB4CSS.RelPermalink }}" />
+    {{ else }}
+      {{ $customB4MinCSS := $customB4CSS | minify | fingerprint | resources.PostProcess }}
+      <link rel="stylesheet" href="{{ $customB4MinCSS.Permalink }}" integrity="{{ $customB4MinCSS.Data.Integrity }}" />
+    {{- end -}}
   {{- end -}}
 
   {{- if $tailwind -}}

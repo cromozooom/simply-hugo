@@ -4,13 +4,13 @@ $brand: pink !default;
 $appTheme: "Flower1";
 $appTheme: "Light";
 $appTheme: "b4";
-$appTheme: "Caos";
 $appTheme: "Flower";
+$appTheme: "Caos";
 
 @if $appTheme == "Caos" {
-  $primary: hsl(261, 51%, 51%);
+  $primary: #644fc1;
   $primary: rgb(221, 0, 99);
-  $brand: hsl(261, 51%, 35%);
+  $brand: #644fc1;
 } @else if $appTheme == "Flower" {
   $primary: #151b22;
   $brand: #e10032;
@@ -26,15 +26,16 @@ $appTheme: "Flower";
 
 $theme-colors: (
   "brand": $brand,
-  "soft-brand": color.adjust($brand, $lightness: 35%),
-  "soft-primary": color.adjust($primary, $lightness: 35%),
-  "soft-secondary": color.adjust($secondary, $lightness: 35%),
-  "soft-success": color.adjust($success, $lightness: 35%),
-  "soft-info": color.adjust($info, $lightness: 35%),
+  "white": #fff,
+  "soft-brand": color.adjust($brand, $lightness: 45%),
+  "soft-primary": color.adjust($primary, $lightness: 45%),
+  "soft-secondary": color.adjust($secondary, $lightness: 46%),
+  "soft-success": color.adjust($success, $lightness: 45%),
+  "soft-info": color.adjust($info, $lightness: 45%),
   "soft-warning": color.adjust($warning, $lightness: 35%),
-  "soft-danger": color.adjust($danger, $lightness: 35%),
-  "soft-light": color.adjust($light, $lightness: 35%),
-  "soft-dark": color.adjust($dark, $lightness: 35%),
+  "soft-danger": color.adjust($danger, $lightness: 45%),
+  "soft-light": color.adjust($light, $lightness: 45%),
+  "soft-dark": color.adjust($dark, $lightness: 45%),
 );
 
 $spacers: (
@@ -43,9 +44,9 @@ $spacers: (
   ),
 );
 
-$body-bg: $brand;
-$body-color: $gray-900;
+// $body-bg: $brand;
+// $body-color: $gray-900;
 
-$link-color: theme-color("primary");
-$component-active-bg: theme-color("primary");
-$progress-bar-bg: theme-color("primary");
+// $link-color: theme-color("primary");
+// $component-active-bg: theme-color("primary");
+// $progress-bar-bg: theme-color("primary");

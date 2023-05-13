@@ -6,6 +6,10 @@
   {{ $dash := 0 }}
 
   {{ if $colors }}
+    <div
+      class="overflow-x-scroll
+    overflow-y-scroll"
+    ></div>
     <div class="bg-brand p-4 text-white">brand</div>
     <div class="bg-primary p-4 text-white">primary</div>
     <div class="bg-secondary text-dark p-4">secondary</div>
@@ -194,8 +198,13 @@
   {{ end }}
 
   {{ if $pageStructure }}
-    <div class="d-flex flex-column bg-brand h-screen" x-data="{ showConfig: false, showSetting: false, showInfo: false, showBoth: true }">
-      <div class="h-nav bg-brand d-flex justify-content-between align-items-center px-3 text-white">
+
+    <div class="d-flex flex-column bg-brand h-screen" x-data="{ navBarHeight: '', navTabHeight: '',  showConfig: false, showSetting: false, showInfo: false, showBoth: true }" x-init="updateNavBarHeight" @resize.window="updateNavBarHeight">
+      <div x-ref="navBar" class="h-nav xtop-nav-bar bg-brand d-flex justify-content-between align-items-center px-3 py-2 text-white">
+        <!-- <span>
+          <span> navBarHeight: <span x-text="navBarHeight"></span> </span>
+          <span> navTabHeight: <span x-text="navTabHeight"></span> </span>
+        </span> -->
         <div class="d-flex align-items-center">
           <span class="ink-brand mr-3">
             <svg width="52" height="36" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -217,6 +226,11 @@
           </div>
         </div>
         <div>
+          <button class="btn btn-link ink-brand xbtn-alpha-10">
+            <!-- <span x-show="!showInfo">Show </span>
+              <span x-show="showInfo">Hide </span> -->
+            <i class="fa-regular fa-clock-rotate-left"></i>
+          </button>
           <button class="btn btn-link ink-brand xbtn-alpha-10">
             <!-- <span x-show="!showInfo">Show </span>
               <span x-show="showInfo">Hide </span> -->
@@ -431,11 +445,12 @@
             </div>
           </div>
         </side>
-
         {{ $page := 1 }}
         {{ $filters := 0 }}
+
+
         <main
-          class="h-content flex-grow-1 overflow-auto"
+          class="h-content flex-grow-1 overflow-hidden"
           x-data="{
               selectedId: null,
               init() {
@@ -453,8 +468,10 @@
               }
           }"
           x-id="['tab']"
+          x-init="updateNavTabHeight"
+          @resize.window="updateNavTabHeight"
         >
-          <div class="sticky-top">
+          <div class="xsticky-top" x-ref="navTab">
             <nav :class="!showInfo ? 'rounded-top-left' : ''" class="navbar main-navbar hidden-bg navbar-expand-lg m-0 p-0">
               <ul x-ref="tablist" @keydown.right.prevent.stop="$focus.wrap().next()" @keydown.home.prevent.stop="$focus.first()" @keydown.page-up.prevent.stop="$focus.first()" @keydown.left.prevent.stop="$focus.wrap().prev()" @keydown.end.prevent.stop="$focus.last()" @keydown.page-down.prevent.stop="$focus.last()" role="tablist" class="navbar-nav">
                 <!-- Tab -->
@@ -473,19 +490,77 @@
                 </li>
               </ul>
             </nav>
-            <div id="filter-container"></div>
+            <!-- <div id="filter-container"></div> -->
           </div>
-          <div role="tabpanels">
-            <section x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
-              <template x-if="isSelected($id('tab', whichChild($el, $el.parentElement)))">
+          <div role="tabpanels" class="pannels h-content-tabs d-flex ">
+            <section class=" overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
+              <!-- <template x-if="isSelected($id('tab', whichChild($el, $el.parentElement)))">
                 <template x-teleport="#filter-container">
                   <div class="border-bottom bg-white p-2">Filters</div>
                 </template>
-              </template>
+              </template> -->
+              <div x-ref="filter" class="sticky-top border-bottom bg-white">
+                {{ $filter:= 1 }}
+                {{ if $filter }}
+                  <div class="d-flex justify-content-between w-100  p-2">
+                    <div class="d-flex justify-content-start gap-2">
+                      <div>
+                        <div class="input-group has-validation">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="fa-regular fa-magnifying-glass"></i>
+                            </span>
+                          </div>
+                          <input type="text" class="form-control" required />
+                          <!-- <div class="invalid-feedback">Please choose a username.</div> -->
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-center gap-2">
+                        <button class="btn btn-sm btn-soft-secondary d-flex align-items-center gap-2">
+                          <i class="fa-solid fa-bars-filter"></i>
+                          <span> Filter </span>
+                        </button>
+                        <button class="btn btn-sm btn-soft-secondary d-flex align-items-center gap-2">
+                          <i class="fa-solid fa-chevron-down"></i>
+                          <span> Preset </span>
+                        </button>
+                        <button class="btn btn-sm btn-soft-secondary d-flex align-items-center gap-2">
+                          <i class="fa-regular fa-circle-plus"></i>
+                          <span> Type </span>
+                          <div class="d-flex align-items-center gap-1">
+                            <span class="text-black-50"> | </span>
+                            <span class="badge badge-pill badge-white">Appintment</span>
+                            <span class="badge badge-pill badge-white">Task</span>
+                            <span class="badge badge-pill badge-white">Phone</span>
+                          </div>
+                        </button>
+                        <button class="btn btn-sm btn-soft-secondary d-flex align-items-center gap-2">
+                          <i class="fa-regular fa-circle-plus"></i>
+                          <span> Owner </span>
+                          <div class="d-flex align-items-center gap-1">
+                            <span class="text-black-50"> | </span>
+                            <span class="badge badge-pill badge-white">4 Selected</span>
+                          </div>
+                        </button>
+                        <button class="btn btn-sm d-flex align-items-center gap-1">
+                          <span> Remove filter </span>
+                          <i class="fa-solid fa-xmark ml-1"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center ">
+                      <button class="btn btn-sm btn-soft-secondary d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-chevron-down"></i>
+                        Columns
+                      </button>
+                    </div>
+                  </div>
+                {{ end }}
+              </div>
               <div class="border-bottom bg-white">
                 <div class="d-flex">
-                  <side class="menu d-flex flex-column border-right gap-2 px-3 py-3" style="min-width: 380px;">
-                    <div class="sticky-top">
+                  <side class="d-flex flex-column border-right gap-2 px-3" style="min-width: 380px;">
+                    <div class="sticky-top" style="top: var(--filter, 0px)">
                       <div>
                         <div class="d-flex justify-content-between">
                           <a class="h6" href="#">Mr JM FName JM LName</a>
@@ -509,7 +584,95 @@
                         </div>
                       </div>
                       <div>
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between pt-3">
+                          <a class="h6" href="#">Mr JM FName JM LName</a>
+                          <strong>Owner</strong>
+                        </div>
+                        <div class="d-flex flex-column gap-1 pt-2">
+                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                            <div>
+                              <i class="fa-regular fa-fingerprint mr-2"></i>
+                              <strong> KYC </strong>
+                            </div>
+                            <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
+                          </button>
+                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                            <div>
+                              <i class="fa-regular fa-user-police mr-2"></i>
+                              <strong> AML </strong>
+                            </div>
+                            <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="d-flex justify-content-between pt-3">
+                          <a class="h6" href="#">Mr JM FName JM LName</a>
+                          <strong>Owner</strong>
+                        </div>
+                        <div class="d-flex flex-column gap-1 pt-2">
+                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                            <div>
+                              <i class="fa-regular fa-fingerprint mr-2"></i>
+                              <strong> KYC </strong>
+                            </div>
+                            <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
+                          </button>
+                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                            <div>
+                              <i class="fa-regular fa-user-police mr-2"></i>
+                              <strong> AML </strong>
+                            </div>
+                            <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="d-flex justify-content-between pt-3">
+                          <a class="h6" href="#">Mr JM FName JM LName</a>
+                          <strong>Owner</strong>
+                        </div>
+                        <div class="d-flex flex-column gap-1 pt-2">
+                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                            <div>
+                              <i class="fa-regular fa-fingerprint mr-2"></i>
+                              <strong> KYC </strong>
+                            </div>
+                            <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
+                          </button>
+                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                            <div>
+                              <i class="fa-regular fa-user-police mr-2"></i>
+                              <strong> AML </strong>
+                            </div>
+                            <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="d-flex justify-content-between pt-3">
+                          <a class="h6" href="#">Mr JM FName JM LName</a>
+                          <strong>Owner</strong>
+                        </div>
+                        <div class="d-flex flex-column gap-1 pt-2">
+                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                            <div>
+                              <i class="fa-regular fa-fingerprint mr-2"></i>
+                              <strong> KYC </strong>
+                            </div>
+                            <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
+                          </button>
+                          <button class="d-flex w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between">
+                            <div>
+                              <i class="fa-regular fa-user-police mr-2"></i>
+                              <strong> AML </strong>
+                            </div>
+                            <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="d-flex justify-content-between pt-3">
                           <a class="h6" href="#">Mr Mano sebastiano Argenti</a>
                           <strong>Owner</strong>
                         </div>
@@ -532,7 +695,7 @@
                       </div>
                     </div>
                   </side>
-                  <div class="menu px-3 py-3">
+                  <div class=" px-3 py-3">
                     <h6>Mr Mano sebastiano Argenti / AML</h6>
                     <div class="d-flex mb-3 gap-2">
                       <div>
@@ -604,12 +767,15 @@
                         </div>
                       </div>
                     </div>
+                    <hr />
 
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
 
                     <div x-data="{ showType: true }">
                       <button class="btn btn-sm btn-secondary mb-3" @click="showType = !showType" :class="showType ? 'btn-success' : 'btn-alpha-10'">
-                        <i class="fa-regular fa-user"></i>
+                        <i class="fas fa-swatchbook"></i>
+                        <span x-show="showType">Hide</span>
+                        <span x-show="!showType">Show</span>
                       </button>
                       <div x-show="showType" class="pb-3">
                         <nav aria-label="breadcrumb">
@@ -737,7 +903,7 @@
             </section>
 
             <!-- Panel -->
-            <section x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel" class="xposition-relative">
+            <section class="overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel" class="xposition-relative">
               <div class="border-bottom bg-white p-3">
                 <div class="d-flex gap-sm mb-3">
                   <div class="card">

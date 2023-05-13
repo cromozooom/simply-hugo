@@ -55,3 +55,16 @@
     color: contrast-color($primary, white, black);
   }
 }
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
+
+xbody {
+  * {
+    outline: 1px solid red;
+  }
+}

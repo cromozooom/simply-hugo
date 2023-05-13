@@ -5,17 +5,84 @@
   </head>
   <body
     x-data="{
-    cssOptions: [
-      { label: 'custom 4.6', value: '/css/customB4.min.css' },
-      { label: 'only 4.6', value: '/css/b4.min.css' },
-      { label: 'only 5', value: '/css/b5.min.css' },
-      { label: 'tailwind', value: '/css/tailwind.min.css' }
-    ],
-    selectedCSS: '/css/customB4.min.css'
-  }"
+      
+      cssOptions: [
+        { label: 'custom 4.6', value: '/css/customB4.min.css' },
+        { label: 'only 4.6', value: '/css/b4.min.css' },
+        { label: 'only 5', value: '/css/b5.min.css' },
+        { label: 'tailwind', value: '/css/tailwind.min.css' }
+      ],
+      selectedCSS: '/css/customB4.min.css'
+    }"
   >
-    <!-- {{- partial "header.html" . -}} -->
     {{- block "main" . }}{{- end }}
     {{- partial "footer.html" . -}}
+    <script>
+      function updateNavBarHeight() {
+        const navBarElem = this.$refs.navBar;
+        if (navBarElem) {
+          const navBarHeight = getComputedStyle(navBarElem).height;
+          this.navBarHeight = navBarHeight;
+          document.body.style.setProperty("--navBar", navBarHeight);
+        }
+      }
+      function updateNavTabHeight() {
+        const navTabElem = this.$refs.navTab;
+        if (navTabElem) {
+          const navTabHeight = getComputedStyle(navTabElem).height;
+          this.navTabHeight = navTabHeight;
+          document.body.style.setProperty("--navTab", navTabHeight);
+        }
+        const filterElem = this.$refs.filter;
+        console.log(filterElem);
+        if (filterElem) {
+          const filterHeight = getComputedStyle(filterElem).height;
+          const heightWithoutPadding = parseInt(filterHeight, 10) - 12 + "px";
+          this.filterHeight = filterHeight;
+          document.body.style.setProperty("--filter", heightWithoutPadding);
+        }
+      }
+    </script>
   </body>
+
+  {{ $test:= 0 }}
+
+  {{ if $test }}
+    <body x-data="{  selectedCSS: '/css/customB4.min.css'}">
+      <div x-data="{navBarHeight: '', navTabHeight: ''}" x-init="updateNavBarHeight" @resize.window="updateNavBarHeight">
+        <div x-ref="navBar">
+          <span>
+            <span> navBarHeight: <span x-text="navBarHeight"></span> </span>
+            <span> navTabHeight: <span x-text="navTabHeight"></span> </span>
+          </span>
+        </div>
+        <main x-data="{selectedId: null}" x-init="updateNavTabHeight" @resize.window="updateNavTabHeight">
+          <div x-ref="navTab">
+            test
+            <hr />
+          </div>
+          <p>something else</p>
+        </main>
+      </div>
+
+      <script>
+        function updateNavBarHeight() {
+          const navBarElem = this.$refs.navBar;
+          if (navBarElem) {
+            const navBarHeight = getComputedStyle(navBarElem).height;
+            this.navBarHeight = navBarHeight;
+            document.body.style.setProperty("--navBar", navBarHeight);
+          }
+        }
+        function updateNavTabHeight() {
+          const navTabElem = this.$refs.navTab;
+          if (navTabElem) {
+            const navTabHeight = getComputedStyle(navTabElem).height - 20;
+            this.navTabHeight = navTabHeight;
+            document.body.style.setProperty("--navTab", navTabHeight);
+          }
+        }
+      </script>
+    </body>
+  {{ end }}
 </html>
