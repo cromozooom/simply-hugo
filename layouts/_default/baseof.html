@@ -37,7 +37,7 @@
         console.log(filterElem);
         if (filterElem) {
           const filterHeight = getComputedStyle(filterElem).height;
-          const heightWithoutPadding = parseInt(filterHeight, 10) - 12 + "px";
+          const heightWithoutPadding = parseInt(filterHeight, 10) - 15 + "px";
           this.filterHeight = filterHeight;
           document.body.style.setProperty("--filter", heightWithoutPadding);
         }
@@ -77,7 +77,7 @@
         function updateNavTabHeight() {
           const navTabElem = this.$refs.navTab;
           if (navTabElem) {
-            const navTabHeight = getComputedStyle(navTabElem).height - 20;
+            const navTabHeight = getComputedStyle(navTabElem).height;
             this.navTabHeight = navTabHeight;
             document.body.style.setProperty("--navTab", navTabHeight);
           }

@@ -1,0 +1,802 @@
+[
+  {
+    "name": "Suzanne Haskew",
+    "contactType": "Corporate Finance",
+    "lastContacted": "8/1/2022",
+    "lastFTFmeeting": "4/15/2023",
+    "stage": "Lead checking",
+    "assets": 1897105.4
+  },
+  {
+    "name": "Kelcie Batters",
+    "contactType": "Charity",
+    "lastContacted": "4/9/2023",
+    "lastFTFmeeting": "9/6/2022",
+    "stage": "Exploratory",
+    "assets": 1453360.9
+  },
+  {
+    "name": "Bridget Thombleson",
+    "contactType": "Law Firm",
+    "lastContacted": "4/29/2023",
+    "lastFTFmeeting": "1/15/2023",
+    "stage": "Lead waiting",
+    "assets": 3553806.43
+  },
+  {
+    "name": "Daven Paszek",
+    "contactType": "Corporate Finance",
+    "lastContacted": "8/7/2022",
+    "lastFTFmeeting": "12/19/2022",
+    "stage": "Exploratory",
+    "assets": 5128306.14
+  },
+  {
+    "name": "Byron Jerrems",
+    "contactType": "Corporate Finance",
+    "lastContacted": "2/24/2023",
+    "lastFTFmeeting": "5/10/2023",
+    "stage": "Lead waiting",
+    "assets": 9389638.78
+  },
+  {
+    "name": "Alyssa Mace",
+    "contactType": "Individual",
+    "lastContacted": "5/15/2022",
+    "lastFTFmeeting": "1/1/2023",
+    "stage": "Disqualified",
+    "assets": 1563665.83
+  },
+  {
+    "name": "Aubrette Erickson",
+    "contactType": "Corportion",
+    "lastContacted": "11/10/2022",
+    "lastFTFmeeting": "7/27/2022",
+    "stage": "Disqualified",
+    "assets": 8840854.02
+  },
+  {
+    "name": "Ravi Connal",
+    "contactType": "Joint",
+    "lastContacted": "6/8/2022",
+    "lastFTFmeeting": "8/20/2022",
+    "stage": "Disqualified",
+    "assets": 6259113.92
+  },
+  {
+    "name": "Basilius McInerney",
+    "contactType": "Corportion",
+    "lastContacted": "4/26/2023",
+    "lastFTFmeeting": "12/8/2022",
+    "stage": "Disqualified",
+    "assets": 4183348.73
+  },
+  {
+    "name": "Denis Ropert",
+    "contactType": "IFA",
+    "lastContacted": "12/17/2022",
+    "lastFTFmeeting": "6/7/2022",
+    "stage": "Exploratory",
+    "assets": 5863474.59
+  },
+  {
+    "name": "Broderick Barras",
+    "contactType": "Law Firm",
+    "lastContacted": "8/4/2022",
+    "lastFTFmeeting": "10/10/2022",
+    "stage": "Exploratory",
+    "assets": 1918919.38
+  },
+  {
+    "name": "Colline Yarrell",
+    "contactType": "Corportion",
+    "lastContacted": "8/10/2022",
+    "lastFTFmeeting": "8/26/2022",
+    "stage": "Exploratory",
+    "assets": 8625343.66
+  },
+  {
+    "name": "Mikol Dansey",
+    "contactType": "Corportion",
+    "lastContacted": "4/7/2023",
+    "lastFTFmeeting": "11/1/2022",
+    "stage": "Lead waiting",
+    "assets": 4856238.72
+  },
+  {
+    "name": "Kalindi McMonnies",
+    "contactType": "IFA",
+    "lastContacted": "5/6/2023",
+    "lastFTFmeeting": "3/28/2023",
+    "stage": "Exploratory",
+    "assets": 6474990.22
+  },
+  {
+    "name": "Laurice Mc Meekin",
+    "contactType": "Intermediary",
+    "lastContacted": "6/1/2022",
+    "lastFTFmeeting": "5/5/2023",
+    "stage": "Disqualified",
+    "assets": 588645.79
+  },
+  {
+    "name": "Elisa Raycroft",
+    "contactType": "Charity",
+    "lastContacted": "3/11/2023",
+    "lastFTFmeeting": "2/25/2023",
+    "stage": "Disqualified",
+    "assets": 2590181.86
+  },
+  {
+    "name": "Claribel Devote",
+    "contactType": "Intermediary",
+    "lastContacted": "8/4/2022",
+    "lastFTFmeeting": "6/8/2022",
+    "stage": "Lost Bussines",
+    "assets": 1252474.48
+  },
+  {
+    "name": "Gerrie Keyworth",
+    "contactType": "Corporate Finance",
+    "lastContacted": "10/24/2022",
+    "lastFTFmeeting": "7/8/2022",
+    "stage": "Exploratory",
+    "assets": 1669997.05
+  },
+  {
+    "name": "Gerri Pennells",
+    "contactType": "Joint",
+    "lastContacted": "4/25/2023",
+    "lastFTFmeeting": "1/5/2023",
+    "stage": "Lead checking",
+    "assets": 6891122.0
+  },
+  {
+    "name": "Ursuline Garter",
+    "contactType": "Corportion",
+    "lastContacted": "5/19/2022",
+    "lastFTFmeeting": "6/16/2022",
+    "stage": "Disqualified",
+    "assets": 4954383.96
+  },
+  {
+    "name": "Ella Hardeman",
+    "contactType": "Law Firm",
+    "lastContacted": "4/25/2023",
+    "lastFTFmeeting": "3/10/2023",
+    "stage": "Exploratory",
+    "assets": 5185341.08
+  },
+  {
+    "name": "Addy Oty",
+    "contactType": "Law Firm",
+    "lastContacted": "7/18/2022",
+    "lastFTFmeeting": "4/20/2023",
+    "stage": "Exploratory",
+    "assets": 8471122.12
+  },
+  {
+    "name": "Cecilius Pedrol",
+    "contactType": "Intermediary",
+    "lastContacted": "6/8/2022",
+    "lastFTFmeeting": "2/28/2023",
+    "stage": "Disqualified",
+    "assets": 4148776.96
+  },
+  {
+    "name": "Josy Portwaine",
+    "contactType": "Accountancies",
+    "lastContacted": "12/29/2022",
+    "lastFTFmeeting": "1/28/2023",
+    "stage": "Exploratory",
+    "assets": 7641880.4
+  },
+  {
+    "name": "Padraig Powney",
+    "contactType": "Law Firm",
+    "lastContacted": "2/23/2023",
+    "lastFTFmeeting": "12/8/2022",
+    "stage": "Lead waiting",
+    "assets": 9977581.67
+  },
+  {
+    "name": "Elsinore Tookey",
+    "contactType": "Corportion",
+    "lastContacted": "1/9/2023",
+    "lastFTFmeeting": "7/16/2022",
+    "stage": "Disqualified",
+    "assets": 9894287.74
+  },
+  {
+    "name": "Sybil Snowsill",
+    "contactType": "Law Firm",
+    "lastContacted": "6/28/2022",
+    "lastFTFmeeting": "6/9/2022",
+    "stage": "Lead waiting",
+    "assets": 805066.26
+  },
+  {
+    "name": "Susie Baldwin",
+    "contactType": "Accountancies",
+    "lastContacted": "10/6/2022",
+    "lastFTFmeeting": "9/8/2022",
+    "stage": "Disqualified",
+    "assets": 3534387.26
+  },
+  {
+    "name": "Cyndie Arr",
+    "contactType": "Joint",
+    "lastContacted": "11/10/2022",
+    "lastFTFmeeting": "3/31/2023",
+    "stage": "Lead checking",
+    "assets": 6189561.34
+  },
+  {
+    "name": "Filmore Flecknoe",
+    "contactType": "Accountancies",
+    "lastContacted": "10/4/2022",
+    "lastFTFmeeting": "3/14/2023",
+    "stage": "Lead waiting",
+    "assets": 621329.4
+  },
+  {
+    "name": "Consolata Piggot",
+    "contactType": "Corporate Finance",
+    "lastContacted": "8/25/2022",
+    "lastFTFmeeting": "10/3/2022",
+    "stage": "Exploratory",
+    "assets": 9032020.7
+  },
+  {
+    "name": "Amelita Braiden",
+    "contactType": "Individual",
+    "lastContacted": "9/12/2022",
+    "lastFTFmeeting": "2/16/2023",
+    "stage": "Disqualified",
+    "assets": 7048042.85
+  },
+  {
+    "name": "Halimeda Kinde",
+    "contactType": "Law Firm",
+    "lastContacted": "6/27/2022",
+    "lastFTFmeeting": "10/6/2022",
+    "stage": "Lead waiting",
+    "assets": 793891.52
+  },
+  {
+    "name": "Thornton Lindback",
+    "contactType": "Corportion",
+    "lastContacted": "1/24/2023",
+    "lastFTFmeeting": "7/23/2022",
+    "stage": "Exploratory",
+    "assets": 8029984.76
+  },
+  {
+    "name": "Terence Dyhouse",
+    "contactType": "Law Firm",
+    "lastContacted": "2/14/2023",
+    "lastFTFmeeting": "9/29/2022",
+    "stage": "Lost Bussines",
+    "assets": 8983677.73
+  },
+  {
+    "name": "Jehu Radloff",
+    "contactType": "Individual",
+    "lastContacted": "7/21/2022",
+    "lastFTFmeeting": "9/8/2022",
+    "stage": "Lead checking",
+    "assets": 4461914.38
+  },
+  {
+    "name": "Stevena Ingold",
+    "contactType": "Law Firm",
+    "lastContacted": "6/16/2022",
+    "lastFTFmeeting": "6/8/2022",
+    "stage": "Lead waiting",
+    "assets": 5930608.68
+  },
+  {
+    "name": "Weston Skeat",
+    "contactType": "Corportion",
+    "lastContacted": "4/8/2023",
+    "lastFTFmeeting": "7/15/2022",
+    "stage": "Exploratory",
+    "assets": 2257440.91
+  },
+  {
+    "name": "Petra Baumler",
+    "contactType": "Individual",
+    "lastContacted": "6/25/2022",
+    "lastFTFmeeting": "7/6/2022",
+    "stage": "Disqualified",
+    "assets": 6119363.25
+  },
+  {
+    "name": "Brook Digweed",
+    "contactType": "Corportion",
+    "lastContacted": "7/1/2022",
+    "lastFTFmeeting": "4/1/2023",
+    "stage": "Exploratory",
+    "assets": 7765219.06
+  },
+  {
+    "name": "Mercedes Swindells",
+    "contactType": "Law Firm",
+    "lastContacted": "8/22/2022",
+    "lastFTFmeeting": "8/23/2022",
+    "stage": "Disqualified",
+    "assets": 1148930.44
+  },
+  {
+    "name": "Bridie Saiger",
+    "contactType": "Corporate Finance",
+    "lastContacted": "9/5/2022",
+    "lastFTFmeeting": "7/17/2022",
+    "stage": "Lead waiting",
+    "assets": 9548312.75
+  },
+  {
+    "name": "Gwenni Connew",
+    "contactType": "Accountancies",
+    "lastContacted": "10/12/2022",
+    "lastFTFmeeting": "12/14/2022",
+    "stage": "Lead checking",
+    "assets": 8633743.91
+  },
+  {
+    "name": "Ceciley Skilbeck",
+    "contactType": "Corportion",
+    "lastContacted": "1/7/2023",
+    "lastFTFmeeting": "7/2/2022",
+    "stage": "Lost Bussines",
+    "assets": 6534879.37
+  },
+  {
+    "name": "Hynda Michel",
+    "contactType": "Corporate Finance",
+    "lastContacted": "10/4/2022",
+    "lastFTFmeeting": "9/15/2022",
+    "stage": "Lost Bussines",
+    "assets": 9363125.64
+  },
+  {
+    "name": "Belicia Tipling",
+    "contactType": "Law Firm",
+    "lastContacted": "3/26/2023",
+    "lastFTFmeeting": "6/26/2022",
+    "stage": "Exploratory",
+    "assets": 2975128.88
+  },
+  {
+    "name": "Margalo Griffiths",
+    "contactType": "IFA",
+    "lastContacted": "4/4/2023",
+    "lastFTFmeeting": "11/15/2022",
+    "stage": "Lost Bussines",
+    "assets": 8896371.79
+  },
+  {
+    "name": "Correy Cogar",
+    "contactType": "Charity",
+    "lastContacted": "5/8/2023",
+    "lastFTFmeeting": "2/26/2023",
+    "stage": "Disqualified",
+    "assets": 2391806.45
+  },
+  {
+    "name": "Frederich Sircombe",
+    "contactType": "Intermediary",
+    "lastContacted": "9/19/2022",
+    "lastFTFmeeting": "1/22/2023",
+    "stage": "Lead waiting",
+    "assets": 5461150.11
+  },
+  {
+    "name": "Pat Kochs",
+    "contactType": "Charity",
+    "lastContacted": "4/12/2023",
+    "lastFTFmeeting": "5/3/2023",
+    "stage": "Lead waiting",
+    "assets": 7640503.18
+  },
+  {
+    "name": "Carly Pickle",
+    "contactType": "Law Firm",
+    "lastContacted": "7/25/2022",
+    "lastFTFmeeting": "12/27/2022",
+    "stage": "Exploratory",
+    "assets": 3649397.64
+  },
+  {
+    "name": "Herby Girardeau",
+    "contactType": "Corportion",
+    "lastContacted": "7/21/2022",
+    "lastFTFmeeting": "12/30/2022",
+    "stage": "Lead checking",
+    "assets": 7192003.8
+  },
+  {
+    "name": "Bunnie Barroux",
+    "contactType": "Accountancies",
+    "lastContacted": "5/10/2023",
+    "lastFTFmeeting": "3/11/2023",
+    "stage": "Lead checking",
+    "assets": 7538657.98
+  },
+  {
+    "name": "Isidro Mangeney",
+    "contactType": "IFA",
+    "lastContacted": "3/3/2023",
+    "lastFTFmeeting": "3/11/2023",
+    "stage": "Lost Bussines",
+    "assets": 9794778.09
+  },
+  {
+    "name": "Hana Swatheridge",
+    "contactType": "Corporate Finance",
+    "lastContacted": "4/28/2023",
+    "lastFTFmeeting": "1/13/2023",
+    "stage": "Lead waiting",
+    "assets": 9172221.6
+  },
+  {
+    "name": "Tabbie Felkin",
+    "contactType": "Accountancies",
+    "lastContacted": "1/28/2023",
+    "lastFTFmeeting": "3/12/2023",
+    "stage": "Exploratory",
+    "assets": 3788585.48
+  },
+  {
+    "name": "Darda Barnhart",
+    "contactType": "IFA",
+    "lastContacted": "4/21/2023",
+    "lastFTFmeeting": "5/14/2022",
+    "stage": "Lead checking",
+    "assets": 7064687.7
+  },
+  {
+    "name": "Baryram Bendon",
+    "contactType": "Individual",
+    "lastContacted": "8/26/2022",
+    "lastFTFmeeting": "4/11/2023",
+    "stage": "Lead waiting",
+    "assets": 8281705.95
+  },
+  {
+    "name": "Dyane Pessler",
+    "contactType": "Accountancies",
+    "lastContacted": "1/18/2023",
+    "lastFTFmeeting": "9/20/2022",
+    "stage": "Disqualified",
+    "assets": 3822833.79
+  },
+  {
+    "name": "Spence Acland",
+    "contactType": "Intermediary",
+    "lastContacted": "7/7/2022",
+    "lastFTFmeeting": "12/24/2022",
+    "stage": "Exploratory",
+    "assets": 6441889.19
+  },
+  {
+    "name": "Jacintha Rickwood",
+    "contactType": "Charity",
+    "lastContacted": "4/24/2023",
+    "lastFTFmeeting": "8/3/2022",
+    "stage": "Lost Bussines",
+    "assets": 3372125.83
+  },
+  {
+    "name": "Birch Litherborough",
+    "contactType": "Charity",
+    "lastContacted": "7/18/2022",
+    "lastFTFmeeting": "5/11/2023",
+    "stage": "Lead waiting",
+    "assets": 3351370.87
+  },
+  {
+    "name": "Itch Swalowe",
+    "contactType": "IFA",
+    "lastContacted": "3/17/2023",
+    "lastFTFmeeting": "8/27/2022",
+    "stage": "Exploratory",
+    "assets": 6082167.3
+  },
+  {
+    "name": "Bunny Shimmans",
+    "contactType": "Individual",
+    "lastContacted": "11/23/2022",
+    "lastFTFmeeting": "4/14/2023",
+    "stage": "Disqualified",
+    "assets": 2405214.61
+  },
+  {
+    "name": "Joell Daviot",
+    "contactType": "Corportion",
+    "lastContacted": "11/18/2022",
+    "lastFTFmeeting": "6/24/2022",
+    "stage": "Disqualified",
+    "assets": 6031257.26
+  },
+  {
+    "name": "Peta Sclanders",
+    "contactType": "Law Firm",
+    "lastContacted": "4/22/2023",
+    "lastFTFmeeting": "2/10/2023",
+    "stage": "Disqualified",
+    "assets": 2262182.75
+  },
+  {
+    "name": "Dniren Fratczak",
+    "contactType": "Individual",
+    "lastContacted": "11/15/2022",
+    "lastFTFmeeting": "4/7/2023",
+    "stage": "Lead checking",
+    "assets": 9851789.68
+  },
+  {
+    "name": "Lusa Ferber",
+    "contactType": "Charity",
+    "lastContacted": "1/13/2023",
+    "lastFTFmeeting": "4/5/2023",
+    "stage": "Lost Bussines",
+    "assets": 849693.52
+  },
+  {
+    "name": "Eva Nottingam",
+    "contactType": "IFA",
+    "lastContacted": "5/27/2022",
+    "lastFTFmeeting": "11/20/2022",
+    "stage": "Exploratory",
+    "assets": 674669.53
+  },
+  {
+    "name": "Riannon Vasyutin",
+    "contactType": "Joint",
+    "lastContacted": "6/13/2022",
+    "lastFTFmeeting": "12/5/2022",
+    "stage": "Lost Bussines",
+    "assets": 4454237.13
+  },
+  {
+    "name": "Gleda McCafferky",
+    "contactType": "Intermediary",
+    "lastContacted": "9/2/2022",
+    "lastFTFmeeting": "10/4/2022",
+    "stage": "Lead waiting",
+    "assets": 74312.35
+  },
+  {
+    "name": "Trev Kobu",
+    "contactType": "Corporate Finance",
+    "lastContacted": "7/2/2022",
+    "lastFTFmeeting": "10/30/2022",
+    "stage": "Disqualified",
+    "assets": 1033452.47
+  },
+  {
+    "name": "Estell Yonnie",
+    "contactType": "Corportion",
+    "lastContacted": "2/27/2023",
+    "lastFTFmeeting": "10/22/2022",
+    "stage": "Disqualified",
+    "assets": 6831108.96
+  },
+  {
+    "name": "Charmaine Thomsen",
+    "contactType": "Charity",
+    "lastContacted": "6/15/2022",
+    "lastFTFmeeting": "6/26/2022",
+    "stage": "Lead checking",
+    "assets": 2967385.55
+  },
+  {
+    "name": "Izak Tiron",
+    "contactType": "Joint",
+    "lastContacted": "4/10/2023",
+    "lastFTFmeeting": "1/29/2023",
+    "stage": "Lost Bussines",
+    "assets": 8194664.47
+  },
+  {
+    "name": "Julian Mereweather",
+    "contactType": "Joint",
+    "lastContacted": "9/3/2022",
+    "lastFTFmeeting": "11/13/2022",
+    "stage": "Lost Bussines",
+    "assets": 5028086.65
+  },
+  {
+    "name": "Charisse McAless",
+    "contactType": "IFA",
+    "lastContacted": "9/29/2022",
+    "lastFTFmeeting": "12/7/2022",
+    "stage": "Disqualified",
+    "assets": 1415213.2
+  },
+  {
+    "name": "Griswold Guidetti",
+    "contactType": "Individual",
+    "lastContacted": "10/14/2022",
+    "lastFTFmeeting": "3/9/2023",
+    "stage": "Exploratory",
+    "assets": 3992897.14
+  },
+  {
+    "name": "Timmie Issatt",
+    "contactType": "Corporate Finance",
+    "lastContacted": "8/4/2022",
+    "lastFTFmeeting": "7/9/2022",
+    "stage": "Lead checking",
+    "assets": 8040947.16
+  },
+  {
+    "name": "Emmalyn Parnell",
+    "contactType": "Individual",
+    "lastContacted": "11/20/2022",
+    "lastFTFmeeting": "3/26/2023",
+    "stage": "Exploratory",
+    "assets": 5148302.61
+  },
+  {
+    "name": "Sidonnie Caustick",
+    "contactType": "Corportion",
+    "lastContacted": "4/15/2023",
+    "lastFTFmeeting": "10/22/2022",
+    "stage": "Exploratory",
+    "assets": 4848578.26
+  },
+  {
+    "name": "Talya Dunsford",
+    "contactType": "Intermediary",
+    "lastContacted": "9/2/2022",
+    "lastFTFmeeting": "12/22/2022",
+    "stage": "Exploratory",
+    "assets": 3781825.36
+  },
+  {
+    "name": "Shurwood Lippatt",
+    "contactType": "Joint",
+    "lastContacted": "1/27/2023",
+    "lastFTFmeeting": "11/15/2022",
+    "stage": "Exploratory",
+    "assets": 9119732.86
+  },
+  {
+    "name": "Dinah Redhouse",
+    "contactType": "Corportion",
+    "lastContacted": "10/12/2022",
+    "lastFTFmeeting": "4/28/2023",
+    "stage": "Lead checking",
+    "assets": 7721659.02
+  },
+  {
+    "name": "Alejandrina Younghusband",
+    "contactType": "Corportion",
+    "lastContacted": "6/28/2022",
+    "lastFTFmeeting": "4/1/2023",
+    "stage": "Disqualified",
+    "assets": 9225470.99
+  },
+  {
+    "name": "Kinsley Hafford",
+    "contactType": "Law Firm",
+    "lastContacted": "11/14/2022",
+    "lastFTFmeeting": "11/26/2022",
+    "stage": "Lead waiting",
+    "assets": 8196836.18
+  },
+  {
+    "name": "Morgen Wilder",
+    "contactType": "Accountancies",
+    "lastContacted": "10/25/2022",
+    "lastFTFmeeting": "5/31/2022",
+    "stage": "Lead checking",
+    "assets": 2987737.18
+  },
+  {
+    "name": "Valenka Foynes",
+    "contactType": "Corportion",
+    "lastContacted": "8/28/2022",
+    "lastFTFmeeting": "11/13/2022",
+    "stage": "Lead checking",
+    "assets": 7085601.59
+  },
+  {
+    "name": "Giusto Knottley",
+    "contactType": "Corporate Finance",
+    "lastContacted": "1/23/2023",
+    "lastFTFmeeting": "4/12/2023",
+    "stage": "Disqualified",
+    "assets": 9542547.97
+  },
+  {
+    "name": "Rosmunda Melhuish",
+    "contactType": "Joint",
+    "lastContacted": "7/25/2022",
+    "lastFTFmeeting": "10/21/2022",
+    "stage": "Disqualified",
+    "assets": 7038738.34
+  },
+  {
+    "name": "Germain Usherwood",
+    "contactType": "Corporate Finance",
+    "lastContacted": "12/26/2022",
+    "lastFTFmeeting": "7/8/2022",
+    "stage": "Lead waiting",
+    "assets": 6863771.62
+  },
+  {
+    "name": "Rozalin Friary",
+    "contactType": "Charity",
+    "lastContacted": "1/22/2023",
+    "lastFTFmeeting": "3/22/2023",
+    "stage": "Lost Bussines",
+    "assets": 8434897.35
+  },
+  {
+    "name": "Shelden Loftin",
+    "contactType": "Accountancies",
+    "lastContacted": "10/14/2022",
+    "lastFTFmeeting": "11/26/2022",
+    "stage": "Lead checking",
+    "assets": 8479893.16
+  },
+  {
+    "name": "Alexandrina Doy",
+    "contactType": "Corporate Finance",
+    "lastContacted": "8/20/2022",
+    "lastFTFmeeting": "2/12/2023",
+    "stage": "Lead checking",
+    "assets": 859817.63
+  },
+  {
+    "name": "Giorgio Yushkov",
+    "contactType": "Law Firm",
+    "lastContacted": "12/3/2022",
+    "lastFTFmeeting": "2/9/2023",
+    "stage": "Disqualified",
+    "assets": 5070017.25
+  },
+  {
+    "name": "Andria Percifer",
+    "contactType": "Charity",
+    "lastContacted": "6/17/2022",
+    "lastFTFmeeting": "10/23/2022",
+    "stage": "Lost Bussines",
+    "assets": 356655.38
+  },
+  {
+    "name": "Tybie Skinley",
+    "contactType": "Intermediary",
+    "lastContacted": "8/26/2022",
+    "lastFTFmeeting": "9/25/2022",
+    "stage": "Exploratory",
+    "assets": 3536463.87
+  },
+  {
+    "name": "Paolo Ghilks",
+    "contactType": "Law Firm",
+    "lastContacted": "10/26/2022",
+    "lastFTFmeeting": "11/10/2022",
+    "stage": "Exploratory",
+    "assets": 9700953.54
+  },
+  {
+    "name": "Ike Seabridge",
+    "contactType": "Accountancies",
+    "lastContacted": "6/8/2022",
+    "lastFTFmeeting": "11/1/2022",
+    "stage": "Lead checking",
+    "assets": 7387672.06
+  },
+  {
+    "name": "Shannan Scard",
+    "contactType": "Corportion",
+    "lastContacted": "9/24/2022",
+    "lastFTFmeeting": "5/24/2022",
+    "stage": "Lead waiting",
+    "assets": 2242894.65
+  }
+]

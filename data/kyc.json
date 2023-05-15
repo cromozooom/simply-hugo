@@ -7,7 +7,7 @@
         "links": [
           {
             "name": "KYC",
-            "status": "Validated",
+            "status": "Incompleted",
             "icon": "fingerprint",
             "state": "active"
           },
@@ -25,13 +25,13 @@
         "links": [
           {
             "name": "KYC",
-            "status": "Validated",
+            "status": "Incompleted",
             "icon": "fingerprint",
-            "state": "active"
+            "state": false
           },
           {
             "name": "AML",
-            "status": "Submited",
+            "status": "Warning",
             "icon": "user-police",
             "state": false
           }
@@ -45,7 +45,7 @@
             "name": "KYC",
             "status": "Validated",
             "icon": "fingerprint",
-            "state": "active"
+            "state": false
           },
           {
             "name": "AML",
