@@ -1,11 +1,19 @@
 .scroll {
+  /* width */
   --scroll-width: 8px;
   --scroll-radius: 4px;
-  //--scroll-track-bg: #f1f1f1;
-  --scroll--track-bg: #{$alpha-base-5};
-  --scroll--thumb-bg: #{$alpha-base-30};
-  --scroll--thumb-hover-bg: #{$alpha-base-50};
-  /* width */
+  &--dark {
+    //--scroll-track-bg: #f1f1f1;
+    --scroll--track-bg: #{$alpha-base-5};
+    --scroll--thumb-bg: #{$alpha-base-30};
+    --scroll--thumb-hover-bg: #{$alpha-base-50};
+  }
+  &--light {
+    --scroll-track-bg: #f1f1f1;
+    --scroll--track-bg: #{$alpha-ink-5};
+    --scroll--thumb-bg: #{$alpha-ink-30};
+    --scroll--thumb-hover-bg: #{$alpha-ink-50};
+  }
   &::-webkit-scrollbar {
     width: var(--scroll-width);
   }

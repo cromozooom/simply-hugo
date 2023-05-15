@@ -30,7 +30,8 @@ $spacers: (
 // $progress-bar-bg: $primary;
 
 a {
-  &:focus, &.focus {
+  &:focus,
+  &.focus {
     box-shadow: 0 0 0 0.2rem rgba($primary, 0.5);
   }
 }

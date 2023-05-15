@@ -1,0 +1,55 @@
+$primary: rgb(221, 0, 99) !default;
+$brand: #644fc1 !default;
+$brand-base: #000;
+$brand-ink: #fff;
+
+$appTheme: "Flower1";
+$appTheme: "Light";
+$appTheme: "b4";
+$appTheme: "RC";
+$appTheme: "Flower";
+$appTheme: "WDX";
+$appTheme: "Caos";
+
+.brand {
+  display: none;
+}
+
+@if $appTheme == "Caos" {
+  // $primary: #644fc1;
+  $brand: #644fc1;
+  $primary: rgb(221, 0, 99);
+  $brand-base: darken($brand, 25%);
+  .chaos {
+    display: block;
+  }
+} @else if $appTheme == "Flower" {
+  $brand: #151b22;
+  $primary: #e10032;
+  $brand-base: darken($brand, 30%);
+  $brand-base: lighten($brand, 30%);
+  .flower {
+    display: block;
+  }
+} @else if $appTheme == "WDX" {
+  $primary: #294555;
+  $brand: #335669;
+  $brand-base: darken($brand, 25%);
+  .wdx {
+    display: block;
+  }
+} @else if $appTheme == "RC" {
+  $primary: #375384;
+  $brand: #001e41;
+  $brand-base: lighten($brand, 25%);
+  .rc {
+    display: block;
+  }
+} @else if $appTheme == "Light" {
+  $primary: hsl(288, 90%, 50%);
+  $brand: hsl(273, 100%, 70%);
+  $brand-base: lighten($brand, 25%);
+  .light {
+    display: block;
+  }
+}

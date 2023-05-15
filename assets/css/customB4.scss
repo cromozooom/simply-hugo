@@ -2,29 +2,7 @@
 @use "sass:map";
 @use "sass:math";
 @import "../../node_modules/bootstrap/scss/functions";
-
-$primary: rgb(221, 0, 99) !default;
-$brand: #644fc1 !default;
-
-$appTheme: "Flower1";
-$appTheme: "Light";
-$appTheme: "b4";
-$appTheme: "Flower";
-$appTheme: "Caos";
-
-@if $appTheme == "Caos" {
-  // $primary: #644fc1;
-  $brand:#644fc1;
-  $primary:  rgb(221, 0, 99);
-} @else if $appTheme == "Flower" {
-  $primary: #151b22;
-  $brand: #e10032;
-} @else if $appTheme == "Light" {
-  $primary: hsl(288, 90%, 50%);
-  $brand: hsl(273, 100%, 70%);
-}
-
-
+@import "themes";
 @import "../../node_modules/bootstrap/scss/variables";
 @import "vars";
 @import "variables_b4";

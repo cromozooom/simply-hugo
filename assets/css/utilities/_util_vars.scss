@@ -50,6 +50,20 @@ $alpha: (
   "alpha-base-95": $alpha-base-95,
 );
 
+$brand-bases: (
+  "alpha-brand-base-5": rgba($brand-base, 0.05),
+  "alpha-brand-base-10": rgba($brand-base, 0.1),
+  "alpha-brand-base-20": rgba($brand-base, 0.2),
+  "alpha-brand-base-30": rgba($brand-base, 0.3),
+  "alpha-brand-base-40": rgba($brand-base, 0.4),
+  "alpha-brand-base-50": rgba($brand-base, 0.5),
+  "alpha-brand-base-60": rgba($brand-base, 0.6),
+  "alpha-brand-base-70": rgba($brand-base, 0.7),
+  "alpha-brand-base-80": rgba($brand-base, 0.8),
+  "alpha-brand-base-90": rgba($brand-base, 0.9),
+  "alpha-brand-base-95": rgba($brand-base, 0.95),
+);
+
 $gapXSmall: 0.5rem;
 $gapSmall: 1rem;
 $gapMedium: 2rem;

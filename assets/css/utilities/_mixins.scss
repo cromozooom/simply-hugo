@@ -9,6 +9,11 @@
     background: #{$colorValue};
   }
 }
+@each $color, $colorValue in $brand-bases {
+  .bg-#{$color} {
+    background: #{$colorValue};
+  }
+}
 @each $color, $colorValue in $inks {
   .ink-#{$color} {
     color: #{$colorValue};

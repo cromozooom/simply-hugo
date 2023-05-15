@@ -1,3 +1,9 @@
+// body {
+//   * {
+//     outline: 1px solid red;
+//   }
+// }
+
 .hidden-bg {
   position: relative;
   &::after {
@@ -75,8 +81,79 @@
   overflow: auto;
 }
 
-xbody {
-  * {
-    outline: 1px solid red;
+.card-hover {
+  &:hover {
+    box-shadow: $box-shadow;
+    // border-color: $primary;
+    cursor: pointer;
   }
+  &-soft-primary {
+    &:hover {
+      border-color: theme-color("soft-primary");
+    }
+  }
+  &-soft-secondary {
+    &:hover {
+      border-color: theme-color("soft-secondary");
+    }
+  }
+  &-soft-info {
+    &:hover {
+      border-color: theme-color("soft-info");
+    }
+  }
+  &-soft-success {
+    &:hover {
+      border-color: theme-color("soft-success");
+    }
+  }
+  &-soft-danger {
+    &:hover {
+      border-color: theme-color("soft-danger");
+    }
+  }
+}
+
+.card-main {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    display: block;
+    width: 100%;
+    min-height: 1px;
+    left: 0;
+  }
+  &-soft-primary {
+    border-top: 4px solid theme-color("soft-primary");
+  }
+  &-soft-secondary {
+    border-top: 4px solid theme-color("soft-secondary");
+  }
+  &-soft-info {
+    border-top: 4px solid theme-color("soft-info");
+  }
+  &-soft-success {
+    border-top: 4px solid theme-color("soft-success");
+  }
+  &-soft-warning {
+    border-top: 4px solid theme-color("soft-warning");
+  }
+  &-soft-danger {
+    border-top: 4px solid theme-color("soft-danger");
+  }
+}
+
+.badge-with-icon {
+  font-weight: normal;
+}
+
+.vertical-gradient {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.75) 100%
+  );
 }
