@@ -3,13 +3,13 @@ $brand: #644fc1 !default;
 $brand-base: #000;
 $brand-ink: #fff;
 
-$appTheme: "Flower1";
 $appTheme: "Light";
 $appTheme: "b4";
 $appTheme: "RC";
-$appTheme: "Flower";
 $appTheme: "WDX";
 $appTheme: "Caos";
+$appTheme: "Flower1";
+$appTheme: "Flower";
 
 .brand {
   display: none;
@@ -21,35 +21,41 @@ $appTheme: "Caos";
   $primary: rgb(221, 0, 99);
   $brand-base: darken($brand, 25%);
   .chaos {
-    display: block;
+    display: block !important;
   }
 } @else if $appTheme == "Flower" {
   $brand: #151b22;
   $primary: #e10032;
-  $brand-base: darken($brand, 30%);
   $brand-base: lighten($brand, 30%);
   .flower {
-    display: block;
+    display: block !important;
+  }
+} @else if $appTheme == "Flower1" {
+  $brand: #e10032;
+  $primary: #151b22;
+  $brand-base: darken($brand, 40%);
+  .flower1 {
+    display: block !important;
   }
 } @else if $appTheme == "WDX" {
   $primary: #294555;
   $brand: #335669;
   $brand-base: darken($brand, 25%);
   .wdx {
-    display: block;
+    display: block !important;
   }
 } @else if $appTheme == "RC" {
   $primary: #375384;
   $brand: #001e41;
   $brand-base: lighten($brand, 25%);
   .rc {
-    display: block;
+    display: block !important;
   }
 } @else if $appTheme == "Light" {
   $primary: hsl(288, 90%, 50%);
   $brand: hsl(273, 100%, 70%);
   $brand-base: lighten($brand, 25%);
   .light {
-    display: block;
+    display: block !important;
   }
 }
