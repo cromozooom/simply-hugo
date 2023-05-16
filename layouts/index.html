@@ -198,8 +198,8 @@
             <section x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
               <div class="bg-white">
                 <div class="d-flex">
-                  <side class="h-content-tabs scroll scroll--light border-right w-40 overflow-y-scroll">
-                    <div class="pb-2">
+                  <side class="h-content-tabs scroll scroll--light border-right min-side-internal-w overflow-y-scroll">
+                    <div class=" pb-2">
                       <div class="d-flex justify-content-between align-items-center px-2 pt-3">
                         <h6 class="d-flex align-items-cente mb-0">
                           <i class="fa-solid fa-bolt text-info mr-2"></i>
@@ -215,15 +215,15 @@
                         </div>
                       </div>
                       <div class="d-flex mt-2 gap-2 px-2 py-2">
-                        <div class="card d-flex flex-column justify-content-center flex-grow-1 px-2 py-3">
+                        <div class="card w-33 d-flex flex-column justify-content-center flex-grow-1 px-2 py-3">
                           <p class="mb-0">Last Communication</p>
                           <h6 class="text-info">23/05/1976</h6>
                         </div>
-                        <div class="card d-flex flex-column justify-content-center flex-grow-1 px-2 py-3">
+                        <div class="card  w-33 d-flex flex-column justify-content-center flex-grow-1 px-2 py-3">
                           <p class="mb-0">Last Meeting</p>
                           <h6 class="text-info">23/05/1976</h6>
                         </div>
-                        <div class="card d-flex flex-column justify-content-center flex-grow-1 px-2 py-3">
+                        <div class="card  w-33 d-flex flex-column justify-content-center flex-grow-1 px-2 py-3">
                           <p class="mb-0">Next Meeting</p>
                           <h6 class="text-info">23/05/1976</h6>
                         </div>
@@ -265,23 +265,228 @@
                       </div>
                     </div>
                     <div class="px-2">
-                      <p>1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, suscipit. Deleniti magnam eaque iure harum optio a ducimus! Excepturi aliquid quas voluptates consequuntur reiciendis amet vero nostrum, est ipsum tempora!</p>
+                      <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li>
+                          <div class="card xbg-soft-info d-flex flex-row p-2">
+                            <div class="d-flex gap-2">
+                              <div>
+                                <div class="xbg-info rounded p-3">
+                                  <i class="fa-solid fa-rotate"></i>
+                                </div>
+                              </div>
+                              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-cente gap-2">
+                              <a href="#">
+                                <i class="fa-solid fa-rotate"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="card xbg-soft-info d-flex flex-row p-2">
+                            <div class="d-flex gap-2">
+                              <div>
+                                <div class="xbg-info rounded p-3">
+                                  <i class="fa-solid fa-rotate"></i>
+                                </div>
+                              </div>
+                              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-cente gap-2">
+                              <a href="#">
+                                <i class="fa-solid fa-rotate"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="card xbg-soft-info d-flex flex-row p-2">
+                            <div class="d-flex gap-2">
+                              <div>
+                                <div class="xbg-info rounded p-3">
+                                  <i class="fa-solid fa-rotate"></i>
+                                </div>
+                              </div>
+                              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-cente gap-2">
+                              <a href="#">
+                                <i class="fa-solid fa-rotate"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="card xbg-soft-info d-flex flex-row p-2">
+                            <div class="d-flex gap-2">
+                              <div>
+                                <div class="xbg-info rounded p-3">
+                                  <i class="fa-solid fa-rotate"></i>
+                                </div>
+                              </div>
+                              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-cente gap-2">
+                              <a href="#">
+                                <i class="fa-solid fa-rotate"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="card xbg-soft-info d-flex flex-row p-2">
+                            <div class="d-flex gap-2">
+                              <div>
+                                <div class="xbg-info rounded p-3">
+                                  <i class="fa-solid fa-rotate"></i>
+                                </div>
+                              </div>
+                              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-cente gap-2">
+                              <a href="#">
+                                <i class="fa-solid fa-rotate"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="card xbg-soft-info d-flex flex-row p-2">
+                            <div class="d-flex gap-2">
+                              <div>
+                                <div class="xbg-info rounded p-3">
+                                  <i class="fa-solid fa-rotate"></i>
+                                </div>
+                              </div>
+                              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-cente gap-2">
+                              <a href="#">
+                                <i class="fa-solid fa-rotate"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="card xbg-soft-info d-flex flex-row p-2">
+                            <div class="d-flex gap-2">
+                              <div>
+                                <div class="xbg-info rounded p-3">
+                                  <i class="fa-solid fa-rotate"></i>
+                                </div>
+                              </div>
+                              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-cente gap-2">
+                              <a href="#">
+                                <i class="fa-solid fa-rotate"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="card xbg-soft-info d-flex flex-row p-2">
+                            <div class="d-flex gap-2">
+                              <div>
+                                <div class="xbg-info rounded p-3">
+                                  <i class="fa-solid fa-rotate"></i>
+                                </div>
+                              </div>
+                              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-cente gap-2">
+                              <a href="#">
+                                <i class="fa-solid fa-rotate"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="card xbg-soft-info d-flex flex-row p-2">
+                            <div class="d-flex gap-2">
+                              <div>
+                                <div class="xbg-info rounded p-3">
+                                  <i class="fa-solid fa-rotate"></i>
+                                </div>
+                              </div>
+                              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-cente gap-2">
+                              <a href="#">
+                                <i class="fa-solid fa-rotate"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="card xbg-soft-info d-flex flex-row p-2">
+                            <div class="d-flex gap-2">
+                              <div>
+                                <div class="xbg-info rounded p-3">
+                                  <i class="fa-solid fa-rotate"></i>
+                                </div>
+                              </div>
+                              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-cente gap-2">
+                              <a href="#">
+                                <i class="fa-solid fa-rotate"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="card xbg-soft-info d-flex flex-row p-2">
+                            <div class="d-flex gap-2">
+                              <div>
+                                <div class="xbg-info rounded p-3">
+                                  <i class="fa-solid fa-rotate"></i>
+                                </div>
+                              </div>
+                              <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-cente gap-2">
+                              <a href="#">
+                                <i class="fa-solid fa-rotate"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
                     </div>
                   </side>
                   <div class="flex-grow-1 h-content-tabs scroll scroll--light overflow-y-scroll">
@@ -302,15 +507,15 @@
                           </div>
                         </div>
                         <div class="d-flex mt-2 gap-2 py-2">
-                          <div class="card d-flex flex-column justify-content-center flex-grow-1 px-2 py-3">
+                          <div class="card w-33 d-flex flex-column justify-content-center flex-grow-1 px-2 py-3">
                             <p class="mb-0">Last Communication</p>
                             <h6 class="text-info">23/05/1976</h6>
                           </div>
-                          <div class="card d-flex flex-column justify-content-center flex-grow-1 px-2 py-3">
+                          <div class="card w-33 d-flex flex-column justify-content-center flex-grow-1 px-2 py-3">
                             <p class="mb-0">Last Meeting</p>
                             <h6 class="text-info">23/05/1976</h6>
                           </div>
-                          <div class="card d-flex flex-column justify-content-center flex-grow-1 px-2 py-3">
+                          <div class="card w-33 d-flex flex-column justify-content-center flex-grow-1 px-2 py-3">
                             <p class="mb-0">Next Meeting</p>
                             <h6 class="text-info">23/05/1976</h6>
                           </div>
@@ -319,7 +524,7 @@
                     </div>
 
                     <div class="d-flex gap-2 px-2">
-                      <div class="flex-grow-1 card card-main card-main-soft-info mt-3 px-3 py-3">
+                      <div class="flex-grow-1 max-w-50 card card-main card-main-soft-info mt-3 px-3 py-3">
                         <div class="d-flex justify-content-between align-items-center">
                           <h6 class="mb-0">Marketing List</h6>
                           <div class="d-flex justify-content-between align-items-cente gap-2">
@@ -369,36 +574,6 @@
                               danger
                               <i class="fa-solid fa-xmark ml-1"></i>
                             </a>
-                          </div>
-                        </div>
-                        <hr />
-                        <div class="d-flex justify-content-end align-items-center gap-2">
-                          <p class="lead m-0">Can't find one to select from the list?</p>
-                          <button class="btn btn-primary">Create one</button>
-                        </div>
-                      </div>
-                      <div class="flex-grow-1 card card-main card-main-soft-info mt-3 px-3 py-3">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <h6 class="mb-0">Notes</h6>
-                          <div class="d-flex justify-content-between align-items-cente gap-2">
-                            <a href="#">
-                              <i class="fa-solid fa-rotate"></i>
-                            </a>
-                            <a href="#">
-                              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                          </div>
-                        </div>
-                        <div>
-                          <div class="form-group">
-                            <label for="inputState">Select the marketing list</label>
-                            <select id="inputState" class="form-control">
-                              <option selected>Choose...</option>
-                              <option>...</option>
-                            </select>
-                          </div>
-                          <div class="pb-2">Existing pills</div>
-                          <div class="d-flex flex-wrap gap-1">
                             <a href="#" class="badge badge-primary px-2 py-2">
                               primary
                               <i class="fa-solid fa-xmark ml-1"></i>
@@ -428,6 +603,77 @@
                               <i class="fa-solid fa-xmark ml-1"></i>
                             </a>
                           </div>
+                        </div>
+                        <hr />
+                        <div class="d-flex justify-content-end align-items-center gap-2">
+                          <p class="lead m-0">Can't find one to select from the list?</p>
+                          <button class="btn btn-primary">Create one</button>
+                        </div>
+                      </div>
+                      <div class="flex-grow-1 max-w-50 card card-main card-main-soft-info mt-3 px-3 py-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <h6 class="mb-0">Notes</h6>
+                          <div class="d-flex justify-content-between align-items-cente gap-2">
+                            <a href="#">
+                              <i class="fa-solid fa-rotate"></i>
+                            </a>
+                            <a href="#">
+                              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="form-group">
+                            <label for="inputState">Select the marketing list</label>
+                            <select id="inputState" class="form-control">
+                              <option selected>Choose...</option>
+                              <option>...</option>
+                            </select>
+                          </div>
+                          <div class="pb-2">Existing pills</div>
+                          <ul class="list-unstyled d-flex flex-column gap-2">
+                            <li>
+                              <div class="card bg-soft-info d-flex flex-row p-2">
+                                <div class="d-flex gap-2">
+                                  <div>
+                                    <div class="bg-info rounded p-3">
+                                      <i class="fa-solid fa-rotate"></i>
+                                    </div>
+                                  </div>
+                                  <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-cente gap-2">
+                                  <a href="#">
+                                    <i class="fa-solid fa-rotate"></i>
+                                  </a>
+                                  <a href="#">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                  </a>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="card xbg-soft-info d-flex flex-row p-2">
+                                <div class="d-flex gap-2">
+                                  <div>
+                                    <div class="xbg-info rounded p-3">
+                                      <i class="fa-solid fa-rotate"></i>
+                                    </div>
+                                  </div>
+                                  <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae praesentium adipisci sit ut nulla incidunt nisi ipsa doloremque? Omnis repellat incidunt sit esse suscipit obcaecati veniam consequuntur molestias labore eum.</p>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-cente gap-2">
+                                  <a href="#">
+                                    <i class="fa-solid fa-rotate"></i>
+                                  </a>
+                                  <a href="#">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                  </a>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                          <div class="d-flex flex-wrap gap-1"></div>
                         </div>
                         <hr />
                         <div class="d-flex justify-content-end align-items-center gap-2">
