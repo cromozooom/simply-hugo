@@ -1,0 +1,12 @@
+.debug {
+  --nav-h: 6rem;
+  &-h {
+    height: 1500px;
+  }
+  &-nav-h {
+    height: 6rem;
+  }
+  &-content-height {
+    height: calc(100vh - var(--nav-h));
+  }
+}

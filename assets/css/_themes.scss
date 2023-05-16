@@ -6,10 +6,10 @@ $brand-ink: #fff;
 $appTheme: "Light";
 $appTheme: "b4";
 $appTheme: "RC";
-$appTheme: "WDX";
-$appTheme: "Caos";
-$appTheme: "Flower1";
 $appTheme: "Flower";
+$appTheme: "Flower1";
+$appTheme: "Caos";
+$appTheme: "WDX";
 
 .brand {
   display: none;
@@ -26,7 +26,7 @@ $appTheme: "Flower";
 } @else if $appTheme == "Flower" {
   $brand: #151b22;
   $primary: #e10032;
-  $brand-base: lighten($brand, 30%);
+  $brand-base: lighten($brand, 50%);
   .flower {
     display: block !important;
   }
