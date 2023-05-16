@@ -1,23 +1,9 @@
 {{ define "main" }}
-  {{ $colors := 0 }}
-  {{ $typo := 0 }}
   {{ $pr := 0 }}
   {{ $pageStructure := 1 }}
   {{ $dash := 0 }}
   {{ $data := getJSON "data/kyc.json" }}
 
-  {{ if $colors }}
-    <div class="overflow-x-scroll overflow-y-scroll"></div>
-    <div class="bg-brand p-4 text-white">brand</div>
-    <div class="bg-primary p-4 text-white">primary</div>
-    <div class="bg-secondary text-dark p-4">secondary</div>
-    <div class="bg-success p-4 text-white">success</div>
-    <div class="bg-info p-4 text-white">info</div>
-    <div class="bg-warning text-DARK p-4">warning</div>
-    <div class="bg-danger p-4 text-white">danger</div>
-    <div class="bg-light text-dark p-4">light</div>
-    <div class="bg-dark p-4 text-white">dark</div>
-  {{ end }}
   {{ if $pr }}
     <ul>
       {{ $prs := getJSON "data/pr.json" }}
@@ -27,16 +13,6 @@
         </li>
       {{ end }}
     </ul>
-  {{ end }}
-  {{ if $typo }}
-    <div class="container">
-      <h1>Heading 1</h1>
-      <h2>Heading 2</h2>
-      <h3>Heading 3</h3>
-      <h4>Heading 4</h4>
-      <h5>Heading 5</h5>
-      <h6 class="mb-0">Heading 6</h6>
-    </div>
   {{ end }}
   {{ if $dash }}
     <div class="container-fluid py-2">
@@ -268,6 +244,9 @@
             </button>
             <button class="btn btn-sm" @click="showConfig = !showConfig" :class="showConfig ? 'btn-success' : 'btn-alpha-10'">
               <i class="fa-regular fa-hammer"></i>
+            </button>
+            <button class="btn btn-sm" @click="filterVisible = !filterVisible" :class="filterVisible ? 'btn-success' : 'btn-alpha-10'">
+              <i class="fa-regular fa-bars-filter"></i>
             </button>
           </div>
         </div>
@@ -937,11 +916,11 @@
             </section>
 
             <section class="w-100 overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
-              <div x-ref="filter" class="sticky-top border-bottom bg-white">
+              <div x-ref="filter" x-show="filterVisible" class="sticky-top border-bottom bg-white">
                 {{ $filter:= 1 }}
                 {{ if $filter }}
 
-                  <div x-show="filterVisible" class="d-flex justify-content-between w-100 p-2">
+                  <div class="d-flex justify-content-between w-100 p-2">
                     <div class="d-flex justify-content-start gap-2">
                       <div>
                         <div class="input-group has-validation">

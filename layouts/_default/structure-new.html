@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <div class="d-flex flex-column h-screen bg-white">
+    <nav class="p-3">
+      <a href="/">home</a>
+    </nav>
+    <div class="flex-grow-1">
+      <div class="h-100 d-block w-100">
+        <div class="d-flex h-100">
+          <side class="h-100 w-100">
+            <div class="d-flex flex-column h-100">
+              <div class="p-2">
+                <p>some stuff</p>
+              </div>
+              <!-- {{ partial "scrollable-area.html" }} -->
+              {{ partial "scrollable-area.html" }}
+              {{ partial "scrollable-area.html" }}
+            </div>
+          </side>
+          <main class="h-100 w-100">
+            {{ partial "scrollable-area.html" }}
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

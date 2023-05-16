@@ -6,10 +6,11 @@ $brand-ink: #fff;
 $appTheme: "Light";
 $appTheme: "b4";
 $appTheme: "RC";
-$appTheme: "Flower";
-$appTheme: "Flower1";
-$appTheme: "Caos";
 $appTheme: "WDX";
+$appTheme: "Flower1";
+$appTheme: "Caos1";
+$appTheme: "Caos";
+$appTheme: "Flower";
 
 .brand {
   display: none;
@@ -19,6 +20,13 @@ $appTheme: "WDX";
   // $primary: #644fc1;
   $brand: #644fc1;
   $primary: rgb(221, 0, 99);
+  $brand-base: darken($brand, 25%);
+  .chaos {
+    display: block !important;
+  }
+} @else if $appTheme == "Caos1" {
+  $brand: rgb(221, 0, 99);
+  $primary: #644fc1;
   $brand-base: darken($brand, 25%);
   .chaos {
     display: block !important;

@@ -1,0 +1,13 @@
+.scroll {
+  &-container {
+    inset: 0;
+  }
+  &-section {
+    /* for Firefox */
+    min-height: 0;
+  }
+  &-scrollable-content {
+    /* for Firefox */
+    min-height: 0;
+  }
+}

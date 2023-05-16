@@ -3,6 +3,9 @@ $h-tabs: 3.5rem;
 .h-screen {
   height: 100vh;
 }
+.w-screen {
+  width: 100vw;
+}
 .h-nav {
   height: $h-nav;
 }
@@ -12,6 +15,9 @@ $h-tabs: 3.5rem;
 .h-content-tabs {
   height: 100%;
   height: calc(100vh - var(--navBar) - var(--navTab));
+}
+.max-h {
+  max-height: 100%;
 }
 
 .min-side-w {
@@ -30,3 +36,6 @@ $h-tabs: 3.5rem;
   width: 40%;
 }
 
+.tabs-height {
+  $h-tabs: 3.5rem;
+}
