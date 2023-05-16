@@ -1,42 +1,16 @@
+{{ $content := .content }}
+{{ $scroll := .scroll }}
+{{ $d := 0 }}
+{{ if $d }}
+  <div class="scroll--dark scroll--light"></div>
+{{ end }}
 <div class="h-100 d-block w-100">
   <div class="position-relative h-100 d-block w-100 overflow-auto">
-    <div class="scroll-container position-absolute d-flex flex-column w-100 border">
+    <div class="scroll-container position-absolute d-flex flex-column w-100">
       <div class="scroll-section flex-grow-1 d-flex flex-column">
-        <div class="scroll-scrollable-content flex-grow-1 scroll scroll--light overflow-auto">
+        <div class="scroll-scrollable-content flex-grow-1 scroll scroll--{{ $scroll }} overflow-auto">
           <div class="position-relative">
-            <div class="sticky-top border-bottom bg-soft-secondary p-2">
-              <strong> nav 1 - sticky-top </strong>
-            </div>
-            <div class="sticky-top border-bottom bg-white p-2">
-              <strong> nav 2 - sticky-top </strong>
-            </div>
-            <div class="p-2">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, minima et, debitis corrupti quisquam iste consectetur magnam obcaecati nemo impedit placeat cupiditate. Consectetur facere sapiente cupiditate atque quo! Id, hic.</p>
-            </div>
+            {{ partial .content }}
           </div>
         </div>
       </div>

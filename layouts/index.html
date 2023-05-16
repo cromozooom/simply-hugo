@@ -1,7 +1,6 @@
 {{ define "main" }}
   {{ $pr := 0 }}
   {{ $pageStructure := 1 }}
-  {{ $dash := 0 }}
   {{ $data := getJSON "data/kyc.json" }}
 
   {{ if $pr }}
@@ -13,162 +12,6 @@
         </li>
       {{ end }}
     </ul>
-  {{ end }}
-  {{ if $dash }}
-    <div class="container-fluid py-2">
-      <div class="row">
-        <div class="col-4">
-          <div class="d-flex flex-column rounded-lg bg-white pb-3 pt-2">
-            <div
-              class="d-flex w-100 justify-content-between align-items-center"
-              :class="{
-                'pl-3': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
-                'ps-3': selectedCSS === '/css/b5.min.css',
-              }"
-            >
-              <h2 class="my-0 p-0">Contact forms</h2>
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn rounded-0 btn-link">
-                  <i class="fa-regular fa-maximize"></i>
-                </button>
-                <button type="button" class="btn rounded-0 btn-link">
-                  <i class="fa-regular fa-rotate"></i>
-                </button>
-              </div>
-            </div>
-            <div class="card mx-3 mt-3 pb-2">
-              <div class="head bg-light xbg-secondary font-weight-bold d-flex justify-content-start align-items-center text-dark p-2">
-                <div
-                  :class="{
-                    'mr-3': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
-                    'me-3': selectedCSS === '/css/b5.min.css',
-                  }"
-                >
-                  <i class="fa-regular fa-user"></i>
-                </div>
-                <span> Owner </span>
-              </div>
-              <div>
-                <button class="btn rounded-0 w-100 d-flex justify-content-between align-items-center py-3">
-                  <small> Mr JM FName JM LName 2023/04/23 16:06:24 - 1682265984036 - (Primary Contact) </small>
-                  <div>
-                    <i class="fa-regular fa-xmark text-danger"></i>
-                  </div>
-                </button>
-              </div>
-              <div class="btn-group mx-2" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center">KYC Incomplete</button>
-                <button type="button" class="btn btn-outline-success d-flex justify-content-center align-items-center">
-                  <span> AML Completed </span>
-                  <div
-                    class="ml-3 ms-3"
-                    :class="{
-                      'ml-3': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
-                      'ms-3': selectedCSS === '/css/b5.min.css',
-                    }"
-                  >
-                    <i class="fa-regular fa-check"></i>
-                  </div>
-                </button>
-              </div>
-            </div>
-            <div class="card mx-3 mt-3 pb-2">
-              <div class="head bg-light xbg-secondary font-weight-bold d-flex justify-content-start align-items-center text-dark p-2">
-                <div
-                  :class="{
-                    'mr-3': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
-                    'me-3': selectedCSS === '/css/b5.min.css',
-                  }"
-                >
-                  <i class="fa-regular fa-building"></i>
-                </div>
-                <span> Company Juridics </span>
-              </div>
-              <div>
-                <button class="btn w-100 d-flex justify-content-between align-items-center py-3">
-                  <small> Mr JM FName JM LName 1682265984036 - (Company) </small>
-                  <div>
-                    <i class="fa-regular fa-xmark text-danger"></i>
-                  </div>
-                </button>
-              </div>
-              <div class="btn-group mx-2" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-outline-primary d-flex justify-content-center align-items-center">KYC Incomplete</button>
-                <button type="button" class="btn btn-outline-success d-flex justify-content-center align-items-center">
-                  <span> AML Completed </span>
-                  <div
-                    :class="{
-                      'ml-3': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
-                      'ms-3': selectedCSS === '/css/b5.min.css',
-                    }"
-                  >
-                    <i class="fa-regular fa-check"></i>
-                  </div>
-                </button>
-              </div>
-            </div>
-            <div class="d-grid mt-3 px-3">
-              <button class="btn btn-primary btn-block">
-                <i
-                  class="fa-regular fa-plus"
-                  :class="{
-                    'mr-2': selectedCSS === '/css/b4.min.css' || selectedCSS === '/css/customB4.min.css',
-                    'me-2': selectedCSS === '/css/b5.min.css',
-                  }"
-                ></i>
-                Add new
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="col-8">
-          <div class="d-flex flex-column rounded-lg bg-white pb-3 pt-2">
-            <div class="d-flex w-100 justify-content-between align-items-center pl-3 ps-3">
-              <h2 class="my-0 p-0"><i class="fa-regular fa-user pe-3 pr-3"></i> Owner / KYC Incomplete</h2>
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn rounded-0 btn-link">
-                  <i class="fa-regular fa-maximize"></i>
-                </button>
-                <button type="button" class="btn rounded-0 btn-link">
-                  <i class="fa-regular fa-rotate"></i>
-                </button>
-              </div>
-            </div>
-            <div class="d-flex mt-3 gap-2 px-3">
-              <div class="card flex-fill xflex-grow-1 px-2 py-4 text-center">
-                <i class="fa-regular fa-circle-user display-4 mb-3"></i>
-                <h3>Your details</h3>
-                <div>
-                  <button class="btn btn-link rounded-0">Open form</button>
-                </div>
-              </div>
-
-              <div class="card flex-fill xflex-grow-1 px-2 py-4 text-center">
-                <i class="fa-regular fa-circle-user display-4 mb-3"></i>
-                <h3>Communication details</h3>
-                <div>
-                  <button class="btn btn-link rounded-0">Open form</button>
-                </div>
-              </div>
-              <div class="card flex-fill xflex-grow-1 px-2 py-4 text-center">
-                <i class="fa-regular fa-circle-user display-4 mb-3"></i>
-                <h3>Communication details</h3>
-                <div>
-                  <button class="btn btn-link rounded-0">Open form</button>
-                </div>
-              </div>
-              <div class="card flex-fill xflex-grow-1 px-2 py-4 text-center">
-                <i class="fa-regular fa-circle-user display-4 mb-3"></i>
-                <h3>Communication details</h3>
-                <div>
-                  <button class="btn btn-link rounded-0">Open form</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   {{ end }}
 
   {{ if $pageStructure }}
@@ -234,21 +77,6 @@
               </svg>
             </span>
           </a>
-          <div class="ml-3">
-            <button class="btn btn-sm" @click="showBoth = !showBoth; showSetting = false; ; showInfo = false;" :class="showBoth ? 'btn-success' : 'btn-alpha-10'">All <i class="fa-regular fa-gear"></i></button>
-            <button class="btn btn-sm " @click="showInfo = !showInfo; showSetting = false; showBoth = false;" :class="showInfo ? 'btn-success' : 'btn-alpha-10'">
-              <i class="fa-regular fa-user"></i>
-            </button>
-            <button class="btn btn-sm" @click="showSetting = !showSetting; showInfo = false; showBoth = false;" :class="showSetting ? 'btn-success' : 'btn-alpha-10'">
-              <i class="fa-regular fa-sliders"></i>
-            </button>
-            <button class="btn btn-sm" @click="showConfig = !showConfig" :class="showConfig ? 'btn-success' : 'btn-alpha-10'">
-              <i class="fa-regular fa-hammer"></i>
-            </button>
-            <button class="btn btn-sm" @click="filterVisible = !filterVisible" :class="filterVisible ? 'btn-success' : 'btn-alpha-10'">
-              <i class="fa-regular fa-bars-filter"></i>
-            </button>
-          </div>
         </div>
         <div>
           <button class="btn btn-link ink-brand xbtn-alpha-10">
@@ -269,204 +97,50 @@
         </div>
       </div>
       <div class="d-flex h-content">
-        <side x-show="showBoth" x-transition x-transition.origin.left class="h-content ink-primary min-side-w flex-grow-0 overflow-auto px-3" style="width: 340px;">
+        <side class="h-100 mr-3">
+          <div class="d-flex flex-column h-100 justify-content-between ml-3 gap-2">
+            <div class="d-flex flex-column gap-2">
+              <button class="btn btn-sm" @click="showBoth = !showBoth; showSetting = false; ; showInfo = false;" :class="showBoth ? 'btn-success' : 'btn-alpha-10'"><i class="fa-regular fa-gear"></i></button>
+              <button class="btn btn-sm " @click="showInfo = !showInfo; showSetting = false; showBoth = false;" :class="showInfo ? 'btn-success' : 'btn-alpha-10'">
+                <i class="fa-regular fa-user"></i>
+              </button>
+              <button class="btn btn-sm" @click="showSetting = !showSetting; showInfo = false; showBoth = false;" :class="showSetting ? 'btn-success' : 'btn-alpha-10'">
+                <i class="fa-regular fa-sliders"></i>
+              </button>
+            </div>
+            <div class="d-flex flex-column gap-2 pb-3">
+              <button class="btn btn-sm" @click="filterVisible = !filterVisible" :class="filterVisible ? 'btn-success' : 'btn-alpha-10'">
+                <i class="fa-regular fa-bars-filter"></i>
+              </button>
+              <button class="btn btn-sm" @click="showConfig = !showConfig" :class="showConfig ? 'btn-success' : 'btn-alpha-10'">
+                <i class="fa-regular fa-hammer"></i>
+              </button>
+            </div>
+          </div>
+        </side>
+        <side x-show="showBoth" x-transition x-transition.origin.left class="h-content ink-primary min-side-w mr-3 flex-grow-0 overflow-auto" style="width: 340px;">
           <div class="h-100 d-flex flex-column bg-alpha-brand-base-10 overflow-hidden rounded-lg">
-            <div class="flex-grow-0">
-              <div class="d-flex justify-content-between align-items-center bg-alpha-brand-base-20 p-2">
-                <div class="d-flex align-items-center ">
-                  <i class="fa-regular fa-circle-info mx-2"></i>
-                  <h2 class="h6 mb-0">User Info</h2>
-                </div>
-                <button class="btn btn-link ink-primary" @click="showBoth = !showBoth; showSetting = false; ; showInfo = false;">
-                  <i class="fa-regular fa-xmark"></i>
-                </button>
-              </div>
-              <div class="text-center">
-                <i class="fa-regular fa-circle-user display-3 mb-3 mt-4"></i>
-              </div>
-              <ul>
-                <li>details</li>
-                <li>details</li>
-                <li>details</li>
-                <li>details</li>
-              </ul>
+            {{ partial "side/profile-info.html" }}
+            <div class="flex-grow-1 h-100">
+              {{ partial "scrollable-area.html" (dict "content" "side/user-info.html" "scroll" "dark") }}
             </div>
-            <div class="flex-grow-1 scroll scroll--dark overflow-auto">
-              <div class="sticky-top">
-                <ul class="d-flex bg-alpha-brand-base-20 list-inline hidden-bg mb-3" id="pills-tab" role="tablist">
-                  <li class="xnav-item flex-grow-1" role="presentation">
-                    <button class="btn btn-sm btn-link w-100 nav-link active text-white" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Personal Info</button>
-                  </li>
-                  <li class="xnav-item flex-grow-1" role="presentation">
-                    <button class="btn btn-sm btn-link w-100 nav-link text-white" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Tax residency</button>
-                  </li>
-                </ul>
-              </div>
-              <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                  <div class="p-2">
-                    <h2>Personal</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                  <div class="p-2">
-                    <h2>Tax Info</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex-grow-1 scroll scroll--dark overflow-auto">
-              <div>
-                <div class="sticky-top">
-                  <div class="d-flex hidden-bg justify-content-between align-items-center bg-alpha-brand-base-20 p-2">
-                    <h2 class="h6 mb-0">Settings</h2>
-                    <i class="fa-regular fa-sliders"></i>
-                  </div>
-                </div>
-                <ul class="mx-3 p-3">
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                </ul>
-              </div>
+            <div class="flex-grow-1 h-100 overflow-auto">
+              {{ partial "scrollable-area.html" (dict "content" "side/view-settings.html"  "scroll" "dark") }}
             </div>
           </div>
         </side>
         <side x-show="showInfo" x-transition x-transition.origin.left class="h-content ink-primary min-side-w flex-grow-0 overflow-auto px-3" style="width: 340px;">
-          <div class="h-100 d-flex flex-column bg-alpha-ink-10 overflow-hidden rounded-lg">
-            <div class="flex-grow-0">
-              <div class="d-flex justify-content-between align-items-center bg-alpha-ink-20 p-2">
-                <div class="d-flex align-items-center ">
-                  <i class="fa-regular fa-user mx-2"></i>
-                  <h2 class="h6 mb-0">User Info</h2>
-                </div>
-                <button class="btn btn-link ink-primary" @click="showInfo = !showInfo; showSetting = false; showBoth = false;">
-                  <i class="fa-regular fa-xmark"></i>
-                </button>
-              </div>
-              <div class="text-center">
-                <i class="fa-regular fa-circle-user display-3 mb-3 mt-4"></i>
-              </div>
-              <ul>
-                <li>details</li>
-                <li>details</li>
-                <li>details</li>
-                <li>details</li>
-              </ul>
-            </div>
-            <div class="flex-grow-1 scroll scroll--dark overflow-auto">
-              <div class="sticky-top">
-                <ul class="d-flex bg-alpha-ink-20 list-inline hidden-bg mb-3" id="pills-tab" role="tablist">
-                  <li class="xnav-item flex-grow-1" role="presentation">
-                    <button class="btn btn-sm btn-link w-100 nav-link active text-white" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Personal Info</button>
-                  </li>
-                  <li class="xnav-item flex-grow-1" role="presentation">
-                    <button class="btn btn-sm btn-link w-100 nav-link text-white" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Tax residency</button>
-                  </li>
-                </ul>
-              </div>
-              <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                  <div class="p-2">
-                    <h2>Personal</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                  <div class="p-2">
-                    <h2>Tax Info</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos corporis, voluptatum quaerat perferendis cupiditate fuga molestias quas, corrupti quis, voluptates ut modi earum beatae at nostrum hic dolore. Eum, ipsam!</p>
-                  </div>
-                </div>
-              </div>
+          <div class="h-100 d-flex flex-column bg-alpha-brand-base-10 overflow-hidden rounded-lg">
+            {{ partial "side/profile-info.html" }}
+            <div class="flex-grow-1 h-100">
+              {{ partial "scrollable-area.html" (dict "content" "side/user-info.html" "scroll" "dark") }}
             </div>
           </div>
         </side>
         <side x-show="showSetting" x-transition x-transition.origin.left class="h-content ink-primary min-side-w flex-grow-0 overflow-auto px-3" style="width: 340px;">
-          <div class="h-100 d-flex flex-column bg-alpha-ink-10 overflow-hidden rounded-lg">
-            <div class="flex-grow-1 scroll scroll--dark overflow-auto">
-              <div>
-                <div class="sticky-top">
-                  <div class="d-flex hidden-bg justify-content-between align-items-center bg-alpha-ink-30 p-2">
-                    <div class="d-flex align-items-center ">
-                      <i class="fa-regular fa-sliders mx-2"></i>
-                      <h2 class="h6 mb-0">Settings</h2>
-                    </div>
-                    <button class="btn btn-link ink-primary" @click="showSetting = !showSetting; showInfo = false; showBoth = false;">
-                      <i class="fa-regular fa-xmark"></i>
-                    </button>
-                  </div>
-                </div>
-                <ul class="mx-3 p-3">
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                </ul>
-              </div>
+          <div class="h-100 d-flex flex-column bg-alpha-brand-base-10 overflow-hidden rounded-lg">
+            <div class="flex-grow-1 h-100 overflow-auto">
+              {{ partial "scrollable-area.html" (dict "content" "side/view-settings.html"  "scroll" "dark") }}
             </div>
           </div>
         </side>
@@ -916,7 +590,7 @@
             </section>
 
             <section class="w-100 overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
-              <div x-ref="filter" x-show="filterVisible" class="sticky-top border-bottom bg-white">
+              <div x-ref="filter" x-show="filterVisible" class="sticky-top border-bottom  bg-white shadow">
                 {{ $filter:= 1 }}
                 {{ if $filter }}
 
@@ -981,7 +655,6 @@
                   <table class="table-striped table-hover table-sm table">
                     <thead class="thead-dark">
                       <tr>
-                        <th scope="col pl-3">#</th>
                         <th scope="col"></th>
                         <th scope="col">
                           <i class="fa-light fa-sort mr-2 text-white"></i>
@@ -1016,11 +689,17 @@
                       {{ $contacts := getJSON "data/contacts.json" }}
                       {{ range $index, $item := $contacts }}
                         <tr>
-                          <th class="pl-3 align-middle" scope="row">{{ $index }}</th>
-                          <td class="align-middle">
+                          <td class="pl-2 text-center align-middle">
                             <input type="checkbox" aria-label="Checkbox for following text input" />
                           </td>
-                          <td class="align-middle">{{ .name }}</td>
+                          <td class="align-middle">
+                            <a href="#" class="btn btn-link mr-2">
+                              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <strong>
+                              {{ .name }}
+                            </strong>
+                          </td>
                           <td class="align-middle">{{ .contactType }}</td>
                           <td class="align-middle">{{ .lastContacted }}</td>
                           <td class="align-middle">{{ .lastFTFmeeting }}</td>

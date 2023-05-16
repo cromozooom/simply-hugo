@@ -11,13 +11,12 @@
               <div class="p-2">
                 <p>some stuff</p>
               </div>
-              <!-- {{ partial "scrollable-area.html" }} -->
-              {{ partial "scrollable-area.html" }}
-              {{ partial "scrollable-area.html" }}
+              {{ partial "scrollable-area.html" (dict "content" "scroll-content.html") }}
+              {{ partial "scrollable-area.html" (dict "content" "scroll-content.html") }}
             </div>
           </side>
           <main class="h-100 w-100">
-            {{ partial "scrollable-area.html" }}
+            {{ partial "scrollable-area.html" (dict "content" "scroll-content.html") }}
           </main>
         </div>
       </div>
