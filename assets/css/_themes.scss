@@ -16,6 +16,8 @@ $appTheme: "Caos1" !default;
 $appTheme: "Flower" !default;
 $appTheme: "Flower1" !default;
 $appTheme: "WDX" !default;
+$appTheme: "quilter" !default;
+$appTheme: "charles" !default;
 
 .brand {
   display: none;
@@ -40,6 +42,21 @@ $appTheme: "WDX" !default;
   $primary: #644fc1;
   $brand-base: darken($brand, 25%);
   .chaos {
+    display: block !important;
+  }
+} @else if $appTheme == "quilter" {
+  $brand: #003643;
+  $primary: #01A1DF;
+  $brand-base: darken($brand, 25%);
+  .quilter {
+    display: block !important;
+  }
+} @else if $appTheme == "charles" {
+  $brand: #c2d831;
+  $brand: #2A475E;
+  $primary: #832B63;
+  $brand-base: darken($brand, 25%);
+  .charles {
     display: block !important;
   }
 } @else if $appTheme == "Flower" {

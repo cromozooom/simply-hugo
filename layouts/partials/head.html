@@ -4,6 +4,8 @@
 {{ $wdx := true }}
 {{ $flower := true }}
 {{ $flower1 := true }}
+{{ $quilter := true }}
+{{ $charles := true }}
 
 {{ .Scratch.Set "switchCss" false }}
 {{ .Scratch.Set "customB4" false }}
@@ -83,6 +85,24 @@
     {{ else }}
       {{ $flower1MinCSS := $flower1CSS | minify | fingerprint | resources.PostProcess }}
       <link rel="stylesheet" href="{{ $flower1MinCSS.Permalink }}" integrity="{{ $flower1MinCSS.Data.Integrity }}" />
+    {{- end -}}
+  {{- end -}}
+  {{- if $charles -}}
+    {{ if .Site.IsServer }}
+      {{ $charlesCSS := resources.Get "css/b4_charles.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+      <!-- <link rel="stylesheet" href="{{ $charlesCSS.RelPermalink }}" /> -->
+    {{ else }}
+      {{ $charlesMinCSS := $charlesCSS | minify | fingerprint | resources.PostProcess }}
+      <link rel="stylesheet" href="{{ $charlesMinCSS.Permalink }}" integrity="{{ $charlesMinCSS.Data.Integrity }}" />
+    {{- end -}}
+  {{- end -}}
+  {{- if $quilter -}}
+    {{ if .Site.IsServer }}
+      {{ $quilterCSS := resources.Get "css/b4_quilter.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+      <!-- <link rel="stylesheet" href="{{ $quilterCSS.RelPermalink }}" /> -->
+    {{ else }}
+      {{ $quilterMinCSS := $quilterCSS | minify | fingerprint | resources.PostProcess }}
+      <link rel="stylesheet" href="{{ $quilterMinCSS.Permalink }}" integrity="{{ $quilterMinCSS.Data.Integrity }}" />
     {{- end -}}
   {{- end -}}
   {{- if $flower -}}
