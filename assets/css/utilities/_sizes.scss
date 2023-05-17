@@ -6,6 +6,9 @@ $h-tabs: 3.5rem;
 .w-screen {
   width: 100vw;
 }
+.w-color {
+  width: calc(100% / 12) ;
+}
 .h-nav {
   height: $h-nav;
 }

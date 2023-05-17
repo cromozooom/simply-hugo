@@ -4,6 +4,23 @@
   }
 }
 
+@each $color, $colorValue in $radix {
+  .bg-#{$color} {
+    background: #{$colorValue};
+  }
+  .text-#{$color} {
+    color: #{$colorValue};
+  }
+}
+
+@each $color, $colorValue in $theme-semantics {
+  .bg-#{$color} {
+    background: #{$colorValue};
+  }
+  .text-#{$color} {
+    color: #{$colorValue};
+  }
+}
 @each $color, $colorValue in $alpha {
   .bg-#{$color} {
     background: #{$colorValue};

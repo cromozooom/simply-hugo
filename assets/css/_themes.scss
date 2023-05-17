@@ -3,24 +3,35 @@ $brand: #644fc1 !default;
 $brand-base: #000;
 $brand-ink: #fff;
 
+$info-radix: "blue";
+$success-radix: "green";
+$warning-radix: "yellow";
+$danger-radix: "red";
+
+
 $appTheme: "Light";
 $appTheme: "b4";
 $appTheme: "RC";
 $appTheme: "Flower1";
-$appTheme: "Flower";
-$appTheme: "WDX";
 $appTheme: "Caos1";
 $appTheme: "Caos";
+$appTheme: "WDX";
+$appTheme: "Flower";
+
+
+
 
 .brand {
   display: none;
 }
 
 @if $appTheme == "Caos" {
-  // $primary: #644fc1;
-  $brand: hsl(251, 48%, 35%);
-  $primary: rgb(221, 0, 99);
-  $brand-base: darken($brand, 25%);
+  $brand: map.get($radix, "purple12");
+  $primary: map.get($radix, "crimson10");
+  $brand-base: lighten($brand, 25%);;
+  //$info-radix: "sky";
+  //$success-radix: "teal";
+  
   .chaos {
     display: block !important;
   }

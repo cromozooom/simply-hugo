@@ -2,6 +2,7 @@
 @use "sass:map";
 @use "sass:math";
 @import "../../node_modules/bootstrap/scss/functions";
+@import "color_radix";
 @import "themes";
 @import "../../node_modules/bootstrap/scss/variables";
 @import "vars";

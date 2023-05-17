@@ -1,15 +1,261 @@
+$secondary: map.get($radix, "gray8");
+$secondary-1: map.get($radix, "gray1");
+$secondary-2: map.get($radix, "gray2");
+$secondary-3: map.get($radix, "gray3");
+$secondary-4: map.get($radix, "gray4");
+$secondary-5: map.get($radix, "gray5");
+$secondary-6: map.get($radix, "gray6");
+$secondary-7: map.get($radix, "gray7");
+$secondary-8: map.get($radix, "gray8");
+$secondary-9: map.get($radix, "gray9");
+$secondary-10: map.get($radix, "gray10");
+$secondary-11: map.get($radix, "gray11");
+$secondary-12: map.get($radix, "gray12");
+
+$info: map.get($radix, "blue8");
+$info-1: map.get($radix, "blue1");
+$info-2: map.get($radix, "blue2");
+$info-3: map.get($radix, "blue3");
+$info-4: map.get($radix, "blue4");
+$info-5: map.get($radix, "blue5");
+$info-6: map.get($radix, "blue6");
+$info-7: map.get($radix, "blue7");
+$info-8: map.get($radix, "blue8");
+$info-9: map.get($radix, "blue9");
+$info-10: map.get($radix, "blue10");
+$info-11: map.get($radix, "blue11");
+$info-12: map.get($radix, "blue12");
+
+$success: map.get($radix, "green8");
+$success-1: map.get($radix, "green1");
+$success-2: map.get($radix, "green2");
+$success-3: map.get($radix, "green3");
+$success-4: map.get($radix, "green4");
+$success-5: map.get($radix, "green5");
+$success-6: map.get($radix, "green6");
+$success-7: map.get($radix, "green7");
+$success-8: map.get($radix, "green8");
+$success-9: map.get($radix, "green9");
+$success-10: map.get($radix, "green10");
+$success-11: map.get($radix, "green11");
+$success-12: map.get($radix, "green12");
+
+$warning: map.get($radix, "yellow8");
+$warning-1: map.get($radix, "yellow1");
+$warning-2: map.get($radix, "yellow2");
+$warning-3: map.get($radix, "yellow3");
+$warning-4: map.get($radix, "yellow4");
+$warning-5: map.get($radix, "yellow5");
+$warning-6: map.get($radix, "yellow6");
+$warning-7: map.get($radix, "yellow7");
+$warning-8: map.get($radix, "yellow8");
+$warning-9: map.get($radix, "yellow9");
+$warning-10: map.get($radix, "yellow10");
+$warning-11: map.get($radix, "yellow11");
+$warning-12: map.get($radix, "yellow12");
+
+$danger: map.get($radix, "red8");
+$danger-1: map.get($radix, "red1");
+$danger-2: map.get($radix, "red2");
+$danger-3: map.get($radix, "red3");
+$danger-4: map.get($radix, "red4");
+$danger-5: map.get($radix, "red5");
+$danger-6: map.get($radix, "red6");
+$danger-7: map.get($radix, "red7");
+$danger-8: map.get($radix, "red8");
+$danger-9: map.get($radix, "red9");
+$danger-10: map.get($radix, "red10");
+$danger-11: map.get($radix, "red11");
+$danger-12: map.get($radix, "red12");
+
+@if $info-radix == "sky" {
+  $info: map.get($radix, "sky8");
+  $info-1: map.get($radix, "sky1");
+  $info-2: map.get($radix, "sky2");
+  $info-3: map.get($radix, "sky3");
+  $info-4: map.get($radix, "sky4");
+  $info-5: map.get($radix, "sky5");
+  $info-6: map.get($radix, "sky6");
+  $info-7: map.get($radix, "sky7");
+  $info-8: map.get($radix, "sky8");
+  $info-9: map.get($radix, "sky9");
+  $info-10: map.get($radix, "sky10");
+  $info-11: map.get($radix, "sky11");
+  $info-12: map.get($radix, "sky12");
+} @else if $info-radix == "cyan" {
+  $info: map.get($radix, "cyan8");
+  $info-1: map.get($radix, "cyan1");
+  $info-2: map.get($radix, "cyan2");
+  $info-3: map.get($radix, "cyan3");
+  $info-4: map.get($radix, "cyan4");
+  $info-5: map.get($radix, "cyan5");
+  $info-6: map.get($radix, "cyan6");
+  $info-7: map.get($radix, "cyan7");
+  $info-8: map.get($radix, "cyan8");
+  $info-9: map.get($radix, "cyan9");
+  $info-10: map.get($radix, "cyan10");
+  $info-11: map.get($radix, "cyan11");
+  $info-12: map.get($radix, "cyan12");
+}
+
+@if $success-radix == "lime" {
+  $success: map.get($radix, "lime8");
+  $success-1: map.get($radix, "lime1");
+  $success-2: map.get($radix, "lime2");
+  $success-3: map.get($radix, "lime3");
+  $success-4: map.get($radix, "lime4");
+  $success-5: map.get($radix, "lime5");
+  $success-6: map.get($radix, "lime6");
+  $success-7: map.get($radix, "lime7");
+  $success-8: map.get($radix, "lime8");
+  $success-9: map.get($radix, "lime9");
+  $success-10: map.get($radix, "lime10");
+  $success-11: map.get($radix, "lime11");
+  $success-12: map.get($radix, "lime12");
+} @else if $success-radix == "teal" {
+  $success: map.get($radix, "teal8");
+  $success-1: map.get($radix, "teal1");
+  $success-2: map.get($radix, "teal2");
+  $success-3: map.get($radix, "teal3");
+  $success-4: map.get($radix, "teal4");
+  $success-5: map.get($radix, "teal5");
+  $success-6: map.get($radix, "teal6");
+  $success-7: map.get($radix, "teal7");
+  $success-8: map.get($radix, "teal8");
+  $success-9: map.get($radix, "teal9");
+  $success-10: map.get($radix, "teal10");
+  $success-11: map.get($radix, "teal11");
+  $success-12: map.get($radix, "teal12");
+} @else if $success-radix == "mint" {
+  $success: map.get($radix, "mint8");
+  $success-1: map.get($radix, "mint1");
+  $success-2: map.get($radix, "mint2");
+  $success-3: map.get($radix, "mint3");
+  $success-4: map.get($radix, "mint4");
+  $success-5: map.get($radix, "mint5");
+  $success-6: map.get($radix, "mint6");
+  $success-7: map.get($radix, "mint7");
+  $success-8: map.get($radix, "mint8");
+  $success-9: map.get($radix, "mint9");
+  $success-10: map.get($radix, "mint10");
+  $success-11: map.get($radix, "mint11");
+  $success-12: map.get($radix, "mint12");
+
+}
+
+@if $warning-radix == "amber" {
+  $warning: map.get($radix, "amber8");
+  $warning-1: map.get($radix, "amber1");
+  $warning-2: map.get($radix, "amber2");
+  $warning-3: map.get($radix, "amber3");
+  $warning-4: map.get($radix, "amber4");
+  $warning-5: map.get($radix, "amber5");
+  $warning-6: map.get($radix, "amber6");
+  $warning-7: map.get($radix, "amber7");
+  $warning-8: map.get($radix, "amber8");
+  $warning-9: map.get($radix, "amber9");
+  $warning-10: map.get($radix, "amber10");
+  $warning-11: map.get($radix, "amber11");
+  $warning-12: map.get($radix, "amber12");
+}
+
+@if $danger-radix == "tomato" {
+  $danger: map.get($radix, "tomato8");
+  $danger-1: map.get($radix, "tomato1");
+  $danger-2: map.get($radix, "tomato2");
+  $danger-3: map.get($radix, "tomato3");
+  $danger-4: map.get($radix, "tomato4");
+  $danger-5: map.get($radix, "tomato5");
+  $danger-6: map.get($radix, "tomato6");
+  $danger-7: map.get($radix, "tomato7");
+  $danger-8: map.get($radix, "tomato8");
+  $danger-9: map.get($radix, "tomato9");
+  $danger-10: map.get($radix, "tomato10");
+  $danger-11: map.get($radix, "tomato11");
+  $danger-12: map.get($radix, "tomato12");
+} @else if $danger-radix == "crimson" {
+  $danger: map.get($radix, "crimson8");
+  $danger-1: map.get($radix, "crimson1");
+  $danger-2: map.get($radix, "crimson2");
+  $danger-3: map.get($radix, "crimson3");
+  $danger-4: map.get($radix, "crimson4");
+  $danger-5: map.get($radix, "crimson5");
+  $danger-6: map.get($radix, "crimson6");
+  $danger-7: map.get($radix, "crimson7");
+  $danger-8: map.get($radix, "crimson8");
+  $danger-9: map.get($radix, "crimson9");
+  $danger-10: map.get($radix, "crimson10");
+  $danger-11: map.get($radix, "crimson11");
+  $danger-12: map.get($radix, "crimson12");
+}
+
+$theme-semantics:(
+  "info": $info,
+  "info-1": $info-1,
+  "info-2": $info-2,
+  "info-3": $info-3,
+  "info-4": $info-4,
+  "info-5": $info-5,
+  "info-6": $info-6,
+  "info-7": $info-7,
+  "info-8": $info-8,
+  "info-9": $info-9,
+  "info-10": $info-10,
+  "info-11": $info-11,
+  "info-12": $info-12,
+  "success": $success,
+  "success-1": $success-1,
+  "success-2": $success-2,
+  "success-3": $success-3,
+  "success-4": $success-4,
+  "success-5": $success-5,
+  "success-6": $success-6,
+  "success-7": $success-7,
+  "success-8": $success-8,
+  "success-9": $success-9,
+  "success-10": $success-10,
+  "success-11": $success-11,
+  "success-12": $success-12,
+  "warning": $warning,
+  "warning-1": $warning-1,
+  "warning-2": $warning-2,
+  "warning-3": $warning-3,
+  "warning-4": $warning-4,
+  "warning-5": $warning-5,
+  "warning-6": $warning-6,
+  "warning-7": $warning-7,
+  "warning-8": $warning-8,
+  "warning-9": $warning-9,
+  "warning-10": $warning-10,
+  "warning-11": $warning-11,
+  "warning-12": $warning-12,
+  "danger": $danger,
+  "danger-1": $danger-1,
+  "danger-2": $danger-2,
+  "danger-3": $danger-3,
+  "danger-4": $danger-4,
+  "danger-5": $danger-5,
+  "danger-6": $danger-6,
+  "danger-7": $danger-7,
+  "danger-8": $danger-8,
+  "danger-9": $danger-9,
+  "danger-10": $danger-10,
+  "danger-11": $danger-11,
+  "danger-12": $danger-12,
+);
+
 $theme-colors: (
+  "info": $info,
   "white": $white,
   "brand": $brand,
   "soft-brand": color.adjust($brand, $lightness: 45%),
-  "soft-primary": color.adjust($primary, $lightness: 45%),
-  "soft-secondary": color.adjust($secondary, $lightness: 46%),
-  "soft-success": color.adjust($success, $lightness: 45%),
-  "soft-info": color.adjust($info, $lightness: 45%),
-  "soft-warning": color.adjust($warning, $lightness: 35%),
-  "soft-danger": color.adjust($danger, $lightness: 35%),
-  "soft-light": color.adjust($light, $lightness: 45%),
-  "soft-dark": color.adjust($dark, $lightness: 45%),
+  "soft-primary": color.adjust($primary, $lightness: 35%),
+  "soft-secondary": $secondary-5,
+  "soft-success": $success-5,
+  "soft-info": $info-5,
+  "soft-warning": $warning-5,
+  "soft-danger": $danger-5,
+
 );
 
 $spacers: (
