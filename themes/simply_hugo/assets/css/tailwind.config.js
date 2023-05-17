@@ -7,6 +7,7 @@ module.exports = {
 		'./**/content/**/*.html',
 
 		'./**/layouts/**/*.html', // All fles
+		'!./**/layouts/partials/bootstrap.html', // Exclusion pattern
 	],
 	variants: {},
 	plugins: [

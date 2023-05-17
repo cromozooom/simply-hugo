@@ -4,22 +4,18 @@ $brand-base: #000;
 $brand-ink: #fff;
 
 $info-radix: "blue";
-$success-radix: "green";
+$success-radix: "grass";
 $warning-radix: "yellow";
 $danger-radix: "red";
 
-
 $appTheme: "Light";
 $appTheme: "b4";
-$appTheme: "RC";
-$appTheme: "Flower1";
 $appTheme: "Caos1";
-$appTheme: "Caos";
-$appTheme: "WDX";
 $appTheme: "Flower";
-
-
-
+$appTheme: "Flower1";
+$appTheme: "WDX";
+$appTheme: "Caos";
+$appTheme: "RC";
 
 .brand {
   display: none;
@@ -28,10 +24,12 @@ $appTheme: "Flower";
 @if $appTheme == "Caos" {
   $brand: map.get($radix, "purple12");
   $primary: map.get($radix, "crimson10");
-  $brand-base: lighten($brand, 25%);;
-  //$info-radix: "sky";
-  //$success-radix: "teal";
-  
+  $brand-base: lighten($brand, 30%);
+  $info-radix: "sky";
+  $success-radix: "lime";
+  $warning-radix: "amber";
+  $danger-radix: "crimson";
+
   .chaos {
     display: block !important;
   }

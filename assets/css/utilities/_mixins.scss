@@ -41,3 +41,38 @@
     background: #{$colorValue};
   }
 }
+
+.theme-tag {
+  position: relative;
+  &::before {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 30px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0.5rem;
+    transform: translate(0, -50%);
+    background: #fff;
+  }
+  &--info {
+    &::before {
+      content: $info-radix;
+    }
+  }
+  &--success {
+    &::before {
+      content: $success-radix;
+    }
+  }
+  &--warning {
+    &::before {
+      content: $warning-radix;
+    }
+  }
+  &--danger {
+    &::before {
+      content: $danger-radix;
+    }
+  }
+}

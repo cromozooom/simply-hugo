@@ -1,0 +1,60 @@
+<div x-ref="filter" x-show="filterVisible" class="sticky-top border-bottom bg-white shadow">
+  {{ $filter:= 1 }}
+  {{ if $filter }}
+
+    <div class="d-flex justify-content-between w-100 p-2">
+      <div class="d-flex justify-content-start gap-2">
+        <div>
+          <div class="input-group has-validation">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa-regular fa-magnifying-glass"></i>
+              </span>
+            </div>
+            <input type="text" class="form-control" required />
+            <!-- <div class="invalid-feedback">Please choose a username.</div> -->
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-sm btn-soft-secondary d-flex align-items-center gap-2">
+            <i class="fa-solid fa-bars-filter"></i>
+            <span> Filter </span>
+          </button>
+          <button class="btn btn-sm btn-soft-secondary d-flex align-items-center gap-2">
+            <i class="fa-solid fa-chevron-down"></i>
+            <span> Preset </span>
+          </button>
+          <button class="btn btn-sm btn-soft-secondary d-flex align-items-center gap-2">
+            <i class="fa-regular fa-circle-plus"></i>
+            <span> Type </span>
+            <div class="d-flex align-items-center gap-1">
+              <span class="text-black-50"> | </span>
+              <span class="badge badge-pill badge-white">Appintment</span>
+              <span class="badge badge-pill badge-white">Task</span>
+              <span class="badge badge-pill badge-white">Phone</span>
+            </div>
+          </button>
+          <button class="btn btn-sm btn-soft-secondary d-flex align-items-center gap-2">
+            <i class="fa-regular fa-circle-plus"></i>
+            <span> Owner </span>
+            <div class="d-flex align-items-center gap-1">
+              <span class="text-black-50"> | </span>
+              <span class="badge badge-pill badge-white">4 Selected</span>
+            </div>
+          </button>
+          <button @click="filterVisible = !filterVisible" class="btn btn-sm d-flex align-items-center gap-1">
+            <span> Remove filter </span>
+            <span x-text="filterVisible"> Remove filter </span>
+            <i class="fa-solid fa-xmark ml-1"></i>
+          </button>
+        </div>
+      </div>
+      <div class="d-flex align-items-center ">
+        <button class="btn btn-sm btn-soft-secondary d-flex align-items-center gap-2">
+          <i class="fa-solid fa-chevron-down"></i>
+          Columns
+        </button>
+      </div>
+    </div>
+  {{ end }}
+</div>

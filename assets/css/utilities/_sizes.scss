@@ -1,4 +1,4 @@
-$h-nav: 3.5rem;
+$h-nav: 4rem;
 $h-tabs: 3.5rem;
 .h-screen {
   height: 100vh;
@@ -7,8 +7,9 @@ $h-tabs: 3.5rem;
   width: 100vw;
 }
 .w-color {
-  width: calc(100% / 12) ;
+  width: calc(100% / 12);
 }
+
 .h-nav {
   height: $h-nav;
 }
@@ -43,6 +44,9 @@ $h-tabs: 3.5rem;
 }
 .max-w-50 {
   max-width: 50%;
+}
+.h-30rem {
+  height: 30rem;
 }
 
 .tabs-height {

@@ -12,7 +12,7 @@ module.exports = {
 		}),
 
 		purgecss({
-			content: ['./**/*.html'],
+			content: ['./**/*.html', '!./**/bootstrap.html'],
 		}),
 	],
 };

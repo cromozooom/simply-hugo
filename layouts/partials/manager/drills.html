@@ -1,0 +1,340 @@
+{{ $data := getJSON "data/kyc.json" }}
+<div class="border-bottom bg-white">
+  <div class="d-flex">
+    <side class="d-flex flex-column border-right z-0 gap-2" style="min-width: 380px;">
+      <div class="sticky-top d-flex flex-column">
+        <div class="xoverflow-y-scroll px-3">
+          <div class="d-flex flex-column h-100 py-3">
+            {{ range $index, $item := $data.kyc.menu }}
+              <div class="h-100 z-10">
+                <div class="{{ if $index }}pt-3{{ end }}">
+                  <div class="d-flex justify-content-between py-2">
+                    <a class="h6 mb-0" href="#">{{ .name }}</a>
+                    <strong>{{ .type }}</strong>
+                  </div>
+                </div>
+                <div class="d-flex flex-column gap-1 pt-2">
+                  {{ range $index, $item := .links }}
+                    <button
+                      class="d-flex {{ if eq .state "active" }}active{{ end }}
+                      w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between"
+                    >
+                      {{ $state := .state }}
+                      <div>
+                        <i class="fa-regular fa-{{ .icon }} mr-2"></i>
+                        <strong> {{ .name }} </strong>
+                      </div>
+                      {{ if eq $state "active" }}
+                        {{ if eq .status "Submited" }}
+                          <span class="badge border-ink-primary badge-pill badge-info">Submited</span>
+                        {{ else if eq .status "Validated" }}
+                          <span class="badge border-ink-primary badge-pill badge-success">Validated</span>
+                        {{ else if eq .status "Incompleted" }}
+                          <span class="badge border-ink-primary badge-pill badge-danger">Incompleted</span>
+                        {{ else if eq .status "Warning" }}
+                          <span class="badge border-ink-primary badge-pill badge-warning">Incompleted</span>
+                        {{ end }}
+                      {{ else }}
+                        {{ if eq .status "Submited" }}
+                          <span class="badge border-ink-primary badge-pill badge-soft-info">Submited</span>
+                        {{ else if eq .status "Validated" }}
+                          <span class="badge border-ink-primary badge-pill badge-soft-success">Validated</span>
+                        {{ else if eq .status "Incompleted" }}
+                          <span class="badge border-ink-primary badge-pill badge-soft-danger">Incompleted</span>
+                        {{ else if eq .status "Warning" }}
+                          <span class="badge border-ink-primary badge-pill badge-soft-warning">Warning</span>
+                        {{ end }}
+                      {{ end }}
+                    </button>
+                  {{ end }}
+                </div>
+              </div>
+            {{ end }}
+
+          </div>
+        </div>
+      </div>
+    </side>
+    <div class="w-100 px-3 py-3">
+      <div class="d-flex justify-content-between align-items-center py-2">
+        <h6 class="mb-0">KYC Information</h6>
+        <div class="d-flex justify-content-between align-items-cente gap-2">
+          <a href="#">
+            <i class="fa-solid fa-rotate"></i>
+          </a>
+          <a href="#">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+      <div class="d-flex w-100 mb-3 gap-2">
+        {{ range $index, $item := $data.kyc.forms }}
+          <div>
+            <div class="card card-hover card-hover-soft-primary">
+              <div class="card-body text-center">
+                <h5 class="card-title">{{ .title }}</h5>
+                <p class="card-text">
+                  {{ .short }}
+                </p>
+                <div>
+                  {{ $status := newScratch }}
+                  {{ $status.Set "status" "info" }}
+                  {{ if ge .percentage 100 }}
+                    {{ $status.Set "status" "success" }}
+                  {{ end }}
+                  {{ if lt .percentage 10 }}
+                    {{ $status.Set "status" "danger" }}
+                  {{ end }}
+                  <div class="pie position-relative d-flex justify-content-center align-items-baseline my-3" style="--val: {{ .percentage }}deg; --status: var(--{{ $status.Get "status" }});">
+                    <div class="pie-overflow">
+                      <div class="pie-bar"></div>
+                    </div>
+                    <strong class="pie-count h5"><span>{{ .percentage }}</span>%</strong>
+                  </div>
+                </div>
+                <a href="#" class="btn btn-soft-secondary mt-3">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+      <div class="d-flex gap-2">
+        <div class="card card-main card-main-soft-info mt-3 px-3 py-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <h6 class="mb-0">Marketing List</h6>
+            <div class="d-flex justify-content-between align-items-cente gap-2">
+              <a href="#">
+                <i class="fa-solid fa-rotate"></i>
+              </a>
+              <a href="#">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <div class="form-group">
+              <label for="inputState">Select the marketing list</label>
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="pb-2">Existing pills</div>
+            <div class="d-flex flex-wrap gap-1">
+              <a href="#" class="badge badge-soft-primary px-2 py-2">
+                primary
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-soft-secondary px-2 py-2">
+                secondary
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-soft-brand px-2 py-2">
+                brand
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-soft-info px-2 py-2">
+                info
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-soft-success px-2 py-2">
+                success
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-soft-warning px-2 py-2">
+                warning
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-soft-danger px-2 py-2">
+                danger
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+            </div>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-end align-items-center gap-2">
+            <p class="lead m-0">Can't find one to select from the list?</p>
+            <button class="btn btn-primary">Create one</button>
+          </div>
+        </div>
+        <div class="card card-main card-main-soft-primary mt-3 px-3 py-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <h6 class="mb-0">Notes</h6>
+            <div class="d-flex justify-content-between align-items-cente gap-2">
+              <a href="#">
+                <i class="fa-solid fa-rotate"></i>
+              </a>
+              <a href="#">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <div class="form-group">
+              <label for="inputState">Select the marketing list</label>
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="pb-2">Existing pills</div>
+            <div class="d-flex flex-wrap gap-1">
+              <a href="#" class="badge badge-primary px-2 py-2">
+                primary
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-secondary px-2 py-2">
+                secondary
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-brand px-2 py-2">
+                brand
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-info px-2 py-2">
+                info
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-success px-2 py-2">
+                success
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-warning px-2 py-2">
+                warning
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-danger px-2 py-2">
+                danger
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+            </div>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-end align-items-center gap-2">
+            <p class="lead m-0">Can't find one to select from the list?</p>
+            <button class="btn btn-primary">Create one</button>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex gap-2">
+        <div class="card card-main card-main-soft-success mt-3 px-3 py-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <h6 class="mb-0">Marketing List</h6>
+            <div class="d-flex justify-content-between align-items-cente gap-2">
+              <a href="#">
+                <i class="fa-solid fa-rotate"></i>
+              </a>
+              <a href="#">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <div class="form-group">
+              <label for="inputState">Select the marketing list</label>
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="pb-2">Existing pills</div>
+            <div class="d-flex flex-wrap gap-1">
+              <a href="#" class="badge badge-soft-primary px-2 py-2">
+                primary
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-soft-secondary px-2 py-2">
+                secondary
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-soft-brand px-2 py-2">
+                brand
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-soft-info px-2 py-2">
+                info
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-soft-success px-2 py-2">
+                success
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-soft-warning px-2 py-2">
+                warning
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-soft-danger px-2 py-2">
+                danger
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+            </div>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-end align-items-center gap-2">
+            <p class="lead m-0">Can't find one to select from the list?</p>
+            <button class="btn btn-primary">Create one</button>
+          </div>
+        </div>
+        <div class="card card-main card-main-soft-warning mt-3 px-3 py-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <h6 class="mb-0">Notes</h6>
+            <div class="d-flex justify-content-between align-items-cente gap-2">
+              <a href="#">
+                <i class="fa-solid fa-rotate"></i>
+              </a>
+              <a href="#">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <div class="form-group">
+              <label for="inputState">Select the marketing list</label>
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="pb-2">Existing pills</div>
+            <div class="d-flex flex-wrap gap-1">
+              <a href="#" class="badge badge-primary px-2 py-2">
+                primary
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-secondary px-2 py-2">
+                secondary
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-brand px-2 py-2">
+                brand
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-info px-2 py-2">
+                info
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-success px-2 py-2">
+                success
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-warning px-2 py-2">
+                warning
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+              <a href="#" class="badge badge-danger px-2 py-2">
+                danger
+                <i class="fa-solid fa-xmark ml-1"></i>
+              </a>
+            </div>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-end align-items-center gap-2">
+            <p class="lead m-0">Can't find one to select from the list?</p>
+            <button class="btn btn-primary">Create one</button>
+          </div>
+        </div>
+      </div>
+      {{/* {{ partial "bootstrap.html" . }} */}}
+    </div>
+  </div>
+</div>
