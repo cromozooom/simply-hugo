@@ -8,14 +8,14 @@ $success-radix: "grass";
 $warning-radix: "yellow";
 $danger-radix: "red";
 
-$appTheme: "Light";
-$appTheme: "b4";
-$appTheme: "Caos1";
-$appTheme: "Flower";
-$appTheme: "Flower1";
-$appTheme: "WDX";
-$appTheme: "Caos";
-$appTheme: "RC";
+$appTheme: "Caos" !default;
+$appTheme: "RC" !default;
+$appTheme: "Light" !default;
+$appTheme: "b4" !default;
+$appTheme: "Caos1" !default;
+$appTheme: "Flower" !default;
+$appTheme: "Flower1" !default;
+$appTheme: "WDX" !default;
 
 .brand {
   display: none;

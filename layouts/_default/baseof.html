@@ -3,18 +3,7 @@
   <head>
     {{- partial "head.html" . -}}
   </head>
-  <body
-    x-data="{
-      
-      cssOptions: [
-        { label: 'custom 4.6', value: '/css/customB4.min.css' },
-        { label: 'only 4.6', value: '/css/b4.min.css' },
-        { label: 'only 5', value: '/css/b5.min.css' },
-        { label: 'tailwind', value: '/css/tailwind.min.css' }
-      ],
-      selectedCSS: '/css/customB4.min.css'
-    }"
-  >
+  <body x-data="themeData()" x-init="loadConfig()">
     {{- block "main" . }}{{- end }}
     {{- partial "footer.html" . -}}
     <script>
@@ -43,12 +32,47 @@
         }
       }
     </script>
+    <script>
+      function themeData() {
+        return {
+          currentTheme: "/css/customB4.css",
+          showConfig: false,
+          changeConfig(visibility) {
+            console.log(visibility);
+            this.showConfig = !this.showConfig;
+            localStorage.setItem("configVisibility", this.showConfig);
+          },
+
+          changeTheme(themePath) {
+            this.currentTheme = themePath;
+            localStorage.setItem("selectedTheme", themePath);
+            applyTheme(themePath);
+          },
+          loadConfig() {
+            const savedConfig = localStorage.getItem("configVisibility");
+            const savedTheme = localStorage.getItem("selectedTheme");
+            if (savedConfig) {
+              this.showConfig = savedConfig;
+            }
+            if (savedTheme) {
+              this.currentTheme = savedTheme;
+              applyTheme(savedTheme);
+            }
+          },
+        };
+      }
+
+      function applyTheme(themePath) {
+        const linkElement = document.getElementById("themeStylesheet");
+        linkElement.href = themePath;
+      }
+    </script>
   </body>
 
   {{ $test:= 0 }}
 
   {{ if $test }}
-    <body x-data="{  selectedCSS: '/css/customB4.min.css'}">
+    <body>
       <div x-data="{navBarHeight: '', navTabHeight: ''}" x-init="updateNavBarHeight" @resize.window="updateNavBarHeight">
         <div x-ref="navBar">
           <span>

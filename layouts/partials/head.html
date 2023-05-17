@@ -1,5 +1,12 @@
 <title>{{ .Params.title | default "❌" }}</title>
 
+{{ $rc := true }}
+
+{{ .Scratch.Set "wdx" false }}
+{{ .Scratch.Set "rc" false }}
+{{ .Scratch.Set "flower" false }}
+{{ .Scratch.Set "flower1" false }}
+
 {{ .Scratch.Set "switchCss" false }}
 {{ .Scratch.Set "customB4" false }}
 {{ .Scratch.Set "b4" false }}
@@ -68,10 +75,23 @@
     {{ $b4MinCSS := $b4Css | minify | fingerprint | resources.PostProcess }}
     <link rel="stylesheet" href="{{ $b4MinCSS.Permalink }}" integrity="{{ $b4MinCSS.Data.Integrity }}" />
   {{- end -}}
+
+
+  <link id="themeStylesheet" rel="stylesheet" href="" />
+  <!-- <link id="themeStylesheet" rel="stylesheet" x-bind:href="currentTheme" /> -->
+  {{- if $rc -}}
+    {{ if .Site.IsServer }}
+      {{ $rcCSS := resources.Get "css/rc.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+      <!-- <link rel="stylesheet" href="{{ $rcCSS.RelPermalink }}" /> -->
+    {{ else }}
+      {{ $rcMinCSS := $rcCSS | minify | fingerprint | resources.PostProcess }}
+      <link rel="stylesheet" href="{{ $rcMinCSS.Permalink }}" integrity="{{ $rcMinCSS.Data.Integrity }}" />
+    {{- end -}}
+  {{- end -}}
   {{- if $customB4 -}}
     {{ if .Site.IsServer }}
       {{ $customB4CSS := resources.Get "css/customB4.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
-      <link rel="stylesheet" href="{{ $customB4CSS.RelPermalink }}" />
+      <!-- <link rel="stylesheet" href="{{ $customB4CSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $customB4MinCSS := $customB4CSS | minify | fingerprint | resources.PostProcess }}
       <link rel="stylesheet" href="{{ $customB4MinCSS.Permalink }}" integrity="{{ $customB4MinCSS.Data.Integrity }}" />

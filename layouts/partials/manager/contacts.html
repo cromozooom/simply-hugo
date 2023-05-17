@@ -41,12 +41,12 @@
               <input type="checkbox" aria-label="Checkbox for following text input" />
             </td>
             <td class="align-middle">
-              <a href="#" class="btn btn-link mr-2">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              <a href="#" class="btn btn-sm btn-link mr-2">
+                <i class="fa-solid fa-chevron-down mr-2"></i>
+                <strong>
+                  {{ .name }}
+                </strong>
               </a>
-              <strong>
-                {{ .name }}
-              </strong>
             </td>
             <td class="align-middle">{{ .contactType }}</td>
             <td class="align-middle">{{ .lastContacted }}</td>
@@ -54,7 +54,10 @@
             <td class="align-middle">{{ .stage }}</td>
             <td class="text-right align-middle">£ {{ .assets }}</td>
             <td class="text-right align-middle">
-              <button class="btn btn-link">
+              <button class="btn btn-sm btn-link">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
+              <button class="btn btn-sm btn-link">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
               </button>
             </td>

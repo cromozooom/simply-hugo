@@ -16,7 +16,7 @@
 
   {{ if $pageStructure }}
 
-    <div class="d-flex flex-column bg-brand h-screen" x-data="{ navBarHeight: '', navTabHeight: '',  showConfig: false, showSetting: false, showInfo: false, showBoth: true, filterVisible: true }" x-init="updateNavBarHeight" @resize.window="updateNavBarHeight">
+    <div class="d-flex flex-column bg-brand h-screen" x-data="{ navBarHeight: '', navTabHeight: '', showSetting: false, showInfo: false, showBoth: true, filterVisible: true }" x-init="updateNavBarHeight" @resize.window="updateNavBarHeight">
       <div x-ref="navBar" class="h-nav xtop-nav-bar bg-brand d-flex justify-content-between align-items-center px-3 py-3 text-white">
         <!-- <span>
           <span> navBarHeight: <span x-text="navBarHeight"></span> </span>
@@ -59,7 +59,7 @@
               <button class="btn btn-sm" @click="filterVisible = !filterVisible" :class="filterVisible ? 'btn-success' : 'btn-alpha-10'">
                 <i class="fa-regular fa-bars-filter"></i>
               </button>
-              <button class="btn btn-sm" @click="showConfig = !showConfig" :class="showConfig ? 'btn-success' : 'btn-alpha-10'">
+              <button class="btn btn-sm" x-on:click="changeConfig()" :class="showConfig ? 'btn-success' : 'btn-alpha-10'">
                 <i class="fa-regular fa-hammer"></i>
               </button>
             </div>
@@ -188,6 +188,13 @@
                     </button>
                   </div>
                 </div>
+                <span x-text="currentTheme"></span>
+                <ul>
+                  <li>
+                    <button class="btn btn-link" x-on:click="changeTheme('/css/customB4.css')">custom</button>
+                    <button class="btn btn-link" x-on:click="changeTheme('/css/rc.css')">rc</button>
+                  </li>
+                </ul>
                 <ul class="mx-3 p-3">
                   <li>details</li>
                   <li>details</li>
