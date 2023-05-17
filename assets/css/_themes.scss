@@ -19,6 +19,9 @@ $appTheme: "WDX" !default;
 
 .brand {
   display: none;
+  border: none;
+  background: none;
+  color: inherit;
 }
 
 @if $appTheme == "Caos" {
@@ -29,7 +32,6 @@ $appTheme: "WDX" !default;
   $success-radix: "lime";
   $warning-radix: "amber";
   $danger-radix: "crimson";
-
   .chaos {
     display: block !important;
   }

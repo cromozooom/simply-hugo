@@ -3,42 +3,57 @@
   <head>
     {{- partial "head.html" . -}}
   </head>
-  <body x-data="themeData()" x-init="loadConfig()">
+  <body x-data="themeData()" x-init="loadConfig(); updateNavBarHeight(); updateNavTabHeight()" @resize.window="updateNavBarHeight, updateNavTabHeight">
     {{- block "main" . }}{{- end }}
     {{- partial "footer.html" . -}}
-    <script>
-      function updateNavBarHeight() {
-        const navBarElem = this.$refs.navBar;
-        if (navBarElem) {
-          const navBarHeight = getComputedStyle(navBarElem).height;
-          this.navBarHeight = navBarHeight;
-          document.body.style.setProperty("--navBar", navBarHeight);
-        }
-      }
-      function updateNavTabHeight() {
-        const navTabElem = this.$refs.navTab;
-        if (navTabElem) {
-          const navTabHeight = getComputedStyle(navTabElem).height;
-          this.navTabHeight = navTabHeight;
-          document.body.style.setProperty("--navTab", navTabHeight);
-        }
-        const filterElem = this.$refs.filter;
-        console.log(filterElem);
-        if (filterElem) {
-          const filterHeight = getComputedStyle(filterElem).height;
-          const heightWithoutPadding = parseInt(filterHeight, 10) - 15 + "px";
-          this.filterHeight = filterHeight;
-          document.body.style.setProperty("--filter", heightWithoutPadding);
-        }
-      }
-    </script>
+    <script></script>
     <script>
       function themeData() {
         return {
+          navBarHeight: "",
+          navTabHeight: "",
           currentTheme: "/css/customB4.css",
-          showConfig: false,
+          // showConfig: false,
+
+          //updateNavBarHeight() {
+          //  const navBarElem = this.$refs.navBar;
+          //  if (navBarElem) {
+          //    const navBarHeight = getComputedStyle(navBarElem).height;
+          //    this.navBarHeight = navBarHeight;
+          //    document.body.style.setProperty("--navBar", navBarHeight);
+          //  }
+          //},
+
+          updateNavBarHeight() {
+            setTimeout(() => {
+              const navBarElem = this.$refs.navBar;
+              if (navBarElem) {
+                const navBarHeight = getComputedStyle(navBarElem).height;
+                this.navBarHeight = navBarHeight;
+                document.body.style.setProperty("--navBar", navBarHeight);
+              }
+            }, 500);
+          },
+
+          updateNavTabHeight() {
+            setTimeout(() => {
+              const navTabElem = this.$refs.navTab;
+              if (navTabElem) {
+                const navTabHeight = getComputedStyle(navTabElem).height;
+                this.navTabHeight = navTabHeight;
+                document.body.style.setProperty("--navTab", navTabHeight);
+              }
+              //const filterElem = this.$refs.filter;
+              //console.log(filterElem);
+              //if (filterElem) {
+              //  const filterHeight = getComputedStyle(filterElem).height;
+              //  const heightWithoutPadding = parseInt(filterHeight, 10) - 15 + "px";
+              //  this.filterHeight = filterHeight;
+              //  document.body.style.setProperty("--filter", heightWithoutPadding);
+              //}
+            }, 500);
+          },
           changeConfig(visibility) {
-            console.log(visibility);
             this.showConfig = !this.showConfig;
             localStorage.setItem("configVisibility", this.showConfig);
           },
@@ -50,10 +65,11 @@
           },
           loadConfig() {
             const savedConfig = localStorage.getItem("configVisibility");
-            const savedTheme = localStorage.getItem("selectedTheme");
-            if (savedConfig) {
-              this.showConfig = savedConfig;
+            if (savedConfig !== null) {
+              this.showConfig = savedConfig === "true";
             }
+
+            const savedTheme = localStorage.getItem("selectedTheme");
             if (savedTheme) {
               this.currentTheme = savedTheme;
               applyTheme(savedTheme);

@@ -1,11 +1,9 @@
 <title>{{ .Params.title | default "❌" }}</title>
 
 {{ $rc := true }}
-
-{{ .Scratch.Set "wdx" false }}
-{{ .Scratch.Set "rc" false }}
-{{ .Scratch.Set "flower" false }}
-{{ .Scratch.Set "flower1" false }}
+{{ $wdx := true }}
+{{ $flower := true }}
+{{ $flower1 := true }}
 
 {{ .Scratch.Set "switchCss" false }}
 {{ .Scratch.Set "customB4" false }}
@@ -78,10 +76,36 @@
 
 
   <link id="themeStylesheet" rel="stylesheet" href="" />
-  <!-- <link id="themeStylesheet" rel="stylesheet" x-bind:href="currentTheme" /> -->
+  {{- if $flower1 -}}
+    {{ if .Site.IsServer }}
+      {{ $flower1CSS := resources.Get "css/b4_flower1.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+      <!-- <link rel="stylesheet" href="{{ $flower1CSS.RelPermalink }}" /> -->
+    {{ else }}
+      {{ $flower1MinCSS := $flower1CSS | minify | fingerprint | resources.PostProcess }}
+      <link rel="stylesheet" href="{{ $flower1MinCSS.Permalink }}" integrity="{{ $flower1MinCSS.Data.Integrity }}" />
+    {{- end -}}
+  {{- end -}}
+  {{- if $flower -}}
+    {{ if .Site.IsServer }}
+      {{ $flowerCSS := resources.Get "css/b4_flower.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+      <!-- <link rel="stylesheet" href="{{ $flowerCSS.RelPermalink }}" /> -->
+    {{ else }}
+      {{ $flowerMinCSS := $flowerCSS | minify | fingerprint | resources.PostProcess }}
+      <link rel="stylesheet" href="{{ $flowerMinCSS.Permalink }}" integrity="{{ $flowerMinCSS.Data.Integrity }}" />
+    {{- end -}}
+  {{- end -}}
+  {{- if $wdx -}}
+    {{ if .Site.IsServer }}
+      {{ $wdxCSS := resources.Get "css/b4_wdx.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+      <!-- <link rel="stylesheet" href="{{ $wdxCSS.RelPermalink }}" /> -->
+    {{ else }}
+      {{ $wdxMinCSS := $wdxCSS | minify | fingerprint | resources.PostProcess }}
+      <link rel="stylesheet" href="{{ $wdxMinCSS.Permalink }}" integrity="{{ $wdxMinCSS.Data.Integrity }}" />
+    {{- end -}}
+  {{- end -}}
   {{- if $rc -}}
     {{ if .Site.IsServer }}
-      {{ $rcCSS := resources.Get "css/rc.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
+      {{ $rcCSS := resources.Get "css/b4_rc.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
       <!-- <link rel="stylesheet" href="{{ $rcCSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $rcMinCSS := $rcCSS | minify | fingerprint | resources.PostProcess }}

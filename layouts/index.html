@@ -17,12 +17,12 @@
   {{ if $pageStructure }}
 
     <div class="d-flex flex-column bg-brand h-screen" x-data="{ navBarHeight: '', navTabHeight: '', showSetting: false, showInfo: false, showBoth: true, filterVisible: true }" x-init="updateNavBarHeight" @resize.window="updateNavBarHeight">
-      <div x-ref="navBar" class="h-nav xtop-nav-bar bg-brand d-flex justify-content-between align-items-center px-3 py-3 text-white">
+      <div x-ref="navBar" class="h-nav xtop-nav-bar bg-brand d-flex justify-content-between align-items-center px-3 text-white">
         <!-- <span>
           <span> navBarHeight: <span x-text="navBarHeight"></span> </span>
           <span> navTabHeight: <span x-text="navTabHeight"></span> </span>
         </span> -->
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center py-3">
           {{ partial "brand.html" }}
         </div>
         <div>
@@ -147,7 +147,7 @@
             <section class="w-100" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
               {{ partial "manager/overview.html" . }}
             </section>
-            <section class="w-100  overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
+            <section class="w-100 overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
               {{ partial "manager/kyc-information.html" . }}
             </section>
             <section class="w-100 overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
@@ -177,53 +177,31 @@
           <div class="h-100 d-flex flex-column bg-alpha-ink-10 overflow-hidden rounded-lg">
             <div class="flex-grow-1 scroll overflow-auto">
               <div>
-                <div class="sticky-top">
-                  <div class="d-flex hidden-bg justify-content-between align-items-center bg-alpha-ink-10 p-2">
-                    <div class="d-flex align-items-center ">
-                      <i class="fa-regular fa-hammer mx-2"></i>
-                      <h2 class="h6 mb-0">Config</h2>
-                    </div>
-                    <button class="btn btn-link ink-primary" @click="showConfig = !showConfig">
-                      <i class="fa-regular fa-xmark"></i>
-                    </button>
+                <div class="d-flex justify-content-between align-items-center bg-alpha-brand-base-20 p-2">
+                  <div class="d-flex align-items-center ">
+                    <i class="fa-regular fa-hammer mx-2"></i>
+                    <h2 class="h6 mb-0">Config</h2>
                   </div>
+                  <button class="btn btn-link ink-primary" x-on:click="changeConfig()">
+                    <i class="fa-regular fa-xmark"></i>
+                  </button>
                 </div>
-                <span x-text="currentTheme"></span>
-                <ul>
+                <ul class="list-unstyled d-flex flex-column gap-2 p-2">
                   <li>
-                    <button class="btn btn-link" x-on:click="changeTheme('/css/customB4.css')">custom</button>
-                    <button class="btn btn-link" x-on:click="changeTheme('/css/rc.css')">rc</button>
+                    <button class="btn" x-bind:class="currentTheme === '/css/customB4.css' ? 'btn-primary' : 'btn-outline-light'" x-on:click="changeTheme('/css/customB4.css')">Chaos</button>
                   </li>
-                </ul>
-                <ul class="mx-3 p-3">
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
-                  <li>details</li>
+                  <li>
+                    <button class="btn" x-bind:class="currentTheme === '/css/b4_wdx.css' ? 'btn-primary' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_wdx.css')">WDX</button>
+                  </li>
+                  <li>
+                    <button class="btn" x-bind:class="currentTheme === '/css/b4_rc.css' ? 'btn-primary' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_rc.css')">Rothchild</button>
+                  </li>
+                  <li>
+                    <button class="btn" x-bind:class="currentTheme === '/css/b4_flower.css' ? 'btn-primary' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_flower.css')">Flower</button>
+                  </li>
+                  <li>
+                    <button class="btn" x-bind:class="currentTheme === '/css/b4_flower1.css' ? 'btn-primary' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_flower1.css')">Flower 1</button>
+                  </li>
                 </ul>
               </div>
             </div>
