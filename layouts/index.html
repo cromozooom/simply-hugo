@@ -187,25 +187,35 @@
                   </button>
                 </div>
                 <ul class="list-unstyled d-flex flex-column gap-2 p-2">
-                  <li>
+                  <li class="d-flex gap-1">
+                    <button class="btn" x-bind:class="currentTheme === '/css/b4_chaos1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_chaos1.css')">
+                      <i class="fa-solid fa-dog-leashed"></i>
+                    </button>
                     <button class="btn" x-bind:class="currentTheme === '/css/customB4.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/customB4.css')">Chaos</button>
                   </li>
-                  <li>
+                  <li class="d-flex gap-1">
+                    <button class="btn" x-bind:class="currentTheme === '/css/b4_wdx1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_wdx1.css')">
+                      <i class="fa-solid fa-dog-leashed"></i>
+                    </button>
                     <button class="btn" x-bind:class="currentTheme === '/css/b4_wdx.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_wdx.css')">WDX</button>
                   </li>
-                  <li>
+                  <li class="d-flex gap-1">
+                    <button class="btn" x-bind:class="currentTheme === '/css/b4_rc1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_rc1.css')">
+                      <i class="fa-solid fa-dog-leashed"></i>
+                    </button>
                     <button class="btn" x-bind:class="currentTheme === '/css/b4_rc.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_rc.css')">Rothchild</button>
                   </li>
-                  <li>
-                    <button class="btn" x-bind:class="currentTheme === '/css/b4_flower.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_flower.css')">Flower</button>
+                  <li class="d-flex gap-1">
+                    <button class="btn" x-bind:class="currentTheme === '/css/b4_flower1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_flower1.css')">Red rose</button>
                   </li>
-                  <li>
-                    <button class="btn" x-bind:class="currentTheme === '/css/b4_flower1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_flower1.css')">Flower 1</button>
+                  <li class="d-flex gap-1">
+                    <button class="btn" x-bind:class="currentTheme === '/css/b4_flower.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_flower.css')">Black Rose</button>
                   </li>
-                  <li>
+                  <li class="d-flex gap-1">
                     <button class="btn" x-bind:class="currentTheme === '/css/b4_quilter.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_quilter.css')">Quilter</button>
                   </li>
-                  <li>
+                  <li class="d-flex gap-1">
+                    <button class="btn" x-bind:class="currentTheme === '/css/b4_charles1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_charles1.css')"><i class="fa-solid fa-dog-leashed"></i></button>
                     <button class="btn" x-bind:class="currentTheme === '/css/b4_charles.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_charles.css')">Charles</button>
                   </li>
                 </ul>

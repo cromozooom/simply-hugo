@@ -6,6 +6,7 @@
   <body x-data="themeData()" x-init="loadConfig(); updateNavBarHeight(); updateNavTabHeight()" @resize.window="updateNavBarHeight, updateNavTabHeight">
     {{- block "main" . }}{{- end }}
     {{- partial "footer.html" . -}}
+    <div id="itemLists" class="itemLists align-items-end d-flex flex-row-reverse gap-1"></div>
     <script></script>
     <script>
       function themeData() {

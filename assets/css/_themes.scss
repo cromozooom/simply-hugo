@@ -8,16 +8,17 @@ $success-radix: "grass";
 $warning-radix: "yellow";
 $danger-radix: "red";
 
-$appTheme: "Caos" !default;
-$appTheme: "RC" !default;
-$appTheme: "Light" !default;
-$appTheme: "b4" !default;
-$appTheme: "Caos1" !default;
-$appTheme: "Flower" !default;
-$appTheme: "Flower1" !default;
-$appTheme: "WDX" !default;
-$appTheme: "quilter" !default;
-$appTheme: "charles" !default;
+$appTheme: "Chaos" !default;
+// $appTheme: "RC" !default;
+// $appTheme: "Light" !default;
+// $appTheme: "b4" !default;
+// $appTheme: "Chaos1" !default;
+// $appTheme: "Flower" !default;
+// $appTheme: "Flower1" !default;
+// $appTheme: "WDX" !default;
+// $appTheme: "quilter" !default;
+// $appTheme: "charles" !default;
+// $appTheme: "charles1" !default;
 
 .brand {
   display: none;
@@ -26,7 +27,7 @@ $appTheme: "charles" !default;
   color: inherit;
 }
 
-@if $appTheme == "Caos" {
+@if $appTheme == "Chaos" {
   $brand: map.get($radix, "purple12");
   $primary: map.get($radix, "crimson10");
   $brand-base: lighten($brand, 30%);
@@ -37,10 +38,14 @@ $appTheme: "charles" !default;
   .chaos {
     display: block !important;
   }
-} @else if $appTheme == "Caos1" {
-  $brand: rgb(221, 0, 99);
-  $primary: #644fc1;
-  $brand-base: darken($brand, 25%);
+} @else if $appTheme == "Chaos1" {
+  $brand: map.get($radix, "purple12");
+  $primary: map.get($radix, "blue10");
+  $brand-base: lighten($brand, 30%);
+  $info-radix: "sky";
+  $success-radix: "lime";
+  $warning-radix: "amber";
+  $danger-radix: "crimson";
   .chaos {
     display: block !important;
   }
@@ -52,9 +57,15 @@ $appTheme: "charles" !default;
     display: block !important;
   }
 } @else if $appTheme == "charles" {
-  $brand: #c2d831;
   $brand: #2A475E;
   $primary: #832B63;
+  $brand-base: darken($brand, 25%);
+  .charles {
+    display: block !important;
+  }
+} @else if $appTheme == "charles1" {
+  $brand: #2A475E;
+  $primary: map.get($radix, "blue10");
   $brand-base: darken($brand, 25%);
   .charles {
     display: block !important;
@@ -80,9 +91,23 @@ $appTheme: "charles" !default;
   .wdx {
     display: block !important;
   }
+} @else if $appTheme == "WDX1" {
+  $brand: #335669;
+  $primary: map.get($radix, "indigo10");
+  $brand-base: darken($brand, 25%);
+  .wdx {
+    display: block !important;
+  }
 } @else if $appTheme == "RC" {
   $primary: #375384;
   $brand: #001e41;
+  $brand-base: lighten($brand, 25%);
+  .rc {
+    display: block !important;
+  }
+} @else if $appTheme == "RC1" {
+  $brand: #001e41;
+  $primary: map.get($radix, "indigo10");
   $brand-base: lighten($brand, 25%);
   .rc {
     display: block !important;
