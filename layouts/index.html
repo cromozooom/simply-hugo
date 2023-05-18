@@ -144,15 +144,14 @@
             <div class="border-bottom bg-white pt-2"></div>
           </div>
           <div role="tabpanels" class="pannels h-content-tabs d-flex flex-column">
+            <section class="w-100 overflow-y-auto" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
+              {{ partial "manager/contacts.html" . }}
+            </section>
             <section class="w-100" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
               {{ partial "manager/overview.html" . }}
             </section>
             <section class="w-100 overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
               {{ partial "manager/kyc-information.html" . }}
-            </section>
-            <section class="w-100 overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
-              {{ partial "filters.html" . }}
-              {{ partial "manager/contacts.html" . }}
             </section>
             <section class="w-100 overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
               {{ partial "bootstrap.html" . }}

@@ -1,0 +1,122 @@
+<div class="border-bottom bg-white">
+  <div class="d-flex w-100">
+    <table class="table-striped table-hover table-sm table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">
+            <i class="fa-light fa-sort mr-2 text-white"></i>
+            Name
+          </th>
+          <th scope="col">
+            <i class="fa-light fa-sort mr-2 text-white"></i>
+            Type
+          </th>
+          <th scope="col">
+            <i class="fa-light fa-sort mr-2 text-white"></i>
+            Last Contacted
+          </th>
+          <th scope="col">
+            <i class="fa-light fa-sort mr-2 text-white"></i>
+            Last FTF Meeting
+          </th>
+          <th scope="col">
+            <i class="fa-light fa-sort mr-2 text-white"></i>
+            Stage
+          </th>
+          <th scope="col">
+            <div class="d-flex justify-content-end align-items-center w-100">
+              Assets
+              <i class="fa-light fa-sort ml-2 text-white"></i>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ $contacts := getJSON "data/contacts.json" }}
+        {{ range $index, $item := $contacts }}
+          <tr>
+            <td class="pl-2 text-center align-middle">
+              <input type="checkbox" aria-label="Checkbox for following text input" />
+            </td>
+            <td class="align-middle" x-data="{show: false, minimized: false}">
+              <a href="#" class="btn btn-sm btn-link mr-2" x-on:click="show=true">
+                <i class="fa-solid fa-chevron-down mr-2"></i>
+                <strong>
+                  {{ .name }}
+                </strong>
+              </a>
+              <template x-teleport="#itemLists">
+                <template x-if="show">
+                  <div class="d-flex">
+                    <div class="d-flex flex-column m-2 rounded bg-white px-3 pt-1 shadow" x-bind:class="{ 'pb-3': !minimized, 'pb-1': minimized }">
+                      <div class="d-flex justify-content-between align-items-center w-100">
+                        <button class="btn btn-sm btn-link px-1">
+                          <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i>
+                          <strong class="text-nowrap pr-2">
+                            {{ .name }}
+                          </strong>
+                        </button>
+                        <div class="d-flex">
+                          <button class="btn btn-sm btn-link px-1" x-on:click="minimized=!minimized">
+                            <i x-show="!minimized" class="fa-regular fa-down-left-and-up-right-to-center"></i>
+                            <i x-show="minimized" class="fa-regular fa-arrow-up-right-and-arrow-down-left-from-center"></i>
+                          </button>
+                          <button class="btn btn-sm btn-link px-1" x-on:click="show=false">
+                            <i class="fa-regular fa-xmark"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div x-show="!minimized">
+                        <div class="d-flex flex-column mt-1 gap-1">
+                          <div class="card min-w-20rem p-3">
+                            <dl class="d-flex mb-0 gap-1">
+                              <dt class="w-50">Name</dt>
+                              <dd class="w-50 mb-0">{{ .name }}</dd>
+                            </dl>
+                            <dl class="d-flex mb-0 gap-1">
+                              <dt class="w-50">Contact Type</dt>
+                              <dd class="w-50 mb-0">{{ .contactType }}</dd>
+                            </dl>
+                          </div>
+                          <div class="card min-w-20rem p-3">
+                            <dl class="d-flex mb-0 gap-1">
+                              <dt class="w-50">Last FTF meeting</dt>
+                              <dd class="w-50 mb-0">{{ .lastFTFmeeting }}</dd>
+                            </dl>
+                            <dl class="d-flex mb-0 gap-1">
+                              <dt class="w-50">Stage</dt>
+                              <dd class="w-50 mb-0">{{ .stage }}</dd>
+                            </dl>
+                            <dl class="d-flex mb-0 gap-1">
+                              <dt class="w-50">Assets</dt>
+                              <dd class="w-50 mb-0">{{ .assets }}</dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </template>
+            </td>
+            <td class="align-middle">{{ .contactType }}</td>
+            <td class="align-middle">{{ .lastContacted }}</td>
+            <td class="align-middle">{{ .lastFTFmeeting }}</td>
+            <td class="align-middle">{{ .stage }}</td>
+            <td class="text-right align-middle">£ {{ .assets }}</td>
+            <td class="text-right align-middle">
+              <button class="btn btn-sm btn-link">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
+              <button class="btn btn-sm btn-link">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+              </button>
+            </td>
+          </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </div>
+</div>
