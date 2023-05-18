@@ -4,7 +4,7 @@
     <side class="min-side-w h-content-tabs scroll scroll--light border-right overflow-y-scroll">
       <div class="p-2">
         {{ range $index, $item := $data.kyc.menu }}
-          <div class="z-10">
+          <div class="z-8">
             <div class="{{ if $index }}pt-3{{ end }}">
               <div class="d-flex justify-content-between py-2">
                 <a class="h6 mb-0" href="#">{{ .name }}</a>
@@ -19,7 +19,7 @@
                 {{ end }}
                 <button
                   class="d-flex {{ if eq .state "active" }}active{{ end }}
-                w-100 align-items-center btn btn-tabs btn-outline-primary justify-content-between"
+                align-items-center btn btn-tabs btn-outline-primary justify-content-between w-80"
                 >
                   {{ $state := .state }}
                   <div>
@@ -61,47 +61,104 @@
       </div>
     </side>
     <div class="flex-grow-1 h-content-tabs scroll scroll--light overflow-y-scroll">
-      <div class="d-flex justify-content-between align-items-center px-2 pb-2 pt-3">
-        <h6 class="mb-0">KYC Information</h6>
-        <div class="d-flex justify-content-between align-items-cente gap-2">
-          <a href="#">
-            <i class="fa-solid fa-rotate"></i>
-          </a>
-          <a href="#">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
+      <div>
+        <div class="d-flex justify-content-between align-items-center px-2 pb-2 pt-3">
+          <h6 class="mb-0">KYC Information</h6>
+          <div class="d-flex justify-content-between align-items-cente gap-2">
+            <a href="#">
+              <i class="fa-solid fa-rotate"></i>
+            </a>
+            <a href="#">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+        <div class="d-flex mb-3 w-80 gap-2 px-2">
+          {{ partial "manager/kyc-cards.html" }}
         </div>
       </div>
-      <div class="d-flex w-100 mb-3 gap-2 px-2">
-        {{ range $index, $item := $data.kyc.forms }}
-          <div>
-            <div class="card card-hover card-hover-soft-primary">
-              <div class="card-body text-center">
-                <h5 class="card-title">{{ .title }}</h5>
-                <p class="card-text">
-                  {{ .short }}
-                </p>
-                <div>
-                  {{ $status := newScratch }}
-                  {{ $status.Set "status" "info" }}
-                  {{ if ge .percentage 100 }}
-                    {{ $status.Set "status" "success" }}
-                  {{ end }}
-                  {{ if lt .percentage 10 }}
-                    {{ $status.Set "status" "danger" }}
-                  {{ end }}
-                  <div class="pie position-relative d-flex justify-content-center align-items-baseline my-3" style="--val: {{ .percentage }}deg; --status: var(--{{ $status.Get "status" }});">
-                    <div class="pie-overflow">
-                      <div class="pie-bar"></div>
-                    </div>
-                    <strong class="pie-count h5"><span>{{ .percentage }}</span>%</strong>
-                  </div>
-                </div>
-                <a href="#" class="btn btn-soft-secondary mt-3">Go somewhere</a>
-              </div>
+
+      <div class="px-2">
+        <div class="flex-grow-1 card card-main card-main-soft-info mt-3 px-3 py-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <h6 class="d-flex align-items-cente mb-0">
+              <i class="fa-solid fa-bolt text-info mr-2"></i>
+              <span> Create Appointment </span>
+            </h6>
+            <div class="d-flex justify-content-between align-items-cente gap-2">
+              <a href="#">
+                <i class="fa-solid fa-rotate"></i>
+              </a>
+              <a href="#">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
             </div>
           </div>
-        {{ end }}
+          <div class="d-flex mt-2 gap-2 py-2">
+            <form class="container px-2">
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label">Email</label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control" id="inputEmail3" placeholder="yourEmail@yourDomain.com" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-4 col-form-label">Password</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="inputPassword3" placeholder="yourEmail@yourDomain.com" />
+                </div>
+              </div>
+              <fieldset class="form-group row">
+                <legend class="col-form-label col-sm-4 float-sm-left pt-0">Radios</legend>
+                <div class="col-sm-8">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked />
+                    <label class="form-check-label" for="gridRadios1"> First radio </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" />
+                    <label class="form-check-label" for="gridRadios2"> Second radio </label>
+                  </div>
+                  <div class="form-check disabled">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled />
+                    <label class="form-check-label" for="gridRadios3"> Third disabled radio </label>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-4 col-form-label col-form-label-sm">Email</label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label">Email</label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="colFormLabelLg" class="col-sm-4 col-form-label col-form-label-lg">Email</label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-8 offset-sm-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1" />
+                    <label class="form-check-label" for="gridCheck1"> Example checkbox </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row mb-0">
+                <div class="col-sm-8">
+                  <button type="submit" class="btn btn-primary">Sign in</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>

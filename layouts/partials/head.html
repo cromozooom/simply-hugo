@@ -81,7 +81,7 @@
   {{- end -}}
 
 
-  <link id="themeStylesheet" rel="stylesheet" href="" />
+  <link id="themeStylesheet" rel="stylesheet" href="/css/customB4.css" />
   {{- if $chaos1 -}}
     {{ if .Site.IsServer }}
       {{ $chaos1CSS := resources.Get "css/b4_chaos1.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}

@@ -148,32 +148,32 @@
     ],
     "forms": [
       {
-        "title": "Title form 1",
-        "short": "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        "title": "Your detials",
+        "short": "Personal and contact details for this Contact",
         "percentage": 5,
         "state": "danger",
-        "cta": "cta copy"
+        "cta": "Fill this form"
       },
       {
-        "title": "Title form 2",
-        "short": "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        "title": "Financial objectives",
+        "short": " Setting expectations for your investments",
         "percentage": 15,
         "state": "info",
-        "cta": "cta copy"
+        "cta": "Fill this form"
       },
       {
-        "title": "Title form 3",
-        "short": "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        "title": "Client specific",
+        "short": " Information specific in regards to the role(s) performed for this client",
         "state": "info",
         "percentage": 25,
-        "cta": "cta copy"
+        "cta": "Fill this form"
       },
       {
-        "title": "Title form 4",
-        "short": "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        "title": "Communication details",
+        "short": " Phone Number Information",
         "state": "success",
         "percentage": 100,
-        "cta": "cta copy"
+        "cta": "View data"
       }
     ]
   }

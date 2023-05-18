@@ -2,8 +2,21 @@
   <div class="d-flex h-100 flex-column">
     {{ partial "filters.html" . }}
     <div class="flex-grow-1 h-100 scroll scroll--light overflow-y-scroll">
-      <table class="table-striped table-hover table-sm table">
-        <thead class="thead-dark">
+      <style>
+        #THEAD thead {
+          position: sticky;
+          top: -1px;
+          z-index: 2;
+        }
+
+        #TH th {
+          position: sticky;
+          top: -1px;
+          z-index: 2;
+        }
+      </style>
+      <table id="THEAD" class="table-striped table-hover table-sm table">
+        <thead id="TH" class="thead-dark shadow">
           <tr>
             <th scope="col"></th>
             <th scope="col">
@@ -53,20 +66,20 @@
                 <template x-teleport="#itemLists">
                   <template x-if="show">
                     <div class="d-flex">
-                      <div class="d-flex flex-column m-2 rounded bg-white px-3 pt-1 shadow" x-bind:class="{ 'pb-3': !minimized, 'pb-1': minimized }">
+                      <div class="d-flex flex-column card-main card-main-soft-primary  m-2 rounded px-3 pt-1 shadow" x-bind:class="{ 'pb-3 bg-white': !minimized, 'pb-1 bg-primary': minimized }">
                         <div class="d-flex justify-content-between align-items-center w-100">
-                          <button class="btn btn-sm btn-link d-flex align-items-center flex-nowrap px-1">
+                          <button class="d-flex align-items-center flex-nowrap border-0 bg-transparent px-1 py-2" x-bind:class="{ 'text-primary': !minimized, 'text-white': minimized }">
                             <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i>
                             <strong class="text-nowrap pr-2">
                               {{ .name }}
                             </strong>
                           </button>
                           <div class="d-flex">
-                            <button class="btn btn-sm btn-link px-1" x-on:click="minimized=!minimized">
+                            <button class="border-0 bg-transparent py-2" x-bind:class="{ 'text-primary': !minimized, 'text-white': minimized }" x-on:click="minimized=!minimized">
                               <i x-show="!minimized" class="fa-solid fa-down-left-and-up-right-to-center"></i>
                               <i x-show="minimized" class="fa-solid fa-arrow-up-right-and-arrow-down-left-from-center"></i>
                             </button>
-                            <button class="btn btn-sm btn-link px-1" x-on:click="show=false">
+                            <button class="border-0 bg-transparent py-2" x-bind:class="{ 'text-primary': !minimized, 'text-white': minimized }" x-on:click="show=false">
                               <i class="fa-solid fa-xmark"></i>
                             </button>
                           </div>
