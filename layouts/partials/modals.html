@@ -1,0 +1,134 @@
+<div x-data="{long: true, scroll: true,  modalScroll: false }">
+  <!-- Modal -->
+
+  {{ $dev := 0 }}
+  {{ if $dev }}
+    <div class="modal-backdrop fade show"></div>
+  {{ end }}
+
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Custom scroll</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" x-bind:class="{ '': !modalScroll, 'modal-dialog-scrollable': modalScroll }">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Modal
+
+            <span x-show="!modalScroll"> is not scrollable</span>
+            <span x-show="modalScroll"> is scrollable</span>
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="content-container scroll scroll--light" x-bind:class="{ 'overflow-hidden': !scroll, 'overflow-y-auto': scroll }">
+            <div class="d-flex sticky-top gap-2 bg-white p-2 shadow">
+              <button class="btn  d-flex align-items-center" x-on:click="modalScroll = !modalScroll" x-bind:class="{ 'btn-success': modalScroll, 'btn-outline-danger': !modalScroll }">
+                <i x-show="modalScroll" class="fa-solid fa-circle-check mr-2"></i>
+                <i x-show="!modalScroll" class="fa-solid fa-circle-exclamation mr-2"></i>
+                <span>Modal Scroll</span>
+              </button>
+              <button class="btn  d-flex align-items-center" x-on:click="scroll = !scroll" x-bind:class="{ 'btn-success': scroll, 'btn-outline-danger': !scroll }">
+                <i x-show="scroll" class="fa-solid fa-circle-check mr-2"></i>
+                <i x-show="!scroll" class="fa-solid fa-circle-exclamation mr-2"></i>
+                <span>Scroll</span>
+              </button>
+              <button class="btn btn-info" x-on:click="long = !long">
+                <span x-show="!long">Long</span>
+                <span x-show="long">Short</span>
+              </button>
+            </div>
+            <div class="p-3">
+              <div x-show="scroll" class="alert alert-success my-2" role="alert">this content has set the height and is controlling the scroll!</div>
+              <div x-show="!scroll" class="alert alert-danger my-2" role="alert">
+                this content
+                <strong> has lost scroll controll! </strong>
+              </div>
+              <div x-show="long">
+                <p>1 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+              </div>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div x-data="{long: true, scroll: true}">
+  <!-- Modal -->
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Default scroll</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document" x-bind:class="{ '': !scroll, 'modal-dialog-scrollable': scroll }">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body scroll scroll--light">
+          <div class="d-flex sticky-top gap-2 bg-white p-2 shadow">
+            <button class="btn  d-flex align-items-center" x-on:click="scroll = !scroll" x-bind:class="{ 'btn-success': scroll, 'btn-outline-danger': !scroll }">
+              <i x-show="scroll" class="fa-solid fa-circle-check mr-2"></i>
+              <i x-show="!scroll" class="fa-solid fa-circle-exclamation mr-2"></i>
+              <span>Scroll</span>
+            </button>
+            <button class="btn btn-info" x-on:click="long = !long">
+              <span x-show="!long">Long</span>
+              <span x-show="long">Short</span>
+            </button>
+          </div>
+          <div class="p-2">
+            <div x-show="long">
+              <p>1 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

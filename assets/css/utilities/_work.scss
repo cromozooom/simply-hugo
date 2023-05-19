@@ -186,3 +186,22 @@
 .shadow-top {
   box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
 }
+
+
+.content-container.overflow-y-auto {
+  outline: 6px solid $success;
+}
+
+.modal-dialog-scrollable {
+  outline: 6px solid $danger;
+  
+}
+
+.modal-body {
+  padding: 0;
+}
+
+.content-container {
+  max-height: calc(100vh - 12rem);
+  height: 100%;  
+}
