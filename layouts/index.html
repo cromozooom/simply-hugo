@@ -130,6 +130,9 @@
                   <button :id="$id('tab', whichChild($el.parentElement, $refs.tablist))" @click="select($el.id)" @mousedown.prevent @focus="select($el.id)" type="button" :tabindex="isSelected($el.id) ? 0 : -1" :aria-selected="isSelected($el.id)" :class="isSelected($el.id) ? 'active' : 'bg-transparent'" class="nav-link bp-4 border-0 px-4 pt-3" role="tab">Bootstrap</button>
                 </li>
                 <li class="nav-item">
+                  <button :id="$id('tab', whichChild($el.parentElement, $refs.tablist))" @click="select($el.id)" @mousedown.prevent @focus="select($el.id)" type="button" :tabindex="isSelected($el.id) ? 0 : -1" :aria-selected="isSelected($el.id)" :class="isSelected($el.id) ? 'active' : 'bg-transparent'" class="nav-link bp-4 border-0 px-4 pt-3" role="tab">Scroll</button>
+                </li>
+                <li class="nav-item">
                   <button :id="$id('tab', whichChild($el.parentElement, $refs.tablist))" @click="select($el.id)" @mousedown.prevent @focus="select($el.id)" type="button" :tabindex="isSelected($el.id) ? 0 : -1" :aria-selected="isSelected($el.id)" :class="isSelected($el.id) ? 'active' : 'bg-transparent'" class="nav-link bp-4 border-0 px-4 pt-3" role="tab">Drills ...</button>
                 </li>
                 <li class="nav-item">
@@ -140,9 +143,6 @@
             <div class="border-bottom bg-white pt-2"></div>
           </div>
           <div role="tabpanels" class="pannels h-content-tabs d-flex flex-column">
-            <section class="w-100 overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
-              {{ partial "bootstrap.html" . }}
-            </section>
             <section class="w-100" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
               {{ partial "manager/overview.html" . }}
             </section>
@@ -151,6 +151,18 @@
             </section>
             <section class="w-100 overflow-y-auto" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
               {{ partial "manager/contacts.html" . }}
+            </section>
+            <section class="w-100 overflow-y-scroll" x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
+              {{ partial "bootstrap.html" . }}
+            </section>
+            <section x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
+              <div class="border-bottom bg-white">
+                <div class="d-flex">
+                  <div class="menu w-100">
+                    {{ partial "app-mee-containers.html" (dict "content" "app-mee.html" "head" false "footer" false "contextHeight" "full") }}
+                  </div>
+                </div>
+              </div>
             </section>
             <section class="w-100 overflow-y-scroll " x-show="isSelected($id('tab', whichChild($el, $el.parentElement)))" :aria-labelledby="$id('tab', whichChild($el, $el.parentElement))" role="tabpanel">
               {{ partial "manager/drills.html" . }}
@@ -244,8 +256,17 @@
                         <button class="btn" x-bind:class="currentTheme === '/css/b4_charles1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_charles1.css')"><i class="fa-solid fa-dog-leashed"></i></button>
                         <button class="btn" x-bind:class="currentTheme === '/css/b4_charles.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_charles.css')">Charles</button>
                       </li>
-                    </ul>
-                      </div>
+                  </ul>
+
+                  <h3 id="h3">App-mee</h3>
+                  <ul>
+                    <li>
+                      <a href="/app-mee-full-page/">full page</a>
+                    </li>
+                    <li>
+                      <a href="/app-mee-modal/">modal</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

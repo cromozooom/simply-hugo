@@ -8,7 +8,7 @@
 
 
   <!-- Button trigger modal -->
-  <button @click="modalVisible = true" type="button" x-ref="scroll-modal-button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Custom scroll</button>
+  <button @click="modalVisible = true" type="button" x-ref="scroll-modal-button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Modal</button>
 
   <!-- Modal -->
   <div class="modal fade" x-init="initScrollSizes()" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -27,68 +27,9 @@
         </div>
 
         <div class="modal-body">
-          <div class="d-flex flex-column">
-            <template x-if="extraContent">
-              <div class="p-2">
-                <div class="alert alert-success my-2" role="alert">This is extra content</div>
-                <p>Some content without scroll</p>
-              </div>
-            </template>
-            <div class="content-container h-100 scroll scroll--light" x-bind:class="{ 'overflow-hidden': !scroll, 'overflow-y-auto': scroll }">
-              <div id="content-container-stickyTopArea" class="content-container-stickyTopArea sticky-top bg-white shadow">
-                <div class="d-flex gap-2 p-2">
-                  <button class="btn  d-flex align-items-center" x-on:click="modalScroll = !modalScroll" x-bind:class="{ 'btn-success': modalScroll, 'btn-outline-danger': !modalScroll }">
-                    <i x-show="modalScroll" class="fa-solid fa-circle-check mr-2"></i>
-                    <i x-show="!modalScroll" class="fa-solid fa-circle-exclamation mr-2"></i>
-                    <span>Modal Scroll</span>
-                  </button>
-                  <button class="btn  d-flex align-items-center" x-on:click="scroll = !scroll" x-bind:class="{ 'btn-success': scroll, 'btn-outline-danger': !scroll }">
-                    <i x-show="scroll" class="fa-solid fa-circle-check mr-2"></i>
-                    <i x-show="!scroll" class="fa-solid fa-circle-exclamation mr-2"></i>
-                    <span>Scroll</span>
-                  </button>
-                  <button class="btn btn-info" x-on:click="long = !long">
-                    <span x-show="!long">Long</span>
-                    <span x-show="long">Short</span>
-                  </button>
-                  <button class="btn btn-info" x-on:click="extraContent = !extraContent">
-                    <i x-show="extraContent" class="fa-solid fa-minus"></i>
+          {{ partial "app-mee-containers.html" (dict "content" "app-mee.html" "head" false "footer" false "contextHeight" "modal") }}
 
-                    <i x-show="!extraContent" class="fa-solid fa-plus"></i>
-                    extraContent
-                  </button>
-                </div>
-              </div>
-              {{ partial "app-mee.html" . }}
-              <div class="p-3">
-                <div x-show="scroll" class="alert alert-success my-2" role="alert">this content has set the height and is controlling the scroll!</div>
-                <div x-show="!scroll" class="alert alert-danger my-2" role="alert">
-                  this content
-                  <strong> has lost scroll controll! </strong>
-                </div>
-                <div x-show="long">
-                  <p>1 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi accusamus nesciunt tempora obcaecati sed in adipisci, porro ad et, dolorum a fugiat non nihil aspernatur? Hic, nostrum! Vitae, ad rerum.</p>
-              </div>
-              <div class="content-container-stickyFooter w-100 shadow-top bg-white">
-                <div id="content-container-stickyFooter" class=" d-flex w-100 flex-column"></div>
-              </div>
-            </div>
-          </div>
         </div>
-        <!-- <div class="sheet"></div> -->
         <div class="modal-footer">
           <div class="d-flex w-100 gap-2">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

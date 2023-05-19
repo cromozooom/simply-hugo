@@ -6,6 +6,9 @@
   <body x-data="themeData()" x-init="loadConfig(); updateNavBarHeight(); updateNavTabHeight(), initScrollSizes()" @resize.window="updateNavBarHeight, updateNavTabHeight">
     {{- block "main" . }}{{- end }}
     {{- partial "footer.html" . -}}
+
+
+    <div id="app-mme-notification" class="itemLists align-items-end d-flex flex-row-reverse gap-1"></div>
     <div id="itemLists" class="itemLists align-items-end d-flex flex-row-reverse gap-1"></div>
     <script></script>
     <script>
