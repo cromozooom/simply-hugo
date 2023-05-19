@@ -83,102 +83,102 @@
 
   <link id="themeStylesheet" rel="stylesheet" href="/css/customB4.css" />
   {{- if $chaos1 -}}
+    {{ $chaos1CSS := resources.Get "css/b4_chaos1.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
     {{ if .Site.IsServer }}
-      {{ $chaos1CSS := resources.Get "css/b4_chaos1.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
       <!-- <link rel="stylesheet" href="{{ $chaos1CSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $chaos1MinCSS := $chaos1CSS | minify | fingerprint | resources.PostProcess }}
-      <link rel="stylesheet" href="{{ $chaos1MinCSS.Permalink }}" integrity="{{ $chaos1MinCSS.Data.Integrity }}" />
+      <!--<link rel="stylesheet" href="{{ $chaos1MinCSS.Permalink }}" integrity="{{ $chaos1MinCSS.Data.Integrity }}" /> -->
     {{- end -}}
   {{- end -}}
   {{- if $flower1 -}}
+    {{ $flower1CSS := resources.Get "css/b4_flower1.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
     {{ if .Site.IsServer }}
-      {{ $flower1CSS := resources.Get "css/b4_flower1.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
       <!-- <link rel="stylesheet" href="{{ $flower1CSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $flower1MinCSS := $flower1CSS | minify | fingerprint | resources.PostProcess }}
-      <link rel="stylesheet" href="{{ $flower1MinCSS.Permalink }}" integrity="{{ $flower1MinCSS.Data.Integrity }}" />
+      <!--  <link rel="stylesheet" href="{{ $flower1MinCSS.Permalink }}" integrity="{{ $flower1MinCSS.Data.Integrity }}" /> -->
     {{- end -}}
   {{- end -}}
   {{- if $charles1 -}}
+    {{ $charles1CSS := resources.Get "css/b4_charles1.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
     {{ if .Site.IsServer }}
-      {{ $charles1CSS := resources.Get "css/b4_charles1.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
       <!-- <link rel="stylesheet" href="{{ $charles1CSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $charles1MinCSS := $charles1CSS | minify | fingerprint | resources.PostProcess }}
-      <link rel="stylesheet" href="{{ $charles1MinCSS.Permalink }}" integrity="{{ $charles1MinCSS.Data.Integrity }}" />
+      <!-- <link rel="stylesheet" href="{{ $charles1MinCSS.Permalink }}" integrity="{{ $charles1MinCSS.Data.Integrity }}" /> -->
     {{- end -}}
   {{- end -}}
   {{- if $charles -}}
+    {{ $charlesCSS := resources.Get "css/b4_charles.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
     {{ if .Site.IsServer }}
-      {{ $charlesCSS := resources.Get "css/b4_charles.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
       <!-- <link rel="stylesheet" href="{{ $charlesCSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $charlesMinCSS := $charlesCSS | minify | fingerprint | resources.PostProcess }}
-      <link rel="stylesheet" href="{{ $charlesMinCSS.Permalink }}" integrity="{{ $charlesMinCSS.Data.Integrity }}" />
+      <!-- <link rel="stylesheet" href="{{ $charlesMinCSS.Permalink }}" integrity="{{ $charlesMinCSS.Data.Integrity }}" /> -->
     {{- end -}}
   {{- end -}}
   {{- if $quilter -}}
+    {{ $quilterCSS := resources.Get "css/b4_quilter.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
     {{ if .Site.IsServer }}
-      {{ $quilterCSS := resources.Get "css/b4_quilter.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
       <!-- <link rel="stylesheet" href="{{ $quilterCSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $quilterMinCSS := $quilterCSS | minify | fingerprint | resources.PostProcess }}
-      <link rel="stylesheet" href="{{ $quilterMinCSS.Permalink }}" integrity="{{ $quilterMinCSS.Data.Integrity }}" />
+      <!--<link rel="stylesheet" href="{{ $quilterMinCSS.Permalink }}" integrity="{{ $quilterMinCSS.Data.Integrity }}" /> -->
     {{- end -}}
   {{- end -}}
   {{- if $flower -}}
+    {{ $flowerCSS := resources.Get "css/b4_flower.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
     {{ if .Site.IsServer }}
-      {{ $flowerCSS := resources.Get "css/b4_flower.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
       <!-- <link rel="stylesheet" href="{{ $flowerCSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $flowerMinCSS := $flowerCSS | minify | fingerprint | resources.PostProcess }}
-      <link rel="stylesheet" href="{{ $flowerMinCSS.Permalink }}" integrity="{{ $flowerMinCSS.Data.Integrity }}" />
+      <!-- <link rel="stylesheet" href="{{ $flowerMinCSS.Permalink }}" integrity="{{ $flowerMinCSS.Data.Integrity }}" /> -->
     {{- end -}}
   {{- end -}}
   {{- if $wdx1 -}}
+    {{ $wdx1CSS := resources.Get "css/b4_wdx1.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
     {{ if .Site.IsServer }}
-      {{ $wdx1CSS := resources.Get "css/b4_wdx1.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
       <!-- <link rel="stylesheet" href="{{ $wdx1CSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $wdx1MinCSS := $wdx1CSS | minify | fingerprint | resources.PostProcess }}
-      <link rel="stylesheet" href="{{ $wdx1MinCSS.Permalink }}" integrity="{{ $wdx1MinCSS.Data.Integrity }}" />
+      <!-- <link rel="stylesheet" href="{{ $wdx1MinCSS.Permalink }}" integrity="{{ $wdx1MinCSS.Data.Integrity }}" /> -->
     {{- end -}}
   {{- end -}}
   {{- if $wdx -}}
+    {{ $wdxCSS := resources.Get "css/b4_wdx.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
     {{ if .Site.IsServer }}
-      {{ $wdxCSS := resources.Get "css/b4_wdx.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
       <!-- <link rel="stylesheet" href="{{ $wdxCSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $wdxMinCSS := $wdxCSS | minify | fingerprint | resources.PostProcess }}
-      <link rel="stylesheet" href="{{ $wdxMinCSS.Permalink }}" integrity="{{ $wdxMinCSS.Data.Integrity }}" />
+      <!-- <link rel="stylesheet" href="{{ $wdxMinCSS.Permalink }}" integrity="{{ $wdxMinCSS.Data.Integrity }}" /> -->
     {{- end -}}
   {{- end -}}
   {{- if $rc1 -}}
+    {{ $rc1CSS := resources.Get "css/b4_rc1.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
     {{ if .Site.IsServer }}
-      {{ $rc1CSS := resources.Get "css/b4_rc1.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
       <!-- <link rel="stylesheet" href="{{ $rc1CSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $rc1MinCSS := $rc1CSS | minify | fingerprint | resources.PostProcess }}
-      <link rel="stylesheet" href="{{ $rc1MinCSS.Permalink }}" integrity="{{ $rc1MinCSS.Data.Integrity }}" />
+      <!-- <link rel="stylesheet" href="{{ $rc1MinCSS.Permalink }}" integrity="{{ $rc1MinCSS.Data.Integrity }}" /> -->
     {{- end -}}
   {{- end -}}
   {{- if $rc -}}
+    {{ $rcCSS := resources.Get "css/b4_rc.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
     {{ if .Site.IsServer }}
-      {{ $rcCSS := resources.Get "css/b4_rc.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
       <!-- <link rel="stylesheet" href="{{ $rcCSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $rcMinCSS := $rcCSS | minify | fingerprint | resources.PostProcess }}
-      <link rel="stylesheet" href="{{ $rcMinCSS.Permalink }}" integrity="{{ $rcMinCSS.Data.Integrity }}" />
+      <!-- <link rel="stylesheet" href="{{ $rcMinCSS.Permalink }}" integrity="{{ $rcMinCSS.Data.Integrity }}" /> -->
     {{- end -}}
   {{- end -}}
   {{- if $customB4 -}}
+    {{ $customB4CSS := resources.Get "css/customB4.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
     {{ if .Site.IsServer }}
-      {{ $customB4CSS := resources.Get "css/customB4.scss" | toCSS (dict "transpiler" "dartsass") | postCSS (dict "config" "./assets/css/postcss.config.js") }}
       <!-- <link rel="stylesheet" href="{{ $customB4CSS.RelPermalink }}" /> -->
     {{ else }}
       {{ $customB4MinCSS := $customB4CSS | minify | fingerprint | resources.PostProcess }}
-      <link rel="stylesheet" href="{{ $customB4MinCSS.Permalink }}" integrity="{{ $customB4MinCSS.Data.Integrity }}" />
+      <!-- <link rel="stylesheet" href="{{ $customB4MinCSS.Permalink }}" integrity="{{ $customB4MinCSS.Data.Integrity }}" /> -->
     {{- end -}}
   {{- end -}}
 
