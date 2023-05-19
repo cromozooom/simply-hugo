@@ -72,7 +72,7 @@
             </div>
           </div>  */}}
         </side>
-        <side x-show="showInfo" x-transition x-transition.origin.left class="h-content ink-primary min-side-w flex-grow-0 overflow-auto px-3" style="width: 340px;">
+        <side x-show="showInfo" x-transition x-transition.origin.left class="h-content ink-primary min-side-w flex-grow-0 overflow-auto pr-3" style="width: 340px;">
           <div class="h-100 d-flex flex-column bg-alpha-brand-base-10 overflow-hidden rounded-lg">
             {{ partial "side/profile-info.html" }}
             <div class="flex-grow-1 h-100">
@@ -80,7 +80,7 @@
             </div>
           </div>
         </side>
-        <side x-show="showSettings" x-transition x-transition.origin.left class="h-content ink-primary min-side-w flex-grow-0 overflow-auto px-3" style="width: 340px;">
+        <side x-show="showSettings" x-transition x-transition.origin.left class="h-content ink-primary min-side-w flex-grow-0 overflow-auto pr-3" style="width: 340px;">
           <div class="h-100 d-flex flex-column bg-alpha-brand-base-10 overflow-hidden rounded-lg">
             <div class="flex-grow-1 h-100 overflow-auto">
               {{ partial "scrollable-area.html" (dict "content" "side/view-settings.html"  "scroll" "dark") }}
