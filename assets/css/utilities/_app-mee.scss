@@ -1,0 +1,82 @@
+.app-mee-smart {
+  --content: "app-mee-smart";
+  --color: red;
+}
+.app-mee-dumb {
+  --color: pink;
+  --content: "app-mee-dumb";
+}
+.app-mee-main-menu {
+  --color: green;
+  --content: "app-mee-main-menu";
+}
+.app-mee-controlls {
+  --color: blue;
+  --content: "app-mee-controlls";
+}
+.app-mee-section {
+  --color: red;
+  --content: "app-mee-section";
+}
+.app-mee-section-title {
+  --color: red;
+  --content: "app-mee-section-title";
+}
+.app-mee-footer {
+  --color: blue;
+  --content: "app-mee-footer";
+}
+
+[class^="app-mee-"] {
+  outline: 2px solid var(--color);
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: #fff;
+  margin: 0.5rem;
+}
+
+.tag {
+  position: relative;
+  &::after {
+    z-index: 0;
+    content: var(--content);
+    background: var(color);
+    position: absolute;
+    right: 0;
+    top: -50%;
+    display: block;
+    background: var(--color);
+    padding: 0.1rem 0.5rem;
+    font-size: 70%;
+  }
+}
+
+.content-container {
+  position: relative;
+  &-stickyFooter {
+    position: sticky;
+    bottom: 0;
+  }
+}
+
+.content-container.overflow-y-auto {
+  outline: 6px solid $success;
+}
+
+.modal-dialog-scrollable {
+  outline: 6px solid $danger;
+}
+
+// .modal-dialog {
+//   margin: 0 auto;
+//   max-height: 80vh;
+// }
+
+// .modal-body {
+//   padding: 0;
+// }
+
+.content-container {
+  max-height: calc(100vh - 12rem);
+  height: 100%;
+}

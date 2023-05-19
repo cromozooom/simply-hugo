@@ -3,7 +3,7 @@
   <head>
     {{- partial "head.html" . -}}
   </head>
-  <body x-data="themeData()" x-init="loadConfig(); updateNavBarHeight(); updateNavTabHeight()" @resize.window="updateNavBarHeight, updateNavTabHeight">
+  <body x-data="themeData()" x-init="loadConfig(); updateNavBarHeight(); updateNavTabHeight(), initScrollSizes()" @resize.window="updateNavBarHeight, updateNavTabHeight">
     {{- block "main" . }}{{- end }}
     {{- partial "footer.html" . -}}
     <div id="itemLists" class="itemLists align-items-end d-flex flex-row-reverse gap-1"></div>
@@ -14,6 +14,32 @@
           navBarHeight: "",
           navTabHeight: "",
           currentTheme: "/css/customB4.css",
+          scrollRefs: {},
+
+          initScrollSizes() {
+            window.addEventListener("DOMContentLoaded", () => {
+              setTimeout(() => {
+                this.scrollSizes();
+              }, 1000); // Delay of 1 second (1000 milliseconds)
+            });
+          },
+
+          scrollSizes() {
+            // Get all elements with x-ref starting with 'scroll'
+            const scrollElements = document.querySelectorAll("[x-ref^=scroll]");
+
+            console.log(scrollElements);
+
+            // Calculate and set the heights as CSS variables
+            scrollElements.forEach((element) => {
+              const refName = element.getAttribute("x-ref");
+              const height = element.offsetHeight;
+              document.body.style.setProperty(`--${refName}`, `${height}px`);
+
+              // Store the reference and its height in the scrollRefs object
+              this.scrollRefs[refName] = height;
+            });
+          },
 
           //updateNavBarHeight() {
           //  const navBarElem = this.$refs.navBar;
