@@ -14,7 +14,6 @@
           navBarHeight: "",
           navTabHeight: "",
           currentTheme: "/css/customB4.css",
-          // showConfig: false,
 
           //updateNavBarHeight() {
           //  const navBarElem = this.$refs.navBar;
@@ -59,21 +58,57 @@
             localStorage.setItem("configVisibility", this.showConfig);
           },
 
+          changeSettings(visibility) {
+            console.log("changeSettings:", this.showSettings);
+            this.showSettings = !this.showSettings;
+            this.showInfo = false;
+            localStorage.setItem("infoVisibility", this.showSettings);
+            localStorage.setItem("infoVisibility", this.showInfo);
+          },
+          changeInfo(visibility) {
+            console.log("changeInfo:", this.showInfo);
+            this.showInfo = !this.showInfo;
+            this.showSettings = false;
+            localStorage.setItem("infoVisibility", this.showInfo);
+            localStorage.setItem("settingsVisibility", this.showSettings);
+          },
+
           changeTheme(themePath) {
             this.currentTheme = themePath;
             localStorage.setItem("selectedTheme", themePath);
             applyTheme(themePath);
           },
+
           loadConfig() {
+            const savedSettings = localStorage.getItem("settingsVisibility");
+            console.log(savedSettings);
+            if (savedSettings !== null) {
+              this.showSettings = savedSettings === "true";
+            } else {
+              this.showSettings = false;
+            }
+
+            const savedInfo = localStorage.getItem("infoVisibility");
+            if (savedInfo !== null) {
+              this.showInfo = savedInfo === true;
+            } else {
+              this.showInfo = false;
+            }
+
             const savedConfig = localStorage.getItem("configVisibility");
             if (savedConfig !== null) {
               this.showConfig = savedConfig === "true";
+            } else {
+              this.showConfig = true;
             }
 
             const savedTheme = localStorage.getItem("selectedTheme");
             if (savedTheme) {
               this.currentTheme = savedTheme;
               applyTheme(savedTheme);
+            } else {
+              this.currentTheme = "/css/customB4.css";
+              applyTheme(this.currentTheme);
             }
           },
         };

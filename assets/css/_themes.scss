@@ -93,7 +93,7 @@ $appTheme: "Chaos" !default;
   }
 } @else if $appTheme == "WDX1" {
   $brand: #335669;
-  $primary: map.get($radix, "indigo10");
+  $primary: map.get($radix, "blue10");
   $brand-base: darken($brand, 25%);
   .wdx {
     display: block !important;

@@ -144,6 +144,24 @@
   &-soft-danger {
     border-top: 4px solid theme-color("soft-danger");
   }
+  &-primary {
+    border-top: 4px solid theme-color("primary");
+  }
+  &-secondary {
+    border-top: 4px solid theme-color("secondary");
+  }
+  &-info {
+    border-top: 4px solid theme-color("info");
+  }
+  &-success {
+    border-top: 4px solid theme-color("success");
+  }
+  &-warning {
+    border-top: 4px solid theme-color("warning");
+  }
+  &-danger {
+    border-top: 4px solid theme-color("danger");
+  }
 }
 
 .badge-with-icon {

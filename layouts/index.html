@@ -16,7 +16,7 @@
 
   {{ if $pageStructure }}
 
-    <div class="d-flex flex-column bg-brand h-screen" x-data="{ navBarHeight: '', navTabHeight: '', showSetting: false, showInfo: false, showBoth: true, filterVisible: true }" x-init="updateNavBarHeight" @resize.window="updateNavBarHeight">
+    <div class="d-flex flex-column bg-brand h-screen" x-data="{ navBarHeight: '', navTabHeight: '', filterVisible: true }" x-init="updateNavBarHeight" @resize.window="updateNavBarHeight">
       <div x-ref="navBar" class="h-nav xtop-nav-bar bg-brand d-flex justify-content-between align-items-center px-3 text-white">
         <!-- <span>
           <span> navBarHeight: <span x-text="navBarHeight"></span> </span>
@@ -27,18 +27,13 @@
         </div>
         <div>
           <button class="btn btn-link ink-brand xbtn-alpha-10">
-            <!-- <span x-show="!showInfo">Show </span>
-              <span x-show="showInfo">Hide </span> -->
             <i class="fa-regular fa-clock-rotate-left"></i>
           </button>
           <button class="btn btn-link ink-brand xbtn-alpha-10">
-            <!-- <span x-show="!showInfo">Show </span>
-              <span x-show="showInfo">Hide </span> -->
             <i class="fa-regular fa-user"></i>
           </button>
           <button class="btn btn-link ink-brand xbtn-alpha-10">
-            <!-- <span x-show="!showInfo">Show </span>
-              <span x-show="showInfo">Hide </span> -->
+            
             <i class="fa-regular fa-bars"></i>
           </button>
         </div>
@@ -47,14 +42,15 @@
         <side class="h-100 mr-3">
           <div class="d-flex flex-column h-100 justify-content-between ml-3 gap-2">
             <div class="d-flex flex-column gap-2">
-              <button class="btn btn-sm" @click="showBoth = !showBoth; showSetting = false; ; showInfo = false;" :class="showBoth ? 'btn-success' : 'btn-alpha-10'"><i class="fa-regular fa-gear"></i></button>
-              <button class="btn btn-sm " @click="showInfo = !showInfo; showSetting = false; showBoth = false;" :class="showInfo ? 'btn-success' : 'btn-alpha-10'">
+              {{/*  <button class="btn btn-sm" @click="showBoth = !showBoth; showSetting = false; ; showInfo = false;" :class="showBoth ? 'btn-success' : 'btn-alpha-10'"><i class="fa-regular fa-gear"></i></button>  */}}
+              <button class="btn btn-sm " x-on:click="changeInfo()" :class="showInfo ? 'btn-success' : 'btn-alpha-10'">
                 <i class="fa-regular fa-user"></i>
               </button>
-              <button class="btn btn-sm" @click="showSetting = !showSetting; showInfo = false; showBoth = false;" :class="showSetting ? 'btn-success' : 'btn-alpha-10'">
+              <button class="btn btn-sm " x-on:click="changeSettings()" :class="showSettings ? 'btn-success' : 'btn-alpha-10'">
                 <i class="fa-regular fa-sliders"></i>
               </button>
             </div>
+
             <div class="d-flex flex-column gap-2 pb-3">
               <button class="btn btn-sm" @click="filterVisible = !filterVisible" :class="filterVisible ? 'btn-success' : 'btn-alpha-10'">
                 <i class="fa-regular fa-bars-filter"></i>
@@ -65,7 +61,7 @@
             </div>
           </div>
         </side>
-        <side x-show="showBoth" x-transition x-transition.origin.left class="h-content ink-primary min-side-w mr-3 flex-grow-0 overflow-auto" style="width: 340px;">
+        {{/*  <side x-show="showBoth" x-transition x-transition.origin.left class="h-content ink-primary min-side-w mr-3 flex-grow-0 overflow-auto" style="width: 340px;">
           <div class="h-100 d-flex flex-column bg-alpha-brand-base-10 overflow-hidden rounded-lg">
             {{ partial "side/profile-info.html" }}
             <div class="flex-grow-1 d-flex flex-column h-100">
@@ -74,7 +70,7 @@
             <div class="flex-grow-1 h-100 overflow-auto">
               {{ partial "scrollable-area.html" (dict "content" "side/view-settings.html"  "scroll" "dark") }}
             </div>
-          </div>
+          </div>  */}}
         </side>
         <side x-show="showInfo" x-transition x-transition.origin.left class="h-content ink-primary min-side-w flex-grow-0 overflow-auto px-3" style="width: 340px;">
           <div class="h-100 d-flex flex-column bg-alpha-brand-base-10 overflow-hidden rounded-lg">
@@ -84,7 +80,7 @@
             </div>
           </div>
         </side>
-        <side x-show="showSetting" x-transition x-transition.origin.left class="h-content ink-primary min-side-w flex-grow-0 overflow-auto px-3" style="width: 340px;">
+        <side x-show="showSettings" x-transition x-transition.origin.left class="h-content ink-primary min-side-w flex-grow-0 overflow-auto px-3" style="width: 340px;">
           <div class="h-100 d-flex flex-column bg-alpha-brand-base-10 overflow-hidden rounded-lg">
             <div class="flex-grow-1 h-100 overflow-auto">
               {{ partial "scrollable-area.html" (dict "content" "side/view-settings.html"  "scroll" "dark") }}
@@ -185,39 +181,72 @@
                     <i class="fa-regular fa-xmark"></i>
                   </button>
                 </div>
-                <ul class="list-unstyled d-flex flex-column gap-2 p-2">
-                  <li class="d-flex gap-1">
-                    <button class="btn" x-bind:class="currentTheme === '/css/b4_chaos1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_chaos1.css')">
-                      <i class="fa-solid fa-dog-leashed"></i>
-                    </button>
-                    <button class="btn" x-bind:class="currentTheme === '/css/customB4.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/customB4.css')">Chaos</button>
-                  </li>
-                  <li class="d-flex gap-1">
-                    <button class="btn" x-bind:class="currentTheme === '/css/b4_wdx1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_wdx1.css')">
-                      <i class="fa-solid fa-dog-leashed"></i>
-                    </button>
-                    <button class="btn" x-bind:class="currentTheme === '/css/b4_wdx.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_wdx.css')">WDX</button>
-                  </li>
-                  <li class="d-flex gap-1">
-                    <button class="btn" x-bind:class="currentTheme === '/css/b4_rc1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_rc1.css')">
-                      <i class="fa-solid fa-dog-leashed"></i>
-                    </button>
-                    <button class="btn" x-bind:class="currentTheme === '/css/b4_rc.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_rc.css')">Rothchild</button>
-                  </li>
-                  <li class="d-flex gap-1">
-                    <button class="btn" x-bind:class="currentTheme === '/css/b4_flower1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_flower1.css')">Red rose</button>
-                  </li>
-                  <li class="d-flex gap-1">
-                    <button class="btn" x-bind:class="currentTheme === '/css/b4_flower.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_flower.css')">Black Rose</button>
-                  </li>
-                  <li class="d-flex gap-1">
-                    <button class="btn" x-bind:class="currentTheme === '/css/b4_quilter.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_quilter.css')">Quilter</button>
-                  </li>
-                  <li class="d-flex gap-1">
-                    <button class="btn" x-bind:class="currentTheme === '/css/b4_charles1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_charles1.css')"><i class="fa-solid fa-dog-leashed"></i></button>
-                    <button class="btn" x-bind:class="currentTheme === '/css/b4_charles.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_charles.css')">Charles</button>
-                  </li>
-                </ul>
+                <div class="px-2 py-3">
+                  <h3 id="h3">Themes</h3>
+                  <ul class="list-unstyled d-flex flex-column gap-2">
+                    <li class="d-flex gap-1">
+                      <div class="btn-group" role="group" aria-label="Basic example">
+
+                        <button class="btn" x-bind:class="currentTheme === '/css/b4_chaos1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_chaos1.css')">
+                          <i class="fa-solid fa-dog-leashed"></i>
+                        </button>
+                        <button class="btn" x-bind:class="currentTheme === '/css/customB4.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/customB4.css')">Chaos</button>
+                      </div>
+                    </li>
+                    <li class="d-flex gap-1">
+                      <div class="btn-group" role="group" aria-label="Basic example">
+
+                        <button class="btn" x-bind:class="currentTheme === '/css/b4_wdx1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_wdx1.css')">
+                          <i class="fa-solid fa-dog-leashed"></i>
+                        </button>
+                        <button class="btn" x-bind:class="currentTheme === '/css/b4_wdx.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_wdx.css')">WDX</button>
+                      </div>
+                    </li>
+                    <li class="d-flex gap-1">
+                      <div class="btn-group" role="group" aria-label="Basic example">
+
+                        <button class="btn" x-bind:class="currentTheme === '/css/b4_rc1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_rc1.css')">
+                          <i class="fa-solid fa-dog-leashed"></i>
+                        </button>
+                        <button class="btn" x-bind:class="currentTheme === '/css/b4_rc.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_rc.css')">Rothchild</button>
+                      </div>
+                    </li>
+                    <li class="d-flex gap-1">
+                      <div class="btn-group" role="group" aria-label="Basic example">
+
+                        <button class="btn btn-outline-warning" disabled>
+                          <i class="fa-solid fa-dog-leashed"></i>
+                        </button>
+                        <button class="btn" x-bind:class="currentTheme === '/css/b4_flower1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_flower1.css')">Red rose</button>
+                      </div>
+                    </li>
+                    <li class="d-flex gap-1">
+                      <div class="btn-group" role="group" aria-label="Basic example">
+
+                        <button class="btn btn-outline-warning" disabled>
+                          <i class="fa-solid fa-dog-leashed"></i>
+                        </button>
+                        <button class="btn" x-bind:class="currentTheme === '/css/b4_flower.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_flower.css')">Black Rose</button>
+                      </div>
+                    </li>
+                    <li class="d-flex gap-1">
+                      <div class="btn-group" role="group" aria-label="Basic example">
+
+                        <button class="btn " x-bind:class="currentTheme === '/css/b4_quilter.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_quilter.css')">
+                          <i class="fa-solid fa-dog-leashed"></i>
+                        </button>
+                        <button class="btn" x-bind:class="currentTheme === '/css/b4_quilter.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_quilter.css')">Quilter</button>
+                      </div>
+                    </li>
+                    <li class="d-flex gap-1">
+                      <div class="btn-group" role="group" aria-label="Basic example">
+
+                        <button class="btn" x-bind:class="currentTheme === '/css/b4_charles1.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_charles1.css')"><i class="fa-solid fa-dog-leashed"></i></button>
+                        <button class="btn" x-bind:class="currentTheme === '/css/b4_charles.css' ? 'btn-success' : 'btn-outline-light'" x-on:click="changeTheme('/css/b4_charles.css')">Charles</button>
+                      </li>
+                    </ul>
+                      </div>
+                </div>
               </div>
             </div>
           </div>

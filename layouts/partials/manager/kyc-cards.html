@@ -1,36 +1,60 @@
 {{ $data := getJSON "data/kyc.json" }}
-{{ range $index, $item := $data.kyc.forms }}
-  <div class="w-25 d-flex h-100 align-items-stretch">
-    <div class="card w-100 card-hover card-hover-soft-primary">
-      <div class="card-body text-center">
-        <h5 class="card-title">{{ .title }}</h5>
-        <p class="card-text">
-          {{ .short }}
-        </p>
-        <div>
-          {{ $status := newScratch }}
-          {{ $status.Set "status" "info" }}
-          {{ if ge .percentage 100 }}
-            {{ $status.Set "status" "success" }}
-          {{ end }}
-          {{ if lt .percentage 10 }}
-            {{ $status.Set "status" "danger" }}
-          {{ end }}
-          <div class="pie position-relative d-flex justify-content-center align-items-baseline my-3" style="--val: {{ .percentage }}deg; --status: var(--{{ $status.Get "status" }});">
-            <div class="pie-overflow">
-              <div class="pie-bar"></div>
+
+
+<div class="kyc-cards d-flex h-100 align-content-stretch mb-3 w-80 gap-2">
+  {{ range $index, $item := $data.kyc.forms }}
+    <div class="w-25">
+      <div class="card w-100 h-100 card-hover xcard-hover-soft-primary p-3">
+        <div class="flex-grow-1 h-100 text-center">
+          <h5 class="card-title ">{{ .title }}</h5>
+          <p class="card-text">
+            {{ .short }}
+          </p>
+        </div>
+        <div class="text-center">
+          <div>
+            {{ $status := newScratch }}
+            {{ $status.Set "status" "info" }}
+            {{ if ge .percentage 100 }}
+              {{ $status.Set "status" "success" }}
+            {{ end }}
+            {{ if lt .percentage 10 }}
+              {{ $status.Set "status" "danger" }}
+            {{ end }}
+            <div class="pie position-relative d-flex justify-content-center align-items-baseline my-3" style="--val: {{ .percentage }}deg; --status: var(--{{ $status.Get "status" }});">
+              <div class="pie-overflow">
+                <div class="pie-bar"></div>
+              </div>
+              <strong class="pie-count h5"><span>{{ .percentage }}</span>%</strong>
             </div>
-            <strong class="pie-count h5"><span>{{ .percentage }}</span>%</strong>
+          </div>
+          <div class="pt-3">
+            {{ if eq ($status.Get "status") "success" }}
+              <button class="btn btn-outline-success d-flex justify-content-center align-items-center mx-auto">
+                <span>
+                  {{ .cta }}
+                </span>
+                <i class="fa-solid fa-circle-check ml-2"></i>
+              </button>
+            {{ else if eq ($status.Get "status") "danger" }}
+              <button class="btn btn-outline-danger d-flex justify-content-center align-items-center mx-auto">
+                <span>
+                  {{ .cta }}
+                </span>
+                <i class="fa-solid fa-circle-exclamation ml-2"></i>
+              </button>
+            {{ else }}
+              <button class="btn btn-outline-info d-flex justify-content-center align-items-center mx-auto">
+                <span>
+                  {{ .cta }}
+                </span>
+                {{/* <i class="fa-solid fa-circle-exclamation ml-2"></i> */}}
+              </button>
+            {{ end }}
           </div>
         </div>
-        {{ if eq ($status.Get "status") "success" }}
-          <a href="#" class="btn btn-outline-success mt-3">{{ .cta }}</a>
-        {{ else if eq ($status.Get "status") "danger" }}
-          <a href="#" class="btn btn-{{ $status.Get "status" }} mt-3">{{ .cta }}</a>
-        {{ else }}
-          <a href="#" class="btn btn-outline-{{ $status.Get "status" }} mt-3">{{ .cta }}</a>
-        {{ end }}
       </div>
     </div>
-  </div>
-{{ end }}
+  {{ end }}
+
+</div>
