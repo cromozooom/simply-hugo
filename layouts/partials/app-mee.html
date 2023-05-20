@@ -3,16 +3,50 @@
   <div class="app-mee-dumb">
     <div class="tag"></div>
     <template x-teleport="#content-container-stickyTopArea">
-      <div class="app-mee-main-menu">
+      <div class="app-mee-main-menu border-bottom">
         <div class="tag"></div>
-        <nav aria-label="breadcrumb ">
+        
+        <div>
+          <section class="steps">
+            <span class="step-wrap">
+              <a class="step " href="/">
+                Home
+              </a>
+            </span>
+            <span class="step-wrap" href="/app-mee-full-page/">
+              <a class="step">
+                Full page
+              </a>
+            </span>
+            <span class="step-wrap active" >
+              <a class="step" href="/app-mee-modal/">
+                Modal
+              </a>
+            </span>
+            <span class="step-wrap">
+              <a class="step">
+                Step 4
+              </a>
+            </span>
+            </span>
+            <span class="step-wrap">
+              <a class="step">
+                Step 5
+              </a>
+            </span>
+          <section>
+        </div>
+        
+        {{/*  <nav aria-label="breadcrumb ">
           <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item"><a href="/app-mee-full-page/">Full page</a></li>
             <li class="breadcrumb-item"><a href="/app-mee-modal/">Modal</a></li>
             <li class="breadcrumb-item active" aria-current="page">Data</li>
           </ol>
-        </nav>
+        </nav>  */}}
+
+
       </div>
     </template>
     <template x-teleport="#content-container-stickyTopArea">
