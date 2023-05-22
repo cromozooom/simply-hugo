@@ -39,7 +39,7 @@
 .tag {
   position: relative;
   &::after {
-    z-index: 0;
+    z-index: 1;
     content: var(--content);
     background: var(color);
     position: absolute;
