@@ -12,7 +12,7 @@
 
   <!-- Modal -->
   <div class="modal fade" x-init="initScrollSizes()" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg xmodal-dialog-centered" role="document" x-bind:class="{ '': !modalScroll, 'modal-dialog-scrollable': modalScroll }">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document" x-bind:class="{ '': !modalScroll, 'modal-dialog-scrollable': modalScroll }">
       <div class="modal-content">
         <div class="modal-header" x-ref="scroll-modal-header">
           <h5 class="modal-title" id="exampleModalLabel">
@@ -34,7 +34,7 @@
                 <p>Some content without scroll</p>
               </div>
             </template>
-            <div class="content-container h-100 scroll scroll--light" x-bind:class="{ 'overflow-hidden': !scroll, 'overflow-y-auto': scroll }">
+            <div class="content-container h-100 xscroll xscroll--light" x-bind:class="{ 'overflow-hidden': !scroll, 'overflow-y-auto': scroll }">
               <div id="content-container-stickyTopArea" class="content-container-stickyTopArea sticky-top bg-white shadow">
                 <div class="d-flex gap-2 p-2">
                   <button class="btn  d-flex align-items-center" x-on:click="modalScroll = !modalScroll" x-bind:class="{ 'btn-success': modalScroll, 'btn-outline-danger': !modalScroll }">
@@ -51,12 +51,20 @@
                     <span x-show="!long">Long</span>
                     <span x-show="long">Short</span>
                   </button>
-                  <button class="btn btn-info" x-on:click="extraContent = !extraContent">
+                  <button id="updateModalButton" class="btn btn-info" x-on:click="extraContent = !extraContent">
                     <i x-show="extraContent" class="fa-solid fa-minus"></i>
 
                     <i x-show="!extraContent" class="fa-solid fa-plus"></i>
                     extraContent
                   </button>
+                  <script>
+                    $(document).ready(function () {
+                      $("#updateModalButton").click(function () {
+                        console.log($("#updateModalButton"));
+                        $("#exampleModal").modal("handleUpdate");
+                      });
+                    });
+                  </script>
                 </div>
               </div>
               {{ partial "app-mee.html" . }}

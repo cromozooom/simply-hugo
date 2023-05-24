@@ -1,0 +1,64 @@
+{
+    "timeline": [
+        {
+            "name": "Lead - Waiting",
+            "icon": "house",
+            "date": "23.05.1976",
+            "status": {
+                "timeline": "past",
+                "stage": "success",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Lead - Checking",
+            "icon": "house",
+            "date": "23.05.1976",
+            "status": {
+                "timeline": "past",
+                "stage": "success",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Prospect",
+            "icon": "house",
+            "date": "23.05.1976",
+            "status": {
+                "timeline": "past",
+                "stage": "success",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Confirmed Prospect",
+            "icon": "house",
+            "date": "23.05.1976",
+            "status": {
+                "timeline": "past",
+                "stage": "success",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        }
+    ]
+}

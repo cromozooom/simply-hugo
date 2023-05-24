@@ -1,0 +1,24 @@
+{{ $timeline := getJSON "data/timeline.json" }}
+<section class="d-flex">
+  {{ range $index, $item := $timeline.timeline }}
+    <div class="d-flex flex-column">
+      <div class="d-flex justify-content-center">
+        <div class="card timeline-icon mb-3 p-2">
+          <i class="fa-regular fa-house"></i>
+        </div>
+      </div>
+      <div class="line text-center">
+        <div class="badge badge-pill badge-info position-relative z-10 mx-2">
+          <span>
+            {{ $index }}
+          </span>
+        </div>
+      </div>
+      <div class="m-2">
+        <div class="p-2">
+          <span>{{ .name }}</span>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+</section>
