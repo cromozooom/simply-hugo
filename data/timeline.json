@@ -2,7 +2,7 @@
     "timeline": [
         {
             "name": "Lead - Waiting",
-            "icon": "house",
+            "icon": "file",
             "date": "23.05.1976",
             "status": {
                 "timeline": "past",
@@ -17,11 +17,11 @@
         },
         {
             "name": "Lead - Checking",
-            "icon": "house",
+            "icon": "paper-plane",
             "date": "23.05.1976",
             "status": {
                 "timeline": "past",
-                "stage": "success",
+                "stage": "warning",
                 "details": [
                     {
                         "name": "missing fields",
@@ -32,7 +32,22 @@
         },
         {
             "name": "Prospect",
-            "icon": "house",
+            "icon": "user",
+            "date": "23.05.1976",
+            "status": {
+                "timeline": "past",
+                "stage": "danger",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Confirmed Prospect",
+            "icon": "user-plus",
             "date": "23.05.1976",
             "status": {
                 "timeline": "past",
@@ -46,12 +61,342 @@
             }
         },
         {
-            "name": "Confirmed Prospect",
-            "icon": "house",
+            "name": "Discussions / Proposal",
+            "icon": "comments",
             "date": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "success",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Awaiting Decision",
+            "icon": "question",
+            "xdate": "23.05.1976",
             "status": {
                 "timeline": "past",
                 "stage": "success",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "On Boarding",
+            "icon": "id-card",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "present",
+                "stage": "info",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Unfunded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
+                "details": [
+                    {
+                        "name": "missing fields",
+                        "details": "some fields are uncomplete"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Client - Funded",
+            "icon": "house",
+            "xdate": "23.05.1976",
+            "status": {
+                "timeline": "",
+                "stage": "secondary",
                 "details": [
                     {
                         "name": "missing fields",

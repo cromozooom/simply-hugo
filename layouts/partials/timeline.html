@@ -1,24 +1,62 @@
 {{ $timeline := getJSON "data/timeline.json" }}
-<section class="d-flex">
-  {{ range $index, $item := $timeline.timeline }}
-    <div class="d-flex flex-column">
-      <div class="d-flex justify-content-center">
-        <div class="card timeline-icon mb-3 p-2">
-          <i class="fa-regular fa-house"></i>
+
+{{ $dev := 0 }}
+{{ $scroll := 1 }}
+{{ if $dev }}
+  <div class="fa-file"></div>
+  <div class="fa-house"></div>
+  <div class="fa-paper-plane"></div>
+  <div class="fa-user"></div>
+  <div class="fa-user"></div>
+  <div class="fa-user-plus"></div>
+  <div class="fa-comments"></div>
+  <div class="fa-question"></div>
+  <div class="fa-id-card"></div>
+{{ end }}
+
+{{ if $scroll }}
+  <section class="timeline timeline-string d-flex scroll scroll--light pb-3">
+    {{ range $index, $item := $timeline.timeline }}
+      <div
+        class="timeline-item d-flex flex-grow-1 flex-column {{ if eq .status.stage "success" }}
+          timeline__success
+        {{ else if eq .status.stage "info" }}
+          timeline__info
+        {{ else if eq .status.stage "warning" }}
+          timeline__warning
+        {{ else if eq .status.stage "danger" }}
+          timeline__danger
+        {{ else }}
+          timeline__secondary
+        {{ end }} {{ if eq .status.timeline "present" }}
+          active
+        {{ end }}
+        flex-grow
+        py-3
+        "
+      >
+        <div class="d-flex justify-content-center">
+          <div class="timeline-icon mb-3 px-3  py-2">
+            <div class="arrow"></div>
+            <i class="fa-regular fa-{{ .icon }}"></i>
+          </div>
+        </div>
+        <div class="timeline-line text-center">
+          <div class="badge badge-pill badge-{{ .status.stage }} position-relative z-10 mx-2">
+            <span>
+              {{ add $index 1 }}
+            </span>
+          </div>
+        </div>
+        <div class="">
+          <div class="d-flex flex-column mt-2 text-center">
+            <strong class="text-{{ .status.stage }}">{{ .name }}</strong>
+            {{ if .date }}
+              <span class="text-muted">{{ .date }}</span>
+            {{ end }}
+          </div>
         </div>
       </div>
-      <div class="line text-center">
-        <div class="badge badge-pill badge-info position-relative z-10 mx-2">
-          <span>
-            {{ $index }}
-          </span>
-        </div>
-      </div>
-      <div class="m-2">
-        <div class="p-2">
-          <span>{{ .name }}</span>
-        </div>
-      </div>
-    </div>
-  {{ end }}
-</section>
+    {{ end }}
+  </section>
+{{ end }}

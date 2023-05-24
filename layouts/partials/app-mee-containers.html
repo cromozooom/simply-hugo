@@ -1,0 +1,96 @@
+{{ $content := .content }}
+{{ $head := .head }}
+{{ $footer := .footer }}
+{{ $contextSource := .contextHeight | default "window" }}
+
+{{ $context := newScratch }}
+
+{{ if eq $contextSource "window" }}
+  {{ $context.Set "context" "100vp" }}
+{{ end }}
+{{ if eq $contextSource "vh" }}
+  {{ $context.Set "context" "100dvp" }}
+{{ end }}
+{{ if eq $contextSource "modal" }}
+  {{ $context.Set "context" "calc(100vh - 12rem)" }}
+{{ end }}
+{{ if eq $contextSource "pullout" }}
+  {{ $context.Set "context" "calc(100vh - 12rem)" }}
+{{ end }}
+{{ if eq $contextSource "full" }}
+  {{ $context.Set "context" "100%" }}
+{{ end }}
+
+{{ $contextCss := $context.Get "context"  | safeCSS }}
+
+{{ if eq $contextSource "modal" }}
+  <div x-data style="--min-height: {{ $contextCss }}" class="content-container content-container--modal scroll scroll--light overflow-y-scroll">
+    <div class="content-container-stickyTopArea sticky-top bg-white shadow">
+      {{ if .head }}
+        {{ partial .head }}
+      {{ end }}
+      <div id="content-container-stickyTopArea"></div>
+    </div>
+    {{ if .content }}
+      {{ partial .content }}
+    {{ end }}
+    <div class="content-container-stickyFooter w-100 shadow-top bg-white">
+      <div id="content-container-stickyFooter" class=" d-flex w-100 flex-column"></div>
+      {{ if .footer }}
+        {{ partial .footer }}
+      {{ end }}
+    </div>
+  </div>
+{{ else if eq $contextSource "vh" }}
+  <div class="content-container h-100vh w-100 window d-flex flex-column overflow-hidden">
+    <div class="d-flex flex-grow-1 flex-column w-100 h-100 scroll scroll--light overflow-y-scroll">
+      <div class=" sticky-top bg-white shadow">
+        <div class="content-container-stickyTopArea">
+          {{ if .head }}
+            {{ partial .head }}
+          {{ end }}
+          <div id="content-container-stickyTopArea"></div>
+        </div>
+      </div>
+      <div class="flex-grow-1">
+        {{ if .content }}
+          {{ partial .content }}
+        {{ end }}
+      </div>
+    </div>
+    <div class=" w-100 shadow-top bg-white">
+      <div class="content-container-stickyFooter">
+        <div id="content-container-stickyFooter" class=" d-flex w-100 flex-column"></div>
+        {{ if .footer }}
+          {{ partial .footer }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+{{ else if eq $contextSource "full" }}
+  <div class="content-container content-container--full d-flex flex-column overflow-hidden">
+    <div class="d-flex flex-grow-1 flex-column w-100 h-100 scroll scroll--light overflow-y-scroll">
+      <div class=" sticky-top bg-white shadow">
+        <div class="content-container-stickyTopArea">
+          {{ if .head }}
+            {{ partial .head }}
+          {{ end }}
+          <div id="content-container-stickyTopArea"></div>
+        </div>
+      </div>
+      <div class="flex-grow-1">
+        {{ if .content }}
+          {{ partial .content }}
+        {{ end }}
+      </div>
+    </div>
+    <div class=" w-100 shadow-top bg-white">
+      <div class="content-container-stickyFooter">
+        <div id="content-container-stickyFooter" class=" d-flex w-100 flex-column"></div>
+        {{ if .footer }}
+          {{ partial .footer }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+{{ end }}
