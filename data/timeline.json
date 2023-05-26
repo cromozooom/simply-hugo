@@ -7,12 +7,10 @@
             "status": {
                 "timeline": "past",
                 "stage": "success",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -22,12 +20,10 @@
             "status": {
                 "timeline": "past",
                 "stage": "warning",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing documents",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -37,12 +33,10 @@
             "status": {
                 "timeline": "past",
                 "stage": "danger",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -52,12 +46,10 @@
             "status": {
                 "timeline": "past",
                 "stage": "success",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -67,12 +59,10 @@
             "status": {
                 "timeline": "",
                 "stage": "success",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -82,12 +72,10 @@
             "status": {
                 "timeline": "past",
                 "stage": "success",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -97,12 +85,10 @@
             "status": {
                 "timeline": "present",
                 "stage": "info",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Add more data",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -112,12 +98,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -127,12 +111,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -142,12 +124,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -157,12 +137,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -172,12 +150,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -187,12 +163,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -202,12 +176,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -217,12 +189,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -232,12 +202,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -247,12 +215,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -262,12 +228,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -277,12 +241,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -292,12 +254,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -307,12 +267,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -322,12 +280,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -337,12 +293,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -352,12 +306,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -367,12 +319,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -382,12 +332,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         },
         {
@@ -397,12 +345,10 @@
             "status": {
                 "timeline": "",
                 "stage": "secondary",
-                "details": [
-                    {
-                        "name": "missing fields",
-                        "details": "some fields are uncomplete"
-                    }
-                ]
+                "details": {
+                    "name": "Missing fields",
+                    "details": "some fields are uncomplete"
+                }
             }
         }
     ]

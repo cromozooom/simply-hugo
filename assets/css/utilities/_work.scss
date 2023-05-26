@@ -196,9 +196,17 @@
   &-item {
     min-width: 10rem;
     display: inline-block;
+    position: relative;
+    border: none;
+    background: transparent;
   }
-
-  i {
+  &-info-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--theme-fg);
+  }
+  &-bubble-icon {
     color: var(--theme-fg);
   }
   &-line {
@@ -263,10 +271,10 @@
   //   outline: 1px solid red;
   // }
   &-item {
+    border-radius: 8px;
     &.active {
       // border: 1px solid var(--theme-bg);
       background: var(--theme-fg);
-      border-radius: 8px;
     }
   }
   &__success {
@@ -307,6 +315,38 @@
       --theme-fg: #{$danger-3};
       --theme: #{$danger-8};
       --theme-bg: #{$danger-8};
+    }
+  }
+}
+
+.timeline {
+  &__danger {
+    &:hover {
+      --theme-fg: #{$danger-3};
+      --theme: #{$danger-8};
+      --theme-bg: #{$danger-8};
+      background: var(--theme-fg);
+    }
+  }
+  &__warning {
+    &:hover {
+      --theme-fg: #{$warning-3};
+      --theme: #{$warning-8};
+      --theme-bg: #{$warning-8};
+      background: var(--theme-fg);
+    }
+  }
+  &__danger,
+  &__warning {
+    &:hover {
+      .timeline-info-icon {
+        color: var(--theme-bg);
+      }
+    }
+  }
+  .active {
+    .timeline-info-icon {
+      color: var(--theme-bg);
     }
   }
 }

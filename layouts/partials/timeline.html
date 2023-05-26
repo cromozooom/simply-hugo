@@ -15,9 +15,13 @@
 {{ end }}
 
 {{ if $scroll }}
+  <!-- Tippy.js -->
+  <!-- https://atomiks.github.io/tippyjs/v6 -->
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
   <section class="timeline timeline-string d-flex scroll scroll--light pb-3">
     {{ range $index, $item := $timeline.timeline }}
-      <div
+      <button
         class="timeline-item d-flex flex-grow-1 flex-column {{ if eq .status.stage "success" }}
           timeline__success
         {{ else if eq .status.stage "info" }}
@@ -30,25 +34,37 @@
           timeline__secondary
         {{ end }} {{ if eq .status.timeline "present" }}
           active
-        {{ end }}
-        flex-grow
+        {{ end }} flex-grow
+        p-0
         py-3
         "
+        {{ if or ( eq .status.stage "info") (eq .status.stage "warning") ( eq .status.stage "danger") }}
+          x-data @click="$tooltip('{{ .status.details.name }}')" type="button"
+        {{ else }}
+          disabled
+        {{ end }}
       >
-        <div class="d-flex justify-content-center">
+        {{ if or ( eq .status.stage "info") (eq .status.stage "warning") ( eq .status.stage "danger") }}
+          <div class="timeline-info-icon">
+            <i class="fa-regular fa-circle-info"></i>
+          </div>
+
+          <!-- Source -->
+        {{ end }}
+        <div class="d-flex justify-content-center w-100">
           <div class="timeline-icon mb-3 px-3  py-2">
             <div class="arrow"></div>
-            <i class="fa-regular fa-{{ .icon }}"></i>
+            <i class="timeline-bubble-icon fa-regular fa-{{ .icon }}"></i>
           </div>
         </div>
-        <div class="timeline-line text-center">
+        <div class="timeline-line w-100 text-center">
           <div class="badge badge-pill badge-{{ .status.stage }} position-relative z-10 mx-2">
             <span>
               {{ add $index 1 }}
             </span>
           </div>
         </div>
-        <div class="">
+        <div class="w-100">
           <div class="d-flex flex-column mt-2 text-center">
             <strong class="text-{{ .status.stage }}">{{ .name }}</strong>
             {{ if .date }}
@@ -56,7 +72,28 @@
             {{ end }}
           </div>
         </div>
-      </div>
+      </button>
     {{ end }}
   </section>
+  <script>
+    document.addEventListener("alpine:init", () => {
+      // Magic: $tooltip
+      Alpine.magic("tooltip", (el) => (message) => {
+        let instance = tippy(el, { content: message, trigger: "manual" });
+
+        instance.show();
+
+        setTimeout(() => {
+          instance.hide();
+
+          setTimeout(() => instance.destroy(), 150);
+        }, 2000);
+      });
+
+      // Directive: x-tooltip
+      Alpine.directive("tooltip", (el, { expression }) => {
+        tippy(el, { content: expression });
+      });
+    });
+  </script>
 {{ end }}
