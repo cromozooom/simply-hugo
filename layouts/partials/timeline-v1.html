@@ -23,7 +23,7 @@
   <!-- https://atomiks.github.io/tippyjs/v6 -->
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <script src="https://unpkg.com/tippy.js@6"></script>
-  <section class="timeline-v1 timeline-v1-string d-flex align-items-stretch scroll scroll--light pb-3">
+  <section class="timeline-v1 timeline-v1-string d-flex align-items-stretch scroll scroll--light py-1 pb-3">
     {{ range $index, $item := $timeline.timeline }}
       <button
         class="d-flex flex-column justify-content-between w-100 {{ if eq .status.stage "success" }}
@@ -39,7 +39,7 @@
         {{ end }}
         {{ if eq .status.timeline "present" }}
           active
-        {{ end }} p-0
+        {{ end }} px-0 py-1
         "
         {{ if or ( eq .status.stage "info") (eq .status.stage "warning") ( eq .status.stage "danger") }}
           x-data x-tooltip="{{ .status.details.name }}" type="button"

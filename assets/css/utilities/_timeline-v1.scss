@@ -1,14 +1,30 @@
 .timeline-v1 {
-    button {
+  button {
     background: transparent;
     border: none;
     min-width: 11rem;
+    border: 1px solid transparent;
 
     &:first-child {
       .timeline-v1--line {
         &::before {
           display: none;
         }
+      }
+    }
+    &:focus-visible {  
+      border: 1px solid var(--theme-fg);
+      outline: 3px solid var(--theme);
+      border-radius: 10px;
+    }
+    &.active:focus-visible {  
+      border-radius: 10px;
+      border: 1px solid var(--theme-bg);
+      outline: 3px solid var(--theme-fg);
+    }
+    &:hover {
+      .timeline-v1--card {
+        transform: translateY(-10px);
       }
     }
   }
@@ -71,6 +87,7 @@
   &--card {
     border: var(--border) solid var(--theme);
     border-radius: 8px;
+    transition: ease-in-out 200ms;
     .arrow {
       position: absolute;
       width: 10px;
