@@ -12,6 +12,10 @@
   <div class="fa-comments"></div>
   <div class="fa-question"></div>
   <div class="fa-id-card"></div>
+  <div class="timeline-v1__info"></div>
+  <div class="timeline-v1__success"></div>
+  <div class="timeline-v1__warning"></div>
+  <div class="timeline-v1__danger"></div>
 {{ end }}
 
 {{ if $scroll }}
@@ -19,24 +23,23 @@
   <!-- https://atomiks.github.io/tippyjs/v6 -->
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <script src="https://unpkg.com/tippy.js@6"></script>
-  <section class="timeline timeline-string d-flex scroll scroll--light pb-3">
+  <section class="timeline-v1 timeline-v1-string d-flex align-items-stretch scroll scroll--light pb-3">
     {{ range $index, $item := $timeline.timeline }}
       <button
-        class="timeline-item d-flex flex-grow-1 flex-column {{ if eq .status.stage "success" }}
-          timeline__success
+        class="d-flex flex-column justify-content-between w-100 {{ if eq .status.stage "success" }}
+          timeline-v1__success
         {{ else if eq .status.stage "info" }}
-          timeline__info
+          timeline-v1__info
         {{ else if eq .status.stage "warning" }}
-          timeline__warning
+          timeline-v1__warning
         {{ else if eq .status.stage "danger" }}
-          timeline__danger
+          timeline-v1__danger
         {{ else }}
-          timeline__secondary
-        {{ end }} {{ if eq .status.timeline "present" }}
+          timeline-v1__secondary
+        {{ end }}
+        {{ if eq .status.timeline "present" }}
           active
-        {{ end }} flex-grow
-        p-0
-        py-3
+        {{ end }} p-0
         "
         {{ if or ( eq .status.stage "info") (eq .status.stage "warning") ( eq .status.stage "danger") }}
           x-data x-tooltip="{{ .status.details.name }}" type="button"
@@ -44,31 +47,31 @@
           disabled
         {{ end }}
       >
-        {{ if or ( eq .status.stage "info") (eq .status.stage "warning") ( eq .status.stage "danger") }}
-          <div class="timeline-info-icon">
-            <i class="fa-regular fa-circle-info"></i>
-          </div>
-
-          <!-- Source -->
-        {{ end }}
-        <div class="d-flex justify-content-center w-100">
-          <div class="timeline-icon mb-3 px-3  py-2">
+        <div class="w-100 flex-grow-1 h-100 px-1">
+          <div class="timeline-v1--card w-100 h-100 d-flex flex-column position-relative px-1 py-2">
             <div class="arrow"></div>
-            <i class="timeline-bubble-icon fa-regular fa-{{ .icon }}"></i>
-          </div>
-        </div>
-        <div class="timeline-line w-100 text-center">
-          <div class="badge badge-pill badge-{{ .status.stage }} position-relative z-10 mx-2">
-            <span>
-              {{ add $index 1 }}
-            </span>
+            {{ if or ( eq .status.stage "info") (eq .status.stage "warning") ( eq .status.stage "danger") }}
+              <div class="timeline-v1--info-icon d-flex flex-column p-1">
+                <i class="fa-regular fa-circle-info"></i>
+              </div>
+            {{ end }}
+            <i class="timeline-v1--card-icon fa-solid fa-{{ .icon }} py-2"></i>
+            <span class="timeline-v1--card-text text-{{ .status.stage }}">{{ .name }}</span>
           </div>
         </div>
         <div class="w-100">
-          <div class="d-flex flex-column mt-2 text-center">
-            <strong class="text-{{ .status.stage }}">{{ .name }}</strong>
+          <div class="timeline-v1--line w-100">
+            <div class="timeline-v1--counter timeline-v1--counter__{{ .status.stage }} mx-auto mb-2 mt-3 text-center">
+              <strong>
+                {{ add $index 1 }}
+              </strong>
+            </div>
+          </div>
+          <div class="w-100">
             {{ if .date }}
               <span class="text-muted">{{ .date }}</span>
+            {{ else }}
+              <span class="text-muted">&nbsp;</span>
             {{ end }}
           </div>
         </div>

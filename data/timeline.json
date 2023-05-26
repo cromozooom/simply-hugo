@@ -19,7 +19,7 @@
             "date": "23.05.1976",
             "status": {
                 "timeline": "past",
-                "stage": "warning",
+                "stage": "success",
                 "details": {
                     "name": "Missing documents",
                     "details": "some fields are uncomplete"
@@ -68,7 +68,7 @@
         {
             "name": "Awaiting Decision",
             "icon": "question",
-            "xdate": "23.05.1976",
+            "date": "23.05.1976",
             "status": {
                 "timeline": "past",
                 "stage": "success",
