@@ -10,6 +10,13 @@
     position: relative;
     border: none;
     background: transparent;
+    &:last-child {
+      .timeline-line {
+        &::after {
+          display: none;
+        }
+      }
+    }
     &:first-child {
       .timeline-line {
         &::before {

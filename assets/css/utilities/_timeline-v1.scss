@@ -5,6 +5,13 @@
     min-width: 11rem;
     border: 1px solid transparent;
 
+    &:last-child {
+      .timeline-v1--line {
+        &::after {
+          display: none;
+        }
+      }
+    }
     &:first-child {
       .timeline-v1--line {
         &::before {
@@ -125,7 +132,7 @@
   --theme-fg: #{$gray-600};
   --theme-bg: #{$white};
   &__success {
-    --theme-fg: #{$success-9};
+    --theme-fg: #{$success-10};
     --theme: #{$success-4};
     --theme-bg: #{$white};
     &.active {
@@ -135,7 +142,7 @@
     }
   }
   &__info {
-    --theme-fg: #{$info-9};
+    --theme-fg: #{$info-10};
     --theme: #{$info-4};
     --theme-bg: #{$white};
     &.active {
@@ -155,7 +162,7 @@
     }
   }
   &__danger {
-    --theme-fg: #{$danger-9};
+    --theme-fg: #{$danger-10};
     --theme: #{$danger-4};
     --theme-bg: #{$white};
     &.active {
