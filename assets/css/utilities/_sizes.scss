@@ -55,3 +55,10 @@ $h-tabs: 3.5rem;
 .tabs-height {
   $h-tabs: 3.5rem;
 }
+
+.icon-square {
+  display: block;
+  width: 2rem;
+  height: auto;
+  aspect-ratio: 1 /1;
+}

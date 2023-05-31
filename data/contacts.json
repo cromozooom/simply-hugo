@@ -5,7 +5,9 @@
     "lastContacted": "8/1/2022",
     "lastFTFmeeting": "4/15/2023",
     "stage": "Lead checking",
-    "assets": 1897105.4
+    "assets": 1897105.4,
+    "relationshipManager": "LON_A",
+    "clientType": "Joint"
   },
   {
     "name": "Kelcie Batters",
