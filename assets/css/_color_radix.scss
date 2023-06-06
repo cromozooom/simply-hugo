@@ -340,3 +340,413 @@ $radix: (
 body {
   background: map.get($radix, "blue10");
 }
+
+.oklch-rc1 {
+  --hue: 212;
+  border-bottom: 40px solid hsl(212, 100%, 13%);
+}
+.oklch-rc2 {
+  --hue: 218;
+  border-bottom: 40px solid hsl(218, 41%, 37%);
+}
+.oklch-wdx1 {
+  --hue: 202;
+  border-bottom: 40px solid hsl(202, 35%, 25%);
+}
+.oklch-wdx2 {
+  --hue: 178;
+  border-bottom: 40px solid hsl(178, 31%, 42%);
+}
+
+// original
+// .oklch-yellow {
+//   --hue: 90;
+// }
+// .oklch-orange {
+//   // --hue: 44.36;
+//   --hue: 70.67;
+// }
+// .oklch-amber {
+//   --hue: 54.85;
+// }
+// .oklch-brown {
+//   --hue: 49.095;
+// }
+// .oklch-crimson {
+//   --hue: 20.09;
+// }
+// .oklch-tomato {
+//   --hue: 0.195;
+// }
+// .oklch-red {
+//   --hue: 0.257;
+// }
+// .oklch-pink {
+//   --hue: 0.073;
+// }
+// .oklch-plum {
+//   --hue: 292;
+// }
+// .oklch-purple {
+//   --hue: 272;
+// }
+// .oklch-violet {
+//   --hue: 251;
+// }
+// .oklch-indigo {
+//   --hue: 226;
+// }
+// .oklch-blue {
+//   --hue: 208;
+// }
+// .oklch-cyan {
+//   --hue: 191;
+// }
+// .oklch-sky {
+//   --hue: 193;
+// }
+// .oklch-teal {
+//   --hue: 173;
+// }
+// .oklch-mint {
+//   --hue: 167;
+// }
+// .oklch-green {
+//   --hue: 152;
+// }
+// .oklch-lime {
+//   --hue: 143;
+// }
+// .oklch-grass {
+//   --hue: 132;
+// }
+
+.oklch-source {
+  --angle: 18;
+  --start: 3.6;
+}
+
+$coloursName: (
+  "brown":0,
+  "amber":1,
+  "yellow":2,
+  "lime":3,
+  "grass":4,
+  "green":5,
+  "mint":6,
+  "teal":7,
+  "sky":8,
+  "cyan":9,
+  "blue":10,
+  "indigo":11,
+  "plum":12,
+  "purple":13,
+  "violet":14,
+  "crimson":15,
+  "pink":16,
+  "tomato":17,
+  "red":18,
+  "orange":19,
+);
+
+@each $color, $count in $coloursName {
+  .oklch-#{$color} {
+    --hue: calc((var(--start) + #{$count}) * var(--angle)) ;
+  }
+}
+
+
+.mycolor {
+  outline: 1px solid red;
+
+  .swatch {
+    --swatch:  oklch(var(--l, 60% ) var(--c, 0.2 )  var(--h, 50));
+    background: var(--swatch);
+  }
+}
+
+.controls-container {
+  position: relative;
+  .controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    min-width: 15rem;
+    background: white;
+    z-index: 1;
+    max-width: 40rem;
+
+
+  }
+
+}
+
+.c-rng { 
+  --rng-focus: #064374;
+  --rng-lower: #6495ED;
+  --rng-upper: #CFD8DC;
+  --rng-percent: 0%;
+  --rng-percent-upper: 80%;
+  --rng-bdrs: .375rem;
+  // --rng-bgi: linear-gradient(to right, var(--rng-lower) var(--rng-percent), var(--rng-upper) var(--rng-percent));
+  --rng-h: 0.75rem;
+  --rng-m: 1rem 0;
+  --rng-w: 100%;
+  --rng-label-c: #333;
+  --rng-label-fz: 0.75rem;
+  --rng-label-off: 0.25rem;
+  --rng-thumb-bdrs: 50%;
+  --rng-thumb-bxsh: none;
+  --rng-thumb-bxsh--focus: inset 0 0 0 0.25rem var(--rng-focus);
+  --rng-thumb-bgc: #0960A5;
+  --rng-thumb-h: 2rem;
+  --rng-thumb-w: 2rem;
+  --rng-thumb-z: 1;
+
+  appearance: none;
+
+  background-image: var(--rng-bgi);
+  border-radius: var(--rng-bdrs);
+  box-sizing: border-box;
+  font-family: inherit;
+  height: var(--rng-h);
+  margin: var(--rng-m);
+  outline: none;
+  position: relative;
+  width: var(--rng-w);
+  &[data-elm="hue"] {
+    --rng-bgi: linear-gradient(to right, red, #ff8000, #ff0, #80ff00, lime, #00ff80, cyan, #007fff, blue, #7f00ff, #f0f, #ff0080, red);
+    background-image: var(--rng-bgi);
+  }
+}
+
+
+
+
+
+.oklch {
+  --swatch-1:  oklch(var(--l1, 99.42% ) var(--c1, .002 )  var(--hue));  
+  --swatch-2:  oklch(var(--l2, 98.41% ) var(--c2, .007 )  var(--hue));  
+  --swatch-3:  oklch(var(--l3, 96.63% ) var(--c3, .0166 )  var(--hue));  
+  --swatch-4:  oklch(var(--l4, 94.37% ) var(--c4, .028 )  var(--hue));  
+  --swatch-5:  oklch(var(--l5, 91.30% ) var(--c5, .042 )  var(--hue));  
+  --swatch-6:  oklch(var(--l6, 87.25% ) var(--c6, .069 )  var(--hue));  
+  --swatch-7:  oklch(var(--l7, 81.62% ) var(--c7, .082 )  var(--hue));  
+  --swatch-8:  oklch(var(--l8, 74.58% ) var(--c8, .111 )  var(--hue));  
+  --swatch-9:  oklch(var(--l9, 62.71% ) var(--c9, .194 )  var(--hue));  
+  --swatch-10:  oklch(var(--l10, 59.80% ) var(--c10, .210 )  var(--hue));  
+  --swatch-11:  oklch(var(--l11, 56.681% ) var(--c11, .211 )  var(--hue));  
+  --swatch-12:  oklch(var(--l12, 23% ) var(--c12, .15 )  var(--hue));  
+  --swatch-13:  oklch(var(--l13, 59.82% ) var(--c13, .300 )  var(--hue));  
+}
+
+.oklch-light {
+  --swatch-1: oklch(106% 0.04  var(--hue));
+  --swatch-2: oklch(103% 0.06  var(--hue));
+  --swatch-3: oklch(100% 0.07 var(--hue));
+  --swatch-4: oklch(99% 0.09 var(--hue));
+  --swatch-5: oklch(96.8% 0.105 var(--hue));
+  --swatch-6: oklch(92.8% 0.115 var(--hue));
+  --swatch-7: oklch(86.80% .125 var(--hue));
+  --swatch-8: oklch(81.00% .190 var(--hue));
+  --swatch-9: oklch(89.2% 0.170 var(--hue));
+  --swatch-10: oklch(89.2% 0.24 var(--hue));
+  --swatch-11: oklch(54.2% 0.19 var(--hue));
+  --swatch-12: oklch(24.4% .048 var(--hue));
+  --swatch-13: oklch(89.2% 0.350 var(--hue));
+  .swatch-9 {  color: var(--swatch-12) }
+  .swatch-10 {  color: var(--swatch-12) }
+  .swatch-13 {  color: var(--swatch-12) }
+  // .swatch-11 {  color: black }
+  // .swatch-12 {  color: black }
+}
+
+
+
+
+.swatch-1 { background: var(--swatch-1); color: var(--swatch-11) }
+.swatch-2 { background: var(--swatch-2); color: var(--swatch-11) }
+.swatch-3 { background: var(--swatch-3); color: var(--swatch-11) }
+.swatch-4 { background: var(--swatch-4); color: var(--swatch-11) }
+.swatch-5 { background: var(--swatch-5); color: var(--swatch-11) }
+.swatch-6 { background: var(--swatch-6); color: var(--swatch-11) }
+.swatch-7 { background: var(--swatch-7); color: var(--swatch-11) }
+.swatch-8 { background: var(--swatch-8); color: var(--swatch-11) }
+.swatch-9 { background: var(--swatch-9); color: var(--swatch-1) }
+.swatch-10 { background: var(--swatch-10); color: var(--swatch-1) }
+.swatch-11 { background: var(--swatch-11); color: var(--swatch-1) }
+.swatch-12 { background: var(--swatch-12); color: var(--swatch-1) }
+.swatch-13 { background: var(--swatch-13); color: var(--swatch-1) }
+
+.swatch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  // padding: 1rem 1rem;
+  height: 3rem;
+  min-width: 5rem;
+  max-width: 5rem;
+  &--free-w {
+    min-width: 15rem;
+    max-width: 100%;
+    input {
+      width: 15rem;
+      margin-left: .5rem;
+      margin-right: .5rem;
+    }
+
+  }
+}
+
+.orig {
+  z-index: 2;
+  &:hover {
+    outline: 3px solid rgba(black, .1);
+  }
+}
+
+.theme {
+  &__red {
+    --ink: #{map.get($radix, "red2")};
+    --inkHover: #{map.get($radix, "red1")};
+    --c1: #{map.get($radix, "red1")};
+    --c2: #{map.get($radix, "red2")};
+    --c3: #{map.get($radix, "red3")};
+    --c4: #{map.get($radix, "red4")};
+    --c5: #{map.get($radix, "red5")};
+    --c6: #{map.get($radix, "red6")};
+    --c7: #{map.get($radix, "red7")};
+    --c8: #{map.get($radix, "red8")};
+    --c9: #{map.get($radix, "red9")};
+    --c10: #{map.get($radix, "red10")};
+    --c11: #{map.get($radix, "red11")};
+    --c12: #{map.get($radix, "red12")};
+  }
+  &__yellow {
+    --ink: #{map.get($radix, "yellow11")};
+    --inkHover: #{map.get($radix, "yellow12")};
+    --c1: #{map.get($radix, "yellow1")};
+    --c2: #{map.get($radix, "yellow2")};
+    --c3: #{map.get($radix, "yellow3")};
+    --c4: #{map.get($radix, "yellow4")};
+    --c5: #{map.get($radix, "yellow5")};
+    --c6: #{map.get($radix, "yellow6")};
+    --c7: #{map.get($radix, "yellow7")};
+    --c8: #{map.get($radix, "yellow8")};
+    --c9: #{map.get($radix, "yellow9")};
+    --c10: #{map.get($radix, "yellow10")};
+    --c11: #{map.get($radix, "yellow11")};
+    --c12: #{map.get($radix, "yellow12")};
+  }
+  &__lime {
+    --ink: #{map.get($radix, "lime11")};
+    --inkHover: #{map.get($radix, "lime12")};
+    --c1: #{map.get($radix, "lime1")};
+    --c2: #{map.get($radix, "lime2")};
+    --c3: #{map.get($radix, "lime3")};
+    --c4: #{map.get($radix, "lime4")};
+    --c5: #{map.get($radix, "lime5")};
+    --c6: #{map.get($radix, "lime6")};
+    --c7: #{map.get($radix, "lime7")};
+    --c8: #{map.get($radix, "lime8")};
+    --c9: #{map.get($radix, "lime9")};
+    --c10: #{map.get($radix, "lime10")};
+    --c11: #{map.get($radix, "lime11")};
+    --c12: #{map.get($radix, "lime12")};
+  }
+  &__blue {
+    --ink: #{map.get($radix, "blue2")};
+    --inkHover: #{map.get($radix, "blue1")};
+    --c1: #{map.get($radix, "blue1")};
+    --c2: #{map.get($radix, "blue2")};
+    --c3: #{map.get($radix, "blue3")};
+    --c4: #{map.get($radix, "blue4")};
+    --c5: #{map.get($radix, "blue5")};
+    --c6: #{map.get($radix, "blue6")};
+    --c7: #{map.get($radix, "blue7")};
+    --c8: #{map.get($radix, "blue8")};
+    --c9: #{map.get($radix, "blue9")};
+    --c10: #{map.get($radix, "blue10")};
+    --c11: #{map.get($radix, "blue11")};
+    --c12: #{map.get($radix, "blue12")};
+  }
+
+  &--bg {
+    background: var(--c1);
+  }
+  &--card {
+    border-radius: 4px;
+    overflow: hidden;
+    &--title {
+      color: var(--c12);
+    }
+    &-header {
+      background: var(--c5);
+      i {
+        color: var(--c11);
+      }
+    }
+    &-body {
+      p {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1rem;
+        
+      }
+      p:first-child {
+        padding-top: 1rem;
+
+      }
+      p:not(:last-child) {
+        border-bottom: 1px solid   var(--c6);
+      }
+      label {
+        font-weight: bold;
+      }
+      input {
+        height: 2rem;
+        line-height: 2rem;
+        border-radius: 4px;
+        border: 1px solid  var(--c6);
+        &:focus {
+          outline: 3px solid  var(--c7);
+        }
+      }
+      a {
+        text-decoration: none;
+        border: none;
+        text-align: center;
+        background:  var(--c9);
+        outline: 3px solid  var(--c9);
+        color: var(--ink);
+        &:hover {
+          text-decoration: none;
+          color: var(--inkHover);
+          background:  var(--c10);
+          outline: 3px solid  var(--c10);
+        }
+
+      }
+    }
+
+
+    &__bg-white {
+      background: white;
+      border:1px solid  var(--c6);
+    }
+    &__bg-1 {
+      background:  var(--c2);
+    }
+    &__bg-hover {
+      background:  var(--c3);
+      &:hover {
+        background:  var(--c4);
+
+      }
+    }
+
+
+  }
+}

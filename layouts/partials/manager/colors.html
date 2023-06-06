@@ -1,0 +1,75 @@
+<div class="bg-white">
+  <div class="d-flex">
+    <div class="flex-grow-1 h-content-tabs scroll scroll--light overflow-y-scroll">
+      <div class="px-2">
+        {{ partial "oklsh.html" . }}
+        <div x-data="{ resizableColumns: {} }">
+          <table x-init="resizableColumns.init()">
+            <thead>
+              <tr>
+                <th data-type="numeric" x-data="{ resizer: null }" x-init="resizer = resizableColumns.createResizer($el)" @mousedown="resizableColumns.startResize($event, resizer)">ID <span class="resize-handle" x-ref="resizer"></span></th>
+                <th data-type="text-short" x-data="{ resizer: null }" x-init="resizer = resizableColumns.createResizer($el)" @mousedown="resizableColumns.startResize($event, resizer)">First name <span class="resize-handle" x-ref="resizer"></span></th>
+                <th data-type="text-short" x-data="{ resizer: null }" x-init="resizer = resizableColumns.createResizer($el)" @mousedown="resizableColumns.startResize($event, resizer)">Last name <span class="resize-handle" x-ref="resizer"></span></th>
+                <th data-type="text-short" x-data="{ resizer: null }" x-init="resizer = resizableColumns.createResizer($el)" @mousedown="resizableColumns.startResize($event, resizer)">Email <span class="resize-handle" x-ref="resizer"></span></th>
+                <th data-type="text-long" x-data="{ resizer: null }" x-init="resizer = resizableColumns.createResizer($el)" @mousedown="resizableColumns.startResize($event, resizer)">Street <span class="resize-handle" x-ref="resizer"></span></th>
+                <th data-type="text-short" x-data="{ resizer: null }" x-init="resizer = resizableColumns.createResizer($el)" @mousedown="resizableColumns.startResize($event, resizer)">Country <span class="resize-handle" x-ref="resizer"></span></th>
+                <th data-type="text-long" x-data="{ resizer: null }" x-init="resizer = resizableColumns.createResizer($el)" @mousedown="resizableColumns.startResize($event, resizer)">Pincode <span class="resize-handle" x-ref="resizer"></span></th>
+                <th data-type="text-short" x-data="{ resizer: null }" x-init="resizer = resizableColumns.createResizer($el)" @mousedown="resizableColumns.startResize($event, resizer)">IBAN <span class="resize-handle" x-ref="resizer"></span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>000001</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>usermail@gmail.com</td>
+                <td>New York</td>
+                <td>United State</td>
+                <td>21520</td>
+                <td>XYZ123</td>
+              </tr>
+              <!-- Remaining rows... -->
+            </tbody>
+          </table>
+
+          <script>
+            const resizableColumns = {
+              init() {
+                this.table = this.$refs.table;
+                this.headers = Array.from(this.table.querySelectorAll("th[data-type]"));
+                this.dragging = null;
+                this.currentTh = null;
+                this.newWidth = 0;
+
+                window.addEventListener("mousemove", this.resizeColumn);
+                window.addEventListener("mouseup", this.stopResize);
+              },
+              createResizer(th) {
+                const resizer = document.createElement("div");
+                resizer.className = "resize-handle";
+                th.appendChild(resizer);
+                return resizer;
+              },
+              startResize(event, resizer) {
+                this.dragging = true;
+                this.currentTh = resizer.parentElement;
+                this.newWidth = this.currentTh.offsetWidth - event.pageX;
+                this.currentTh.classList.add("resizing");
+              },
+              resizeColumn(event) {
+                if (!this.dragging) return;
+                this.currentTh.style.width = `${this.newWidth + event.pageX}px`;
+              },
+              stopResize() {
+                if (!this.dragging) return;
+                this.currentTh.classList.remove("resizing");
+                this.dragging = false;
+              },
+            };
+          </script>
+        </div>
+        {{ partial "theme-component.html" . }}
+      </div>
+    </div>
+  </div>
+</div>

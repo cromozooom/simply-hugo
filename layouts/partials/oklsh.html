@@ -1,0 +1,1485 @@
+<section>
+  <div class="d-flex flex-column">
+    <div class="mycolor" x-data="{ steps: 12, h: 1, name: '', showHueControlls: false }">
+      <div class="controls-container swatch swatch-orig" :style="'--h:' + h">
+        <span @click="showHueControlls = !showHueControlls"> Orig </span>
+
+        <div @click.outside="showHueControlls = false" class="controls rounded p-2 shadow" x-show="showHueControlls">
+          <fieldset class="d-flex flex-column">
+            <label aria-label="Hue">
+              <input type="text" x-model="h" />
+              <input class="c-rng" type="range" min="0" max="360" step="0.001" value="1" x-model="h" data-elm="hue" />
+            </label>
+          </fieldset>
+        </div>
+      </div>
+
+      <template x-for="(color, index) in steps" :key="index">
+        <div class="controls-container" x-data="{ l: 0.001, cValue: 0.001, showLC: false }">
+          <div @click="showLC = !showLC" :class="'swatch swatch-' + index" :id="'swatch-' + index" x-text="index + 1" x-ref="swatchRef" :style="'--l:' + l*100 + '%; --c:' + cValue + '; --h:' + h"></div>
+          <div @click.outside="showLC = false" class="controls rounded p-2 shadow" x-show="showLC">
+            <div class="d-flex gap-2">
+              <span x-text="'l:' + l"></span>
+              <span x-text="'c:' + cValue"></span>
+              <span x-text="'h:' + h"></span>
+            </div>
+            <div>
+              <fieldset class="d-flex flex-column gap-1">
+                <input type="text" x-model="l" />
+                <input type="range" min="0" max="1" step="0.001" value="0.001" x-model="l" />
+                <input type="text" x-model="cValue" />
+                <input type="range" min="0" max="0.4" step="0.001" value="0.2" x-model="cValue" />
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</section>
+
+<div class="d-flex justify-content-between align-items-center px-2 pt-3">
+  <h6 class="d-flex align-items-cente mb-0">
+    <i class="fa-solid fa-timeline text-info mr-2"></i>
+    <span> OKLCH </span>
+  </h6>
+  <div class="d-flex justify-content-between align-items-cente gap-2">
+    <a href="#">
+      <i class="fa-solid fa-rotate"></i>
+    </a>
+    <a href="#">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </div>
+</div>
+<section class="timeline timeline-string d-flex scroll scroll--light oklch-source pb-3">
+  <div class="w-100 py-3">
+    <div class="d-flex">
+      <div class="palette oklch oklch-brown">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">brown</div>
+      </div>
+      {{/* <div class="palette oklch oklch-orange">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">orange</div>
+        </div>
+      */}}
+      <div class="palette oklch oklch-amber">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">amber</div>
+      </div>
+      <div class="palette oklch oklch-yellow">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">yellow</div>
+      </div>
+      <div class="palette oklch oklch-lime">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">lime</div>
+      </div>
+      <div class="palette oklch oklch-grass">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">grass</div>
+      </div>
+      <div class="palette oklch oklch-green">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">green</div>
+      </div>
+      <div class="palette oklch oklch-mint">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">mint</div>
+      </div>
+      <div class="palette oklch oklch-teal">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">teal</div>
+      </div>
+      <div class="palette oklch oklch-sky">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">sky</div>
+      </div>
+      <div class="palette oklch oklch-cyan">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">cyan</div>
+      </div>
+      <div class="palette oklch oklch-blue">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">blue</div>
+      </div>
+      <div class="palette oklch oklch-indigo">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">indigo</div>
+      </div>
+      <div class="palette oklch oklch-plum">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">plum</div>
+      </div>
+      <div class="palette oklch oklch-purple">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">purple</div>
+      </div>
+      <div class="palette oklch oklch-violet">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">violet</div>
+      </div>
+      <div class="palette oklch oklch-crimson">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">crimson</div>
+      </div>
+      <div class="palette oklch oklch-pink">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">pink</div>
+      </div>
+      {{/* <div class="palette orig">
+        <div class="swatch bg-pink1">1</div>
+        <div class="swatch bg-pink2">2</div>
+        <div class="swatch bg-pink3">3</div>
+        <div class="swatch bg-pink4">4</div>
+        <div class="swatch bg-pink5">5</div>
+        <div class="swatch bg-pink6">6</div>
+        <div class="swatch bg-pink7">7</div>
+        <div class="swatch bg-pink8">8</div>
+        <div class="swatch bg-pink9 text-white">9</div>
+        <div class="swatch bg-pink10 text-white">10</div>
+        <div class="swatch bg-pink11 text-white">11</div>
+        <div class="swatch bg-pink12 text-white">12</div>
+        <div class="swatch bg-pink10 text-white">pink</div>
+        </div>
+      */}}
+
+      <div class="palette oklch oklch-tomato">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">tomato</div>
+      </div>
+
+      <div class="palette oklch oklch-red">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">red</div>
+      </div>
+
+      <div class="palette oklch oklch-orange orange">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">orange</div>
+      </div>
+      <div class="palette oklch oklch-brown">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">brown</div>
+      </div>
+      <div id="" class="palette oklch oklch-brown">
+        <div class="swatch swatch--free-w swatch-1">1</div>
+        <div class="swatch swatch--free-w swatch-2">2</div>
+        <div class="swatch swatch--free-w swatch-3">3</div>
+        <div class="swatch swatch--free-w swatch-4">4</div>
+        <div class="swatch swatch--free-w swatch-5">5</div>
+        <div class="swatch swatch--free-w swatch-6 d-flex">
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="100" step="0.001" value="87.25" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--l6', this.value + '%'))" />
+            </fieldset>
+          </div>
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="1" value="0.069" step="0.001" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--c6', this.value))" />
+            </fieldset>
+          </div>
+        </div>
+        <div class="swatch swatch--free-w swatch-7 d-flex">
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="100" step="0.001" value="81.62" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--l7', this.value + '%'))" />
+            </fieldset>
+          </div>
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="1" value="0.082" step="0.001" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--c7', this.value))" />
+            </fieldset>
+          </div>
+        </div>
+        <div class="swatch swatch--free-w swatch-8 d-flex">
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="100" step="0.001" value="74.58" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--l8', this.value + '%'))" />
+            </fieldset>
+          </div>
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="1" value="0.111" step="0.001" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--c8', this.value))" />
+            </fieldset>
+          </div>
+        </div>
+        <div class="swatch swatch--free-w swatch-9 d-flex">
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="100" step="0.001" value="62.71" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--l9', this.value + '%'))" />
+            </fieldset>
+          </div>
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="1" value="0.194" step="0.001" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--c9', this.value))" />
+            </fieldset>
+          </div>
+        </div>
+        <div class="swatch swatch--free-w swatch-10 d-flex">
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="100" step="0.001" value="59.80" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--l10', this.value + '%'))" />
+            </fieldset>
+          </div>
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="1" value="0.210" step="0.001" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--c10', this.value))" />
+            </fieldset>
+          </div>
+        </div>
+        <div class="swatch swatch--free-w swatch-11 d-flex">
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="100" step="0.001" value="57.234" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--l11', this.value + '%'))" />
+            </fieldset>
+          </div>
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="1" value="0.220" step="0.001" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--c11', this.value))" />
+            </fieldset>
+          </div>
+        </div>
+        <div class="swatch swatch--free-w swatch-12 d-flex">
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="100" value="23" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--l12', this.value + '%'))" />
+            </fieldset>
+          </div>
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="1" value="0.15" step="0.001" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--c12', this.value))" />
+            </fieldset>
+          </div>
+        </div>
+        <div class="swatch swatch--free-w swatch-13 d-flex">
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="100" value="59.82" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--l13', this.value + '%'))" />
+            </fieldset>
+          </div>
+          <div>
+            <fieldset>
+              <input type="range" min="0" max="1" value="0.300" step="0.001" oninput="document.querySelectorAll('.oklch').forEach(el => el.style.setProperty('--c13', this.value))" />
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="timeline timeline-string d-flex scroll scroll--light pb-3">
+  <div class="w-100 py-3">
+    <div class="d-flex">
+      <div class="palette oklch oklch-brown oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">brown</div>
+      </div>
+      <div class="palette oklch oklch-orange oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">orange</div>
+      </div>
+      <div class="palette oklch oklch-amber oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">amber</div>
+      </div>
+      <div class="palette oklch oklch-yellow oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">yellow</div>
+      </div>
+      <div class="palette orig">
+        <div class="swatch bg-yellow1">1</div>
+        <div class="swatch bg-yellow2">2</div>
+        <div class="swatch bg-yellow3">3</div>
+        <div class="swatch bg-yellow4">4</div>
+        <div class="swatch bg-yellow5">5</div>
+        <div class="swatch bg-yellow6">6</div>
+        <div class="swatch bg-yellow7">7</div>
+        <div class="swatch bg-yellow8">8</div>
+        <div class="swatch bg-yellow9 text-black">9</div>
+        <div class="swatch bg-yellow10 text-black">10</div>
+        <div class="swatch bg-yellow11 text-white">11</div>
+        <div class="swatch bg-yellow12 text-white">12</div>
+        <div class="swatch bg-yellow10 text-black">yellow</div>
+      </div>
+      <div class="palette oklch oklch-lime oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">lime</div>
+      </div>
+      <div class="palette oklch oklch-grass oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">grass</div>
+      </div>
+      <div class="palette oklch oklch-green oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">green</div>
+      </div>
+      <div class="palette oklch oklch-mint oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">mint</div>
+      </div>
+      <div class="palette oklch oklch-teal oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">teal</div>
+      </div>
+      <div class="palette oklch oklch-sky oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">sky</div>
+      </div>
+      <div class="palette oklch oklch-cyan oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">cyan</div>
+      </div>
+      <div class="palette oklch oklch-blue oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">blue</div>
+      </div>
+      <div class="palette oklch oklch-indigo oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">indigo</div>
+      </div>
+      <div class="palette oklch oklch-plum oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">plum</div>
+      </div>
+      <div class="palette oklch oklch-purple oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">purple</div>
+      </div>
+      <div class="palette oklch oklch-violet oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">violet</div>
+      </div>
+      <div class="palette oklch oklch-crimson oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">crimson</div>
+      </div>
+      <div class="palette oklch oklch-pink oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">pink</div>
+      </div>
+
+      <div class="palette oklch oklch-tomato oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">tomato</div>
+      </div>
+
+      <div class="palette oklch oklch-red oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">red</div>
+      </div>
+
+      <div class="palette oklch oklch-brown oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">brown</div>
+      </div>
+      <div class="palette oklch oklch-orange oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">orange</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="d-flex justify-content-between align-items-center px-2 pt-3">
+  <h6 class="d-flex align-items-cente mb-0">
+    <i class="fa-solid fa-timeline text-info mr-2"></i>
+    <span> OKLCH Light</span>
+  </h6>
+  <div class="d-flex justify-content-between align-items-cente gap-2">
+    <a href="#">
+      <i class="fa-solid fa-rotate"></i>
+    </a>
+    <a href="#">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </div>
+</div>
+<section class="timeline timeline-string d-flex scroll scroll--light pb-3">
+  <div class="w-100 py-3">
+    <div class="d-flex">
+      <div class="palette oklch oklch-yellow oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">yellow</div>
+      </div>
+      <div class="palette oklch oklch-orange oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">orange</div>
+      </div>
+      <div class="palette oklch oklch-amber oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">amber</div>
+      </div>
+      <div class="palette oklch oklch-brown oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">brown</div>
+      </div>
+      <div class="palette oklch oklch-crimson oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">crimson</div>
+      </div>
+      <div class="palette oklch oklch-tomato oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">tomato</div>
+      </div>
+      <div class="palette oklch oklch-red oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">red</div>
+      </div>
+      <div class="palette oklch oklch-pink oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">pink</div>
+      </div>
+      <div class="palette oklch oklch-plum oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">plum</div>
+      </div>
+      <div class="palette oklch oklch-purple oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">purple</div>
+      </div>
+      <div class="palette oklch oklch-violet oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">violet</div>
+      </div>
+      <div class="palette oklch oklch-indigo oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">indigo</div>
+      </div>
+      <div class="palette oklch oklch-blue oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">blue</div>
+      </div>
+      <div class="palette oklch oklch-cyan oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">cyan</div>
+      </div>
+      <div class="palette oklch oklch-sky oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">sky</div>
+      </div>
+      <div class="palette oklch oklch-teal oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">teal</div>
+      </div>
+      <div class="palette oklch oklch-mint oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">mint</div>
+      </div>
+      <div class="palette oklch oklch-green oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">green</div>
+      </div>
+      <div class="palette oklch oklch-lime oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">lime</div>
+      </div>
+      <div class="palette oklch oklch-grass oklch-light">
+        <div class="swatch swatch-1">1</div>
+        <div class="swatch swatch-2">2</div>
+        <div class="swatch swatch-3">3</div>
+        <div class="swatch swatch-4">4</div>
+        <div class="swatch swatch-5">5</div>
+        <div class="swatch swatch-6">6</div>
+        <div class="swatch swatch-7">7</div>
+        <div class="swatch swatch-8">8</div>
+        <div class="swatch swatch-9">9</div>
+        <div class="swatch swatch-10">10</div>
+        <div class="swatch swatch-11">11</div>
+        <div class="swatch swatch-12">12</div>
+        <div class="swatch swatch-13">grass</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="d-flex justify-content-between align-items-center px-2 pt-3">
+  <h6 class="d-flex align-items-cente mb-0">
+    <i class="fa-solid fa-timeline text-info mr-2"></i>
+    <span> OKLCH Lights </span>
+  </h6>
+  <div class="d-flex justify-content-between align-items-cente gap-2">
+    <a href="#">
+      <i class="fa-solid fa-rotate"></i>
+    </a>
+    <a href="#">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </div>
+</div>
+<div class="w-100 xoverflow-hidden py-3">
+  <div class="d-flex">
+    <div class="palette oklch oklch-amber oklch-light">
+      <div class="swatch swatch-1">1</div>
+      <div class="swatch swatch-2">2</div>
+      <div class="swatch swatch-3">3</div>
+      <div class="swatch swatch-4">4</div>
+      <div class="swatch swatch-5">5</div>
+      <div class="swatch swatch-6">6</div>
+      <div class="swatch swatch-7">7</div>
+      <div class="swatch swatch-8">8</div>
+      <div class="swatch swatch-9">9</div>
+      <div class="swatch swatch-10">10</div>
+      <div class="swatch swatch-11">11</div>
+      <div class="swatch swatch-12">12</div>
+      <div class="swatch swatch-13">amber</div>
+    </div>
+    <div class="palette orig">
+      <div class="swatch bg-amber1">1</div>
+      <div class="swatch bg-amber2">2</div>
+      <div class="swatch bg-amber3">3</div>
+      <div class="swatch bg-amber4">4</div>
+      <div class="swatch bg-amber5">5</div>
+      <div class="swatch bg-amber6">6</div>
+      <div class="swatch bg-amber7">7</div>
+      <div class="swatch bg-amber8">8</div>
+      <div class="swatch bg-amber9">9</div>
+      <div class="swatch bg-amber10">10</div>
+      <div class="swatch bg-amber11 text-white">11</div>
+      <div class="swatch bg-amber12 text-white">12</div>
+      <div class="swatch bg-amber9">amber</div>
+    </div>
+    <div class="palette oklch oklch-yellow oklch-light">
+      <div class="swatch swatch-1">1</div>
+      <div class="swatch swatch-2">2</div>
+      <div class="swatch swatch-3">3</div>
+      <div class="swatch swatch-4">4</div>
+      <div class="swatch swatch-5">5</div>
+      <div class="swatch swatch-6">6</div>
+      <div class="swatch swatch-7">7</div>
+      <div class="swatch swatch-8">8</div>
+      <div class="swatch swatch-9">9</div>
+      <div class="swatch swatch-10">10</div>
+      <div class="swatch swatch-11">11</div>
+      <div class="swatch swatch-12">12</div>
+      <div class="swatch swatch-13">yellow</div>
+    </div>
+    <div class="palette orig">
+      <div class="swatch bg-yellow1">1</div>
+      <div class="swatch bg-yellow2">2</div>
+      <div class="swatch bg-yellow3">3</div>
+      <div class="swatch bg-yellow4">4</div>
+      <div class="swatch bg-yellow5">5</div>
+      <div class="swatch bg-yellow6">6</div>
+      <div class="swatch bg-yellow7">7</div>
+      <div class="swatch bg-yellow8">8</div>
+      <div class="swatch bg-yellow9">9</div>
+      <div class="swatch bg-yellow10">10</div>
+      <div class="swatch bg-yellow11 text-white">11</div>
+      <div class="swatch bg-yellow12 text-white">12</div>
+      <div class="swatch bg-yellow10">yellow</div>
+    </div>
+    <div class="palette oklch">
+      <div class="swatch swatch-1">1</div>
+    </div>
+    <div class="palette oklch">
+      <div class="swatch swatch-1">1</div>
+    </div>
+    <div class="palette oklch">
+      <div class="swatch swatch-1">1</div>
+    </div>
+    <div class="palette oklch">
+      <div class="swatch swatch-1">1</div>
+    </div>
+    <div class="palette oklch">
+      <div class="swatch swatch-1">1</div>
+    </div>
+    <div class="palette oklch">
+      <div class="swatch swatch-1">1</div>
+    </div>
+    <div class="palette oklch">
+      <div class="swatch swatch-1">1</div>
+    </div>
+    <div class="palette oklch">
+      <div class="swatch swatch-1">1</div>
+    </div>
+    <div class="palette oklch">
+      <div class="swatch swatch-1">1</div>
+    </div>
+    <div class="palette oklch">
+      <div class="swatch swatch-1">1</div>
+    </div>
+
+    <div class="palette oklch oklch-sky oklch-light">
+      <div class="swatch swatch-1">1</div>
+      <div class="swatch swatch-2">2</div>
+      <div class="swatch swatch-3">3</div>
+      <div class="swatch swatch-4">4</div>
+      <div class="swatch swatch-5">5</div>
+      <div class="swatch swatch-6">6</div>
+      <div class="swatch swatch-7">7</div>
+      <div class="swatch swatch-8">8</div>
+      <div class="swatch swatch-9">9</div>
+      <div class="swatch swatch-10">10</div>
+      <div class="swatch swatch-11">11</div>
+      <div class="swatch swatch-12">12</div>
+      <div class="swatch swatch-13">sky</div>
+    </div>
+    <div class="palette oklch">
+      <div class="swatch swatch-1">1</div>
+    </div>
+    <div class="palette oklch oklch-mint oklch-light">
+      <div class="swatch swatch-1">1</div>
+      <div class="swatch swatch-2">2</div>
+      <div class="swatch swatch-3">3</div>
+      <div class="swatch swatch-4">4</div>
+      <div class="swatch swatch-5">5</div>
+      <div class="swatch swatch-6">6</div>
+      <div class="swatch swatch-7">7</div>
+      <div class="swatch swatch-8">8</div>
+      <div class="swatch swatch-9">9</div>
+      <div class="swatch swatch-10">10</div>
+      <div class="swatch swatch-11">11</div>
+      <div class="swatch swatch-12">12</div>
+      <div class="swatch swatch-13">mint</div>
+    </div>
+    <div class="palette oklch">
+      <div class="swatch swatch-1">1</div>
+    </div>
+    <div class="palette oklch oklch-lime oklch-light">
+      <div class="swatch swatch-1">1</div>
+      <div class="swatch swatch-2">2</div>
+      <div class="swatch swatch-3">3</div>
+      <div class="swatch swatch-4">4</div>
+      <div class="swatch swatch-5">5</div>
+      <div class="swatch swatch-6">6</div>
+      <div class="swatch swatch-7">7</div>
+      <div class="swatch swatch-8">8</div>
+      <div class="swatch swatch-9">9</div>
+      <div class="swatch swatch-10">10</div>
+      <div class="swatch swatch-11">11</div>
+      <div class="swatch swatch-12">12</div>
+      <div class="swatch swatch-13">lime</div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-between align-items-center px-2 pt-3">
+  <h6 class="d-flex align-items-cente mb-0">
+    <i class="fa-solid fa-timeline text-info mr-2"></i>
+    <span> OKLCH Brands </span>
+  </h6>
+  <div class="d-flex justify-content-between align-items-cente gap-2">
+    <a href="#">
+      <i class="fa-solid fa-rotate"></i>
+    </a>
+    <a href="#">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </div>
+</div>
+<div class="d-flex">
+  <div class="palette oklch oklch-wdx1 oklch-light">
+    <div class="swatch swatch-1">1</div>
+    <div class="swatch swatch-2">2</div>
+    <div class="swatch swatch-3">3</div>
+    <div class="swatch swatch-4">4</div>
+    <div class="swatch swatch-5">5</div>
+    <div class="swatch swatch-6">6</div>
+    <div class="swatch swatch-7">7</div>
+    <div class="swatch swatch-8">8</div>
+    <div class="swatch swatch-9">9</div>
+    <div class="swatch swatch-10">10</div>
+    <div class="swatch swatch-11">11</div>
+    <div class="swatch swatch-12">12</div>
+    <div class="swatch swatch-13">wdx1</div>
+  </div>
+  <div class="palette oklch oklch-wdx1">
+    <div class="swatch swatch-1">1</div>
+    <div class="swatch swatch-2">2</div>
+    <div class="swatch swatch-3">3</div>
+    <div class="swatch swatch-4">4</div>
+    <div class="swatch swatch-5">5</div>
+    <div class="swatch swatch-6">6</div>
+    <div class="swatch swatch-7">7</div>
+    <div class="swatch swatch-8">8</div>
+    <div class="swatch swatch-9">9</div>
+    <div class="swatch swatch-10">10</div>
+    <div class="swatch swatch-11">11</div>
+    <div class="swatch swatch-12">12</div>
+    <div class="swatch swatch-13">wdx1</div>
+  </div>
+  <div class="palette oklch oklch-wdx2 oklch-light">
+    <div class="swatch swatch-1">1</div>
+    <div class="swatch swatch-2">2</div>
+    <div class="swatch swatch-3">3</div>
+    <div class="swatch swatch-4">4</div>
+    <div class="swatch swatch-5">5</div>
+    <div class="swatch swatch-6">6</div>
+    <div class="swatch swatch-7">7</div>
+    <div class="swatch swatch-8">8</div>
+    <div class="swatch swatch-9">9</div>
+    <div class="swatch swatch-10">10</div>
+    <div class="swatch swatch-11">11</div>
+    <div class="swatch swatch-12">12</div>
+    <div class="swatch swatch-13">wdx2</div>
+  </div>
+  <div class="palette oklch oklch-wdx2">
+    <div class="swatch swatch-1">1</div>
+    <div class="swatch swatch-2">2</div>
+    <div class="swatch swatch-3">3</div>
+    <div class="swatch swatch-4">4</div>
+    <div class="swatch swatch-5">5</div>
+    <div class="swatch swatch-6">6</div>
+    <div class="swatch swatch-7">7</div>
+    <div class="swatch swatch-8">8</div>
+    <div class="swatch swatch-9">9</div>
+    <div class="swatch swatch-10">10</div>
+    <div class="swatch swatch-11">11</div>
+    <div class="swatch swatch-12">12</div>
+    <div class="swatch swatch-13">wdx2</div>
+  </div>
+  <div class="palette oklch oklch-rc1 oklch-light">
+    <div class="swatch swatch-1">1</div>
+    <div class="swatch swatch-2">2</div>
+    <div class="swatch swatch-3">3</div>
+    <div class="swatch swatch-4">4</div>
+    <div class="swatch swatch-5">5</div>
+    <div class="swatch swatch-6">6</div>
+    <div class="swatch swatch-7">7</div>
+    <div class="swatch swatch-8">8</div>
+    <div class="swatch swatch-9">9</div>
+    <div class="swatch swatch-10">10</div>
+    <div class="swatch swatch-11">11</div>
+    <div class="swatch swatch-12">12</div>
+    <div class="swatch swatch-13">rc1</div>
+  </div>
+  <div class="palette oklch oklch-rc1">
+    <div class="swatch swatch-1">1</div>
+    <div class="swatch swatch-2">2</div>
+    <div class="swatch swatch-3">3</div>
+    <div class="swatch swatch-4">4</div>
+    <div class="swatch swatch-5">5</div>
+    <div class="swatch swatch-6">6</div>
+    <div class="swatch swatch-7">7</div>
+    <div class="swatch swatch-8">8</div>
+    <div class="swatch swatch-9">9</div>
+    <div class="swatch swatch-10">10</div>
+    <div class="swatch swatch-11">11</div>
+    <div class="swatch swatch-12">12</div>
+    <div class="swatch swatch-13">rc1</div>
+  </div>
+  <div class="palette oklch oklch-rc2 oklch-light">
+    <div class="swatch swatch-1">1</div>
+    <div class="swatch swatch-2">2</div>
+    <div class="swatch swatch-3">3</div>
+    <div class="swatch swatch-4">4</div>
+    <div class="swatch swatch-5">5</div>
+    <div class="swatch swatch-6">6</div>
+    <div class="swatch swatch-7">7</div>
+    <div class="swatch swatch-8">8</div>
+    <div class="swatch swatch-9">9</div>
+    <div class="swatch swatch-10">10</div>
+    <div class="swatch swatch-11">11</div>
+    <div class="swatch swatch-12">12</div>
+    <div class="swatch swatch-13">rc2</div>
+  </div>
+  <div class="palette oklch oklch-rc2">
+    <div class="swatch swatch-1">1</div>
+    <div class="swatch swatch-2">2</div>
+    <div class="swatch swatch-3">3</div>
+    <div class="swatch swatch-4">4</div>
+    <div class="swatch swatch-5">5</div>
+    <div class="swatch swatch-6">6</div>
+    <div class="swatch swatch-7">7</div>
+    <div class="swatch swatch-8">8</div>
+    <div class="swatch swatch-9">9</div>
+    <div class="swatch swatch-10">10</div>
+    <div class="swatch swatch-11">11</div>
+    <div class="swatch swatch-12">12</div>
+    <div class="swatch swatch-13">rc2</div>
+  </div>
+</div>
