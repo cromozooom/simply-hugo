@@ -4,14 +4,24 @@
   {{ $data := getJSON "data/kyc.json" }}
 
   {{ if $pr }}
-    <ul>
+    <ol>
       {{ $prs := getJSON "data/pr.json" }}
+      {{ $prs := getJSON "data/pr06.06.23.json" }}
       {{ range $index, $item := $prs.pr }}
+      {{ range $index, $item := .value }}
         <li>
-          <p>{{ $item.createdBy.displayName }}</p>
+          <span>{{ $item.createdBy.displayName }}</span>
+
+          {{ $date := $item.closedDate }}
+          <date>{{ partial "dateformatter" $date }}</date>
+
+         
+         
+
         </li>
       {{ end }}
-    </ul>
+      {{ end }}
+    </ol>
   {{ end }}
 
   {{ if $pageStructure }}
