@@ -15,12 +15,13 @@
           z-index: 2;
         }
       </style>
-      <table id="THEAD" class="table-striped table-hover table-sm table">
+      {{ $contacts := getJSON "data/contacts.json" }}
+      <table id="myApp" x-data="{ contacts: {{ $contacts | jsonify }}, sortColumn: '', sortDirection: 'asc', sortedContacts: [] }" class="table-striped table-hover table-sm table">
         <thead id="TH" class="thead-dark shadow">
           <tr>
             <th scope="col"></th>
             <th scope="col">
-              <i class="fa-light fa-sort mr-2 text-white"></i>
+              <button x-on:click="sortColumn = 'name'; sortDirection = (sortColumn === 'name' && sortDirection === 'asc') ? 'desc' : 'asc'">sort</button>
               Name
             </th>
             <th scope="col">
@@ -40,17 +41,14 @@
               Stage
             </th>
             <th scope="col">
-              <div class="d-flex justify-content-end align-items-center w-100">
-                Assets
-                <i class="fa-light fa-sort ml-2 text-white"></i>
-              </div>
+              <div class="d-flex justify-content-end align-items-center w-100">Assets <button x-on:click="sortColumn = 'assets'; sortDirection = (sortColumn === 'assets' && sortDirection === 'asc') ? 'desc' : 'asc'">sort</button></div>
             </th>
             <th scope="col"></th>
           </tr>
         </thead>
+
         <tbody>
-          {{ $contacts := getJSON "data/contacts.json" }}
-          {{ range $index, $item := $contacts }}
+          <template x-for="contact in contacts" :key="contact.name">
             <tr>
               <td class="pl-2 text-center align-middle">
                 <input type="checkbox" aria-label="Checkbox for following text input" />
@@ -58,10 +56,7 @@
               <td class="align-middle" x-data="{show: false, minimized: false}">
                 <a href="#" class="btn btn-sm btn-link mr-2" x-on:click="show=true">
                   <i class="fa-regular fa-circle-info mr-2"></i>
-                  {{/* <i class="fa-solid fa-chevron-down"></i> */}}
-                  <strong>
-                    {{ .name }}
-                  </strong>
+                  <strong x-text="contact.name"></strong>
                 </a>
                 <template x-teleport="#itemLists">
                   <template x-if="show">
@@ -70,9 +65,7 @@
                         <div class="d-flex justify-content-between align-items-center w-100">
                           <button class="d-flex align-items-center flex-nowrap border-0 bg-transparent px-1 py-2" x-bind:class="{ 'text-primary': !minimized, 'text-white': minimized }">
                             <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i>
-                            <strong class="text-nowrap pr-2">
-                              {{ .name }}
-                            </strong>
+                            <strong class="text-nowrap pr-2" x-text="contact.name"> </strong>
                           </button>
                           <div class="d-flex">
                             <button class="border-0 bg-transparent py-2" x-bind:class="{ 'text-primary': !minimized, 'text-white': minimized }" x-on:click="minimized=!minimized">
@@ -89,25 +82,25 @@
                             <div class="card min-w-20rem p-3">
                               <dl class="d-flex mb-0 gap-1">
                                 <dt class="w-50">Name</dt>
-                                <dd class="w-50 mb-0">{{ .name }}</dd>
+                                <dd class="w-50 mb-0" x-text="contact.name"></dd>
                               </dl>
                               <dl class="d-flex mb-0 gap-1">
                                 <dt class="w-50">Contact Type</dt>
-                                <dd class="w-50 mb-0">{{ .contactType }}</dd>
+                                <dd class="w-50 mb-0" x-text="contact.contactType"></dd>
                               </dl>
                             </div>
                             <div class="card min-w-20rem p-3">
                               <dl class="d-flex mb-0 gap-1">
                                 <dt class="w-50">Last FTF meeting</dt>
-                                <dd class="w-50 mb-0">{{ .lastFTFmeeting }}</dd>
+                                <dd class="w-50 mb-0" x-text="contact.lastFTFmeeting"></dd>
                               </dl>
                               <dl class="d-flex mb-0 gap-1">
                                 <dt class="w-50">Stage</dt>
-                                <dd class="w-50 mb-0">{{ .stage }}</dd>
+                                <dd class="w-50 mb-0" x-text="contact.stage"></dd>
                               </dl>
                               <dl class="d-flex mb-0 gap-1">
                                 <dt class="w-50">Assets</dt>
-                                <dd class="w-50 mb-0">{{ .assets }}</dd>
+                                <dd class="w-50 mb-0" x-text="contact.assets"></dd>
                               </dl>
                             </div>
                           </div>
@@ -117,11 +110,12 @@
                   </template>
                 </template>
               </td>
-              <td class="align-middle">{{ .contactType }}</td>
-              <td class="align-middle">{{ .lastContacted }}</td>
-              <td class="align-middle">{{ .lastFTFmeeting }}</td>
-              <td class="align-middle">{{ .stage }}</td>
-              <td class="text-right align-middle">£ {{ .assets }}</td>
+
+              <td class="align-middle" x-text="contact.contactType"></td>
+              <td class="align-middle" x-text="contact.lastContacted"></td>
+              <td class="align-middle" x-text="contact.lastFTFmeeting"></td>
+              <td class="align-middle" x-text="contact.stage"></td>
+              <td class="text-right align-middle" x-text="'£ ' + contact.assets"></td>
               <td class="text-right align-middle">
                 <button class="btn btn-sm btn-link">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -131,9 +125,32 @@
                 </button>
               </td>
             </tr>
-          {{ end }}
+          </template>
         </tbody>
       </table>
+
+      <script>
+        function sortContacts(contacts, column, direction) {
+          return contacts.sort((a, b) => {
+            if (direction === "asc") {
+              return a[column] > b[column] ? 1 : -1;
+            } else {
+              return a[column] < b[column] ? 1 : -1;
+            }
+          });
+        }
+        Alpine.start(() => {
+          console.log("start");
+          return {
+            sortedContacts: sortContacts(this.contacts, this.sortColumn, this.sortDirection),
+          };
+        });
+        Alpine.effect(() => {
+          return () => {
+            sortedContacts = sortContacts(this.contacts, this.sortColumn, this.sortDirection);
+          };
+        });
+      </script>
     </div>
     <div class="shadow-top p-2">
       <nav aria-label="Page navigation example">
