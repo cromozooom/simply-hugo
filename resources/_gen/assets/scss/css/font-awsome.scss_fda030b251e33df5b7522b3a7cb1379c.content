@@ -119,6 +119,9 @@ readers do not read off random characters that represent icons */
 .fa-down-left-and-up-right-to-center::before {
   content: "\f422";
 }
+.fa-sort-down::before {
+  content: "\f0dd";
+}
 .fa-fingerprint::before {
   content: "\f577";
 }
@@ -136,6 +139,9 @@ readers do not read off random characters that represent icons */
 }
 .fa-pen-to-square::before {
   content: "\f044";
+}
+.fa-eye-slash::before {
+  content: "\f070";
 }
 .fa-user::before {
   content: "\f007";
@@ -166,6 +172,12 @@ readers do not read off random characters that represent icons */
 }
 .fa-inbox-out::before {
   content: "\f311";
+}
+.fa-eye::before {
+  content: "\f06e";
+}
+.fa-sort-up::before {
+  content: "\f0de";
 }
 .fa-circle-info::before {
   content: "\f05a";

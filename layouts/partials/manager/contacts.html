@@ -1,63 +1,287 @@
+{{ $contacts := getJSON "data/contacts.json" }}
 <div class="h-content-tabs bg-white">
-  <div class="d-flex h-100 flex-column">
-    {{ partial "filters.html" . }}
-    <div class="flex-grow-1 h-100 scroll scroll--light overflow-y-scroll">
-      <style>
-        #THEAD thead {
-          position: sticky;
-          top: -1px;
-          z-index: 2;
-        }
+  <div
+    x-data="{
+    contacts: {{ $contacts | jsonify }},
+    colSearch: false,
+    sortColumn: 'name',
+    sortDirection: 'asc',
+    searchTerms: {},
+    sortedContacts: [],
+    
 
-        #TH th {
-          position: sticky;
-          top: -1px;
-          z-index: 2;
+    
+    sortContacts: function() {
+      if (this.sortColumn === '') {
+        return this.contacts;
+      }
+      
+      return this.contacts.sort((a, b) => {
+        if (this.sortDirection === 'asc') {
+          return a[this.sortColumn] > b[this.sortColumn] ? 1 : -1;
+        } else {
+          return a[this.sortColumn] < b[this.sortColumn] ? 1 : -1;
         }
-      </style>
-      {{ $contacts := getJSON "data/contacts.json" }}
-      <table id="myApp" x-data="{ contacts: {{ $contacts | jsonify }}, sortColumn: '', sortDirection: 'asc', sortedContacts: [] }" class="table-striped table-hover table-sm table">
-        <thead id="TH" class="thead-dark shadow">
+      });
+    },
+
+    filteredContacts: function() {
+      return this.contacts.filter((contact) => {
+        return Object.keys(this.searchTerms).every((column) => {
+          const searchTerm = this.searchTerms[column];
+          if (!searchTerm) return true;
+          const value = contact[column] ? contact[column].toString().toLowerCase() : '';
+          return value.includes(searchTerm.toLowerCase());
+        });
+      });
+    },
+
+    options: function(key) {
+      const values = new Set();
+      this.contacts.forEach((contact) => {
+        if (contact[key]) {
+          values.add(contact[key]);
+        }
+      });
+      return Array.from(values).map((value, index) => {
+        return { value: index + 1, label: value };
+      });
+    },
+    updateSortedContacts: function() {
+      this.sortedContacts = this.sortContacts();
+    },
+
+    columnWidths: JSON.parse(localStorage.getItem('columnWidths')) || {},
+
+    saveColumnWidths: function() {
+      localStorage.setItem('columnWidths', JSON.stringify(this.columnWidths));
+      console.log('Column widths saved:', this.columnWidths);
+    },
+
+    calculateColumnWidths: function() {
+      const table = this.$refs.myTable;
+      if (!table) return;
+
+      const headers = table.querySelectorAll('th');
+      console.log('headers:', headers.length);
+      
+      this.columnWidths = JSON.parse(localStorage.getItem('columnWidths')) || {};
+
+      console.log('Stored column widths:', this.columnWidths);
+      
+      for (let i = 0; i < headers.length; i++) {
+        
+        
+        const header = headers[i];
+        const key = header.getAttribute('data-column');
+        console.log('key:', key);
+        if (!key) continue;
+        
+        const width = this.columnWidths[key];
+        console.log('this.columnWidths:', width);
+        if (width) {
+          header.style.width = width;
+        } else {
+          const clientWidth = header.clientWidth;
+          header.style.width = clientWidth + 'px';
+          this.columnWidths[key] = clientWidth + 'px';
+        }
+      }
+
+      console.log('Updated column widths:', this.columnWidths);
+
+      this.saveColumnWidths(); // Call the saveColumnWidths function to save the column widths
+    }
+
+  }"
+    id="myApp"
+    x-init="updateSortedContacts(), calculateColumnWidths()"
+    class="d-flex h-100 flex-column"
+  >
+    {{ partial "filters.html" . }}
+
+
+    <div class="filters sticky-top clear bg-white p-1">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+      <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+      <div class="d-flex gap-1">
+        <div
+          x-data="{
+          multiple: false,
+          value: 1,
+          options: options('name'),
+          init() {
+          this.$nextTick(() => {
+          let choices = new Choices(this.$refs.select)
+
+          let refreshChoices = () => {
+          let selection = this.multiple ? this.value : [this.value]
+
+          choices.clearStore()
+          choices.setChoices(this.options.map(({ value, label }) => ({
+          value,
+          label,
+          selected: selection.includes(value),
+          })))
+          }
+
+          refreshChoices()
+
+          this.$refs.select.addEventListener('change', () => {
+          this.value = choices.getValue(true)
+          })
+
+          this.$watch('value', () => refreshChoices())
+          this.$watch('options', () => refreshChoices())
+          })
+          }
+          }"
+          class="min-w-20rem w-full max-w-sm"
+        >
+          <select x-ref="select" :multiple="multiple"></select>
+        </div>
+
+        <button x-on:click="colSearch = !colSearch" class="btn btn-sm btn-soft-secondary d-flex align-items-center gap-2">
+          <span x-show="!colSearch"> Show </span>
+          <span x-show="colSearch"> Hide </span>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+    <div class="flex-grow-1 h-100 scroll scroll--light  overflow-y-scroll">
+      <table id="THEAD" x-ref="myTable" class=" table-hover table-sm table">
+        <thead class="thead-dark shadow">
           <tr>
-            <th scope="col"></th>
-            <th scope="col">
-              <button x-on:click="sortColumn = 'name'; sortDirection = (sortColumn === 'name' && sortDirection === 'asc') ? 'desc' : 'asc'">sort</button>
-              Name
+            <th data-column="check" x-bind:style="{ width: columnWidths.name }" scope="col" class="align-top"></th>
+            <th data-column="name" x-bind:style="{ width: columnWidths.name }" scope="col" class="align-top">
+              <div class="d-flex flex-column align-items-stretch h-100">
+                <div class="d-flex">
+                  <button class="b-0 border-0 bg-transparent p-0" x-on:click="sortColumn = 'name'; sortDirection = (sortColumn === 'name' && sortDirection === 'asc') ? 'desc' : 'asc'; updateSortedContacts()">
+                    <i x-show="sortColumn !== 'name'" class="not-sorted fa-light fa-sort mr-2 text-white"></i>
+                    <i x-show="sortColumn === 'name' && sortDirection === 'desc'" class="desc fa-light fa-sort-down mr-2 text-white"></i>
+                    <i x-show="sortColumn === 'name' && sortDirection === 'asc'" class="asc fa-light fa-sort-up mr-2 text-white"></i>
+                  </button>
+                  Name
+                </div>
+                <div x-show="colSearch" class="pt-1">
+                  {{/* <div
+                    x-data="{
+                    multiple: false,
+                    value: 1,
+                    options: options('name'),
+                    init() {
+                    this.$nextTick(() => {
+                    let choices = new Choices(this.$refs.select)
+
+                    let refreshChoices = () => {
+                    let selection = this.multiple ? this.value : [this.value]
+
+                    choices.clearStore()
+                    choices.setChoices(this.options.map(({ value, label }) => ({
+                    value,
+                    label,
+                    selected: selection.includes(value),
+                    })))
+                    }
+
+                    refreshChoices()
+
+                    this.$refs.select.addEventListener('change', () => {
+                    this.value = choices.getValue(true)
+                    })
+
+                    this.$watch('value', () => refreshChoices())
+                    this.$watch('options', () => refreshChoices())
+                    })
+                    }
+                    }"
+                    class="min-w-20rem text-dark w-full max-w-sm"
+                    >
+                    <select x-model="searchTerms.name" x-ref="select" :multiple="multiple"></select>
+                    </div>
+                  */}}
+
+
+                  <input class="form-control form-control-sm" type="text" x-model="searchTerms.name" placeholder="Search name..." />
+                </div>
+              </div>
             </th>
-            <th scope="col">
-              <i class="fa-light fa-sort mr-2 text-white"></i>
-              Type
+            <th data-column="contactType" x-bind:style="{ width: columnWidths.name }" scope="col" class="align-top">
+              <div class="d-flex flex-column align-items-stretch h-100">
+                <div class="d-flex">
+                  <button class="b-0 border-0 bg-transparent p-0" x-on:click="sortColumn = 'contactType'; sortDirection = (sortColumn === 'contactType' && sortDirection === 'asc') ? 'desc' : 'asc'; updateSortedContacts()">
+                    <i x-show="sortColumn !== 'contactType'" class="not-sorted fa-light fa-sort mr-2 text-white"></i>
+                    <i x-show="sortColumn === 'contactType' && sortDirection === 'desc'" class="desc fa-light fa-sort-down mr-2 text-white"></i>
+                    <i x-show="sortColumn === 'contactType' && sortDirection === 'asc'" class="asc fa-light fa-sort-up mr-2 text-white"></i>
+                  </button>
+                  Type
+                </div>
+              </div>
+              <div x-show="colSearch" class="pt-1">
+                <input class="form-control form-control-sm" type="text" x-model="searchTerms.contactType" placeholder="Search type..." />
+              </div>
             </th>
-            <th scope="col">
-              <i class="fa-light fa-sort mr-2 text-white"></i>
-              Last Contacted
+            <th data-column="lastContacted" x-bind:style="{ width: columnWidths.name }" scope="col" class="align-top">
+              <div class="d-flex flex-column align-items-stretch h-100">
+                <div class="d-flex">
+                  <button class="b-0 border-0 bg-transparent p-0" x-on:click="sortColumn = 'lastContacted'; sortDirection = (sortColumn === 'lastContacted' && sortDirection === 'asc') ? 'desc' : 'asc'; updateSortedContacts()">
+                    <i x-show="sortColumn !== 'lastContacted'" class="not-sorted fa-light fa-sort mr-2 text-white"></i>
+                    <i x-show="sortColumn === 'lastContacted' && sortDirection === 'desc'" class="desc fa-light fa-sort-down mr-2 text-white"></i>
+                    <i x-show="sortColumn === 'lastContacted' && sortDirection === 'asc'" class="asc fa-light fa-sort-up mr-2 text-white"></i>
+                  </button>
+                  Last Contacted
+                </div>
+              </div>
             </th>
-            <th scope="col">
-              <i class="fa-light fa-sort mr-2 text-white"></i>
+            <th data-column="lastFTFmeeting" x-bind:style="{ width: columnWidths.name }" scope="col" class="align-top">
+              <button class="b-0 border-0 bg-transparent p-0" x-on:click="sortColumn = 'lastFTFmeeting'; sortDirection = (sortColumn === 'lastFTFmeeting' && sortDirection === 'asc') ? 'desc' : 'asc'; updateSortedContacts()">
+                <i x-show="sortColumn !== 'lastFTFmeeting'" class="not-sorted fa-light fa-sort mr-2 text-white"></i>
+                <i x-show="sortColumn === 'lastFTFmeeting' && sortDirection === 'desc'" class="desc fa-light fa-sort-down mr-2 text-white"></i>
+                <i x-show="sortColumn === 'lastFTFmeeting' && sortDirection === 'asc'" class="asc fa-light fa-sort-up mr-2 text-white"></i>
+              </button>
               Last FTF Meeting
             </th>
-            <th scope="col">
-              <i class="fa-light fa-sort mr-2 text-white"></i>
+            <th data-column="stage" x-bind:style="{ width: columnWidths.name }" scope="col" class="align-top">
+              <button class="b-0 border-0 bg-transparent p-0" x-on:click="sortColumn = 'stage'; sortDirection = (sortColumn === 'stage' && sortDirection === 'asc') ? 'desc' : 'asc'; updateSortedContacts()">
+                <i x-show="sortColumn !== 'stage'" class="not-sorted fa-light fa-sort mr-2 text-white"></i>
+                <i x-show="sortColumn === 'stage' && sortDirection === 'desc'" class="desc fa-light fa-sort-down mr-2 text-white"></i>
+                <i x-show="sortColumn === 'stage' && sortDirection === 'asc'" class="asc fa-light fa-sort-up mr-2 text-white"></i>
+              </button>
               Stage
+
+              <div x-show="colSearch" class="pt-1">
+                <input class="form-control form-control-sm" type="text" x-model="searchTerms.stage" placeholder="Search stage..." />
+              </div>
             </th>
-            <th scope="col">
-              <div class="d-flex justify-content-end align-items-center w-100">Assets <button x-on:click="sortColumn = 'assets'; sortDirection = (sortColumn === 'assets' && sortDirection === 'asc') ? 'desc' : 'asc'">sort</button></div>
+            <th data-column="assets" x-bind:style="{ width: columnWidths.name }" scope="col" class="align-top">
+              <div class="d-flex justify-content-end align-items-center w-100 gap-2">
+                Assets
+
+                <button class="b-0 border-0 bg-transparent p-0" x-on:click="sortColumn = 'assets'; sortDirection = (sortColumn === 'assets' && sortDirection === 'asc') ? 'desc' : 'asc'; updateSortedContacts()">
+                  <i x-show="sortColumn !== 'assets'" class="not-sorted fa-light fa-sort mr-2 text-white"></i>
+                  <i x-show="sortColumn === 'assets' && sortDirection === 'desc'" class="desc fa-light fa-sort-down mr-2 text-white"></i>
+                  <i x-show="sortColumn === 'assets' && sortDirection === 'asc'" class="asc fa-light fa-sort-up mr-2 text-white"></i>
+                </button>
+              </div>
             </th>
-            <th scope="col"></th>
+            <th data-column="actions" x-bind:style="{ width: columnWidths.name }" scope="col" class="align-top"></th>
           </tr>
         </thead>
 
         <tbody>
-          <template x-for="contact in contacts" :key="contact.name">
+          {{/* <template x-for="contact in sortedContacts" :key="contact.name"> */}}
+          <template x-for="contact in filteredContacts" :key="contact.name">
             <tr>
               <td class="pl-2 text-center align-middle">
                 <input type="checkbox" aria-label="Checkbox for following text input" />
               </td>
               <td class="align-middle" x-data="{show: false, minimized: false}">
-                <a href="#" class="btn btn-sm btn-link mr-2" x-on:click="show=true">
-                  <i class="fa-regular fa-circle-info mr-2"></i>
+                <button class="text-decoration-none btn btn-sm btn-link d-flex align-items-center mr-1 gap-2" x-on:click="show = !show">
+                  <i x-show="!show" class="fa-solid fa-eye-slash text-muted"></i>
+                  <i x-show="show" class="fa-solid fa-eye"></i>
                   <strong x-text="contact.name"></strong>
-                </a>
+                </button>
                 <template x-teleport="#itemLists">
                   <template x-if="show">
                     <div class="d-flex">
@@ -130,26 +354,32 @@
       </table>
 
       <script>
-        function sortContacts(contacts, column, direction) {
-          return contacts.sort((a, b) => {
-            if (direction === "asc") {
-              return a[column] > b[column] ? 1 : -1;
+        function calculateColumnWidths() {
+          var table = document.getElementById("myTable");
+          if (!table) return;
+
+          var headers = table.getElementsByTagName("th");
+          var columnWidths = JSON.parse(localStorage.getItem("columnWidths")) || {};
+
+          for (var i = 0; i < headers.length; i++) {
+            var header = headers[i];
+            var key = header.getAttribute("data-column");
+            if (!key) continue;
+
+            var width = columnWidths[key];
+            if (width) {
+              header.style.width = width;
             } else {
-              return a[column] < b[column] ? 1 : -1;
+              var clientWidth = header.clientWidth;
+              header.style.width = clientWidth + "px";
+              columnWidths[key] = clientWidth + "px";
             }
-          });
+          }
+
+          localStorage.setItem("columnWidths", JSON.stringify(columnWidths));
         }
-        Alpine.start(() => {
-          console.log("start");
-          return {
-            sortedContacts: sortContacts(this.contacts, this.sortColumn, this.sortDirection),
-          };
-        });
-        Alpine.effect(() => {
-          return () => {
-            sortedContacts = sortContacts(this.contacts, this.sortColumn, this.sortDirection);
-          };
-        });
+
+        // Alpine.start();
       </script>
     </div>
     <div class="shadow-top p-2">

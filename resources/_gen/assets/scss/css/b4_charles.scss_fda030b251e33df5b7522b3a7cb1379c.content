@@ -586,7 +586,7 @@ dd {
   margin-left: 0;
 }
 
-
+b,
 strong {
   font-weight: bolder;
 }
@@ -3726,6 +3726,10 @@ a.close.disabled {
     opacity: 1;
     transform: none;
   }
+}
+
+.align-top {
+  vertical-align: top !important;
 }
 
 .align-middle {
@@ -6870,4 +6874,20 @@ h3 {
   --theme-fg: hsl(0deg, 100%, 96.8%);
   --theme: hsl(359deg, 69.5%, 74.3%);
   --theme-bg: hsl(359deg, 69.5%, 74.3%);
+}
+
+#THEAD thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+#TH th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.clear {
+  outline: 1px solid white;
 }
