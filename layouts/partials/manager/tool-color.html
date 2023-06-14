@@ -1,0 +1,52 @@
+{{ $themes := getJSON "data/theme.json" }}
+
+{{ $dev:= 0 }}
+
+{{ if $dev }}
+  <div class="iwm themegetbo">
+    <div class="theme--primary-0100 theme--primary-0200 theme--primary-0300 theme--primary-0400 theme--primary-0500 theme--primary-0600 theme--primary-0700 theme--primary-0800 theme--primary-0900 theme--primary-1000 theme--primary-1100 theme--primary-1200"></div>
+    <div class="theme--primaryAccent-0100 theme--primaryAccent-0200 theme--primaryAccent-0300 theme--primaryAccent-0400 theme--primaryAccent-0500 theme--primaryAccent-0600 theme--primaryAccent-0700 theme--primaryAccent-0800 theme--primaryAccent-0900 theme--primaryAccent-1000 theme--primaryAccent-1100 theme--primaryAccent-1200"></div>
+    <div class="theme--warning-0100 theme--warning-0200 theme--warning-0300 theme--warning-0400 theme--warning-0500 theme--warning-0600 theme--warning-0700 theme--warning-0800 theme--warning-0900 theme--warning-1000 theme--warning-1100 theme--warning-1200"></div>
+    <div class="theme--danger-0100 theme--danger-0200 theme--danger-0300 theme--danger-0400 theme--danger-0500 theme--danger-0600 theme--danger-0700 theme--danger-0800 theme--danger-0900 theme--danger-1000 theme--danger-1100 theme--danger-1200"></div>
+  </div>
+{{ end }}
+
+
+<div class="border-bottom bg-white p-3">
+  <div
+    x-data="{
+    themes: {{ $themes | jsonify }},
+
+    generateCSS: function() {
+      let css = '';
+      this.themes.forEach(themeGroup => {
+        themeGroup.theme.forEach(theme => {
+          Object.entries(theme.colors).forEach(([colorName, colorValue]) => {
+            css += `--${colorName}: ${colorValue}; `;
+          });
+        });
+      });
+      document.body.style.cssText = css;
+    }
+  }"
+    x-init="generateCSS()"
+  >
+    <template x-for="themeGroup in themes">
+      <div :class="themeGroup.name">
+        <h2 x-text="themeGroup.name"></h2>
+        <template x-for="theme in themeGroup.theme">
+          <div class="theme">
+            <h3 x-text="theme.name"></h3>
+            <div class="d-flex">
+              <template x-for="(colorValue, colorName) in theme.colors">
+                <div class="swatch p-2" :class="'theme--' + colorName">
+                  <span class="p3" x-text="colorValue"></span>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+  </div>
+</div>
