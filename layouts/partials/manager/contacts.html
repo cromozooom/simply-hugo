@@ -276,7 +276,7 @@
               <td class="pl-2 text-center align-middle">
                 <input type="checkbox" aria-label="Checkbox for following text input" />
               </td>
-              <td class="align-middle" x-data="{show: false, minimized: false}">
+              <td class="align-middle" x-data="{show: false, contactSize: false}">
                 <button class="text-decoration-none btn btn-sm btn-link d-flex align-items-center mr-1 gap-2" x-on:click="show = !show">
                   <i x-show="!show" class="fa-solid fa-eye-slash text-muted"></i>
                   <i x-show="show" class="fa-solid fa-eye"></i>
@@ -285,23 +285,23 @@
                 <template x-teleport="#itemLists">
                   <template x-if="show">
                     <div class="d-flex">
-                      <div class="d-flex flex-column card-main card-main-soft-primary  m-2 rounded px-3 pt-1 shadow" x-bind:class="{ 'pb-3 bg-white': !minimized, 'pb-1 bg-primary': minimized }">
+                      <div class="d-flex flex-column card-main card-main-soft-primary  m-2 rounded px-3 pt-1 shadow" x-bind:class="{ 'pb-3 bg-white': !contactSize, 'pb-1 bg-primary': contactSize }">
                         <div class="d-flex justify-content-between align-items-center w-100">
-                          <button class="d-flex align-items-center flex-nowrap border-0 bg-transparent px-1 py-2" x-bind:class="{ 'text-primary': !minimized, 'text-white': minimized }">
+                          <button class="d-flex align-items-center flex-nowrap border-0 bg-transparent px-1 py-2" x-bind:class="{ 'text-primary': !contactSize, 'text-white': contactSize }">
                             <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i>
                             <strong class="text-nowrap pr-2" x-text="contact.name"> </strong>
                           </button>
                           <div class="d-flex">
-                            <button class="border-0 bg-transparent py-2" x-bind:class="{ 'text-primary': !minimized, 'text-white': minimized }" x-on:click="minimized=!minimized">
-                              <i x-show="!minimized" class="fa-solid fa-down-left-and-up-right-to-center"></i>
-                              <i x-show="minimized" class="fa-solid fa-arrow-up-right-and-arrow-down-left-from-center"></i>
+                            <button class="border-0 bg-transparent py-2" x-bind:class="{ 'text-primary': !contactSize, 'text-white': contactSize }" x-on:click="contactSize=!contactSize">
+                              <i x-show="!contactSize" class="fa-solid fa-down-left-and-up-right-to-center"></i>
+                              <i x-show="contactSize" class="fa-solid fa-arrow-up-right-and-arrow-down-left-from-center"></i>
                             </button>
-                            <button class="border-0 bg-transparent py-2" x-bind:class="{ 'text-primary': !minimized, 'text-white': minimized }" x-on:click="show=false">
+                            <button class="border-0 bg-transparent py-2" x-bind:class="{ 'text-primary': !contactSize, 'text-white': contactSize }" x-on:click="show=false">
                               <i class="fa-solid fa-xmark"></i>
                             </button>
                           </div>
                         </div>
-                        <div x-show="!minimized">
+                        <div x-show="!contactSize">
                           <div class="d-flex flex-column mt-1 gap-1">
                             <div class="card min-w-20rem p-3">
                               <dl class="d-flex mb-0 gap-1">

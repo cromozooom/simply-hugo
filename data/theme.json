@@ -1,0 +1,148 @@
+[
+  {
+    "name": "iwm",
+    "theme": [
+      {
+        "name": "primary",
+        "colors": {
+          "primary-0100": "#f8fcfc",
+          "primary-0200": "#f5fbfa",
+          "primary-0300": "#ecf7f6",
+          "primary-0400": "#e0f2f0",
+          "primary-0500": "#cfeae8",
+          "primary-0600": "#afddd9",
+          "primary-0700": "#8bcec8",
+          "primary-0800": "#59b8b0",
+          "primary-0900": "#209f95",
+          "primary-1000": "#009186",
+          "primary-1100": "#007c71",
+          "primary-1200": "#002a27"
+        }
+      },
+      {
+        "name": "primaryAccent",
+        "colors": {
+          "primaryAccent-0100": "#f8fcfc",
+          "primaryAccent-0200": "#f5fbfa",
+          "primaryAccent-0300": "#ecf7f6",
+          "primaryAccent-0400": "#e0f2f0",
+          "primaryAccent-0500": "#cfeae8",
+          "primaryAccent-0600": "#afddd9",
+          "primaryAccent-0700": "#8bcec8",
+          "primaryAccent-0800": "#59b8b0",
+          "primaryAccent-0900": "#209f95",
+          "primaryAccent-1000": "#009186",
+          "primaryAccent-1100": "#007c71",
+          "primaryAccent-1200": "#002a27"
+        }
+      },
+      {
+        "name": "warning",
+        "colors": {
+          "warning-0100": "#fef9f9",
+          "warning-0200": "#fef8f7",
+          "warning-0300": "#fcf2f1",
+          "warning-0400": "#fbebe9",
+          "warning-0500": "#f8deda",
+          "warning-0600": "#f5cbc6",
+          "warning-0700": "#f0b3ab",
+          "warning-0800": "#e99286",
+          "warning-0900": "#e26b5b",
+          "warning-1000": "#dd5441",
+          "warning-1100": "#d4260e",
+          "warning-1200": "#4e0a01"
+        }
+      },
+      {
+        "name": "danger",
+        "colors": {
+          "danger-0100": "#fef9f9",
+          "danger-0200": "#fef8f7",
+          "danger-0300": "#fcf2f1",
+          "danger-0400": "#fbebe9",
+          "danger-0500": "#f8deda",
+          "danger-0600": "#f5cbc6",
+          "danger-0700": "#f0b3ab",
+          "danger-0800": "#e99286",
+          "danger-0900": "#e26b5b",
+          "danger-1000": "#dd5441",
+          "danger-1100": "#d4260e",
+          "danger-1200": "#4e0a01"
+        }
+      }
+    ]
+  },
+  {
+    "name": "neuflize",
+    "theme": [
+      {
+        "name": "primary",
+        "colors": {
+          "primary-0100": "#f8fcfc",
+          "primary-0200": "#f5fbfa",
+          "primary-0300": "#ecf7f6",
+          "primary-0400": "#e0f2f0",
+          "primary-0500": "#cfeae8",
+          "primary-0600": "#afddd9",
+          "primary-0700": "#8bcec8",
+          "primary-0800": "#59b8b0",
+          "primary-0900": "#209f95",
+          "primary-1000": "#009186",
+          "primary-1100": "#007c71",
+          "primary-1200": "#002a27"
+        }
+      },
+      {
+        "name": "primaryAccent",
+        "colors": {
+          "primaryAccent-0100": "#f8fcfc",
+          "primaryAccent-0200": "#f5fbfa",
+          "primaryAccent-0300": "#ecf7f6",
+          "primaryAccent-0400": "#e0f2f0",
+          "primaryAccent-0500": "#cfeae8",
+          "primaryAccent-0600": "#afddd9",
+          "primaryAccent-0700": "#8bcec8",
+          "primaryAccent-0800": "#59b8b0",
+          "primaryAccent-0900": "#209f95",
+          "primaryAccent-1000": "#009186",
+          "primaryAccent-1100": "#007c71",
+          "primaryAccent-1200": "#002a27"
+        }
+      },
+      {
+        "name": "warning",
+        "colors": {
+          "warning-0100": "#fef9f9",
+          "warning-0200": "#fef8f7",
+          "warning-0300": "#fcf2f1",
+          "warning-0400": "#fbebe9",
+          "warning-0500": "#f8deda",
+          "warning-0600": "#f5cbc6",
+          "warning-0700": "#f0b3ab",
+          "warning-0800": "#e99286",
+          "warning-0900": "#e26b5b",
+          "warning-1000": "#dd5441",
+          "warning-1100": "#d4260e",
+          "warning-1200": "#4e0a01"
+        }
+      },
+      {
+        "name": "danger",
+        "colors": {
+          "danger-0100": "#fef9f9",
+          "danger-0200": "#fef8f7",
+          "danger-0300": "#fcf2f1",
+          "danger-0400": "#fbebe9",
+          "danger-0500": "#f8deda",
+          "danger-0600": "#f5cbc6",
+          "danger-0700": "#f0b3ab",
+          "danger-0800": "#e99286",
+          "danger-0900": "#e26b5b",
+          "danger-1000": "#dd5441",
+          "danger-1100": "#d4260e",
+          "danger-1200": "#4e0a01"
+        }
+      }
+    ]
+  }
+]
