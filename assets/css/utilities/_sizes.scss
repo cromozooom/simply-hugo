@@ -62,3 +62,50 @@ $h-tabs: 3.5rem;
   height: auto;
   aspect-ratio: 1 /1;
 }
+
+.itemLists_details {
+  .window {
+    // bottom: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    // max-width: 95vw;
+    // min-height: calc(100% - var(--navTab) - var(--navBar));
+    // min-height: 100vh;
+    height: calc(100% - 3rem);
+    width: calc(100% - 3rem);
+
+  }
+  // .screen {
+  //   position: relative;
+  //   inset: 0;
+  // }
+}
+
+.window {
+  // main {
+  //   width: 100%;
+
+  // }
+  side {
+    min-width: 25rem;
+  }
+}
+
+.mainWithSide {
+  width: calc(100% - 25rem) !important;
+}
+
+.tabs {
+  // * {
+  //   outline: 1px solid red;
+  // }
+  // section {
+  //   overflow-y: scroll;
+  // }
+}
+
+.windowModalTabContent {
+  height: calc(100vh - var(--windowToolbarHeight-height) - var(--windowModalTab-height) - 3rem);
+}

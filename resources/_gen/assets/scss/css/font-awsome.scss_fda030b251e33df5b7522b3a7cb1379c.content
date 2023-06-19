@@ -140,9 +140,6 @@ readers do not read off random characters that represent icons */
 .fa-pen-to-square::before {
   content: "\f044";
 }
-.fa-eye-slash::before {
-  content: "\f070";
-}
 .fa-user::before {
   content: "\f007";
 }
@@ -173,9 +170,6 @@ readers do not read off random characters that represent icons */
 .fa-inbox-out::before {
   content: "\f311";
 }
-.fa-eye::before {
-  content: "\f06e";
-}
 .fa-sort-up::before {
   content: "\f0de";
 }
@@ -184,6 +178,9 @@ readers do not read off random characters that represent icons */
 }
 .fa-gear::before {
   content: "\f013";
+}
+.fa-arrows-maximize::before {
+  content: "\f31d";
 }
 .fa-timeline::before {
   content: "\e29c";
@@ -202,6 +199,9 @@ readers do not read off random characters that represent icons */
 }
 .fa-bolt::before {
   content: "\f0e7";
+}
+.fa-ellipsis::before {
+  content: "\f141";
 }
 .fa-file::before {
   content: "\f15b";

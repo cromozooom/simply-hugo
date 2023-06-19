@@ -748,6 +748,11 @@ legend {
   -webkit-appearance: button;
 }
 
+summary {
+  display: list-item;
+  cursor: pointer;
+}
+
 template {
   display: none;
 }
@@ -4228,6 +4233,10 @@ button.bg-soft-danger:focus {
   margin-left: 1rem !important;
 }
 
+.m-4 {
+  margin: 1.5rem !important;
+}
+
 .mt-4 {
   margin-top: 1.5rem !important;
 }
@@ -5999,6 +6008,10 @@ h3 {
   height: 100vh;
 }
 
+.w-screen {
+  width: 100vw;
+}
+
 .w-color {
   width: 8.3333333333%;
 }
@@ -6041,6 +6054,17 @@ h3 {
   width: 2rem;
   height: auto;
   aspect-ratio: 1/1;
+}
+
+.itemLists_details .window {
+  left: -50%;
+  top: -50%;
+  transform: translate(50% 50%);
+  position: fixed;
+  min-height: calc(100% - var(--navTab) - var(--navBar));
+  min-height: 100vh;
+  min-height: calc(100% - 2rem);
+  min-width: calc(100% - 2rem);
 }
 
 .cursor-pointer {
@@ -6228,15 +6252,33 @@ h3 {
   background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.75) 100%);
 }
 
+.shadow-top {
+  box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+
+body {
+  position: relative;
+}
+
 .itemLists {
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 10;
+  z-index: 1030;
 }
 
-.shadow-top {
-  box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+.itemLists_details {
+  z-index: 1050;
+}
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+  position: absolute;
+  inset: 0;
 }
 
 .pie {

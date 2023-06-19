@@ -3,21 +3,30 @@
   <head>
     {{- partial "head.html" . -}}
   </head>
-  <body x-data="themeData()" x-init="loadConfig(); updateNavBarHeight(); updateNavTabHeight(), initScrollSizes()" @resize.window="updateNavBarHeight, updateNavTabHeight">
+  <body x-data="body()" x-init="loadConfig(); updateNavBarHeight(); updateNavTabHeight(), initScrollSizes()" @resize.window="updateNavBarHeight, updateNavTabHeight">
     {{- block "main" . }}{{- end }}
     {{- partial "footer.html" . -}}
 
 
     <div id="app-mme-notification" class="itemLists align-items-end d-flex flex-row-reverse gap-1"></div>
     <div id="itemLists" class="itemLists align-items-end d-flex flex-row-reverse gap-1"></div>
+    {{/* <div id="itemLists_summary" class="itemLists itemLists_summary align-items-end d-flex flex-row-reverse gap-1"></div> */}}
+    <div id="itemLists_details" class="itemLists itemLists_details"></div>
     <script></script>
     <script>
-      function themeData() {
+      function body() {
         return {
+          windowModalTabHeight: "",
           navBarHeight: "",
           navTabHeight: "",
           currentTheme: "/css/customB4.css",
           scrollRefs: {},
+
+          calculateHeight(ref) {
+            const element = this.$refs[ref];
+            this[`${ref}Height`] = element.offsetHeight;
+            document.body.style.setProperty(`--${ref}-height`, element.offsetHeight + "px");
+          },
 
           initScrollSizes() {
             window.addEventListener("DOMContentLoaded", () => {
@@ -147,6 +156,10 @@
         const linkElement = document.getElementById("themeStylesheet");
         linkElement.href = themePath;
       }
+
+      window.addEventListener("resize", () => {
+        Alpine.store("body").calculateHeight("windowModalTab");
+      });
     </script>
   </body>
 
